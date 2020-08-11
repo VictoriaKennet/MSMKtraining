@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/{any?}', function () {
-    return view('index');
-});
+Auth::routes();
+
+// Route::group(['middleware' => 'auth'], function () {
+    Route::get('/{any?}', function () {
+        return view('index');
+    });
+// });
