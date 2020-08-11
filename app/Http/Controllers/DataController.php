@@ -27,7 +27,9 @@ class DataController extends Controller
             'parentMaterialGroup'
         )->get();
         foreach ($data as $key => $value) {
-            $value['fillerMaterialDesignation']['process'] = Process::find($value['fillerMaterialDesignation']['process_id']);
+            foreach ($value['fillerMaterialDesignation'] as $k => $v) {
+                $v['process'] = Process::find($v['process_id']);
+            }
         }
         return response()->json($data);
     }

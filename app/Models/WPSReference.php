@@ -14,26 +14,26 @@ class WPSReference extends Model
     ];
 
     function weldingProcesses() {
-        return $this->hasOne('App\Models\WeldingProcesses', 'id');
+        return $this->hasOne('App\Models\WeldingProcesses', 'wps_reference_id');
     }
 
     function typeOfWeld() {
-        return $this->hasOne('App\Models\TypeOfWeld', 'id');
+        return $this->hasOne('App\Models\TypeOfWeld', 'wps_reference_id');
     }
 
     function productType() {
-        return $this->hasOne('App\Models\ProductType', 'id');
+        return $this->hasOne('App\Models\ProductType', 'wps_reference_id');
     }
 
     function fillerMaterialGroup() {
-        return $this->hasOne('App\Models\FillerMaterialGroup', 'id');
+        return $this->hasOne('App\Models\FillerMaterialGroup', 'wps_reference_id');
     }
 
     function fillerMaterialDesignation() {
-        return $this->hasOne('App\Models\FillerMaterialDesignation', 'id');
+        return $this->hasMany('App\Models\FillerMaterialDesignation', 'wps_reference_id');
     }
 
     function parentMaterialGroup() {
-        return $this->hasOne('App\Models\ParentMaterialGroup', 'id');
+        return $this->hasOne('App\Models\ParentMaterialGroup', 'wps_reference_id');
     }
 }
