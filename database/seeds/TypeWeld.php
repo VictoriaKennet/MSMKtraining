@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class type_of_weld extends Seeder
+class TypeWeld extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,32 +12,32 @@ class type_of_weld extends Seeder
     public function run()
     {
         DB::table('type_weld')->insert([
-            'wps_reference_id' => '1',
+            'wps_reference_id' => 1,
             'test' => 'Single Run Fillet Weld (FW)',
             'range' => 'Fillet Weld (FW)']);
 
         DB::table('type_weld')->insert([
-            'wps_reference_id' => '2',
+            'wps_reference_id' => 2,
             'test' => 'Multi Run Fillet Weld (FW)',
             'range' => 'Fillet Weld (FW)']);
 
         DB::table('type_weld')->insert([
-            'wps_reference_id' => '3',
+            'wps_reference_id' => 3,
             'test' => 'Multi Run Fillet Weld (FW)',
             'range' => 'Fillet Weld (FW)']);
 
         DB::table('type_weld')->insert([
-            'wps_reference_id' => '4',
+            'wps_reference_id' => 4,
             'test' => 'Single Run Fillet Weld (FW)',
             'range' => 'Fillet Weld (FW)']);
-        
+
         DB::table('type_weld')->insert([
-            'wps_reference_id' => '5',
+            'wps_reference_id' => 5,
             'test' => 'Butt Weld In Pipe (BW) ',
             'range' => 'Butt Weld (BW) , including branch ≥ 60°']);
 
         DB::table('type_weld')->insert([
-            'wps_reference_id' => '6',
+            'wps_reference_id' => 6,
             'test' => 'Butt Weld In Pipe (BW)',
             'range' => 'Butt Weld (BW) , including branch ≥ 60°']);
     }

@@ -17,14 +17,14 @@ class CreateFillerMaterialDesignationTable extends Migration
             $table->id();
             $table->integer('process_number');
             $table->foreignId('process_id');
-            $table->foreignId('wps_reference_id'); 
+            $table->foreignId('wps_reference_id');
         });
 
         Schema::table('filler_material_designation', function (Blueprint $table) {
-            $table->index('wps_reference_id');
-            $table->foreign('wps_reference_id')->references('id')->on('wps_reference');
+            $table->index('process_id');
+            $table->foreign('process_id')->references('id')->on('process');
         });
-        
+
         Schema::table('filler_material_designation', function (Blueprint $table) {
             $table->index('wps_reference_id');
             $table->foreign('wps_reference_id')->references('id')->on('wps_reference');

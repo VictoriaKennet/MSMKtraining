@@ -17,11 +17,11 @@ class DatabaseSeeder extends Seeder
             TransferMode::class,
             ProductType::class,
             TypeWeld::class,
+            Process::class,
             ParentMaterialGroup::class,
             FillerMaterialGroup::class,
-            FillerMaterialDesignation::class,
-            Process::class
-            
+            FillerMaterialDesignation::class
+
             // ShieldingGas::class,
             // TypePolarity::class,
             // WeldingDetails::class,
