@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class product_type extends Seeder
+class WeldingDetails extends Seeder
 {
     /**
      * Run the database seeds.

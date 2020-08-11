@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class type_of_weld extends Seeder
+class ShieldingGas extends Seeder
 {
     /**
      * Run the database seeds.

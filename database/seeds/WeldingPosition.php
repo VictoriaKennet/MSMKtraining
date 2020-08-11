@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class welding_details extends Seeder
+class WeldingPosition extends Seeder
 {
     /**
      * Run the database seeds.

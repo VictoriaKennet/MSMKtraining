@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class filler_material_group extends Seeder
+class TypePolarity extends Seeder
 {
     /**
      * Run the database seeds.
