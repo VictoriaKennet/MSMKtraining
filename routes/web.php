@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::post('pdf', 'PdfController@createPDF');
+
 Auth::routes();
 
 // Route::group(['middleware' => 'auth'], function () {

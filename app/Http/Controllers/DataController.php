@@ -53,4 +53,8 @@ class DataController extends Controller
         $data = ShieldingGas::get();
         return response()->json($data);
     }
+    function parentMaterialGroup() {
+        $data = ParentMaterialGroup::get();
+        return response()->json($data);
+    }
 }
