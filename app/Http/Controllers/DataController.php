@@ -57,4 +57,8 @@ class DataController extends Controller
         $data = ParentMaterialGroup::get();
         return response()->json($data);
     }
+    function productType() {
+        $data = ProductType::get();
+        return response()->json($data);
+    }
 }
