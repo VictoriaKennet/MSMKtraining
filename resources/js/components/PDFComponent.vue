@@ -72,8 +72,8 @@
                                     </b-form-group>
 
                                     <b-form-group label="Product type(plate or pipe)">
-                                        <b-form-input list="input-list" id="input-with-list"></b-form-input>
-                                        <b-form-datalist id="input-list"></b-form-datalist>
+                                        <b-form-input list="product-type" id="input-with-list" :value="wps.product_type.test"></b-form-input>
+                                        <b-form-datalist id="product-type" :options="product_type" text-field="test"></b-form-datalist>
                                     </b-form-group>
 
                                     <!-- /Выпадающий список wps reference -->
@@ -291,6 +291,7 @@ export default {
             opt: ['Apple', 'Banana', 'Grape', 'Kiwi', 'Orange'],
             data: [],
             parent_material_group: [],
+            product_type: [],
             photo: null,
             selected: false,
             wpsDefault: {
@@ -339,6 +340,7 @@ export default {
         this.wps = Object.assign({}, this.wpsDefault);
         this.getData();
         this.getParentMaterialGroup();
+        this.productType();
     },
     methods: {
         test(value) {
@@ -356,6 +358,12 @@ export default {
         getParentMaterialGroup() {
             axios.get('/api/parent-material-group').then(response => {
                 this.parent_material_group = response.data;
+            })
+        },
+        productType() {
+            axios.get('/api/product-type').then(response => {
+                console.log(response.data)
+                this.product_type = response.data;
             })
         }
     }
