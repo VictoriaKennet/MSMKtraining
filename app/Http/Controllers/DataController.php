@@ -57,7 +57,11 @@ class DataController extends Controller
         return response()->json($data);
     }
     function transferMode() {
-        $data = ProductType::get();
+        $data = TransferMode::get();
+        return response()->json($data);
+    }
+    function typeWeld() {
+        $data = TypeOfWeld::get();
         return response()->json($data);
     }
 }

@@ -66,10 +66,10 @@
                                         </b-form-datalist>
                                     </b-form-group>
 
-                                    <!-- <b-form-group label="Transfer mode">
-                                        <b-form-input list="transfer_mode_list" id="input-with-list" :value="transfer_mode.test"></b-form-input>
-                                        <b-form-datalist id="transfer_mode" :options="transfer_mode" text-field="text"></b-form-datalist>
-                                    </b-form-group> -->
+                                    <b-form-group label="Transfer mode">
+                                        <b-form-input list="transfer_mode" id="input-with-list"></b-form-input>
+                                        <b-form-datalist id="transfer_mode" :options="transfer_mode" text-field="test"></b-form-datalist>
+                                    </b-form-group>
 
                                     <b-form-group label="Product type(plate or pipe)">
                                         <b-form-input list="product-type" id="input-with-list" :value="wps.product_type.test"></b-form-input>
@@ -77,10 +77,10 @@
                                     </b-form-group>
 
                                     <!-- /Выпадающий список wps reference -->
-                                    <!-- <b-form-group label="Type of weld">
-                                        <b-form-input list="type_weld" id="input-with-list" :value="wps.type_weld.test"></b-form-input>
-                                        <b-form-datalist id="type_weld" ></b-form-datalist>
-                                    </b-form-group> -->
+                                    <b-form-group label="Type of weld">
+                                        <b-form-input list="type_weld" id="input-with-list" :value="wps.type_of_weld.test"></b-form-input>
+                                        <b-form-datalist id="type_weld" :options="type_of_weld" text-field="test"></b-form-datalist>
+                                    </b-form-group>
 
                                     <!-- /Выпадающий список wps reference -->
                                     <b-form-group label="Parent material group(s)/subgrps">
@@ -317,7 +317,8 @@ export default {
             data: [],
             parent_material_group: [],
             product_type: [],
-            transfer_mode:[],
+            transfer_mode: [],
+            type_of_weld: [],
             photo: null,
             selected: false,
             wpsDefault: {
@@ -368,6 +369,7 @@ export default {
         this.getParentMaterialGroup();
         this.productType();
         this.transferMode();
+        this.typeWeld();
     },
     methods: {
         test(value) {
@@ -378,7 +380,6 @@ export default {
         },
         getData() {
             axios.get('/api/wps').then(response => {
-                console.log(response.data)
                 this.data = response.data;
             })
         },
@@ -389,14 +390,18 @@ export default {
         },
         productType() {
             axios.get('/api/product-type').then(response => {
-                console.log(response.data)
                 this.product_type = response.data;
             })
         },
         transferMode() {
-            axios.get('/api/transfer_mode').then(response => {
-                console.log(response.data)
+            axios.get('/api/transfer-mode').then(response => {
                 this.transfer_mode = response.data;
+            })
+        },
+        typeWeld() {
+            axios.get('/api/type-weld').then(response => {
+                console.log(response.data)
+                this.type_of_weld = response.data;
             })
         }
     }
