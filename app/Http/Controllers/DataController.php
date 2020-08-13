@@ -34,11 +34,6 @@ class DataController extends Controller
         return response()->json($data);
     }
 
-    function transferMode() {
-        $data = TransferMode::get();
-        return response()->json($data);
-    }
-
     function process() {
         $data = Process::get();
         return response()->json($data);
@@ -58,6 +53,10 @@ class DataController extends Controller
         return response()->json($data);
     }
     function productType() {
+        $data = ProductType::get();
+        return response()->json($data);
+    }
+    function transferMode() {
         $data = ProductType::get();
         return response()->json($data);
     }

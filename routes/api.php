@@ -10,3 +10,4 @@ Route::get('type-polarity', 'DataController@typePolarity');
 Route::get('shielding-gas', 'DataController@shieldingGas');
 Route::get('parent-material-group', 'DataController@parentMaterialGroup');
 Route::get('product-type', 'DataController@productType');
+Route::get('transfer_mode', 'DataController@transferMode');
