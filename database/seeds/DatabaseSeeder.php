@@ -21,12 +21,11 @@ class DatabaseSeeder extends Seeder
             Process::class,
             ParentMaterialGroup::class,
             FillerMaterialGroup::class,
-            FillerMaterialDesignation::class
-
-            // ShieldingGas::class,
-            // TypePolarity::class,
-            // WeldingDetails::class,
-            // WeldingPosition::class,
+            FillerMaterialDesignation::class,
+            ShieldingGas::class,
+            TypePolarity::class,
+            WeldingDetails::class,
+            WeldingPosition::class
         ]);
     }
 }

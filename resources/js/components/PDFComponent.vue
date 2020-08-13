@@ -56,19 +56,26 @@
               <b-row>
                 <b-col>
                   <!-- /Выпадающий список wps reference -->
-                  <b-form-group label="WPS-Reference">
-                    <b-form-input list="input-list" id="input-with-list"></b-form-input>
-                    <b-form-datalist id="input-list" :options="opt"></b-form-datalist>
+                <b-form-group v-model="wps" label="WPS-Reference">
+                    <b-form-input list="my-list-id"></b-form-input>
+                    <datalist id="my-list-id">
+                      <option v-for="item in data" :key="item.id">{{ item.name }}</option>
+                    </datalist>
                 </b-form-group>
                 <!-- /Выпадающий список wps reference -->
                 <b-form-group label="Transfer mode">
                     <b-form-input list="input-list" id="input-with-list"></b-form-input>
                     <b-form-datalist id="input-list" :options="opt"></b-form-datalist>
                 </b-form-group>
-                <!-- /Выпадающий список wps reference -->
-                <b-form-group label="Product type(plate or pipe)">
-                    <b-form-input list="input-list" id="input-with-list"></b-form-input>
-                    <b-form-datalist id="input-list" :options="opt"></b-form-datalist>
+                <!-- /Выпадающий список wps reference --> 
+                <b-form-group v-model="wps" label="Product type(plate or pipe)">
+                    <b-form-input list="my-list-id2"></b-form-input>
+                    <datalist id="my-list-id2">
+                      <option 
+                      v-for="prs in data"
+                      v-bind:key="prs.id"
+                      >{{ prs.product_type.test }}</option>
+                    </datalist>
                 </b-form-group>
                 <!-- /Выпадающий список wps reference -->
                 <b-form-group label="Type of weld">
