@@ -230,14 +230,14 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input list="shielding-gas" id="input-with-list"></b-form-input>
-                                        <b-form-datalist id="shielding-gas" :options="shielding_gas" text-field="test"></b-form-datalist>
+                                        <b-form-input list="shielding_gas_test" name="shielding_gas_test" id="input-with-list" @change="setElement($event, 'shielding_gas', 'shielding_gas_range')"></b-form-input>
+                                        <b-form-datalist id="shielding_gas_test" :options="shielding_gas" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="5">
                                     <b-form-group>
-                                        <b-form-input list="shielding-gas" id="input-with-list"></b-form-input>
-                                        <b-form-datalist id="shielding-gas" :options="shielding_gas" text-field="range"></b-form-datalist>
+                                        <b-form-input list="shielding_gas_range" name="shielding_gas_range" id="input-with-list" :value="shielding_gas_range"></b-form-input>
+                                        <b-form-datalist id="shielding_gas_range" :options="shielding_gas" text-field="range"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -507,6 +507,8 @@
 export default {
     data() {
         return {
+            shielding_gas_range: "",
+
             fields: ['Name', 'Test piece', 'Range of qualification'],
             data: [],
             parent_material_group: [],
@@ -582,6 +584,12 @@ export default {
         this.process();
     },
     methods: {
+        setElement(event, array, range) {
+            var result = this[array].find((item) => {
+                return item.test == event;
+            })
+            result ? this[range] = result.range : this[range] = "";
+        },
         previewFiles(event) {
             if (event) {
                 var reader = new FileReader();
