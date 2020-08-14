@@ -14,6 +14,8 @@ use App\Models\Process;
 use App\Models\TypePolarity;
 use App\Models\ShieldingGas;
 use App\Models\ParentMaterialGroup;
+use App\Models\WeldingPosition;
+use App\Models\WeldingDetails;
 
 class DataController extends Controller
 {
@@ -43,11 +45,6 @@ class DataController extends Controller
         $data = TypePolarity::get();
         return response()->json($data);
     }
-
-    function shieldingGas() {
-        $data = ShieldingGas::get();
-        return response()->json($data);
-    }
     function parentMaterialGroup() {
         $data = ParentMaterialGroup::get();
         return response()->json($data);
@@ -62,6 +59,26 @@ class DataController extends Controller
     }
     function typeWeld() {
         $data = TypeOfWeld::get();
+        return response()->json($data);
+    }
+    function fillerMaterialGroup() {
+        $data = FillerMaterialGroup::get();
+        return response()->json($data);
+    }
+    function fillerMaterialDesignation() {
+        $data = FillerMaterialDesignation::get();
+        return response()->json($data);
+    }
+    function shieldingGas() {
+        $data = ShieldingGas::get();
+        return response()->json($data);
+    }
+    function weldingPosition() {
+        $data = WeldingPosition::get();
+        return response()->json($data);
+    }
+    function weldingDetails() {
+        $data = WeldingDetails::get();
         return response()->json($data);
     }
 }

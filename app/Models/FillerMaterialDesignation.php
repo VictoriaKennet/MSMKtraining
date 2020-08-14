@@ -13,5 +13,8 @@ class FillerMaterialDesignation extends Model
         'test',
         'range',
         'wps_reference_id'
+        // 'process_number',
+        // 'process_id'
+        
     ];
 }

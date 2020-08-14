@@ -24,7 +24,7 @@
 
                                     <!-- /Поле ввода  -->
                                     <b-form-group label="Code/testing standard">
-                                        <b-form-input list="code" id="input-with-list"></b-form-input>
+                                        <b-form-input placeholder="Code/testing standard" list="code" id="input-with-list"></b-form-input>
                                         <b-form-datalist id="code">
                                         </b-form-datalist>
                                     </b-form-group>
@@ -67,8 +67,9 @@
                                     </b-form-group>
 
                                     <b-form-group label="Transfer mode">
-                                        <b-form-input list="transfer_mode" id="input-with-list"></b-form-input>
-                                        <b-form-datalist id="transfer_mode" :options="transfer_mode" text-field="test"></b-form-datalist>
+                                        <b-form-input list="transfer-mode" id="input-with-list"></b-form-input>
+                                        <b-form-datalist id="transfer-mode" :options="transfer_mode" text-field="test">
+                                        </b-form-datalist>
                                     </b-form-group>
 
                                     <b-form-group label="Product type(plate or pipe)">
@@ -78,77 +79,37 @@
 
                                     <!-- /Выпадающий список wps reference -->
                                     <b-form-group label="Type of weld">
-                                        <b-form-input list="type_weld" id="input-with-list" :value="wps.type_of_weld.test"></b-form-input>
-                                        <b-form-datalist id="type_weld" :options="type_of_weld" text-field="test"></b-form-datalist>
+                                        <b-form-input list="type-weld" id="input-with-list" :value="wps.type_of_weld.test"></b-form-input>
+                                        <b-form-datalist id="type-weld" :options="type_of_weld" text-field="test"></b-form-datalist>
                                     </b-form-group>
 
                                     <!-- /Выпадающий список wps reference -->
                                     <b-form-group label="Parent material group(s)/subgrps">
-                                        <b-form-input list="input-list" id="input-with-list"></b-form-input>
-                                        <b-form-datalist id="input-list"></b-form-datalist>
+                                        <b-form-input list="parent-material-group" id="input-with-list" :value="wps.parent_material_group.test"></b-form-input>
+                                        <b-form-datalist id="parent-material-group" :options="parent_material_group" text-field="test"></b-form-datalist>
                                     </b-form-group>
 
                                     <!-- /Выпадающий список wps reference -->
                                     <b-form-group label="Filler material groups(s)">
-                                        <b-form-input list="input-list" id="input-with-list"></b-form-input>
-                                        <b-form-datalist id="input-list"></b-form-datalist>
+                                        <b-form-input list="filler-material-group" id="input-with-list" :value="wps.filler_material_group.test"></b-form-input>
+                                        <b-form-datalist id="filler-material-group" :options="filler_material_group" text-field="test"></b-form-datalist>
+                                    </b-form-group>
+
+                                    <!-- /Выпадающий список wps reference -->
+                                    <b-form-group label="Shielding gas">
+                                        <b-form-input list="shielding-gas" id="input-with-list"></b-form-input>
+                                        <b-form-datalist id="shielding-gas" :options="shielding_gas" text-field="test"></b-form-datalist>
                                     </b-form-group>
 
                                     <!-- /Выпадающий список wps reference -->
                                     <label for="input-default">Filler material ( Designation)</label>
                                     <b-row class="my-1">
                                         <b-col sm="3">
-                                        <label for="input-default">Process 1</label>
-                                        </b-col>
-                                        <b-col sm="9">
-                                        <b-form-input list="input-list" id="input-with-list"></b-form-input>
-                                        <b-form-datalist id="input-list"></b-form-datalist>
-                                        </b-col>
-                                    </b-row>
-                                    <b-row class="my-1">
-                                        <b-col sm="3">
-                                        <label for="input-default">Process 2</label>
-                                        </b-col>
-                                        <b-col sm="9">
-                                        <b-form-input list="input-list" id="input-with-list"></b-form-input>
-                                        <b-form-datalist id="input-list"></b-form-datalist>
-                                        </b-col>
-                                    </b-row>
-
-                                    <!-- /Выпадающий список wps reference -->
-                                    <b-form-group label="Shielding gas">
-                                        <b-form-input list="input-list" id="input-with-list"></b-form-input>
-                                        <b-form-datalist id="input-list"></b-form-datalist>
-                                    </b-form-group>
-                                </b-col>
-                                <b-col>
-                                    <!-- /Выпадающий список wps reference -->
-                                    <b-form-group label="Type of current and polarity">
-                                        <b-form-input list="input-list" id="input-with-list"></b-form-input>
-                                        <b-form-datalist id="input-list"></b-form-datalist>
-                                    </b-form-group>
-
-                                    <!-- /Выпадающий список wps reference -->
-                                    <b-form-group label="Product type(plate or pipe)">
-                                        <b-form-input list="input-list" id="input-with-list"></b-form-input>
-                                        <b-form-datalist id="input-list"></b-form-datalist>
-                                    </b-form-group>
-
-                                    <!-- /Поле ввода  -->
-                                    <b-form-group label="Material thickness(mm)">
-                                        <b-form-input placeholder="Enter number">
-                                        </b-form-input>
-                                    </b-form-group>
-
-                                    <!-- /Выпадающий список wps reference -->
-                                    <label for="input-default">Deposited thickness(mm)</label>
-                                    <b-row class="my-1">
-                                        <b-col sm="3">
                                             <label for="input-default">Process 1</label>
                                         </b-col>
                                         <b-col sm="9">
-                                            <b-form-input list="input-list" id="input-with-list"></b-form-input>
-                                            <b-form-datalist id="input-list"></b-form-datalist>
+                                            <b-form-input list="process" id="input-with-list"></b-form-input>
+                                            <b-form-datalist id="process"></b-form-datalist>
                                         </b-col>
                                     </b-row>
                                     <b-row class="my-1">
@@ -156,27 +117,41 @@
                                             <label for="input-default">Process 2</label>
                                         </b-col>
                                         <b-col sm="9">
-                                            <b-form-input list="input-list" id="input-with-list"></b-form-input>
-                                            <b-form-datalist id="input-list"></b-form-datalist>
+                                            <b-form-input list="process" id="input-with-list"></b-form-input>
+                                            <b-form-datalist id="process" ></b-form-datalist>
                                         </b-col>
                                     </b-row>
 
+                                </b-col>
+                                <b-col>
+                                    <!-- /Выпадающий список wps reference -->
+                                    <b-form-group label="Type of current and polarity">
+                                        <b-form-input list="type-polarity" id="input-with-list"></b-form-input>
+                                        <b-form-datalist id="type-polarity" :options="type_polarity" text-field="test"></b-form-datalist>
+                                    </b-form-group>
+
+                                    <!-- /Поле ввода  -->
+                                    <b-form-group label="Material thickness(mm)">
+                                        <b-form-input placeholder="Enter number" name="material_thickness">
+                                        </b-form-input>
+                                    </b-form-group>
+
                                     <!-- /Поле ввода  -->
                                     <b-form-group label="Outside pipe diameter(mm)">
-                                        <b-form-input placeholder="Enter number">
+                                        <b-form-input placeholder="Enter number" name="outside_pipe_diameter">
                                         </b-form-input>
                                     </b-form-group>
 
                                     <!-- /Выпадающий список wps reference -->
                                     <b-form-group label="Welding position">
-                                        <b-form-input list="input-list" id="input-with-list"></b-form-input>
-                                        <b-form-datalist id="input-list"></b-form-datalist>
+                                        <b-form-input list="welding-position" id="input-with-list"></b-form-input>
+                                        <b-form-datalist id="welding-position" :options="welding_position" text-field="test"></b-form-datalist>
                                     </b-form-group>
-
+                                    
                                     <!-- /Выпадающий список wps reference -->
                                     <b-form-group label="Weld details">
-                                        <b-form-input list="input-list" id="input-with-list"></b-form-input>
-                                        <b-form-datalist id="input-list"></b-form-datalist>
+                                        <b-form-input list="welding-details" id="input-with-list"></b-form-input>
+                                        <b-form-datalist id="welding-details" :options="welding_details" text-field="test"></b-form-datalist>
                                     </b-form-group>
 
                                     <!-- /Выпадающий список wps reference -->
@@ -184,6 +159,27 @@
                                         <b-form-input list="input-list" id="input-with-list"></b-form-input>
                                         <b-form-datalist id="input-list"></b-form-datalist>
                                     </b-form-group>
+
+                                    <!-- /Выпадающий список wps reference -->
+                                    <label for="input-default">Deposited thickness(mm)</label>
+                                    <b-row class="my-1">
+                                        <b-col sm="4">
+                                            <label for="input-default">Process 1 (Root)</label>
+                                        </b-col>
+                                        <b-col sm="8">
+                                            <b-form-input placeholder="Enter number" name="deposited_root">
+                                            </b-form-input>
+                                        </b-col>
+                                    </b-row>
+                                    <b-row class="my-1">
+                                        <b-col sm="4">
+                                            <label for="input-default">Process 2 (Rest)</label>
+                                        </b-col>
+                                        <b-col sm="8">
+                                            <b-form-input placeholder="Enter number" name="deposited_rest">
+                                            </b-form-input>
+                                        </b-col>
+                                    </b-row>
                                 </b-col>
                             </b-row>
                         </b-card-body>
@@ -283,29 +279,11 @@
         </div>
     <div>
         <form action="/pdf" target="_blank" method="POST" enctype="multipart/form-data">
-            <!-- Выпадающий список wps reference -->
-            <select v-model="wps">
-                <option v-for="item in data" :key="item.id" :value="item">{{ item.name }}</option>
-            </select>
-            <input type="hidden" name="wps_reference" :value="wps.name">
-            <!-- /Выпадающий список wps reference -->
-
-            <div>
-                <label for="">range</label><input type="text" name="parent_material_group_range" :value="wps.parent_material_group.range"><br>
-                <label for="">test</label>
-                <select name="parent_material_group_test" v-model="wps.parent_material_group.test">
-                    <option v-for="item in parent_material_group" :key="item.id" :value="item.test">{{ item.test }}</option>
-                </select>
-            </div>
-
             <input type="file" name="photo" /><br>
 
             <input type="submit" value="Открыть PDF">
         </form>
     </div>
-
-
-
     </b-container>
 </div>
 </template>
@@ -319,6 +297,12 @@ export default {
             product_type: [],
             transfer_mode: [],
             type_of_weld: [],
+            type_polarity: [],
+            filler_material_group: [],
+            filler_material_designation: [],
+            shielding_gas: [],
+            welding_position:[],
+            welding_details:[],
             photo: null,
             selected: false,
             wpsDefault: {
@@ -370,6 +354,12 @@ export default {
         this.productType();
         this.transferMode();
         this.typeWeld();
+        this.fillerMaterialGroup();
+        this.fillerMaterialDesignation();
+        this.shieldingGas();
+        this.typePolarity();
+        this.weldingPosition();
+        this.weldingDetails();
     },
     methods: {
         test(value) {
@@ -403,7 +393,40 @@ export default {
                 console.log(response.data)
                 this.type_of_weld = response.data;
             })
-        }
+        },
+        fillerMaterialGroup() {
+            axios.get('/api/filler-material-group').then(response => {
+                console.log(response.data)
+                this.filler_material_group = response.data;
+            })
+        },
+        fillerMaterialDesignation() {
+            axios.get('/api/filler-material-designation').then(response => {
+                this.filler_material_designation = response.data;
+            })
+        },
+        shieldingGas() {
+            axios.get('/api/shielding-gas').then(response => {
+                this.shielding_gas = response.data;
+            })
+        },
+        typePolarity() {
+            axios.get('/api/type-polarity').then(response => {
+                this.type_polarity = response.data;
+            })
+        },
+        weldingPosition() {
+            axios.get('/api/welding-position').then(response => {
+                console.log(response.data)
+                this.welding_position = response.data;
+            })
+        },
+        weldingDetails() {
+            axios.get('/api/welding-details').then(response => {
+                console.log(response.data)
+                this.welding_details = response.data;
+            })
+        },
     }
 };
 </script>
