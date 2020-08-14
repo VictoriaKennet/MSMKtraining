@@ -16,6 +16,7 @@ use App\Models\ShieldingGas;
 use App\Models\ParentMaterialGroup;
 use App\Models\WeldingPosition;
 use App\Models\WeldingDetails;
+use\App\Models\WeldingProcesses;
 
 class DataController extends Controller
 {
@@ -79,6 +80,10 @@ class DataController extends Controller
     }
     function weldingDetails() {
         $data = WeldingDetails::get();
+        return response()->json($data);
+    }
+    function weldingProcesses() {
+        $data = WeldingProcesses::get();
         return response()->json($data);
     }
 }
