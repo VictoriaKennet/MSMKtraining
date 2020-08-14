@@ -38,12 +38,14 @@
 
                                 <b-col>
                                     <b-form-group>
-                                    <b-img src="https://cdn.onlinewebfonts.com/svg/img_245305.png" fluid class="img_size" ></b-img>
-                                    <b-form-file
-                                    v-model="photo"
-                                    placeholder="Choose a file or drop it"
-                                    drop-placeholder="Drop file here"
-                                    ></b-form-file>
+                                        <b-img src="./user.png" fluid class="img_size" id="image"></b-img>
+                                        <b-form-file
+                                            name="photo"
+                                            v-model="photo"
+                                            placeholder="Choose a file or drop it"
+                                            drop-placeholder="Drop file here"
+                                            @change="previewFiles"
+                                        ></b-form-file>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -196,8 +198,8 @@
                                             <label for="input-default">Process 1</label>
                                         </b-col>
                                         <b-col cols="7">
-                                            <b-form-input list="process" id="input-with-list"></b-form-input>
-                                            <b-form-datalist id="process"></b-form-datalist>
+                                            <b-form-input list="process_data_1" id="input-with-list" :value="wps.filler_material_designation[0].process.test"></b-form-input>
+                                            <b-form-datalist id="process_data_1" :options="process_data" text-field="test"></b-form-datalist>
                                         </b-col>
                                     </b-row>
                                     <b-row >
@@ -205,8 +207,8 @@
                                             <label for="input-default">Process 2</label>
                                         </b-col>
                                         <b-col cols="7">
-                                            <b-form-input list="process" id="input-with-list"></b-form-input>
-                                            <b-form-datalist id="process"></b-form-datalist>
+                                            <b-form-input list="process_data_2" id="input-with-list" :value="wps.filler_material_designation[1].process.test"></b-form-input>
+                                            <b-form-datalist id="process_data_2" :options="process_data" text-field="test"></b-form-datalist>
                                         </b-col>
                                     </b-row>
                                 </b-col>
@@ -338,10 +340,10 @@
 
                             <b-row>
                                 <b-col>
-                                    
 
-                                  
-                                    
+
+
+
 
                                     <!-- /Поле ввода  -->
                                     <b-form-group label="Material thickness(mm)">
@@ -360,7 +362,7 @@
                                         <b-form-input list="welding-position" id="input-with-list"></b-form-input>
                                         <b-form-datalist id="welding-position" :options="welding_position" text-field="test"></b-form-datalist>
                                     </b-form-group>
-                                    
+
                                     <!-- /Выпадающий список wps reference -->
                                     <b-form-group label="Weld details">
                                         <b-form-input list="welding-details" id="input-with-list"></b-form-input>
@@ -445,6 +447,7 @@
                                         </b-col>
                                     </b-row>
                                 </b-col>
+
                                 <b-col>
                                     <b-form-group label="Using sub-components:" class="border_bt">
                                         <b-form-checkbox-group id="checkbox-group-2" stacked name="flavour-2">
@@ -517,6 +520,7 @@ export default {
             welding_position:[],
             welding_details:[],
             welding_processes:[],
+            process_data: [],
             photo: null,
             selected: false,
             wpsDefault: {
@@ -575,8 +579,18 @@ export default {
         this.weldingPosition();
         this.weldingDetails();
         this.weldingProcesses();
+        this.process();
     },
     methods: {
+        previewFiles(event) {
+            if (event) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById("image").setAttribute('src', e.target.result);
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        },
         test(value) {
             let result = this.data.find((item) => {
                 return item.name == value;
@@ -585,6 +599,7 @@ export default {
         },
         getData() {
             axios.get('/api/wps').then(response => {
+                console.log(response.data)
                 this.data = response.data;
             })
         },
@@ -605,13 +620,11 @@ export default {
         },
         typeWeld() {
             axios.get('/api/type-weld').then(response => {
-                console.log(response.data)
                 this.type_of_weld = response.data;
             })
         },
         fillerMaterialGroup() {
             axios.get('/api/filler-material-group').then(response => {
-                console.log(response.data)
                 this.filler_material_group = response.data;
             })
         },
@@ -632,13 +645,11 @@ export default {
         },
         weldingPosition() {
             axios.get('/api/welding-position').then(response => {
-                console.log(response.data)
                 this.welding_position = response.data;
             })
         },
         weldingDetails() {
             axios.get('/api/welding-details').then(response => {
-                console.log(response.data)
                 this.welding_details = response.data;
             })
         },
@@ -647,7 +658,12 @@ export default {
                 console.log(response.data)
                 this.welding_processes = response.data;
             })
-        }
+        },
+        process() {
+            axios.get('/api/process').then(response => {
+                this.process_data = response.data;
+            })
+        },
     }
 };
 </script>
