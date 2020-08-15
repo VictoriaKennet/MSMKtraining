@@ -496,80 +496,84 @@
                         <b-card-body>
                             <b-row>
                                 <b-col>
-                                    <b-form-group label="Using sub-components:">
-                                        <b-form-checkbox-group id="checkbox-group-2" stacked name="flavour-2">
-                                        <b-form-checkbox>Default</b-form-checkbox>
-                                        <b-form-checkbox>Default</b-form-checkbox>
-                                        <b-form-checkbox>Default</b-form-checkbox>
+                                    <b-form-group>
+                                        <b-form-checkbox-group id="checkbox-group" v-model="selected" stacked name="flavour-2">
+                                            <b-form-checkbox value="1">Visual Examination of Completed Weld</b-form-checkbox>
+                                            <b-form-checkbox value="2">Transverse bends root and face (6.5.2.3)</b-form-checkbox>
+                                            <b-form-checkbox value="3">Specimen Macro test for fusion</b-form-checkbox>
                                         </b-form-checkbox-group>
                                     </b-form-group>
-
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-checkbox-group id="checkbox-group" v-model="selected" stacked name="flavour-2">
+                                            <b-form-checkbox value="4">Transverse side bend specimen (6.5.2.3)</b-form-checkbox>
+                                            <b-form-checkbox value="5">Ultrasonic Examination (6.5.2.1)</b-form-checkbox>
+                                        </b-form-checkbox-group>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col>
                                     <!-- /Выпадающий список wps reference -->
                                     <label for="input-default">TEST WITHENESSED BY</label>
                                     <b-row class="my-1">
-                                        <b-col sm="3">
+                                        <b-col cols="3">
                                             <label for="input-default">Name</label>
                                         </b-col>
-                                        <b-col sm="9">
-                                            <b-form-input list="input-list" id="input-with-list"></b-form-input>
+                                        <b-col cols="9">
+                                            <b-form-input name="withenessed_name" list="input-list" id="input-with-list"></b-form-input>
                                             <b-form-datalist id="input-list"></b-form-datalist>
                                         </b-col>
                                     </b-row>
                                     <b-row class="my-1">
-                                        <b-col sm="3">
+                                        <b-col cols="3">
                                             <label for="input-default">Position</label>
                                         </b-col>
-                                        <b-col sm="9">
-                                            <b-form-input list="input-list" id="input-with-list"></b-form-input>
+                                        <b-col cols="9">
+                                            <b-form-input name="withenessed_position" list="input-list" id="input-with-list"></b-form-input>
                                             <b-form-datalist id="input-list"></b-form-datalist>
                                         </b-col>
                                     </b-row>
                                     <b-row class="my-1">
-                                        <b-col sm="3">
+                                        <b-col cols="3">
                                             <label for="input-default">Date</label>
                                         </b-col>
-                                        <b-col sm="9">
+                                        <b-col cols="9">
                                             <label for="datepicker-placeholder">Date picker with placeholder</label>
-                                            <b-form-datepicker id="datepicker-placeholder" placeholder="Choose a date" local="en"></b-form-datepicker>
+                                            <b-form-datepicker name="withenessed_date" id="datepicker-placeholder" placeholder="Choose a date" local="en"></b-form-datepicker>
                                         </b-col>
                                     </b-row>
                                 </b-col>
 
                                 <b-col>
-                                    <b-form-group label="Using sub-components:" class="border_bt">
-                                        <b-form-checkbox-group id="checkbox-group-2" stacked name="flavour-2">
-                                        <b-form-checkbox >Default</b-form-checkbox>
-                                        <b-form-checkbox>Default</b-form-checkbox>
-                                        </b-form-checkbox-group>
-                                    </b-form-group>
-
                                     <!-- /Выпадающий список wps reference -->
                                     <label for="input-default">FOR AND OR BEHAULF OF MSMK TRAINING LTD</label>
                                     <b-row class="my-1">
-                                        <b-col sm="3">
+                                        <b-col cols="3">
                                             <label for="input-default">Name</label>
                                         </b-col>
-                                        <b-col sm="9">
-                                            <b-form-input list="input-list" id="input-with-list"></b-form-input>
+                                        <b-col cols="9">
+                                            <b-form-input name="behaulf_name" list="input-list" id="input-with-list"></b-form-input>
                                             <b-form-datalist id="input-list"></b-form-datalist>
                                         </b-col>
                                     </b-row>
                                     <b-row class="my-1">
-                                        <b-col sm="3">
+                                        <b-col cols="3">
                                             <label for="input-default">Position</label>
                                         </b-col>
-                                        <b-col sm="9">
-                                            <b-form-input list="input-list" id="input-with-list"></b-form-input>
+                                        <b-col cols="9">
+                                            <b-form-input name="behaulf_position" list="input-list" id="input-with-list"></b-form-input>
                                             <b-form-datalist id="input-list"></b-form-datalist>
                                         </b-col>
                                     </b-row>
                                     <b-row class="my-1">
-                                        <b-col sm="3">
+                                        <b-col cols="3">
                                             <label for="input-default">Date</label>
                                         </b-col>
-                                        <b-col sm="9">
+                                        <b-col cols="9">
                                             <label for="datepicker-placeholder">Date picker with placeholder</label>
-                                            <b-form-datepicker id="datepicker-placeholder-2" placeholder="Choose a date" local="en"></b-form-datepicker>
+                                            <b-form-datepicker name="behaulf_date" id="datepicker-placeholder-2" placeholder="Choose a date" local="en"></b-form-datepicker>
                                         </b-col>
                                     </b-row>
                                 </b-col>
