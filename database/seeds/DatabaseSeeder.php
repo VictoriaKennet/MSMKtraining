@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             ShieldingGas::class,
             TypePolarity::class,
             WeldingDetails::class,
-            WeldingPosition::class
+            WeldingPosition::class,
+            Header::class
         ]);
     }
 }

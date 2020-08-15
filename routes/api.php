@@ -16,3 +16,4 @@ Route::get('shielding-gas', 'DataController@shieldingGas');
 Route::get('welding-position', 'DataController@weldingPosition');
 Route::get('welding-details', 'DataController@weldingDetails');
 Route::get('welding-processes', 'DataController@weldingProcesses');
+Route::get('main-header', 'DataController@header');

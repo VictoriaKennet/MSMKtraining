@@ -36,4 +36,8 @@ class WPSReference extends Model
     function parentMaterialGroup() {
         return $this->hasOne('App\Models\ParentMaterialGroup', 'wps_reference_id');
     }
+
+    function header() {
+        return $this->hasOne('App\Models\Header', 'wps_reference_id');
+    }
 }

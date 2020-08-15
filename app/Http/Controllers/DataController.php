@@ -17,6 +17,7 @@ use App\Models\ParentMaterialGroup;
 use App\Models\WeldingPosition;
 use App\Models\WeldingDetails;
 use\App\Models\WeldingProcesses;
+use\App\Models\Header;
 
 class DataController extends Controller
 {
@@ -27,7 +28,8 @@ class DataController extends Controller
             'productType',
             'fillerMaterialGroup',
             'fillerMaterialDesignation',
-            'parentMaterialGroup'
+            'parentMaterialGroup',
+            'header'
         )->get();
         foreach ($data as $key => $value) {
             foreach ($value['fillerMaterialDesignation'] as $k => $v) {
@@ -84,6 +86,10 @@ class DataController extends Controller
     }
     function weldingProcesses() {
         $data = WeldingProcesses::get();
+        return response()->json($data);
+    }
+    function header() {
+        $data = Header::get();
         return response()->json($data);
     }
 }

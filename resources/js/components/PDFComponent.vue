@@ -75,7 +75,7 @@
 
                 <b-card no-body class="mb-1">
                     <b-card-header header-tag="header" class="p-1" role="tab">
-                        <b-button block v-b-toggle.accordion-2 variant="info">Data for a table</b-button>
+                        <b-button block v-b-toggle.accordion-2 variant="info">Data for the table</b-button>
                     </b-card-header>
                     <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
                         <b-card-body>
@@ -85,6 +85,24 @@
                                 <b-form-datalist id="wps-reference" :options="data" text-field="name">
                                 </b-form-datalist>
                             </b-form-group>
+                            <hr>
+                            <b-row>
+                                <b-col cols="3">
+                                    <label for="input-default">Designation 9606-1</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input name="header_1" list="main-header-1" id="input-with-list" :value="wps.header.test"></b-form-input>
+                                        <b-form-datalist id="main-header-1" :options="header" text-field="test"></b-form-datalist>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="5">
+                                    <b-form-group>
+                                        <b-form-input name="header_2" list="main-header-2" id="input-with-list" :value="wps.header.range"></b-form-input>
+                                        <b-form-datalist id="main-header-2" :options="header" text-field="range"></b-form-datalist>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
                             <hr>
                             <b-row class="centre">
                                 <b-col cols="3">
@@ -384,20 +402,17 @@
                                     <b-row>
                                         <b-col cols="4">
                                             <b-form-group>
-                                                <b-form-input>
-                                                </b-form-input>
+                                                <b-form-input name="outside_pipe_diameter_1"></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="4">
                                             <b-form-group>
-                                                <b-form-input>
-                                                </b-form-input>
+                                                <b-form-input name="outside_pipe_diameter_2"></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="4">
                                             <b-form-group>
-                                                <b-form-input>
-                                                </b-form-input>
+                                                <b-form-input name="outside_pipe_diameter_3"></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                     </b-row>
@@ -458,7 +473,17 @@
                                 </b-col>
                             </b-row>
                             <hr>
-
+                            <b-row>
+                                <b-col cols="7">
+                                    <label for="input-default">Supplementary fillet weld test (completed in conjunction with a butt weld qualification):</label>
+                                </b-col>
+                                <b-col cols="5">
+                                    <b-form-group>
+                                        <b-form-input name="weld_test" list="weld-test" id="input-with-list"></b-form-input>
+                                        <b-form-datalist id="weld-test" :options="job_knowledge"></b-form-datalist>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
                         </b-card-body>
                     </b-collapse>
                 </b-card>
@@ -552,16 +577,15 @@
                         </b-card-body>
                     </b-collapse>
                 </b-card>
-                <input type="submit" value="Открыть PDF">
+                <b-row >
+                    <b-col>
+                        <div class="d-flex justify-content-center">
+                            <input type="submit" value="Открыть PDF" class="button">
+                        </div>
+                    </b-col>
+                </b-row>
             </form>
         </div>
-    <div>
-        <form action="/pdf" target="_blank" method="POST" enctype="multipart/form-data">
-            <input type="file" name="photo" /><br>
-
-            <input type="submit" value="Открыть PDF">
-        </form>
-    </div>
     </b-container>
 </div>
 </template>
@@ -593,6 +617,7 @@ export default {
             welding_details:[],
             welding_processes:[],
             process_data: [],
+            header:[],
             photo: null,
             selected: false,
             wpsDefault: {
@@ -632,6 +657,10 @@ export default {
                 welding_processes: {
                     range: "",
                     test: ""
+                },
+                header: {
+                    range: "",
+                    test: ""
                 }
             },
             wps: {}
@@ -652,6 +681,7 @@ export default {
         this.weldingDetails();
         this.weldingProcesses();
         this.process();
+        this.headerMain();
     },
     methods: {
         setElement(event, array, range) {
@@ -742,12 +772,18 @@ export default {
                 this.process_data = response.data;
             })
         },
+        headerMain() {
+            axios.get('/api/main-header').then(response => {
+                this.header = response.data;
+            })
+        }
     }
 };
 </script>
 <style>
   .img_size {
-    height: 150px;
+    height: 29%;
+    width: 29%;
     display: block;
     margin: 0 auto 10% auto;
     }
@@ -763,4 +799,22 @@ export default {
   .centre {
       text-align: center;
   }
+  .button {
+        background-color: white;
+        color: black;
+        border: 2px solid #17a2b8;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 12px;
+        transition-duration: 0.4s;
+        margin-top: 20px;
+    }
+
+    .button:hover {
+        background-color: #17a2b8;
+        color: white;
+    }
 </style>
