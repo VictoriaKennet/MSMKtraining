@@ -291,8 +291,7 @@
                                     <b-row>
                                         <b-col cols="5">
                                             <b-form-group>
-                                                <b-form-input>
-                                                </b-form-input>
+                                                <b-form-input name="material_thickness_numb1"></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="2">
@@ -300,8 +299,7 @@
                                         </b-col>
                                         <b-col cols="5">
                                             <b-form-group>
-                                                <b-form-input>
-                                                </b-form-input>
+                                                <b-form-input name="material_thickness_numb2"></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                     </b-row>
@@ -321,7 +319,7 @@
                                             <p class="centre">Root</p>
                                         </b-col>
                                         <b-col cols="5">
-                                            <b-form-input list="process" id="input-with-list"></b-form-input>
+                                            <b-form-input name="deposited_thickness_root" list="process" id="input-with-list"></b-form-input>
                                             <b-form-datalist id="process"></b-form-datalist>
                                         </b-col>
                                     </b-row>
@@ -333,20 +331,42 @@
                                             <p class="centre">Rest</p>
                                         </b-col>
                                         <b-col cols="5">
-                                            <b-form-input list="process" id="input-with-list"></b-form-input>
+                                            <b-form-input name="deposited_thickness_rest" list="process" id="input-with-list"></b-form-input>
                                             <b-form-datalist id="process"></b-form-datalist>
                                         </b-col>
                                     </b-row>
                                 </b-col>
                                 <b-col>
-                                    <b-form-group class="m-20">
-                                        <b-form-input list="test333" id="input-with-list"></b-form-input>
-                                        <b-form-datalist id="test333" ></b-form-datalist>
-                                    </b-form-group>
-                                    <b-form-group>
-                                        <b-form-input list="test333" id="input-with-list"></b-form-input>
-                                        <b-form-datalist id="test333"></b-form-datalist>
-                                    </b-form-group>
+                                    <b-row>
+                                        <b-col cols="5">
+                                            <b-form-group>
+                                                <b-form-input name="deposited_thickness_root_num_1"></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="2">
+                                            <p class="centre">To</p>
+                                        </b-col>
+                                        <b-col cols="5">
+                                            <b-form-group>
+                                                <b-form-input name="deposited_thickness_root_num_2"></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                    </b-row>
+                                    <b-row>
+                                        <b-col cols="5" class="m-20">
+                                            <b-form-group>
+                                                <b-form-input name="deposited_thickness_rest_num_1"></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="2">
+                                            <p class="centre">To</p>
+                                        </b-col>
+                                        <b-col cols="5">
+                                            <b-form-group>
+                                                <b-form-input name="deposited_thickness_rest_num_2"></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                    </b-row>
                                 </b-col>
                             </b-row>
                             <hr>
