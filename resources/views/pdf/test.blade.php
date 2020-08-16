@@ -266,18 +266,19 @@
     </table>
 
     <table cellpadding="0" cellspacing="0">
-        
+
         <tr>
-            <td><input type="checkbox" <? echo($data->input('1') == 'on' ? "checked" : "") ?>> Visual Examination of Completed Weld</td>
+            <td>
+                <input type="checkbox" <? echo($data->input('visual_examination') ? "checked" : "") ?>> Visual Examination of Completed Weld</td>
             <td></td>
         </tr>
         <tr>
-            <td><input type="checkbox" <? echo($data->input('2') == 'on' ? "checked" : "") ?>> Transverse bends root and face (6.5.2.3)</td>
-            <td><input type="checkbox" <? echo($data->input('4') == 'on' ? "checked" : "") ?>> Transverse side bend specimen (6.5.2.3)</td>
+            <td><input type="checkbox" <? echo($data->input('transverse_bends') ? "checked" : "") ?>> Transverse bends root and face (6.5.2.3)</td>
+            <td><input type="checkbox" <? echo($data->input('transverse_side') ? "checked" : "") ?>> Transverse side bend specimen (6.5.2.3)</td>
         </tr>
         <tr>
-            <td><input type="checkbox" <? echo($data->input('3') == 'on' ? "checked" : "") ?>> Specimen Macro test for fusion</td>
-            <td><input type="checkbox" <? echo($data->input('5') == 'on' ? "checked" : "") ?>> Ultrasonic Examination (6.5.2.1)</td>
+            <td><input type="checkbox" <? echo($data->input('specimen_macro') ? "checked" : "") ?>> Specimen Macro test for fusion</td>
+            <td><input type="checkbox" <? echo($data->input('ultrasonic_examination') ? "checked" : "") ?>> Ultrasonic Examination (6.5.2.1)</td>
         </tr>
     </table>
     <p>We certify that the statements in this record are correct and that the test coupons were prepared, welded, and tested in accordance with the requirements of BS EN ISO 9606-1: 2017 with ACCEPTABLE results</p>
@@ -304,10 +305,10 @@
                 <td>Position: <b>{{$data->input('behaulf_position')}}</b></td>
             </tr>
             <tr>
-                <td>Date: <b>{{$data->input('withenessed_date')}}</b></td>
+                <td>Date: <b>{{date("j-M-Y", strtotime($data->input('withenessed_date')))}}</b></td>
                 <td>Signature:  </td>
                 <td class="tb-t-2-2"></td>
-                <td>Date: <b>{{$data->input('behaulf_date')}}</b></td>
+                <td>Date: <b>{{date("j-M-Y", strtotime($data->input('behaulf_date')))}}</b></td>
                 <td>Signature:  </td>
             </tr>
         </tbody>

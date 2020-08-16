@@ -21,8 +21,8 @@ use\App\Models\Header;
 
 class DataController extends Controller
 {
-    function wps() {
-        $data = WPSReference::with(
+    function pdfData() {
+        $wps = WPSReference::with(
             'weldingProcesses',
             'typeOfWeld',
             'productType',
@@ -31,11 +31,27 @@ class DataController extends Controller
             'parentMaterialGroup',
             'header'
         )->get();
-        foreach ($data as $key => $value) {
+        foreach ($wps as $key => $value) {
             foreach ($value['fillerMaterialDesignation'] as $k => $v) {
                 $v['process'] = Process::find($v['process_id']);
             }
         }
+        $data = [
+            'wps_reference' => $wps,
+            'parent_material_group' => ParentMaterialGroup::get(),
+            'product_type' => ProductType::get(),
+            'transfer_mode' => TransferMode::get(),
+            'type_of_weld' => TypeOfWeld::get(),
+            'filler_material_group' => FillerMaterialGroup::get(),
+            'filler_material_designation' => FillerMaterialDesignation::get(),
+            'shielding_gas' => ShieldingGas::get(),
+            'type_polarity' => TypePolarity::get(),
+            'welding_position' => WeldingPosition::get(),
+            'welding_details' => WeldingDetails::get(),
+            'welding_processes' => WeldingProcesses::get(),
+            'process_data' => Process::get(),
+            'header' => Header::get()
+        ];
         return response()->json($data);
     }
 
