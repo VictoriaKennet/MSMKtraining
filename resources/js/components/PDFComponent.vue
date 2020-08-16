@@ -81,7 +81,7 @@
                         <b-card-body>
                             <!-- Выпадающий список wps reference -->
                             <b-form-group label="WPS-Reference">
-                                <b-form-input list="wps-reference" id="input-with-list" name="wps_reference" @change="test($event)"></b-form-input>
+                                <b-form-input list="wps-reference" id="input-with-list" name="wps_reference" @change="setWPS($event)"></b-form-input>
                                 <b-form-datalist id="wps-reference" :options="data.wps_reference" text-field="name">
                                 </b-form-datalist>
                             </b-form-group>
@@ -176,7 +176,7 @@
                                 </b-col>
                                 <b-col cols ="4">
                                     <b-form-group>
-                                        <b-form-input name="type_of_weld_test" list="type-weld" id="input-with-list" :value="wps.type_of_weld.test"></b-form-input>
+                                        <b-form-input name="type_of_weld_test" list="type-weld" id="input-with-list" v-model="wps.type_of_weld.test"></b-form-input>
                                         <b-form-datalist id="type-weld" :options="data.type_of_weld" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -302,14 +302,14 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                            <b-form-input name="material_thickness" v-model="material_thickness"></b-form-input>
+                                        <b-form-input name="material_thickness" v-model="material_thickness"></b-form-input>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="5">
                                     <b-row>
                                         <b-col cols="5">
                                             <b-form-group>
-                                                <b-form-input name="material_thickness_numb1"  :value="material_thickness <= 3 ? 'Form '+material_thickness : 'Form 3'"></b-form-input>
+                                                <b-form-input name="material_thickness_numb1"  :value="materialThicknessNumb1"></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="2">
@@ -317,7 +317,7 @@
                                         </b-col>
                                         <b-col cols="5">
                                             <b-form-group>
-                                                <b-form-input name="material_thickness_numb2"></b-form-input>
+                                                <b-form-input name="material_thickness_numb2"  :value="materialThicknessNumb2"></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                     </b-row>
@@ -337,7 +337,7 @@
                                             <p class="centre">Root</p>
                                         </b-col>
                                         <b-col cols="5">
-                                            <b-form-input name="deposited_thickness_root" list="process" id="input-with-list"></b-form-input>
+                                            <b-form-input name="deposited_thickness_root" list="process" id="input-with-list" v-model="deposited_thickness_root"></b-form-input>
                                             <b-form-datalist id="process"></b-form-datalist>
                                         </b-col>
                                     </b-row>
@@ -349,7 +349,7 @@
                                             <p class="centre">Rest</p>
                                         </b-col>
                                         <b-col cols="5">
-                                            <b-form-input name="deposited_thickness_rest" list="process" id="input-with-list"></b-form-input>
+                                            <b-form-input name="deposited_thickness_rest" list="process" id="input-with-list" v-model="deposited_thickness_rest"></b-form-input>
                                             <b-form-datalist id="process"></b-form-datalist>
                                         </b-col>
                                     </b-row>
@@ -358,13 +358,7 @@
                                     <b-row>
                                         <b-col cols="5">
                                             <b-form-group>
-                                                {{wps.type_of_weld.test}}
-                                                <b-form-input
-                                                    name="deposited_thickness_root_num_1"
-                                                    :value="wps.type_of_weld.test == 'Butt Weld In Pipe (BW)' ? 'Not Applicable' :
-                                                    (wps.type_of_weld.test == 'Butt Weld In Pipe (BW)' || wps.type_of_weld.test == 'Butt Weld In Pipe (BW) AA23' ? 'Not Applicable' :
-                                                    (material_thickness <= 3 ? 'Form '+material_thickness : 'Form 3'))"
-                                                ></b-form-input>
+                                                <b-form-input name="deposited_thickness_root_num_1" :value="depositedThicknessRootNum1"></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="2">
@@ -372,14 +366,14 @@
                                         </b-col>
                                         <b-col cols="5">
                                             <b-form-group>
-                                                <b-form-input name="deposited_thickness_root_num_2"></b-form-input>
+                                                <b-form-input name="deposited_thickness_root_num_2" :value="depositedThicknessRootNum2"></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                     </b-row>
                                     <b-row>
                                         <b-col cols="5" class="m-20">
                                             <b-form-group>
-                                                <b-form-input name="deposited_thickness_rest_num_1"></b-form-input>
+                                                <b-form-input name="deposited_thickness_rest_num_1" :value="depositedThicknessRestNum1"></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="2">
@@ -387,7 +381,7 @@
                                         </b-col>
                                         <b-col cols="5">
                                             <b-form-group>
-                                                <b-form-input name="deposited_thickness_rest_num_2"></b-form-input>
+                                                <b-form-input name="deposited_thickness_rest_num_2" :value="depositedThicknessRestNum2"></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                     </b-row>
@@ -401,24 +395,24 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                            <b-form-input name="outside_pipe_diameter"> </b-form-input>
+                                            <b-form-input name="outside_pipe_diameter" v-model="outside_pipe_diameter"></b-form-input>
                                         </b-form-group>
                                 </b-col>
                                 <b-col cols="5">
                                     <b-row>
                                         <b-col cols="4">
                                             <b-form-group>
-                                                <b-form-input name="outside_pipe_diameter_1"></b-form-input>
+                                                <b-form-input name="outside_pipe_diameter_1" :value="outsidePipeDiameter1"></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="4">
                                             <b-form-group>
-                                                <b-form-input name="outside_pipe_diameter_2"></b-form-input>
+                                                <b-form-input name="outside_pipe_diameter_2" :value="outsidePipeDiameter2"></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="4">
                                             <b-form-group>
-                                                <b-form-input name="outside_pipe_diameter_3"></b-form-input>
+                                                <b-form-input name="outside_pipe_diameter_3" :value="outsidePipeDiameter3"></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                     </b-row>
@@ -467,13 +461,13 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="single_layer_test" list="single-layer-test" id="input-with-list"></b-form-input>
+                                        <b-form-input name="single_layer_test" list="single-layer-test" id="input-with-list" :value="singleLayerTest"></b-form-input>
                                         <b-form-datalist id="single-layer-test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="5">
                                     <b-form-group>
-                                        <b-form-input name="single_layer_range" list="single-layer-range" id="input-with-list"></b-form-input>
+                                        <b-form-input name="single_layer_range" list="single-layer-range" id="input-with-list" :value="singleLayerRange"></b-form-input>
                                         <b-form-datalist id="single-layer-renge"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -610,6 +604,9 @@ export default {
             welding_details_range: "",
 
             material_thickness: 0,
+            deposited_thickness_root: 0,
+            deposited_thickness_rest: 0,
+            outside_pipe_diameter: 0,
 
             fields: ['Name', 'Test piece', 'Range of qualification'],
             data: {
@@ -679,6 +676,121 @@ export default {
         this.wps = Object.assign({}, this.wpsDefault);
         this.getData();
     },
+    computed: {
+        depositedThicknessRootNum1() {
+            if(this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)') {
+                return "Not Applicable"
+            } else {
+                if(this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)' || this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW) AA23') {
+                    return "Not Applicable"
+                } else {
+                    if(this.material_thickness <= 3) {
+                        return 'Form '+this.material_thickness
+                    } else {
+                        return 'Form 3'
+                    }
+                }
+            }
+        },
+        depositedThicknessRootNum2() {
+            if(this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)' || this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW) AB24') {
+                return "Not Applicable"
+            } else {
+                if (this.deposited_thickness_root < 3) {
+                    return this.deposited_thickness_root * 2
+                } else {
+                    return this.deposited_thickness_root * 2
+                }
+            }
+        },
+        depositedThicknessRestNum1() {
+            if(this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)') {
+                return "Not Applicable"
+            } else {
+                if (this.deposited_thickness_rest <= 12) {
+                    return "From 3"
+                } else {
+                    return "From 3"
+                }
+            }
+        },
+        depositedThicknessRestNum2() {
+            if(this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)') {
+                return "Not Applicable"
+            } else {
+                if (this.deposited_thickness_rest <= 12) {
+                    return "No Restriction"
+                } else {
+                    return this.deposited_thickness_rest * 2
+                }
+            }
+        },
+        materialThicknessNumb1() {
+            return this.material_thickness <= 3 ? 'Form '+this.material_thickness : 'Form 3'
+        },
+        materialThicknessNumb2() {
+            if((this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)' && this.material_thickness > 3) || (this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)' && this.material_thickness < 12)) {
+                return this.material_thickness * 2
+            } else {
+                return "No Restriction"
+            }
+        },
+        outsidePipeDiameter1() {
+            if(this.outside_pipe_diameter == "Not Applicable") {
+                return "Not Applicable"
+            } else {
+                if (this.wps.product_type.test == "Plate (P)") {
+                    return "For D >=500 mm  and PD rotated"
+                } else {
+                    if(this.outside_pipe_diameter <= 25) {
+                        return this.outside_pipe_diameter * 1
+                    } else {
+                        return this.outside_pipe_diameter * 0.5
+                    }
+                }
+            }
+        },
+        outsidePipeDiameter2() {
+            if(this.outside_pipe_diameter == "Not Applicable") {
+                return ""
+            } else {
+                if(this.wps.product_type.test == "Plate (P)") {
+                    return "or >=75 mm"
+                } else {
+                    return "To"
+                }
+            }
+        },
+        outsidePipeDiameter3() {
+            if(this.outside_pipe_diameter == "Not Applicable") {
+                return ""
+            } else {
+                if(this.wps.product_type.test == "Plate (P)") {
+                    return "in PA, PB, PC "
+                } else {
+                    if(this.outside_pipe_diameter < 25) {
+                        return this.outside_pipe_diameter * 2
+                    } else {
+                        return "No Restriction"
+                    }
+                }
+            }
+        },
+        singleLayerTest() {
+            if(this.wps.type_of_weld.test == 'Single Run Fillet Weld (FW)') {
+                return "Single Layer (sl)"
+            } else {
+                return "Multi Layer (ml)"
+            }
+        },
+        singleLayerRange() {
+            if(this.singleLayerTest == 'Single Layer (sl)') {
+                return "Single Layer Only (sl)"
+            } else {
+                return "Single Layer (sl) and Multi Layer (ml)"
+            }
+        }
+    },
     methods: {
         setElement(event, array, range) {
             var result = this.data[array].find((item) => {
@@ -695,7 +807,7 @@ export default {
                 reader.readAsDataURL(event.target.files[0]);
             }
         },
-        test(value) {
+        setWPS(value) {
             let result = this.data.wps_reference.find((item) => {
                 return item.name == value;
             })
@@ -703,7 +815,6 @@ export default {
         },
         getData() {
             axios.get('/api/pdf-data').then(response => {
-                console.log(response.data)
                 Object.assign(this.data, response.data);
             })
         },
