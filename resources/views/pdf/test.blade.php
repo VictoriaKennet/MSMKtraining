@@ -269,16 +269,50 @@
 
         <tr>
             <td>
-                <input type="checkbox" <? echo($data->input('visual_examination') ? "checked" : "") ?>> Visual Examination of Completed Weld</td>
+                @if($data->input('visual_examination'))
+                    <input type="checkbox" checked>
+                @else
+                    <input type="checkbox">
+                @endif
+                 Visual Examination of Completed Weld
+            </td>
             <td></td>
         </tr>
         <tr>
-            <td><input type="checkbox" <? echo($data->input('transverse_bends') ? "checked" : "") ?>> Transverse bends root and face (6.5.2.3)</td>
-            <td><input type="checkbox" <? echo($data->input('transverse_side') ? "checked" : "") ?>> Transverse side bend specimen (6.5.2.3)</td>
+            <td>
+                @if($data->input('transverse_bends'))
+                    <input type="checkbox" checked>
+                @else
+                    <input type="checkbox">
+                @endif
+                 Transverse bends root and face (6.5.2.3)
+            </td>
+            <td>
+                @if($data->input('transverse_side'))
+                    <input type="checkbox" checked>
+                @else
+                    <input type="checkbox">
+                @endif
+                 Transverse side bend specimen (6.5.2.3)
+            </td>
         </tr>
         <tr>
-            <td><input type="checkbox" <? echo($data->input('specimen_macro') ? "checked" : "") ?>> Specimen Macro test for fusion</td>
-            <td><input type="checkbox" <? echo($data->input('ultrasonic_examination') ? "checked" : "") ?>> Ultrasonic Examination (6.5.2.1)</td>
+            <td>
+                @if($data->input('specimen_macro'))
+                    <input type="checkbox" checked>
+                @else
+                    <input type="checkbox">
+                @endif
+                 Specimen Macro test for fusion
+            </td>
+            <td>
+                @if($data->input('ultrasonic_examination'))
+                    <input type="checkbox" checked>
+                @else
+                    <input type="checkbox">
+                @endif
+                 Ultrasonic Examination (6.5.2.1)
+            </td>
         </tr>
     </table>
     <p>We certify that the statements in this record are correct and that the test coupons were prepared, welded, and tested in accordance with the requirements of BS EN ISO 9606-1: 2017 with ACCEPTABLE results</p>
