@@ -55,6 +55,28 @@ class DataController extends Controller
         return response()->json($data);
     }
 
+    function added(Request $request) {
+        $data = $request->all();
+        $tables = [
+            'wps_reference' => new WPSReference(),
+            'parent_material_group' => new ParentMaterialGroup(),
+            'product_type' => new ProductType(),
+            'transfer_mode' => new TransferMode(),
+            'type_of_weld' => new TypeOfWeld(),
+            'filler_material_group' => new FillerMaterialGroup(),
+            'filler_material_designation' => new FillerMaterialDesignation(),
+            'shielding_gas' => new ShieldingGas(),
+            'type_polarity' => new TypePolarity(),
+            'welding_position' => new WeldingPosition(),
+            'welding_details' => new WeldingDetails(),
+            'welding_processes' => new WeldingProcesses(),
+            'process_data' => new Process(),
+            'header' => new Header()
+        ];
+        $response = $tables[$request->table]->create($data);
+        return response()->json($response);
+    }
+
     function process() {
         $data = Process::get();
         return response()->json($data);

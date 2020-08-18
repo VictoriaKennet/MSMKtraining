@@ -1,5 +1,30 @@
 <template>
 <div>
+    <b-modal id="my-modal" hide-footer v-model="modalShow">
+        <b-form-group label="Value" v-if="newElement.selectArray == 'wps_reference'">
+            <b-form-input v-model="newElement.name"></b-form-input>
+        </b-form-group>
+
+        <b-row v-else>
+            <b-col>
+                <b-form-group label="Test">
+                    <b-form-input list="new-test" id="input-with-list" v-model="newElement.test"></b-form-input>
+                    <b-form-datalist id="new-test" :options="data[newElement.selectArray]" text-field="test">
+                    </b-form-datalist>
+                </b-form-group>
+            </b-col>
+            <b-col>
+                <b-form-group label="Range">
+                    <b-form-input list="new-test" id="input-with-list" v-model="newElement.range"></b-form-input>
+                    <b-form-datalist id="new-test" :options="data[newElement.selectArray]" text-field="range">
+                    </b-form-datalist>
+                </b-form-group>
+            </b-col>
+        </b-row>
+
+        <b-button class="mt-3" @click="addElement">Save</b-button>
+        <b-button class="mt-3" @click="modalShow = false">Close</b-button>
+    </b-modal>
     <b-container>
       <div role="tablist">
             <form action="/pdf" target="_blank" method="POST" enctype="multipart/form-data">
@@ -45,16 +70,23 @@
                                 </b-col>
 
                                 <b-col>
-                                    <b-form-group>
-                                        <b-img src="./user.png" fluid class="img_size" id="image"></b-img>
-                                        <b-form-file
-                                            name="photo"
-                                            v-model="photo"
-                                            placeholder="Choose a file or drop it"
-                                            drop-placeholder="Drop file here"
-                                            @change="previewFiles"
-                                        ></b-form-file>
-                                    </b-form-group>
+                                    <b-img src="./user.png" fluid class="img_size" id="image"></b-img>
+                                    <b-row>
+                                        <b-col cols="8">
+                                            <b-form-group>
+                                                <b-form-file
+                                                     id="imageForm"
+                                                    name="photo"
+                                                    placeholder="Choose a file or drop it"
+                                                    drop-placeholder="Drop file here"
+                                                    @change="previewFiles"
+                                                ></b-form-file>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="4">
+                                            <b-button class="w-100" @click="deletePhoto">Delete photo</b-button>
+                                        </b-col>
+                                    </b-row>
 
                                     <!-- /Поле ввода  -->
                                     <b-form-group label="Test Ref / Certificate No">
@@ -80,11 +112,18 @@
                     <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
                         <b-card-body>
                             <!-- Выпадающий список wps reference -->
-                            <b-form-group label="WPS-Reference">
-                                <b-form-input list="wps-reference" id="input-with-list" name="wps_reference" @change="setWPS($event)"></b-form-input>
-                                <b-form-datalist id="wps-reference" :options="data.wps_reference" text-field="name">
-                                </b-form-datalist>
-                            </b-form-group>
+                            <b-row>
+                                <b-col cols="11">
+                                    <b-form-group label="WPS-Reference">
+                                        <b-form-input list="wps-reference" id="input-with-list" name="wps_reference" @change="setWPS($event)"></b-form-input>
+                                        <b-form-datalist id="wps-reference" :options="data.wps_reference" text-field="name">
+                                        </b-form-datalist>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="1">
+                                    <b-icon icon="plus-circle-fill" class="icon_plus" font-scale="2" v-b-modal.my-modal @click="newElement.selectArray = 'wps_reference'"></b-icon>
+                                </b-col>
+                            </b-row>
                             <hr>
                             <b-row>
                                 <b-col cols="3">
@@ -92,15 +131,18 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="header_1" list="main-header-1" id="input-with-list" :value="wps.header.test"></b-form-input>
+                                        <b-form-input name="header_1" list="main-header-1" id="input-with-list" :value="wps.header.test" @change="setElementWPS($event, 'header')"></b-form-input>
                                         <b-form-datalist id="main-header-1" :options="data.header" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
-                                <b-col cols="5">
+                                <b-col cols="4">
                                     <b-form-group>
                                         <b-form-input name="header_2" list="main-header-2" id="input-with-list" :value="wps.header.range"></b-form-input>
                                         <b-form-datalist id="main-header-2" :options="data.header" text-field="range"></b-form-datalist>
                                     </b-form-group>
+                                </b-col>
+                                <b-col cols="1">
+                                    <b-icon :disabled="!wps.id" :class="!wps.id ? 'transparency' : ''" icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.my-modal @click="newElement.selectArray = 'header'"></b-icon>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -122,15 +164,18 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="welding_processes_test" list="welding-processes" id="input-with-list" :value="wps.welding_processes.test"></b-form-input>
+                                        <b-form-input name="welding_processes_test" list="welding-processes" id="input-with-list" :value="wps.welding_processes.test" @change="setElementWPS($event, 'welding_processes')"></b-form-input>
                                         <b-form-datalist id="welding-processes" :options="data.welding_processes" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
-                                <b-col cols="5">
+                                <b-col cols="4">
                                     <b-form-group>
                                         <b-form-input name="welding_processes_range" list="welding-processes" id="input-with-list" :value="wps.welding_processes.range"></b-form-input>
                                         <b-form-datalist id="welding-processes" :options="data.welding_processes" text-field="range"></b-form-datalist>
                                     </b-form-group>
+                                </b-col>
+                                <b-col cols="1">
+                                    <b-icon :disabled="!wps.id" :class="!wps.id ? 'transparency' : ''" icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.my-modal @click="newElement.selectArray = 'welding_processes'"></b-icon>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -144,11 +189,14 @@
                                         <b-form-datalist id="transfer-mode-test" :options="data.transfer_mode" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
-                                <b-col cols="5">
+                                <b-col cols="4">
                                     <b-form-group>
                                         <b-form-input name="transfer_mode_range" list="transfer-mode-range" id="input-with-list" :value="transfer_mode_range"></b-form-input>
                                         <b-form-datalist id="transfer-mode-range" :options="data.transfer_mode" text-field="range"></b-form-datalist>
                                     </b-form-group>
+                                </b-col>
+                                <b-col cols="1">
+                                    <b-icon icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.my-modal @click="newElement.selectArray = 'transfer_mode'"></b-icon>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -158,15 +206,18 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="product_type_test" list="product-type" id="input-with-list" :value="wps.product_type.test"></b-form-input>
+                                        <b-form-input name="product_type_test" list="product-type" id="input-with-list" :value="wps.product_type.test" @change="setElementWPS($event, 'product_type')"></b-form-input>
                                         <b-form-datalist id="product-type" :options="data.product_type" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
-                                <b-col cols ="5">
+                                <b-col cols ="4">
                                     <b-form-group>
                                         <b-form-input name="product_type_range" list="product-type" id="input-with-list" :value="wps.product_type.range"></b-form-input>
                                         <b-form-datalist id="product-type" :options="data.product_type" text-field="range"></b-form-datalist>
                                     </b-form-group>
+                                </b-col>
+                                <b-col cols="1">
+                                    <b-icon :disabled="!wps.id" :class="!wps.id ? 'transparency' : ''" icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.my-modal @click="newElement.selectArray = 'product_type'"></b-icon>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -176,15 +227,18 @@
                                 </b-col>
                                 <b-col cols ="4">
                                     <b-form-group>
-                                        <b-form-input name="type_of_weld_test" list="type-weld" id="input-with-list" v-model="wps.type_of_weld.test"></b-form-input>
+                                        <b-form-input name="type_of_weld_test" list="type-weld" id="input-with-list" v-model="wps.type_of_weld.test" @change="setElementWPS($event, 'type_of_weld')"></b-form-input>
                                         <b-form-datalist id="type-weld" :options="data.type_of_weld" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
-                                <b-col cols ="5">
+                                <b-col cols ="4">
                                     <b-form-group>
                                         <b-form-input name="type_of_weld_range" list="type-weld" id="input-with-list" :value="wps.type_of_weld.range"></b-form-input>
                                         <b-form-datalist id="type-weld" :options="data.type_of_weld" text-field="range"></b-form-datalist>
                                     </b-form-group>
+                                </b-col>
+                                <b-col cols="1">
+                                    <b-icon :disabled="!wps.id" :class="!wps.id ? 'transparency' : ''" icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.my-modal @click="newElement.selectArray = 'type_of_weld'"></b-icon>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -194,15 +248,18 @@
                                 </b-col>
                                 <b-col cols ="4">
                                     <b-form-group>
-                                        <b-form-input name="parent_material_group_test" list="parent-material-group" id="input-with-list" :value="wps.parent_material_group.test"></b-form-input>
+                                        <b-form-input name="parent_material_group_test" list="parent-material-group" id="input-with-list" :value="wps.parent_material_group.test" @change="setElementWPS($event, 'parent_material_group')"></b-form-input>
                                         <b-form-datalist id="parent-material-group" :options="data.parent_material_group" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
-                                <b-col cols ="5">
+                                <b-col cols ="4">
                                     <b-form-group>
                                         <b-form-input name="parent_material_group_range" list="parent-material-group" id="input-with-list" :value="wps.parent_material_group.range"></b-form-input>
                                         <b-form-datalist id="parent-material-group" :options="data.parent_material_group" text-field="range"></b-form-datalist>
                                     </b-form-group>
+                                </b-col>
+                                <b-col cols="1">
+                                    <b-icon :disabled="!wps.id" :class="!wps.id ? 'transparency' : ''" icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.my-modal @click="newElement.selectArray = 'parent_material_group'"></b-icon>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -212,15 +269,18 @@
                                 </b-col>
                                 <b-col cols ="4">
                                     <b-form-group>
-                                        <b-form-input name="filler_material_group_test" list="filler-material-group" id="input-with-list" :value="wps.filler_material_group.test"></b-form-input>
+                                        <b-form-input name="filler_material_group_test" list="filler-material-group" id="input-with-list" :value="wps.filler_material_group.test" @change="setElementWPS($event, 'filler_material_group')"></b-form-input>
                                         <b-form-datalist id="filler-material-group" :options="data.filler_material_group" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
-                                <b-col cols="5">
+                                <b-col cols="4">
                                     <b-form-group>
                                         <b-form-input name="filler_material_group_range" list="filler-material-group" id="input-with-list" :value="wps.filler_material_group.range"></b-form-input>
                                         <b-form-datalist id="filler-material-group" :options="data.filler_material_group" text-field="range"></b-form-datalist>
                                     </b-form-group>
+                                </b-col>
+                                <b-col cols="1">
+                                    <b-icon :disabled="!wps.id" :class="!wps.id ? 'transparency' : ''" icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.my-modal @click="newElement.selectArray = 'filler_material_group'"></b-icon>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -234,17 +294,17 @@
                                             <label for="input-default">Process 1</label>
                                         </b-col>
                                         <b-col cols="7">
-                                            <b-form-input name="process_data_test_1" list="process_data_1" id="input-with-list" :value="wps.filler_material_designation[0].process.test"></b-form-input>
+                                            <b-form-input name="process_data_test_1" list="process_data_1" id="input-with-list" :value="wps.filler_material_designation[0].process.test" @change="setElementWPSProcess($event, 'process_data', 0)"></b-form-input>
                                             <b-form-datalist id="process_data_1" :options="data.process_data" text-field="test"></b-form-datalist>
                                         </b-col>
                                     </b-row>
-                                    <b-row >
+                                    <b-row>
                                         <b-col cols="5">
                                             <label for="input-default">Process 2</label>
                                         </b-col>
                                         <b-col cols="7">
-                                            <b-form-input name="process_data_test_2" list="process-data-2-test-1" id="input-with-list" :value="wps.filler_material_designation[1].process.test"></b-form-input>
-                                            <b-form-datalist id="process-data-2-test-2" :options="data.process_data" text-field="test"></b-form-datalist>
+                                            <b-form-input name="process_data_test_2" list="process_data_2" id="input-with-list" :value="wps.filler_material_designation[1].process.test" @change="setElementWPSProcess($event, 'process_data', 1)"></b-form-input>
+                                            <b-form-datalist id="process_data_2" :options="data.process_data" text-field="test"></b-form-datalist>
                                         </b-col>
                                     </b-row>
                                 </b-col>
@@ -258,6 +318,9 @@
                                         <b-form-datalist id="process-data-2-range-2" :options="data.process_data" text-field="range"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
+                                <b-col cols="1">
+                                    <b-icon icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.my-modal @click="newElement.selectArray = 'process_data'"></b-icon>
+                                </b-col>
                             </b-row>
                             <hr>
                             <b-row>
@@ -270,11 +333,14 @@
                                         <b-form-datalist id="shielding-gas-test" :options="data.shielding_gas" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
-                                <b-col cols="5">
+                                <b-col cols="4">
                                     <b-form-group>
                                         <b-form-input name="shielding_gas_range" list="shielding-gas-range" id="input-with-list" :value="shielding_gas_range"></b-form-input>
                                         <b-form-datalist id="shielding-gas-range" :options="data.shielding_gas" text-field="range"></b-form-datalist>
                                     </b-form-group>
+                                </b-col>
+                                <b-col cols="1">
+                                    <b-icon icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.my-modal @click="newElement.selectArray = 'shielding_gas'"></b-icon>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -288,11 +354,14 @@
                                         <b-form-datalist id="type-polarity-test" :options="data.type_polarity" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
-                                <b-col cols="5">
+                                <b-col cols="4">
                                     <b-form-group>
                                         <b-form-input name="type_polarity_range" list="type-polarity-range" id="input-with-list" :value="type_polarity_range"></b-form-input>
                                         <b-form-datalist id="type-polarity-range" :options="data.type_polarity" text-field="range"></b-form-datalist>
                                     </b-form-group>
+                                </b-col>
+                                <b-col cols="1">
+                                    <b-icon :disabled="!wps.id" :class="!wps.id ? 'transparency' : ''" icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.my-modal @click="newElement.selectArray = 'type_polarity'"></b-icon>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -429,11 +498,14 @@
                                         <b-form-datalist id="welding-position-test" :options="data.welding_position" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
-                                <b-col cols="5">
+                                <b-col cols="4">
                                     <b-form-group>
                                         <b-form-input name="welding_position_range" list="welding-position-range" id="input-with-list" :value="welding_position_range"></b-form-input>
                                         <b-form-datalist id="welding-position-range" :options="data.welding_position" text-field="range"></b-form-datalist>
                                     </b-form-group>
+                                </b-col>
+                                <b-col cols="1">
+                                    <b-icon icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.my-modal @click="newElement.selectArray = 'welding_position'"></b-icon>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -447,11 +519,14 @@
                                         <b-form-datalist id="welding-details-test" :options="data.welding_details" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
-                                <b-col cols="5">
+                                <b-col cols="4">
                                     <b-form-group>
                                         <b-form-input name="welding_details_range" list="welding-details-range" id="input-with-list" :value="welding_details_range"></b-form-input>
                                         <b-form-datalist id="welding-details-range" :options="data.welding_details" text-field="range"></b-form-datalist>
                                     </b-form-group>
+                                </b-col>
+                                <b-col cols="1">
+                                    <b-icon icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.my-modal @click="newElement.selectArray = 'welding_details'"></b-icon>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -593,6 +668,14 @@
 export default {
     data() {
         return {
+            newElement: {
+                selectArray: null,
+                name: "",
+                test: "",
+                range: ""
+            },
+            modalShow: false,
+
             employer:['Cornelius Ltd', 'Self Employer'],
             testing_standard:['BS EN 9606-1', 'BS EN 9606-2', 'GL 2007'],
             job_knowledge:['Tested', 'Not Tested'],
@@ -625,8 +708,8 @@ export default {
                 process_data: [],
                 header: [],
             },
-            photo: null,
             wpsDefault: {
+                id: null,
                 name: "",
                 filler_material_designation: [
                     {
@@ -792,11 +875,41 @@ export default {
         }
     },
     methods: {
+        addElement() {
+            axios.post('/api/added', {
+                table: this.newElement.selectArray,
+                wps_reference_id: this.wps.id,
+                name: this.newElement.name,
+                range: this.newElement.range,
+                test: this.newElement.test
+            }).then((response) => {
+                this.data[this.newElement.selectArray].push(response.data)
+                this.modalShow = false
+            }).catch((error) => {
+                alert("Error")
+            });
+        },
+        deletePhoto() {
+            document.getElementById("image").setAttribute('src', './user.png');
+            document.getElementById("imageForm").value = "";
+        },
         setElement(event, array, range) {
             var result = this.data[array].find((item) => {
                 return item.test == event;
             })
             result ? this[range] = result.range : this[range] = "";
+        },
+        setElementWPS(event, array) {
+            var result = this.data[array].find((item) => {
+                return item.test == event;
+            })
+            result ? this.wps[array].range = result.range : this.wps[array].range = "";
+        },
+        setElementWPSProcess(event, array, index) {
+            var result = this.data[array].find((item) => {
+                return item.test == event;
+            })
+            result ? this.wps.filler_material_designation[index].process.range = result.range : this.wps.filler_material_designation[index].process.range = "";
         },
         previewFiles(event) {
             if (event) {
@@ -811,7 +924,18 @@ export default {
             let result = this.data.wps_reference.find((item) => {
                 return item.name == value;
             })
-            result ? this.wps = result : this.wps = this.wpsDefault;
+            if(result) {
+                result.filler_material_group = result.filler_material_group ? result.filler_material_group : this.wpsDefault.filler_material_group
+                result.header = result.header ? result.header : this.wpsDefault.header
+                result.parent_material_group = result.parent_material_group ? result.parent_material_group : this.wpsDefault.parent_material_group
+                result.product_type = result.product_type ? result.product_type : this.wpsDefault.product_type
+                result.type_of_weld = result.type_of_weld ? result.type_of_weld : this.wpsDefault.type_of_weld
+                result.welding_processes = result.welding_processes ? result.welding_processes : this.wpsDefault.welding_processes
+                result.filler_material_designation = result.filler_material_designation.length > 0 ? result.filler_material_designation : this.wpsDefault.filler_material_designation
+                this.wps = result
+            } else {
+                this.wps = this.wpsDefault
+            }
         },
         getData() {
             axios.get('/api/pdf-data').then(response => {
@@ -823,7 +947,6 @@ export default {
 </script>
 <style>
   .img_size {
-    height: 29%;
     width: 29%;
     display: block;
     margin: 0 auto 10% auto;
@@ -853,7 +976,12 @@ export default {
         transition-duration: 0.4s;
         margin-top: 20px;
     }
-
+    .icon_plus {
+        margin-top: 33px
+    }
+    .transparency {
+        opacity: 0.5;
+    }
     .button:hover {
         background-color: #17a2b8;
         color: white;
