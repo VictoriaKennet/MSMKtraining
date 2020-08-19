@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use PDF;
 use Illuminate\Http\Request;
-
 class PdfController extends Controller
 {
     protected $fileStorage = 'upload/';
@@ -12,7 +11,7 @@ class PdfController extends Controller
     function createPDF(Request $request) {
         $data = $request;
         if(file_exists(public_path().'/'.$this->fileStorage.'/photo_min.png')) {
-            $data['photo'] = './'.$this->fileStorage.'/photo_min.png';
+            $data['photo'] = public_path().'/'.$this->fileStorage.'/photo_min.png';
         }
         $pdf = PDF::loadView('pdf.test', ['data' => $data]);
         return $pdf->stream('test.pdf');
@@ -30,6 +29,7 @@ class PdfController extends Controller
                 $fileData = base64_decode($img);
 
                 file_put_contents(public_path().'/'.$uploadfile, $fileData);
+                $this->compressImage(public_path().'/'.$this->fileStorage.'/photo_min.png', "upload/" . 'photo_min.png', 80);
 
                 $arr['status'] = 'success';
                 $arr['path_mini'] = 'http://'.$_SERVER['HTTP_HOST'].'/'.$uploadfile;
@@ -49,5 +49,13 @@ class PdfController extends Controller
         }
         header('Content-type: application/json');
         return response()->json($arr);
+    }
+
+    function compressImage($source_url, $destination_url, $quality) {
+        $info = getimagesize($source_url);
+        if ($info['mime'] == 'image/jpeg') $image = imagecreatefromjpeg($source_url);
+        elseif ($info['mime'] == 'image/gif') $image = imagecreatefromgif($source_url);
+        elseif ($info['mime'] == 'image/png') $image = imagecreatefrompng($source_url);
+        imagejpeg($image, $destination_url, $quality);
     }
 }

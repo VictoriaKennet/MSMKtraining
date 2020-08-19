@@ -35,8 +35,12 @@ jQuery(document).ready(function($) {
 				basic = $('.profile_photo_i').croppie({
 					viewport : {
 						width : 300,
-						height : 400
-					}
+                        height : 400
+                    },
+                    boundary: {
+                        width: 550,
+                        height: 350
+                    }
 				});
 				$('.profile-modal-photo').arcticmodal({
 					afterClose : function() {
