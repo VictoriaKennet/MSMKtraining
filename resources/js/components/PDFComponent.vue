@@ -1,5 +1,16 @@
 <template>
 <div>
+	<div style="display:none">
+		<div class="profile-modal-photo box-modal">
+            <div class="box-modal_close arcticmodal-close"></div>
+            <div>
+            <img class="profile_photo_i" src="">
+            </div>
+            <div class="modal-footer center-wrap">
+                <b-button class="js-main-image">Save</b-button>
+            </div>
+        </div>
+	</div>
     <b-modal id="my-modal" size="lg" hide-footer v-model="modalShow">
         <b-row>
             <b-col>
@@ -66,18 +77,19 @@
                                 </b-col>
 
                                 <b-col>
-                                    <b-img src="./user.png" fluid class="img_size" id="image"></b-img>
+                                    <b-img src="./user.png" fluid class="img_size perscab-photoedit-img" id="image"></b-img>
                                     <b-row>
                                         <b-col cols="8">
                                             <b-form-group>
                                                 <b-form-file
                                                     ref="fileinput"
+                                                    id="fileinput"
                                                     name="photo"
                                                     placeholder="Choose a file or drop it"
                                                     drop-placeholder="Drop file here"
-                                                    @change="previewFiles"
                                                 ></b-form-file>
                                             </b-form-group>
+                                            <input name="photo_c" multiple="false" type="hidden" value="">
                                         </b-col>
                                         <b-col cols="4">
                                             <b-button class="w-100" @click="deletePhoto">Delete photo</b-button>
@@ -347,7 +359,7 @@
                             <hr>
                             <b-row>
                                 <b-col cols="3">
-                                    <label for="input-default">Material thickness(mm)</label> 
+                                    <label for="input-default">Material thickness(mm)</label>
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
@@ -814,7 +826,7 @@ export default {
                 } else {
                     result = result +  "No Restriction"
                 }
-                return result      
+                return result
         },
 
         outsidePipeDiameter1() {
@@ -909,15 +921,6 @@ export default {
                 return item.test == event;
             })
             result ? this.wps.filler_material_designation[index].process.range = result.range : this.wps.filler_material_designation[index].process.range = "";
-        },
-        previewFiles(event) {
-            if (event) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    document.getElementById("image").setAttribute('src', e.target.result);
-                };
-                reader.readAsDataURL(event.target.files[0]);
-            }
         },
         setWPS(value) {
             let result = this.data.wps_reference.find((item) => {

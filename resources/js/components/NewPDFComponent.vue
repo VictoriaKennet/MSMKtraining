@@ -175,7 +175,7 @@
                 <b-col>
                     <div class="d-flex justify-content-center">
                         <input type="button" value="Save" class="button" @click="save">
-                        <input type="button" value="Back" class="button ml-2" @click="$router.push({path: '/'})">
+                        <a href="/" class="button ml-2">Back</a>
                     </div>
                 </b-col>
             </b-row>
@@ -272,7 +272,7 @@ export default {
         },
         save() {
             axios.post('/api/added-wps', this.newElement).then((response) => {
-                this.$router.push({path: '/'});
+                window.location.href = '/';
             }).catch((error) => {
                 alert("Error")
             });
@@ -280,3 +280,9 @@ export default {
     }
 }
 </script>
+
+<style lang="css">
+    a.button {
+        text-decoration: none;
+    }
+</style>

@@ -244,7 +244,7 @@
                     <td class="br-b bg-3">to</td>
                     <td class="br-b bg-3">{{$data->input('deposited_thickness_rest_num_2')}}</td>
                 @endif
-                
+
             </tr>
             <!-- !!!-6 part-!!! -->
             <tr class="f-s-9 main-table">
