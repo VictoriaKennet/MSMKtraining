@@ -347,7 +347,7 @@
                             <hr>
                             <b-row>
                                 <b-col cols="3">
-                                    <label for="input-default">Material thickness(mm)</label>
+                                    <label for="input-default">Material thickness(mm)</label> 
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
@@ -356,19 +356,21 @@
                                 </b-col>
                                 <b-col cols="5">
                                     <b-row>
-                                        <b-col cols="5">
+                                        <b-col cols="8">
                                             <b-form-group>
-                                                <b-form-input name="material_thickness_numb1"  :value="materialThicknessNumb1"></b-form-input>
+                                                <b-form-input :disabled="all_thickness" name="material_thickness_numb" list="material-thickness-numb" :value="materialThicknessNumb"></b-form-input>
+                                                <b-form-datalist id="material-thickness-numb"></b-form-datalist>
+                                                <!-- <b-form-input name="material_thickness_numb1"  :value="materialThicknessNumb" :option="material_thickness_list"></b-form-input> -->
                                             </b-form-group>
                                         </b-col>
-                                        <b-col cols="2">
-                                            <p class="centre">To</p>
+                                        <b-col cols="4">
+                                            <b-form-checkbox name="all_thickness" v-model="all_thickness">All Thickness</b-form-checkbox>
                                         </b-col>
-                                        <b-col cols="5">
+                                        <!-- <b-col cols="5">
                                             <b-form-group>
                                                 <b-form-input name="material_thickness_numb2"  :value="materialThicknessNumb2"></b-form-input>
                                             </b-form-group>
-                                        </b-col>
+                                        </b-col>  -->
                                     </b-row>
                                 </b-col>
                             </b-row>
@@ -382,11 +384,12 @@
                                         <b-col cols="4">
                                             <label for="input-default">Process 1</label>
                                         </b-col>
-                                        <b-col cols="3">
-                                            <p class="centre">Root</p>
+                                        <b-col cols="4">
+                                            <b-form-input name="deposited_deposit1" list="deposited-deposit1"></b-form-input>
+                                            <b-form-datalist id="deposited-deposit1" :options="deposit"></b-form-datalist>
                                         </b-col>
-                                        <b-col cols="5">
-                                            <b-form-input name="deposited_thickness_root" list="process" v-model="deposited_thickness_root"></b-form-input>
+                                        <b-col cols="4">
+                                            <b-form-input name="deposited_thickness_root" list="process" :disabled="applicable_1" v-model="deposited_thickness_root"></b-form-input>
                                             <b-form-datalist id="process"></b-form-datalist>
                                         </b-col>
                                     </b-row>
@@ -394,44 +397,49 @@
                                         <b-col cols="4">
                                             <label for="input-default">Process 2</label>
                                         </b-col>
-                                        <b-col cols="3">
-                                            <p class="centre">Rest</p>
+                                        <b-col cols="4">
+                                            <b-form-input name="deposited_deposit2" list="deposited-deposit2"></b-form-input>
+                                            <b-form-datalist id="deposited-deposit2" :options="deposit"></b-form-datalist>
                                         </b-col>
-                                        <b-col cols="5">
-                                            <b-form-input name="deposited_thickness_rest" list="process" v-model="deposited_thickness_rest"></b-form-input>
+                                        <b-col cols="4">
+                                            <b-form-input name="deposited_thickness_rest" list="process" :disabled="applicable_2" v-model="deposited_thickness_rest"></b-form-input>
                                             <b-form-datalist id="process"></b-form-datalist>
                                         </b-col>
                                     </b-row>
                                 </b-col>
                                 <b-col>
                                     <b-row>
-                                        <b-col cols="5">
+                                        <b-col cols="3">
                                             <b-form-group>
-                                                <b-form-input name="deposited_thickness_root_num_1" :value="depositedThicknessRootNum1"></b-form-input>
+                                                <b-form-input name="deposited_thickness_root_num_1" :disabled="applicable_1" :value="depositedThicknessRootNum1"></b-form-input>
+                                                <!-- <b-form-input name="material_thickness_numb1"  :value="materialThicknessNumb" :option="material_thickness_list"></b-form-input> -->
                                             </b-form-group>
                                         </b-col>
-                                        <b-col cols="2">
-                                            <p class="centre">To</p>
+                                        <b-col cols="3">
+                                            <b-form-group>
+                                                <b-form-input name="deposited_thickness_root_num_2" :disabled="applicable_1" :value="depositedThicknessRootNum2"></b-form-input>
+                                                <!-- <b-form-input name="material_thickness_numb1"  :value="materialThicknessNumb" :option="material_thickness_list"></b-form-input> -->
+                                            </b-form-group>
                                         </b-col>
                                         <b-col cols="5">
-                                            <b-form-group>
-                                                <b-form-input name="deposited_thickness_root_num_2" :value="depositedThicknessRootNum2"></b-form-input>
-                                            </b-form-group>
+                                            <b-form-checkbox name="applicable_1" v-model="applicable_1">Not Applicable</b-form-checkbox>
                                         </b-col>
                                     </b-row>
                                     <b-row>
-                                        <b-col cols="5" class="m-20">
+                                        <b-col cols="3">
                                             <b-form-group>
-                                                <b-form-input name="deposited_thickness_rest_num_1" :value="depositedThicknessRestNum1"></b-form-input>
+                                                <b-form-input name="deposited_thickness_rest_num_1" :disabled="applicable_2" :value="depositedThicknessRestNum1"></b-form-input>
+                                                <!-- <b-form-input name="material_thickness_numb1"  :value="materialThicknessNumb" :option="material_thickness_list"></b-form-input> -->
                                             </b-form-group>
                                         </b-col>
-                                        <b-col cols="2">
-                                            <p class="centre">To</p>
+                                        <b-col cols="3">
+                                            <b-form-group>
+                                                <b-form-input name="deposited_thickness_rest_num_2" :disabled="applicable_2" :value="depositedThicknessRestNum2"></b-form-input>
+                                                <!-- <b-form-input name="material_thickness_numb1"  :value="materialThicknessNumb" :option="material_thickness_list"></b-form-input> -->
+                                            </b-form-group>
                                         </b-col>
                                         <b-col cols="5">
-                                            <b-form-group>
-                                                <b-form-input name="deposited_thickness_rest_num_2" :value="depositedThicknessRestNum2"></b-form-input>
-                                            </b-form-group>
+                                            <b-form-checkbox name="applicable_2" v-model="applicable_2">Not Applicable</b-form-checkbox>
                                         </b-col>
                                     </b-row>
                                 </b-col>
@@ -657,6 +665,12 @@ export default {
             employer:['Cornelius Ltd', 'Self Employer'],
             testing_standard:['BS EN 9606-1', 'BS EN 9606-2', 'GL 2007'],
             job_knowledge:['Tested', 'Not Tested'],
+            deposit:['All', 'Root', 'Rest'],
+
+            all_thickness: false,
+            applicable_1: false,
+            applicable_2: false,
+
 
             shielding_gas_range: "",
             transfer_mode_range: "",
@@ -786,22 +800,29 @@ export default {
                 }
             }
         },
-        materialThicknessNumb1() {
-            return this.material_thickness <= 3 ? 'Form '+this.material_thickness : 'Form 3'
+
+
+        materialThicknessNumb() {
+            let result = '';
+                if (this.material_thickness <= 3){
+                    result = "Form " + this.material_thickness + " To ";
+                } else {
+                    result = "Form 3 To "
+                }
+                if((this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)' && this.material_thickness > 3) || (this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)' && this.material_thickness < 12)) {
+                    result = result + this.material_thickness * 2
+                } else {
+                    result = result +  "No Restriction"
+                }
+                return result      
         },
-        materialThicknessNumb2() {
-            if((this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)' && this.material_thickness > 3) || (this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)' && this.material_thickness < 12)) {
-                return this.material_thickness * 2
-            } else {
-                return "No Restriction"
-            }
-        },
+
         outsidePipeDiameter1() {
             if(this.outside_pipe_diameter == "Not Applicable") {
                 return "Not Applicable"
             } else {
                 if (this.wps.product_type.test == "Plate (P)") {
-                    return "For D >=500 mm  and PD rotated"
+                    return "For D >=500"
                 } else {
                     if(this.outside_pipe_diameter <= 25) {
                         return this.outside_pipe_diameter * 1
@@ -816,7 +837,7 @@ export default {
                 return ""
             } else {
                 if(this.wps.product_type.test == "Plate (P)") {
-                    return "or >=75 mm"
+                    return "or >=75"
                 } else {
                     return "To"
                 }

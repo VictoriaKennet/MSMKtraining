@@ -39,5 +39,9 @@ class TransferMode extends Seeder
             'test' => 'DIp Transfer / Spray Transfer',
             'range' => 'Dip and Spray'
         ]);
+        DB::table('transfer_mode')->insert([
+            'test' => 'Not Applicable',
+            'range' => 'Not Applicable'
+        ]);
     }
 }
