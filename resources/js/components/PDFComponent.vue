@@ -8,14 +8,14 @@
         <b-row v-else>
             <b-col>
                 <b-form-group label="Test">
-                    <b-form-input list="new-test" id="input-with-list" v-model="newElement.test"></b-form-input>
+                    <b-form-input list="new-test" v-model="newElement.test"></b-form-input>
                     <b-form-datalist id="new-test" :options="data[newElement.selectArray]" text-field="test">
                     </b-form-datalist>
                 </b-form-group>
             </b-col>
             <b-col>
                 <b-form-group label="Range">
-                    <b-form-input list="new-test" id="input-with-list" v-model="newElement.range"></b-form-input>
+                    <b-form-input list="new-test" v-model="newElement.range"></b-form-input>
                     <b-form-datalist id="new-test" :options="data[newElement.selectArray]" text-field="range">
                     </b-form-datalist>
                 </b-form-group>
@@ -49,21 +49,21 @@
 
                                     <!-- /Поле ввода  -->
                                     <b-form-group label="Employer">
-                                        <b-form-input placeholder="Choose employer" list="employer" id="input-with-list" name="employer"></b-form-input>
+                                        <b-form-input placeholder="Choose employer" list="employer" name="employer"></b-form-input>
                                         <b-form-datalist id="employer" :options="employer">
                                         </b-form-datalist>
                                     </b-form-group>
 
                                     <!-- /Поле ввода  -->
                                     <b-form-group label="Code/testing standard">
-                                        <b-form-input placeholder="Choose testing standard" list="testing-standard" id="input-with-list" name="testing_standard"></b-form-input>
+                                        <b-form-input placeholder="Choose testing standard" list="testing-standard" name="testing_standard"></b-form-input>
                                         <b-form-datalist id="testing-standard" :options="testing_standard">
                                         </b-form-datalist>
                                     </b-form-group>
 
                                     <!-- /Поле ввода  -->
                                     <b-form-group label="Job knowledge">
-                                        <b-form-input placeholder="Choose job knowledge" list="job-knowledge" id="input-with-list" name="job_knowledge"></b-form-input>
+                                        <b-form-input placeholder="Choose job knowledge" list="job-knowledge" name="job_knowledge"></b-form-input>
                                         <b-form-datalist id="job-knowledge" :options="job_knowledge">
                                         </b-form-datalist>
                                     </b-form-group>
@@ -115,7 +115,7 @@
                             <b-row>
                                 <b-col cols="11">
                                     <b-form-group label="WPS-Reference">
-                                        <b-form-input list="wps-reference" id="input-with-list" name="wps_reference" @change="setWPS($event)"></b-form-input>
+                                        <b-form-input list="wps-reference" name="wps_reference" @change="setWPS($event)"></b-form-input>
                                         <b-form-datalist id="wps-reference" :options="data.wps_reference" text-field="name">
                                         </b-form-datalist>
                                     </b-form-group>
@@ -131,13 +131,13 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="header_1" list="main-header-1" id="input-with-list" :value="wps.header.test" @change="setElementWPS($event, 'header')"></b-form-input>
+                                        <b-form-input name="header_1" list="main-header-1" :value="wps.header.test" @change="setElementWPS($event, 'header')"></b-form-input>
                                         <b-form-datalist id="main-header-1" :options="data.header" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="header_2" list="main-header-2" id="input-with-list" :value="wps.header.range"></b-form-input>
+                                        <b-form-input name="header_2" list="main-header-2" :value="wps.header.range"></b-form-input>
                                         <b-form-datalist id="main-header-2" :options="data.header" text-field="range"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -164,13 +164,13 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="welding_processes_test" list="welding-processes" id="input-with-list" :value="wps.welding_processes.test" @change="setElementWPS($event, 'welding_processes')"></b-form-input>
+                                        <b-form-input name="welding_processes_test" list="welding-processes" :value="wps.welding_processes.test" @change="setElementWPS($event, 'welding_processes')"></b-form-input>
                                         <b-form-datalist id="welding-processes" :options="data.welding_processes" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="welding_processes_range" list="welding-processes" id="input-with-list" :value="wps.welding_processes.range"></b-form-input>
+                                        <b-form-input name="welding_processes_range" list="welding-processes" :value="wps.welding_processes.range"></b-form-input>
                                         <b-form-datalist id="welding-processes" :options="data.welding_processes" text-field="range"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -185,13 +185,13 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="transfer_mode_test" list="transfer-mode-test" id="input-with-list" @change="setElement($event, 'transfer_mode', 'transfer_mode_range')"></b-form-input>
+                                        <b-form-input name="transfer_mode_test" list="transfer-mode-test" @change="setElement($event, 'transfer_mode', 'transfer_mode_range')"></b-form-input>
                                         <b-form-datalist id="transfer-mode-test" :options="data.transfer_mode" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="transfer_mode_range" list="transfer-mode-range" id="input-with-list" :value="transfer_mode_range"></b-form-input>
+                                        <b-form-input name="transfer_mode_range" list="transfer-mode-range" :value="transfer_mode_range"></b-form-input>
                                         <b-form-datalist id="transfer-mode-range" :options="data.transfer_mode" text-field="range"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -206,13 +206,13 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="product_type_test" list="product-type" id="input-with-list" :value="wps.product_type.test" @change="setElementWPS($event, 'product_type')"></b-form-input>
+                                        <b-form-input name="product_type_test" list="product-type" :value="wps.product_type.test" @change="setElementWPS($event, 'product_type')"></b-form-input>
                                         <b-form-datalist id="product-type" :options="data.product_type" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols ="4">
                                     <b-form-group>
-                                        <b-form-input name="product_type_range" list="product-type" id="input-with-list" :value="wps.product_type.range"></b-form-input>
+                                        <b-form-input name="product_type_range" list="product-type" :value="wps.product_type.range"></b-form-input>
                                         <b-form-datalist id="product-type" :options="data.product_type" text-field="range"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -227,13 +227,13 @@
                                 </b-col>
                                 <b-col cols ="4">
                                     <b-form-group>
-                                        <b-form-input name="type_of_weld_test" list="type-weld" id="input-with-list" v-model="wps.type_of_weld.test" @change="setElementWPS($event, 'type_of_weld')"></b-form-input>
+                                        <b-form-input name="type_of_weld_test" list="type-weld" v-model="wps.type_of_weld.test" @change="setElementWPS($event, 'type_of_weld')"></b-form-input>
                                         <b-form-datalist id="type-weld" :options="data.type_of_weld" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols ="4">
                                     <b-form-group>
-                                        <b-form-input name="type_of_weld_range" list="type-weld" id="input-with-list" :value="wps.type_of_weld.range"></b-form-input>
+                                        <b-form-input name="type_of_weld_range" list="type-weld" :value="wps.type_of_weld.range"></b-form-input>
                                         <b-form-datalist id="type-weld" :options="data.type_of_weld" text-field="range"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -248,13 +248,13 @@
                                 </b-col>
                                 <b-col cols ="4">
                                     <b-form-group>
-                                        <b-form-input name="parent_material_group_test" list="parent-material-group" id="input-with-list" :value="wps.parent_material_group.test" @change="setElementWPS($event, 'parent_material_group')"></b-form-input>
+                                        <b-form-input name="parent_material_group_test" list="parent-material-group" :value="wps.parent_material_group.test" @change="setElementWPS($event, 'parent_material_group')"></b-form-input>
                                         <b-form-datalist id="parent-material-group" :options="data.parent_material_group" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols ="4">
                                     <b-form-group>
-                                        <b-form-input name="parent_material_group_range" list="parent-material-group" id="input-with-list" :value="wps.parent_material_group.range"></b-form-input>
+                                        <b-form-input name="parent_material_group_range" list="parent-material-group" :value="wps.parent_material_group.range"></b-form-input>
                                         <b-form-datalist id="parent-material-group" :options="data.parent_material_group" text-field="range"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -269,13 +269,13 @@
                                 </b-col>
                                 <b-col cols ="4">
                                     <b-form-group>
-                                        <b-form-input name="filler_material_group_test" list="filler-material-group" id="input-with-list" :value="wps.filler_material_group.test" @change="setElementWPS($event, 'filler_material_group')"></b-form-input>
+                                        <b-form-input name="filler_material_group_test" list="filler-material-group" :value="wps.filler_material_group.test" @change="setElementWPS($event, 'filler_material_group')"></b-form-input>
                                         <b-form-datalist id="filler-material-group" :options="data.filler_material_group" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="filler_material_group_range" list="filler-material-group" id="input-with-list" :value="wps.filler_material_group.range"></b-form-input>
+                                        <b-form-input name="filler_material_group_range" list="filler-material-group" :value="wps.filler_material_group.range"></b-form-input>
                                         <b-form-datalist id="filler-material-group" :options="data.filler_material_group" text-field="range"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -294,7 +294,7 @@
                                             <label for="input-default">Process 1</label>
                                         </b-col>
                                         <b-col cols="7">
-                                            <b-form-input name="process_data_test_1" list="process_data_1" id="input-with-list" :value="wps.filler_material_designation[0].process.test" @change="setElementWPSProcess($event, 'process_data', 0)"></b-form-input>
+                                            <b-form-input name="process_data_test_1" list="process_data_1" :value="wps.filler_material_designation[0].process.test" @change="setElementWPSProcess($event, 'process_data', 0)"></b-form-input>
                                             <b-form-datalist id="process_data_1" :options="data.process_data" text-field="test"></b-form-datalist>
                                         </b-col>
                                     </b-row>
@@ -303,18 +303,18 @@
                                             <label for="input-default">Process 2</label>
                                         </b-col>
                                         <b-col cols="7">
-                                            <b-form-input name="process_data_test_2" list="process_data_2" id="input-with-list" :value="wps.filler_material_designation[1].process.test" @change="setElementWPSProcess($event, 'process_data', 1)"></b-form-input>
+                                            <b-form-input name="process_data_test_2" list="process_data_2" :value="wps.filler_material_designation[1].process.test" @change="setElementWPSProcess($event, 'process_data', 1)"></b-form-input>
                                             <b-form-datalist id="process_data_2" :options="data.process_data" text-field="test"></b-form-datalist>
                                         </b-col>
                                     </b-row>
                                 </b-col>
                                 <b-col>
                                     <b-form-group class="m-20">
-                                        <b-form-input name="process_data_range_1" list="process-data-2-range-1" id="input-with-list" :value="wps.filler_material_designation[0].process.range"></b-form-input>
+                                        <b-form-input name="process_data_range_1" list="process-data-2-range-1" :value="wps.filler_material_designation[0].process.range"></b-form-input>
                                         <b-form-datalist id="process-data-2-range-1" :options="data.process_data" text-field="range"></b-form-datalist>
                                     </b-form-group>
                                     <b-form-group>
-                                        <b-form-input name="process_data_range_2" list="process-data-2-range-2" id="input-with-list" :value="wps.filler_material_designation[1].process.range"></b-form-input>
+                                        <b-form-input name="process_data_range_2" list="process-data-2-range-2" :value="wps.filler_material_designation[1].process.range"></b-form-input>
                                         <b-form-datalist id="process-data-2-range-2" :options="data.process_data" text-field="range"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -329,13 +329,13 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="shielding_gas_test" list="shielding-gas-test" id="input-with-list" @change="setElement($event, 'shielding_gas', 'shielding_gas_range')"></b-form-input>
+                                        <b-form-input name="shielding_gas_test" list="shielding-gas-test" @change="setElement($event, 'shielding_gas', 'shielding_gas_range')"></b-form-input>
                                         <b-form-datalist id="shielding-gas-test" :options="data.shielding_gas" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="shielding_gas_range" list="shielding-gas-range" id="input-with-list" :value="shielding_gas_range"></b-form-input>
+                                        <b-form-input name="shielding_gas_range" list="shielding-gas-range" :value="shielding_gas_range"></b-form-input>
                                         <b-form-datalist id="shielding-gas-range" :options="data.shielding_gas" text-field="range"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -350,13 +350,13 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="type_polarity_test" list="type-polarity-test" id="input-with-list" @change="setElement($event, 'type_polarity', 'type_polarity_range')"></b-form-input>
+                                        <b-form-input name="type_polarity_test" list="type-polarity-test" @change="setElement($event, 'type_polarity', 'type_polarity_range')"></b-form-input>
                                         <b-form-datalist id="type-polarity-test" :options="data.type_polarity" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="type_polarity_range" list="type-polarity-range" id="input-with-list" :value="type_polarity_range"></b-form-input>
+                                        <b-form-input name="type_polarity_range" list="type-polarity-range" :value="type_polarity_range"></b-form-input>
                                         <b-form-datalist id="type-polarity-range" :options="data.type_polarity" text-field="range"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -406,7 +406,7 @@
                                             <p class="centre">Root</p>
                                         </b-col>
                                         <b-col cols="5">
-                                            <b-form-input name="deposited_thickness_root" list="process" id="input-with-list" v-model="deposited_thickness_root"></b-form-input>
+                                            <b-form-input name="deposited_thickness_root" list="process" v-model="deposited_thickness_root"></b-form-input>
                                             <b-form-datalist id="process"></b-form-datalist>
                                         </b-col>
                                     </b-row>
@@ -418,7 +418,7 @@
                                             <p class="centre">Rest</p>
                                         </b-col>
                                         <b-col cols="5">
-                                            <b-form-input name="deposited_thickness_rest" list="process" id="input-with-list" v-model="deposited_thickness_rest"></b-form-input>
+                                            <b-form-input name="deposited_thickness_rest" list="process" v-model="deposited_thickness_rest"></b-form-input>
                                             <b-form-datalist id="process"></b-form-datalist>
                                         </b-col>
                                     </b-row>
@@ -494,13 +494,13 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="welding_position_test" list="welding-position-test" id="input-with-list" @change="setElement($event, 'welding_position', 'welding_position_range')"></b-form-input>
+                                        <b-form-input name="welding_position_test" list="welding-position-test" @change="setElement($event, 'welding_position', 'welding_position_range')"></b-form-input>
                                         <b-form-datalist id="welding-position-test" :options="data.welding_position" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="welding_position_range" list="welding-position-range" id="input-with-list" :value="welding_position_range"></b-form-input>
+                                        <b-form-input name="welding_position_range" list="welding-position-range" :value="welding_position_range"></b-form-input>
                                         <b-form-datalist id="welding-position-range" :options="data.welding_position" text-field="range"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -515,13 +515,13 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="welding_details_test" list="welding-details-test" id="input-with-list" @change="setElement($event, 'welding_details', 'welding_details_range')"></b-form-input>
+                                        <b-form-input name="welding_details_test" list="welding-details-test" @change="setElement($event, 'welding_details', 'welding_details_range')"></b-form-input>
                                         <b-form-datalist id="welding-details-test" :options="data.welding_details" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="welding_details_range" list="welding-details-range" id="input-with-list" :value="welding_details_range"></b-form-input>
+                                        <b-form-input name="welding_details_range" list="welding-details-range" :value="welding_details_range"></b-form-input>
                                         <b-form-datalist id="welding-details-range" :options="data.welding_details" text-field="range"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -536,13 +536,13 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="single_layer_test" list="single-layer-test" id="input-with-list" :value="singleLayerTest"></b-form-input>
+                                        <b-form-input name="single_layer_test" list="single-layer-test" :value="singleLayerTest"></b-form-input>
                                         <b-form-datalist id="single-layer-test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="5">
                                     <b-form-group>
-                                        <b-form-input name="single_layer_range" list="single-layer-range" id="input-with-list" :value="singleLayerRange"></b-form-input>
+                                        <b-form-input name="single_layer_range" list="single-layer-range" :value="singleLayerRange"></b-form-input>
                                         <b-form-datalist id="single-layer-renge"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -554,7 +554,7 @@
                                 </b-col>
                                 <b-col cols="5">
                                     <b-form-group>
-                                        <b-form-input name="weld_test" list="weld-test" id="input-with-list"></b-form-input>
+                                        <b-form-input name="weld_test" list="weld-test"></b-form-input>
                                         <b-form-datalist id="weld-test" :options="job_knowledge"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -593,7 +593,7 @@
                                             <label for="input-default">Name</label>
                                         </b-col>
                                         <b-col cols="9">
-                                            <b-form-input name="withenessed_name" list="input-list" id="input-with-list"></b-form-input>
+                                            <b-form-input name="withenessed_name" list="input-list"></b-form-input>
                                             <b-form-datalist id="input-list"></b-form-datalist>
                                         </b-col>
                                     </b-row>
@@ -602,7 +602,7 @@
                                             <label for="input-default">Position</label>
                                         </b-col>
                                         <b-col cols="9">
-                                            <b-form-input name="withenessed_position" list="input-list" id="input-with-list"></b-form-input>
+                                            <b-form-input name="withenessed_position" list="input-list"></b-form-input>
                                             <b-form-datalist id="input-list"></b-form-datalist>
                                         </b-col>
                                     </b-row>
@@ -625,7 +625,7 @@
                                             <label for="input-default">Name</label>
                                         </b-col>
                                         <b-col cols="9">
-                                            <b-form-input name="behaulf_name" list="input-list" id="input-with-list"></b-form-input>
+                                            <b-form-input name="behaulf_name" list="input-list"></b-form-input>
                                             <b-form-datalist id="input-list"></b-form-datalist>
                                         </b-col>
                                     </b-row>
@@ -634,7 +634,7 @@
                                             <label for="input-default">Position</label>
                                         </b-col>
                                         <b-col cols="9">
-                                            <b-form-input name="behaulf_position" list="input-list" id="input-with-list"></b-form-input>
+                                            <b-form-input name="behaulf_position" list="input-list"></b-form-input>
                                             <b-form-datalist id="input-list"></b-form-datalist>
                                         </b-col>
                                     </b-row>
