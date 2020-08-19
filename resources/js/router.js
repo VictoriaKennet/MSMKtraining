@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import PDFComponent from './components/PDFComponent.vue'
+import NewPDFComponent from './components/NewPDFComponent.vue'
 
 Vue.use(VueRouter)
 
@@ -13,6 +14,11 @@ export default new VueRouter({
           path: '/',
           name: 'pdf',
           component: PDFComponent
+        },
+        {
+            path: '/added',
+            name: 'added',
+            component: NewPDFComponent
         }
       ]
     })

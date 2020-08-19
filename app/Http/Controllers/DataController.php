@@ -77,57 +77,74 @@ class DataController extends Controller
         return response()->json($response);
     }
 
-    function process() {
-        $data = Process::get();
-        return response()->json($data);
-    }
+    function addedWPS(Request $request) {
+        $wps = new WPSReference();
+        $newWPS = $wps->create([
+            'name' => $request->name
+        ]);
 
-    function typePolarity() {
-        $data = TypePolarity::get();
-        return response()->json($data);
-    }
-    function parentMaterialGroup() {
-        $data = ParentMaterialGroup::get();
-        return response()->json($data);
-    }
-    function productType() {
-        $data = ProductType::get();
-        return response()->json($data);
-    }
-    function transferMode() {
-        $data = TransferMode::get();
-        return response()->json($data);
-    }
-    function typeWeld() {
-        $data = TypeOfWeld::get();
-        return response()->json($data);
-    }
-    function fillerMaterialGroup() {
-        $data = FillerMaterialGroup::get();
-        return response()->json($data);
-    }
-    function fillerMaterialDesignation() {
-        $data = FillerMaterialDesignation::get();
-        return response()->json($data);
-    }
-    function shieldingGas() {
-        $data = ShieldingGas::get();
-        return response()->json($data);
-    }
-    function weldingPosition() {
-        $data = WeldingPosition::get();
-        return response()->json($data);
-    }
-    function weldingDetails() {
-        $data = WeldingDetails::get();
-        return response()->json($data);
-    }
-    function weldingProcesses() {
-        $data = WeldingProcesses::get();
-        return response()->json($data);
-    }
-    function header() {
-        $data = Header::get();
-        return response()->json($data);
+        $parentMaterialGroup = new ParentMaterialGroup();
+        $parentMaterialGroup->create([
+            'test' => $request->parent_material_group['test'],
+            'range' => $request->parent_material_group['range'],
+            'wps_reference_id' => $newWPS->id
+        ]);
+
+        $productType = new ProductType();
+        $productType->create([
+            'test' => $request->product_type['test'],
+            'range' => $request->product_type['range'],
+            'wps_reference_id' => $newWPS->id
+        ]);
+
+        $typeOfWeld = new TypeOfWeld();
+        $typeOfWeld->create([
+            'test' => $request->type_of_weld['test'],
+            'range' => $request->type_of_weld['range'],
+            'wps_reference_id' => $newWPS->id
+        ]);
+
+        $fillerMaterialGroup = new FillerMaterialGroup();
+        $fillerMaterialGroup->create([
+            'test' => $request->filler_material_group['test'],
+            'range' => $request->filler_material_group['range'],
+            'wps_reference_id' => $newWPS->id
+        ]);
+
+        $fillerMaterialDesignation = new FillerMaterialDesignation();
+        $process = new Process();
+        foreach ($request->filler_material_designation as $key => $value) {
+            $processId = null;
+            if(Process::where('test', $value['process']['test'])->where('range', $value['process']['range'])->exists()) {
+                $processId = Process::where('test', $value['process']['test'])->where('range', $value['process']['range'])->first()->id;
+            } else {
+                $newProcess = $process->create([
+                    'test' => $value['process']['test'],
+                    'range' => $value['process']['range'],
+                ]);
+                $processId = $newProcess->id;
+            }
+            $fillerMaterialDesignation->create([
+                'process_number' => $value['process_number'],
+                'process_id' => $processId,
+                'wps_reference_id' => $newWPS->id
+            ]);
+        }
+
+        $weldingProcesses = new WeldingProcesses();
+        $weldingProcesses->create([
+            'test' => $request->welding_processes['test'],
+            'range' => $request->welding_processes['range'],
+            'wps_reference_id' => $newWPS->id
+        ]);
+
+        $header = new Header();
+        $header->create([
+            'test' => $request->header['test'],
+            'range' => $request->header['range'],
+            'wps_reference_id' => $newWPS->id
+        ]);
+
+        return response()->json("ok");
     }
 }

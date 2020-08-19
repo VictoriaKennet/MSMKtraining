@@ -10,11 +10,8 @@ class FillerMaterialDesignation extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'test',
-        'range',
-        'wps_reference_id'
-        // 'process_number',
-        // 'process_id'
-        
+        'wps_reference_id',
+        'process_number',
+        'process_id'
     ];
 }

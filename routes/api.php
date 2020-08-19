@@ -19,3 +19,4 @@ Route::get('welding-processes', 'DataController@weldingProcesses');
 Route::get('main-header', 'DataController@header');
 
 Route::post('added', 'DataController@added');
+Route::post('added-wps', 'DataController@addedWPS');
