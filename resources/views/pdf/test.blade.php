@@ -116,7 +116,7 @@
             <td width="150px">{{$data->input('wps_reference')}}</td>
             <td rowspan="6" style="text-align: center">Test Ref / Certificate No:<br> {{$data->input('test_ref')}}
             <br> LR control No:<br> {{$data->input('lr_control')}}</td>
-            <td rowspan="6" width="100px"><img src={{$data->input('photo')}}></td>
+            <td rowspan="6" width="100px"><img src={{$data->input('photo_c')}}></td>
         </tr>
         <tr>
             <td>Welder`s name</td>

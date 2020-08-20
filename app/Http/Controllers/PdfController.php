@@ -10,9 +10,6 @@ class PdfController extends Controller
 
     function createPDF(Request $request) {
         $data = $request;
-        if(file_exists(public_path().'/'.$this->fileStorage.'/photo_min.png')) {
-            $data['photo'] = public_path().'/'.$this->fileStorage.'/photo_min.png';
-        }
         $pdf = PDF::loadView('pdf.test', ['data' => $data]);
         return $pdf->stream('test.pdf');
     }
@@ -21,7 +18,7 @@ class PdfController extends Controller
         if(isset($_POST['photo'])) {
             $arr = [];
             if($_POST['photo']) {
-                $file = 'photo_min.png';
+                $file = uniqid().'_photo_min.png';
                 $uploadfile = $this->fileStorage . $file;
 
                 $img = str_replace('data:image/png;base64,', '', $_POST['photo']);
@@ -29,7 +26,7 @@ class PdfController extends Controller
                 $fileData = base64_decode($img);
 
                 file_put_contents(public_path().'/'.$uploadfile, $fileData);
-                $this->compressImage(public_path().'/'.$this->fileStorage.'/photo_min.png', "upload/" . 'photo_min.png', 80);
+                $this->compressImage(public_path().'/'.$this->fileStorage.$file, $this->fileStorage.$file, 80);
 
                 $arr['status'] = 'success';
                 $arr['path_mini'] = 'http://'.$_SERVER['HTTP_HOST'].'/'.$uploadfile;
@@ -37,7 +34,7 @@ class PdfController extends Controller
             }
         }
         else {
-            $uploadfile = $this->fileStorage . 'photo_original.png';
+            $uploadfile = $this->fileStorage . uniqid().'_photo_original.png';
             $arr = array();
             if (move_uploaded_file($_FILES['file']['tmp_name'], public_path().'/'.$uploadfile)) {
                 $arr['status'] = 'success';

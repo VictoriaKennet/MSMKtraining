@@ -11,6 +11,7 @@ jQuery(document).ready(function($) {
 		    })
             .done(function (html) {
                 if(html.status == "success") {
+                    $('input[name="photo_c"]').attr('value',html.path_mini);
                     $('.perscab-photoedit-img').attr('src',html.path_mini);
                     $('.profile-modal-photo').arcticmodal('close');
                 }

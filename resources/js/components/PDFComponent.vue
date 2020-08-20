@@ -89,7 +89,7 @@
                                                     drop-placeholder="Drop file here"
                                                 ></b-form-file>
                                             </b-form-group>
-                                            <input name="photo_c" multiple="false" type="hidden" value="">
+                                            <input name="photo_c" id="fileinput_c" multiple="false" type="hidden" value="">
                                         </b-col>
                                         <b-col cols="4">
                                             <b-button class="w-100" @click="deletePhoto">Delete photo</b-button>
@@ -902,6 +902,7 @@ export default {
         },
         deletePhoto() {
             document.getElementById("image").setAttribute('src', './user.png');
+            document.getElementById("fileinput_c").setAttribute('value', '');
             this.$refs.fileinput.reset();
         },
         setElement(event, array, range) {
