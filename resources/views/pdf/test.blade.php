@@ -2,7 +2,7 @@
     @page { margin:0px; }
     body {
         font-family: Arial, sans-serif;
-        background: url("./bg.jpg") no-repeat;
+        background: url("http://msmk.ho.ua/bg.jpg") no-repeat;
         background-size: 100%;
         font-size: 12px;
     }
