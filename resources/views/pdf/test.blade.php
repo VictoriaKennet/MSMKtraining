@@ -332,7 +332,7 @@
             </td>
         </tr>
     </table>
-    <p>We certify that the statements in this record are correct and that the test coupons were prepared, welded, and tested in accordance with the requirements of BS EN ISO 9606-1: 2017 with ACCEPTABLE results</p>
+    <p>We certify that the statements in this record are correct and that the test coupons were prepared, welded, and tested in accordance with the requirements of BS EN ISO 9606-1: 2017 with <strong> ACCEPTABLE </strong> results</p>
 
     <table>
         <tbody>

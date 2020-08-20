@@ -772,9 +772,9 @@ export default {
                     return "Not Applicable"
                 } else {
                     if(this.material_thickness <= 3) {
-                        return 'Form '+this.material_thickness
+                        return 'From '+this.material_thickness
                     } else {
-                        return 'Form 3'
+                        return 'From 3'
                     }
                 }
             }
@@ -817,9 +817,9 @@ export default {
         materialThicknessNumb() {
             let result = '';
                 if (this.material_thickness <= 3){
-                    result = "Form " + this.material_thickness + " To ";
+                    result = "From " + this.material_thickness + " To ";
                 } else {
-                    result = "Form 3 To "
+                    result = "From 3 To "
                 }
                 if((this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)' && this.material_thickness > 3) || (this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)' && this.material_thickness < 12)) {
                     result = result + this.material_thickness * 2
@@ -968,7 +968,7 @@ export default {
   }
   .button {
         background-color: white;
-        color: black;
+        color: #17a2b8;
         border: 2px solid #17a2b8;
         padding: 15px 32px;
         text-align: center;
