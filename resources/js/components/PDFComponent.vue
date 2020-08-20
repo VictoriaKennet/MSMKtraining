@@ -695,7 +695,6 @@ export default {
             deposited_thickness_rest: 0,
             outside_pipe_diameter: 0,
 
-            fields: ['Name', 'Test piece', 'Range of qualification'],
             data: {
                 wps_reference: [],
                 parent_material_group: [],
