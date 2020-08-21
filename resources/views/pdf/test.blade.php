@@ -35,7 +35,7 @@
     }
     .tdHead1 {
         border-bottom: 1px solid #232323;
-        background: #dedede
+        background: #999999
     }
     input[type=checkbox] {
         margin-top: 7px;
@@ -57,31 +57,31 @@
         width: 5%;
     }
     .tb-t-3 {
-        background: #dedede;
+        background: #999999;
         width: 43%;
     }
     .main-table .tb-t-2 {
-        border-left-color: #232323; /* Цвет линии слева */
+        border-left-color: #4C4C4C; /* Цвет линии слева */
         border-left-style: solid; /* Стиль линии */
-        border-left-width: 1px;  /* Толщина линии */
+        border-left-width: 0.2px;  /* Толщина линии */
     }
 
     .main-table .tb-t-3 {
-        border-left-color: #232323; /* Цвет линии слева */
+        border-left-color: #4C4C4C; /* Цвет линии слева */
         border-left-style: solid; /* Стиль линии */
-        border-left-width: 1px;  /* Толщина линии */
+        border-left-width: 0.2px;  /* Толщина линии */
     }
 
     .br-l {
-        border-left-color: #232323; /* Цвет линии слева */
+        border-left-color: #4C4C4C; /* Цвет линии слева */
         border-left-style: solid; /* Стиль линии */
-        border-left-width: 1px;  /* Толщина линии */
+        border-left-width: 0.2px;  /* Толщина линии */
     }
 
     .br-b {
-        border-bottom-color: #232323; /* Цвет линии слева */
+        border-bottom-color: #4C4C4C; /* Цвет линии слева */
         border-bottom-style: solid; /* Стиль линии */
-        border-bottom-width: 1px;  /* Толщина линии */
+        border-bottom-width: 0.2px;  /* Толщина линии */
     }
 
     .mg-bt-10 {
@@ -89,7 +89,7 @@
     }
 
     .bg-3 {
-        background: #dedede;
+        background: #999999;
     }
 
     .bld-text {
@@ -101,10 +101,19 @@
         padding: 2px 2px;
     }
 
+    .bottom-inf {
+        position: absolute;
+        top: 97.4%;
+    }
+
 
 </style>
 
 <div class="wrapper">
+    <div class="bottom-inf">
+        <div>{{$data->input('document_number1')}}</div>
+        <div>{{$data->input('document_number2')}}</div>
+    </div>
     <div class="contacts">
         <b>MSMK</b> Training Ltd<br>
         75 Blackstock road, Sheffield, S14 1AD, United Kingdom<br>
@@ -228,7 +237,7 @@
                 <td rowspan="2" class="tb-t-1 br-b">Deposited thickness(mm)</td>
                 <td class="br-l" colspan="3">Process 1 &nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_deposit1')}}</td>
                 @if($data->input('applicable_1'))
-                    <td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;NA</td>
+                    <td colspan="2">Not Applicable</td>
                     <td class="br-l bg-3" colspan="3">Not Applicable</td>
                 @else
                     <td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;{{$data->input('deposited_thickness_root')}}</td>
@@ -240,7 +249,7 @@
             <tr>
                 <td class="br-l br-b" colspan="3">Process 2 &nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_deposit2')}}</td>
                 @if($data->input('applicable_2'))
-                    <td colspan="2" class="br-b">&nbsp;&nbsp;&nbsp;&nbsp;NA</td>
+                    <td colspan="2" class="br-b">Not Applicable</td>
                     <td class="br-l bg-3 br-b" colspan="3">Not Applicable</td>
                 @else
                     <td colspan="2" class="br-b">&nbsp;&nbsp;&nbsp;&nbsp;{{$data->input('deposited_thickness_rest')}}</td>
@@ -281,7 +290,7 @@
                 <td colspan="4" class="br-l br-b">{{$data->input('weld_test')}}</td>
             </tr>
             <tr>
-                <td colspan="9" class="bg-3 br-b">Tests Performed</td>
+                <td colspan="9" class="bg-3">Tests Performed</td>
             </tr>
         </tbody>
     </table>
@@ -368,4 +377,7 @@
             </tr>
         </tbody>
     </table>
+
+    
+
 </div>

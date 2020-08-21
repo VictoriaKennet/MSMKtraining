@@ -137,18 +137,24 @@
                             <hr>
                             <b-row>
                                 <b-col cols="3">
-                                    <label for="input-default">Designation 9606-1</label>
+                                    <label for="input-default">Designation</label>
                                 </b-col>
-                                <b-col cols="4">
+                                <b-col cols="3">
                                     <b-form-group>
                                         <b-form-input name="header_1" list="main-header-1" :value="wps.header.test" @change="setElementWPS($event, 'header')"></b-form-input>
                                         <b-form-datalist id="main-header-1" :options="data.header" text-field="test"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
-                                <b-col cols="5">
+                                <b-col cols="3">
                                     <b-form-group>
-                                        <b-form-input name="header_2" list="main-header-2" :value="wps.header.range"></b-form-input>
-                                        <b-form-datalist id="main-header-2" :options="data.header" text-field="range"></b-form-datalist>
+                                        <b-form-input name="header_2" list="main-header-2"></b-form-input>
+                                        <b-form-datalist id="main-header-2" :options="data.header" text-field="test">t{{outside_pipe_diameter}}</b-form-datalist>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="3">
+                                    <b-form-group>
+                                        <b-form-input name="header_3" list="main-header-3" :value="wps.header.range"></b-form-input>
+                                        <b-form-datalist id="main-header-3" :options="data.header" text-field="range"></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -570,6 +576,26 @@
                     <b-collapse id="accordion-3" accordion="my-accordion" role="tabpanel">
                         <b-card-body>
                             <b-row>
+                                <b-col cols="2">
+                                    <label for="input-default">Document number</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input list="document-number1" name="document_number1" :value="document_number1"> {{document_number1}} </b-form-input>
+                                        <b-form-datalist id="document-number1" text-field="name">
+                                        </b-form-datalist>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input list="document-number2" name="document_number2" :value="document_number2"> {{document_number1}} </b-form-input>
+                                        <b-form-datalist id="document-number2" text-field="name">
+                                        </b-form-datalist>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <hr>
+                            <b-row>
                                 <b-col>
                                     <b-form-group>
                                         <b-form-checkbox name="visual_examination">Visual Examination of Completed Weld</b-form-checkbox>
@@ -678,6 +704,9 @@ export default {
             testing_standard:['BS EN 9606-1', 'BS EN 9606-2', 'GL 2007'],
             job_knowledge:['Tested', 'Not Tested'],
             deposit:['All', 'Root', 'Rest'],
+
+            document_number1: "MSMK QF032",
+            document_number2: "Rev 1",
 
             all_thickness: false,
             applicable_1: false,
@@ -815,17 +844,17 @@ export default {
 
         materialThicknessNumb() {
             let result = '';
-                if (this.material_thickness <= 3){
-                    result = "From " + this.material_thickness + " To ";
+                if (this.material_thickness >= 3){
+                    return "From 3 To No Restriction";
                 } else {
-                    result = "From 3 To "
+                    result = "From " + this.material_thickness + " To "
                 }
-                if((this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)' && this.material_thickness > 3) || (this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)' && this.material_thickness < 12)) {
-                    result = result + this.material_thickness * 2
-                } else {
-                    result = result +  "No Restriction"
-                }
-                return result
+                    if ((this.material_thickness*2) < 3)  {
+                        result = result + "3"
+                    } else {
+                        result = result + this.material_thickness * 2
+                    }
+                    return result;
         },
 
         outsidePipeDiameter1() {
@@ -835,7 +864,7 @@ export default {
                 if (this.wps.product_type.test == "Plate (P)") {
                     return "For D >=500"
                 } else {
-                    if(this.outside_pipe_diameter <= 25) {
+                    if(this.outside_pipe_diameter > 25) {
                         return this.outside_pipe_diameter * 1
                     } else {
                         return this.outside_pipe_diameter * 0.5
@@ -861,7 +890,7 @@ export default {
                 if(this.wps.product_type.test == "Plate (P)") {
                     return "in PA, PB, PC and PD rotated"
                 } else {
-                    if(this.outside_pipe_diameter < 25) {
+                    if(this.outside_pipe_diameter <= 25) {
                         return this.outside_pipe_diameter * 2
                     } else {
                         return "No Restriction"
