@@ -38,10 +38,10 @@
         background: #dedede
     }
     input[type=checkbox] {
-        margin-top:7px
+        margin-top: 2px;
     }
     p {
-        margin-top: 20px
+        margin-top: 20px;
     }
     .f-s-9 {
         font-size: 9pt;
@@ -84,10 +84,6 @@
         border-bottom-width: 1px;  /* Толщина линии */
     }
 
-    .mg-bt-10 {
-        margin-bottom: 5px;
-    }
-
     .bg-3 {
         background: #dedede;
     }
@@ -98,11 +94,8 @@
     }
 
     .table-inf td {
-        padding: 3px;
+        padding: 1px 2px;
     }
-
-
-
 </style>
 
 <div class="wrapper">
