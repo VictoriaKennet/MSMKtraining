@@ -8,7 +8,7 @@
     }
     .wrapper {
         width: 85%;
-        margin: 0 auto
+        margin: 0 auto;
     }
     img {
         width: 100px;
@@ -34,7 +34,7 @@
         width: 100%;
     }
     .tdHead1 {
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid #232323;
         background: #dedede
     }
     input[type=checkbox] {
@@ -61,30 +61,34 @@
         width: 43%;
     }
     .main-table .tb-t-2 {
-        border-left-color: #000; /* Цвет линии слева */
+        border-left-color: #232323; /* Цвет линии слева */
         border-left-style: solid; /* Стиль линии */
         border-left-width: 1px;  /* Толщина линии */
         padding-left: 3px;  /* Расстояние между линией и текстом */
     }
 
     .main-table .tb-t-3 {
-        border-left-color: #000; /* Цвет линии слева */
+        border-left-color: #232323; /* Цвет линии слева */
         border-left-style: solid; /* Стиль линии */
         border-left-width: 1px;  /* Толщина линии */
         padding-left: 3px;  /* Расстояние между линией и текстом */
     }
 
     .br-l {
-        border-left-color: #000; /* Цвет линии слева */
+        border-left-color: #232323; /* Цвет линии слева */
         border-left-style: solid; /* Стиль линии */
         border-left-width: 1px;  /* Толщина линии */
         padding-left: 3px;  /* Расстояние между линией и текстом */
     }
 
     .br-b {
-        border-bottom-color: #000; /* Цвет линии слева */
+        border-bottom-color: #232323; /* Цвет линии слева */
         border-bottom-style: solid; /* Стиль линии */
         border-bottom-width: 1px;  /* Толщина линии */
+    }
+
+    .mg-bt-10 {
+        margin-bottom: 5px;
     }
 
     .bg-3 {
@@ -94,6 +98,10 @@
     .bld-text {
         font-size: 9pt;
         font-weight: bold;
+    }
+
+    .table-inf td {
+        padding: 3px 0;
     }
 
 
@@ -110,12 +118,12 @@
     <h3>Welder Qualification Test Certificate</h3>
     <h4>Designation: {{$data->input('header_1')}}   t{{$data->input('material_thickness')}}   {{$data->input('welding_position_test')}} {{$data->input('header_2')}} </h4>
 
-    <table cellpadding="0" cellspacing="0">
+    <table cellpadding="0" cellspacing="0" class="mg-bt-10">
         <tr>
             <td width="150px">WPS reference</td>
             <td width="150px">{{$data->input('wps_reference')}}</td>
-            <td rowspan="6" style="text-align: center">Test Ref / Certificate No:<br> {{$data->input('test_ref')}}
-            <br> LR control No:<br> {{$data->input('lr_control')}}</td>
+            <td rowspan="6" style="text-align: center">Test Ref / Certificate No:<br> <strong>{{$data->input('test_ref')}}</strong> 
+            <br> LR control No:<br> <strong>{{$data->input('lr_control')}}</strong></td>
             <td rowspan="6" width="100px"><img src={{$data->input('photo_c')}}></td>
         </tr>
         <tr>
@@ -146,7 +154,7 @@
 
 
     <table cellpadding="0" cellspacing="0" >
-        <tbody>
+        <tbody class="table-inf">
             <!-- !!!-1 part-!!! -->
             <tr>
                 <td colspan="5" class="tdHead1">Test piece</td>
