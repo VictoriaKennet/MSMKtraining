@@ -38,7 +38,7 @@
         background: #dedede
     }
     input[type=checkbox] {
-        margin-top: 2px;
+        margin-top: 7px;
     }
     p {
         margin-top: 20px;
@@ -98,7 +98,7 @@
     }
 
     .table-inf td {
-        padding: 1px 2px;
+        padding: 2px 2px;
     }
 
 
