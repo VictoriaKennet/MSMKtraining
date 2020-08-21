@@ -34,8 +34,8 @@
         width: 100%;
     }
     .tdHead1 {
-        border-bottom: 1px solid #232323;
-        background: #999999
+        border-bottom: 0.2px solid #4C4C4C;
+        background: #d8d8d8
     }
     input[type=checkbox] {
         margin-top: 7px;
@@ -57,7 +57,7 @@
         width: 5%;
     }
     .tb-t-3 {
-        background: #999999;
+        background: #d8d8d8;
         width: 43%;
     }
     .main-table .tb-t-2 {
@@ -89,7 +89,7 @@
     }
 
     .bg-3 {
-        background: #999999;
+        background: #d8d8d8;
     }
 
     .bld-text {
@@ -121,15 +121,21 @@
     </div>
 
     <h3>Welder Qualification Test Certificate</h3>
-    <h4>Designation: {{$data->input('header_1')}}   t{{$data->input('material_thickness')}}   {{$data->input('welding_position_test')}} {{$data->input('header_2')}} </h4>
+    <h4>Designation: {{$data->input('header_1')}}   {{$data->input('header_2')}}   {{$data->input('header_3')}} </h4>
 
     <table cellpadding="0" cellspacing="0" class="mg-bt-10">
         <tr>
             <td width="150px">WPS reference</td>
-            <td width="150px">{{$data->input('wps_reference')}}</td>
-            <td rowspan="6" style="text-align: center">Test Ref / Certificate No:<br> <strong>{{$data->input('test_ref')}}</strong> 
+            @if($data->input('photo_c'))
+                <td width="150px">{{$data->input('wps_reference')}}</td>
+            @else
+                <td width="360px">{{$data->input('wps_reference')}}</td>
+            @endif
+            <td rowspan="6" style="text-align: center" height="100">Test Ref / Certificate No:<br> <strong>{{$data->input('test_ref')}}</strong>
             <br> LR control No:<br> <strong>{{$data->input('lr_control')}}</strong></td>
-            <td rowspan="6" width="100px"><img src={{$data->input('photo_c')}}></td>
+            @if($data->input('photo_c'))
+                <td rowspan="6" width="100px"><img src={{$data->input('photo_c')}}></td>
+            @endif
         </tr>
         <tr>
             <td>Welder`s name</td>
@@ -158,7 +164,7 @@
 
 
 
-    <table cellpadding="0" cellspacing="0" >
+    <table cellpadding="0" cellspacing="0" style='margin-top: -10px'>
         <tbody class="table-inf">
             <!-- !!!-1 part-!!! -->
             <tr>
@@ -235,24 +241,24 @@
             <!-- !!!-5 part-!!! -->
             <tr class="f-s-9 main-table">
                 <td rowspan="2" class="tb-t-1 br-b">Deposited thickness(mm)</td>
-                <td class="br-l" colspan="3">Process 1 &nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_deposit1')}}</td>
+                <td class="br-l" colspan="2">Process 1 {{$data->input('deposited_deposit1')}}</td>
                 @if($data->input('applicable_1'))
-                    <td colspan="2">Not Applicable</td>
+                    <td colspan="3">Not Applicable</td>
                     <td class="br-l bg-3" colspan="3">Not Applicable</td>
                 @else
-                    <td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;{{$data->input('deposited_thickness_root')}}</td>
+                    <td colspan="3">{{$data->input('deposited_thickness_root')}}</td>
                     <td class="br-l bg-3">{{$data->input('deposited_thickness_root_num_1')}}</td>
                     <td class="bg-3">to</td>
                     <td class="bg-3">{{$data->input('deposited_thickness_root_num_2')}}</td>
                 @endif
             </tr>
             <tr>
-                <td class="br-l br-b" colspan="3">Process 2 &nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_deposit2')}}</td>
+                <td class="br-l br-b" colspan="2">Process 2 {{$data->input('deposited_deposit2')}}</td>
                 @if($data->input('applicable_2'))
-                    <td colspan="2" class="br-b">Not Applicable</td>
+                    <td colspan="3" class="br-b">Not Applicable</td>
                     <td class="br-l bg-3 br-b" colspan="3">Not Applicable</td>
                 @else
-                    <td colspan="2" class="br-b">&nbsp;&nbsp;&nbsp;&nbsp;{{$data->input('deposited_thickness_rest')}}</td>
+                    <td colspan="3" class="br-b">{{$data->input('deposited_thickness_rest')}}</td>
                     <td class="br-l br-b bg-3">{{$data->input('deposited_thickness_rest_num_1')}}</td>
                     <td class="br-b bg-3">to</td>
                     <td class="br-b bg-3">{{$data->input('deposited_thickness_rest_num_2')}}</td>
@@ -378,6 +384,6 @@
         </tbody>
     </table>
 
-    
+
 
 </div>
