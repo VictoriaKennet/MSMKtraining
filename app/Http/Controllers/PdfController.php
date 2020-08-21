@@ -11,7 +11,7 @@ class PdfController extends Controller
     function createPDF(Request $request) {
         $data = $request;
         $pdf = PDF::loadView('pdf.test', ['data' => $data]);
-        return $pdf->stream('test.pdf');
+        return $pdf->stream('msmk.pdf');
     }
 
     function img() {

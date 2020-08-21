@@ -147,8 +147,7 @@
                                 </b-col>
                                 <b-col cols="3">
                                     <b-form-group>
-                                        <b-form-input name="header_2" list="main-header-2"></b-form-input>
-                                        <b-form-datalist id="main-header-2" :options="data.header" text-field="test">t{{outside_pipe_diameter}}</b-form-datalist>
+                                        <b-form-input name="header_2" list="main-header-2" :value="'t'+material_thickness"></b-form-input>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="3">
