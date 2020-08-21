@@ -830,7 +830,7 @@ export default {
 
         outsidePipeDiameter1() {
             if(this.outside_pipe_diameter == "Not Applicable") {
-                return "Not Applicable"
+                return "For D >=500"
             } else {
                 if (this.wps.product_type.test == "Plate (P)") {
                     return "For D >=500"
@@ -845,7 +845,7 @@ export default {
         },
         outsidePipeDiameter2() {
             if(this.outside_pipe_diameter == "Not Applicable") {
-                return ""
+                return "or >=75"
             } else {
                 if(this.wps.product_type.test == "Plate (P)") {
                     return "or >=75"
@@ -856,10 +856,10 @@ export default {
         },
         outsidePipeDiameter3() {
             if(this.outside_pipe_diameter == "Not Applicable") {
-                return ""
+                return "in PA, PB, PC and PD rotated"
             } else {
                 if(this.wps.product_type.test == "Plate (P)") {
-                    return "in PA, PB, PC "
+                    return "in PA, PB, PC and PD rotated"
                 } else {
                     if(this.outside_pipe_diameter < 25) {
                         return this.outside_pipe_diameter * 2

@@ -64,21 +64,18 @@
         border-left-color: #232323; /* Цвет линии слева */
         border-left-style: solid; /* Стиль линии */
         border-left-width: 1px;  /* Толщина линии */
-        padding-left: 3px;  /* Расстояние между линией и текстом */
     }
 
     .main-table .tb-t-3 {
         border-left-color: #232323; /* Цвет линии слева */
         border-left-style: solid; /* Стиль линии */
         border-left-width: 1px;  /* Толщина линии */
-        padding-left: 3px;  /* Расстояние между линией и текстом */
     }
 
     .br-l {
         border-left-color: #232323; /* Цвет линии слева */
         border-left-style: solid; /* Стиль линии */
         border-left-width: 1px;  /* Толщина линии */
-        padding-left: 3px;  /* Расстояние между линией и текстом */
     }
 
     .br-b {
@@ -101,7 +98,7 @@
     }
 
     .table-inf td {
-        padding: 3px 0;
+        padding: 3px;
     }
 
 
@@ -258,7 +255,7 @@
             <tr class="f-s-9 main-table">
                 <td class="tb-t-1">Outside pipe diameter(mm)</td>
                 <td colspan="4" class="br-l">{{$data->input('outside_pipe_diameter')}}</td>
-                <td colspan="3" class="tb-t-3">{{$data->input('outside_pipe_diameter_1')}} {{$data->input('outside_pipe_diameter_2')}} {{$data->input('outside_pipe_diameter_3')}} and PD rotated</td>
+                <td colspan="3" class="tb-t-3">{{$data->input('outside_pipe_diameter_1')}} {{$data->input('outside_pipe_diameter_2')}} {{$data->input('outside_pipe_diameter_3')}}</td>
 
                 <!-- <td class="br-l bg-3">{{$data->input('outside_pipe_diameter_1')}}</td>
                 <td class="bg-3">{{$data->input('outside_pipe_diameter_2')}}</td>
