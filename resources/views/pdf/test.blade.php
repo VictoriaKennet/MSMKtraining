@@ -84,6 +84,10 @@
         border-bottom-width: 1px;  /* Толщина линии */
     }
 
+    .mg-bt-10 {
+        margin-bottom: 5px;
+    }
+
     .bg-3 {
         background: #dedede;
     }
@@ -96,6 +100,8 @@
     .table-inf td {
         padding: 1px 2px;
     }
+
+
 </style>
 
 <div class="wrapper">
@@ -147,66 +153,66 @@
         <tbody class="table-inf">
             <!-- !!!-1 part-!!! -->
             <tr>
-                <td colspan="5" class="tdHead1">Test piece</td>
+                <td colspan="6" class="tdHead1">Test piece</td>
                 <td colspan="3" class="tdHead1">Range of qualification</td>
             </tr>
             <tr class = "f-s-9 main-table">
                 <td class="tb-t-1">Welding process(es)</td>
-                <td colspan="4" class="tb-t-2">{{$data->input('welding_processes_test')}}</td>
+                <td colspan="5" class="tb-t-2">{{$data->input('welding_processes_test')}}</td>
                 <td colspan="3" class="tb-t-3">{{$data->input('welding_processes_range')}}</td>
             </tr>
             <tr class = "f-s-9 main-table">
                 <td class="tb-t-1">Transfer mode</td>
-                <td colspan="4" class="tb-t-2">{{$data->input('transfer_mode_test')}}</td>
+                <td colspan="5" class="tb-t-2">{{$data->input('transfer_mode_test')}}</td>
                 <td colspan="3" class="tb-t-3">{{$data->input('transfer_mode_range')}}</td>
             </tr>
             <tr class = "f-s-9 main-table">
                 <td class="tb-t-1">Product type (plate of pipe)</td>
-                <td colspan="4" class="tb-t-2">{{$data->input('product_type_test')}}</td>
+                <td colspan="5" class="tb-t-2">{{$data->input('product_type_test')}}</td>
                 <td colspan="3" class="tb-t-3">{{$data->input('product_type_range')}}</td>
             </tr>
             <tr class = "f-s-9 main-table">
                 <td class="tb-t-1 br-b">Type of weld</td>
-                <td colspan="4" class="tb-t-2 br-b">{{$data->input('type_of_weld_test')}}</td>
+                <td colspan="5" class="tb-t-2 br-b">{{$data->input('type_of_weld_test')}}</td>
                 <td colspan="3" class="tb-t-3 br-b">{{$data->input('type_of_weld_range')}}</td>
             </tr>
             <!-- !!!-2 part-!!! -->
             <tr class = "f-s-9 main-table">
                 <td class="tb-t-1">Parent material group(s)/subgrps</td>
-                <td colspan="4" class="tb-t-2">{{$data->input('parent_material_group_test')}}</td>
+                <td colspan="5" class="tb-t-2">{{$data->input('parent_material_group_test')}}</td>
                 <td colspan="3" class="tb-t-3">{{$data->input('parent_material_group_range')}}</td>
             </tr>
             <tr class="f-s-9 main-table">
                 <td class="tb-t-1 br-b">Filler material groups(s)</td>
-                <td colspan="4" class="tb-t-2 br-b">{{$data->input('filler_material_group_test')}}</td>
+                <td colspan="5" class="tb-t-2 br-b">{{$data->input('filler_material_group_test')}}</td>
                 <td colspan="3" class="tb-t-3 br-b">{{$data->input('filler_material_group_range')}}</td>
             </tr>
             <!-- !!!-3 part-!!! -->
             <tr class="f-s-9 main-table">
-                <td rowspan="2" class="tb-t-1 br-b">Filler material ( Designation)</td>
+                <td rowspan="2" class="tb-t-1 br-b">Filler material (Designation)</td>
                 <td class="br-l" colspan="2">Process 1</td>
-                <td colspan="2" >{{$data->input('process_data_test_1')}}</td>
+                <td colspan="3" >{{$data->input('process_data_test_1')}}</td>
                 <td colspan="3" class="tb-t-3">{{$data->input('process_data_range_1')}}</td>
             </tr>
             <tr class="f-s-9 main-table">
                 <td class="br-l br-b" colspan="2">Process 2</td>
-                <td colspan="2" class="br-b">{{$data->input('process_data_test_2')}}</td>
+                <td colspan="3" class="br-b">{{$data->input('process_data_test_2')}}</td>
                 <td colspan="3" class="tb-t-3 br-b">{{$data->input('process_data_range_2')}}</td>
             </tr>
             <!-- !!!-4 part-!!! -->
             <tr class="f-s-9 main-table">
                 <td class="tb-t-1">Shielding gas</td>
-                <td colspan="4"" class="tb-t-2">{{$data->input('shielding_gas_test')}}</td>
+                <td colspan="5" class="tb-t-2">{{$data->input('shielding_gas_test')}}</td>
                 <td colspan="3" class="tb-t-3">{{$data->input('shielding_gas_range')}}</td>
             </tr>
             <tr class="f-s-9 main-table">
                 <td class="tb-t-1">Type of current and polarity</td>
-                <td colspan="4" class="tb-t-2">{{$data->input('type_polarity_test')}}</td>
+                <td colspan="5" class="tb-t-2">{{$data->input('type_polarity_test')}}</td>
                 <td colspan="3" class="tb-t-3">{{$data->input('type_polarity_range')}}</td>
             </tr>
             <tr class="f-s-9 main-table">
                 <td class="tb-t-1 br-b">Material thickness(mm)</td>
-                <td colspan="4" class="br-l br-b">{{$data->input('material_thickness')}}</td>
+                <td colspan="5" class="br-l br-b">{{$data->input('material_thickness')}}</td>
                 <td colspan="3" class="br-l br-b tb-t-3">
 
                 @if($data->input('all_thickness'))
@@ -220,7 +226,7 @@
             <!-- !!!-5 part-!!! -->
             <tr class="f-s-9 main-table">
                 <td rowspan="2" class="tb-t-1 br-b">Deposited thickness(mm)</td>
-                <td class="br-l" colspan="2">Process 1 &nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_deposit1')}}</td>
+                <td class="br-l" colspan="3">Process 1 &nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_deposit1')}}</td>
                 @if($data->input('applicable_1'))
                     <td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;NA</td>
                     <td class="br-l bg-3" colspan="3">Not Applicable</td>
@@ -232,7 +238,7 @@
                 @endif
             </tr>
             <tr>
-                <td class="br-l br-b" colspan="2">Process 2 &nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_deposit2')}}</td>
+                <td class="br-l br-b" colspan="3">Process 2 &nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_deposit2')}}</td>
                 @if($data->input('applicable_2'))
                     <td colspan="2" class="br-b">&nbsp;&nbsp;&nbsp;&nbsp;NA</td>
                     <td class="br-l bg-3 br-b" colspan="3">Not Applicable</td>
@@ -247,7 +253,7 @@
             <!-- !!!-6 part-!!! -->
             <tr class="f-s-9 main-table">
                 <td class="tb-t-1">Outside pipe diameter(mm)</td>
-                <td colspan="4" class="br-l">{{$data->input('outside_pipe_diameter')}}</td>
+                <td colspan="5" class="br-l">{{$data->input('outside_pipe_diameter')}}</td>
                 <td colspan="3" class="tb-t-3">{{$data->input('outside_pipe_diameter_1')}} {{$data->input('outside_pipe_diameter_2')}} {{$data->input('outside_pipe_diameter_3')}}</td>
 
                 <!-- <td class="br-l bg-3">{{$data->input('outside_pipe_diameter_1')}}</td>
@@ -256,26 +262,26 @@
             </tr>
             <tr class="f-s-9 main-table">
                 <td class="tb-t-1">Welding position</td>
-                <td colspan="4" class="tb-t-2">{{$data->input('welding_position_test')}}</td>
+                <td colspan="5" class="tb-t-2">{{$data->input('welding_position_test')}}</td>
                 <td colspan="3" class="tb-t-3">{{$data->input('welding_position_range')}}</td>
             </tr>
             <tr class="f-s-9 main-table">
                 <td class="tb-t-1">Weld details</td>
-                <td colspan="4" class="tb-t-2">{{$data->input('welding_details_test')}}</td>
+                <td colspan="5" class="tb-t-2">{{$data->input('welding_details_test')}}</td>
                 <td colspan="3" class="tb-t-3">{{$data->input('welding_details_range')}}</td>
             </tr>
             <tr class="f-s-9 main-table">
                 <td class="tb-t-1 br-b">Multi-layer/single layer</td>
-                <td colspan="4" class="tb-t-2 br-b">{{$data->input('single_layer_test')}}</td>
+                <td colspan="5" class="tb-t-2 br-b">{{$data->input('single_layer_test')}}</td>
                 <td colspan="3" class="tb-t-3 br-b">{{$data->input('single_layer_range')}}</td>
             </tr>
             <!-- !!!-7 part-!!! -->
             <tr>
-                <td colspan="5" class="bld-text br-b">Supplementary fillet weld test (completed in conjunction with a butt weld qualification):</td>
-                <td colspan="3" class="br-l br-b">{{$data->input('weld_test')}}</td>
+                <td colspan="6" class="bld-text br-b">Supplementary fillet weld test (completed in conjunction with a butt weld qualification):</td>
+                <td colspan="4" class="br-l br-b">{{$data->input('weld_test')}}</td>
             </tr>
             <tr>
-                <td colspan="8" class="bg-3 br-b">Tests Performed</td>
+                <td colspan="9" class="bg-3 br-b">Tests Performed</td>
             </tr>
         </tbody>
     </table>
