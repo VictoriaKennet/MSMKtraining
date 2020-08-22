@@ -234,18 +234,18 @@
                     <div>All Thickness</div>
                 @else
                     @if($data->input('material_thickness')>=3)
-                        <div>From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction</div>
+                        <div>From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction</div>
                     @else
                         @if ($data->input('material_thickness')*2) < 3)
-                        <div>From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('material_thickness')}}
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</div>
+                        <div>From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('material_thickness')}}
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</div>
                         @else
-                            <div>From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('material_thickness')}}
-                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to
-                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('material_thickness')*2}}</div>
+                            <div>From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('material_thickness')}}
+                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to
+                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('material_thickness')*2}}</div>
 
                         @endif
                     @endif
@@ -256,41 +256,52 @@
             <!-- !!!-5 part-!!! -->
             <tr class="f-s-9 main-table">
                 <td rowspan="2" class="tb-t-1 br-b">Deposited thickness(mm)</td>
-                <td class="br-l" colspan="2">Process 1 {{$data->input('deposited_deposit1')}}</td>
                 @if($data->input('applicable_1'))
-                    <td colspan="3">Not Applicable</td>
+                    <td class="br-l" colspan="5">Process 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not Applicable</td>
                     <td class="br-l bg-3" colspan="3">Not Applicable</td>
                 @else
-                    <td colspan="3">{{$data->input('deposited_thickness_root')}}</td>
-                    <td class="br-l bg-3" colspan="3">
-                    @if($data->input('deposited_thickness_root') < 3)
-                        <div>From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_root')}}
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_root_num_2')}}</div>
+                    @if($data->input('deposited_deposit1') == null)
+                        <td class="br-l" colspan="5">Process 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_root')}}</td>
+                        <td class="br-l bg-3" colspan="3">
                     @else
-                        <div>From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_root_num_2')}}</div>
+                        <td class="br-l" colspan="5">Process 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_deposit1')}}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_root')}}</td>
+                        <td class="br-l bg-3" colspan="3">
+                    @endif
+
+                    @if($data->input('deposited_thickness_root') < 3)
+                        <div>From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_root')}}
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_root_num_2')}}</div>
+                    @else
+                        <div>From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_root_num_2')}}</div>
 
                     @endif</td>
                 @endif
             </tr>
             <tr>
-                <td class="br-l br-b" colspan="2">Process 2 {{$data->input('deposited_deposit2')}}</td>
                 @if($data->input('applicable_2'))
-                    <td colspan="3" class="br-b">Not Applicable</td>
+                    <td class="br-l br-b" colspan="5">Process 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not Applicable</td>
                     <td class="br-l bg-3 br-b" colspan="3">Not Applicable</td>
                 @else
-                    <td colspan="3" class="br-b">{{$data->input('deposited_thickness_rest')}}</td>
-                    <td class="br-l br-b bg-3" colspan="3">
-                    @if($data->input('deposited_thickness_rest') < 3)
-                        <div>From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_rest')}}
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_rest_num_2')}}</div>
+                    @if($data->input('deposited_deposit2') == null)
+                        <td class="br-l br-b" colspan="5">Process 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_rest')}}</td>
+                        <td class="br-l bg-3 br-b" colspan="3">
                     @else
-                        <div>From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_rest_num_2')}}</div>
+                        <td class="br-l br-b" colspan="5">Process 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_deposit2')}}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_rest')}}</td>
+                        <td class="br-l bg-3 br-b" colspan="3">
+                    @endif
+                    @if($data->input('deposited_thickness_rest') < 3)
+                        <div>From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_rest')}}
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_rest_num_2')}}</div>
+                    @else
+                        <div>From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to
+                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_rest_num_2')}}</div>
 
                     @endif</td>
                 @endif

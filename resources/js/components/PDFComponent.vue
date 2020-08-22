@@ -402,8 +402,8 @@
                                             <label for="input-default">Process 1</label>
                                         </b-col>
                                         <b-col cols="4">
-                                            <b-form-input name="deposited_deposit1" list="deposited-deposit1"></b-form-input>
-                                            <b-form-datalist id="deposited-deposit1" :options="deposit"></b-form-datalist>
+                                            <b-form-input name="deposited_deposit1" list="deposited-deposit1" :disabled="applicable_1"></b-form-input>
+                                            <b-form-datalist id="deposited-deposit1" :options="deposit" ></b-form-datalist>
                                         </b-col>
                                         <b-col cols="4">
                                             <b-form-input name="deposited_thickness_root" list="process" :disabled="applicable_1" v-model="deposited_thickness_root"></b-form-input>
@@ -415,7 +415,7 @@
                                             <label for="input-default">Process 2</label>
                                         </b-col>
                                         <b-col cols="4">
-                                            <b-form-input name="deposited_deposit2" list="deposited-deposit2"></b-form-input>
+                                            <b-form-input name="deposited_deposit2" list="deposited-deposit2" :disabled="applicable_2"></b-form-input>
                                             <b-form-datalist id="deposited-deposit2" :options="deposit"></b-form-datalist>
                                         </b-col>
                                         <b-col cols="4">
