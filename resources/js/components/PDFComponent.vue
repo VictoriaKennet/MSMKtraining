@@ -808,7 +808,7 @@ export default {
         },
         depositedThicknessRootNum2() {
             if ((this.deposited_thickness_root >= 3) && (this.deposited_thickness_root < 12)) {
-                return "25"
+                return this.deposited_thickness_rest * 2
             } else {
                 if (this.deposited_thickness_root >= 12) {
                     return "No Restriction"
@@ -827,7 +827,7 @@ export default {
         },
         depositedThicknessRestNum2() {
             if ((this.deposited_thickness_rest >= 3) && (this.deposited_thickness_rest < 12)) {
-                return "25"
+                return this.deposited_thickness_rest * 2
             } else {
                 if (this.deposited_thickness_rest >= 12) {
                     return "No Restriction"

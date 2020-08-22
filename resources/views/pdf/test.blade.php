@@ -283,14 +283,14 @@
             </tr>
             <tr>
                 @if($data->input('applicable_2'))
-                    <td class="br-l br-b" colspan="5">Process 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not Applicable</td>
+                    <td class="br-l br-b" colspan="5">Process 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Not Applicable</td>
                     <td class="br-l bg-3 br-b" colspan="3">Not Applicable</td>
                 @else
                     @if($data->input('deposited_deposit2') == null)
-                        <td class="br-l br-b" colspan="5">Process 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_rest')}}</td>
+                        <td class="br-l br-b" colspan="5">Process 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {{$data->input('deposited_thickness_rest')}}</td>
                         <td class="br-l bg-3 br-b" colspan="3">
                     @else
-                        <td class="br-l br-b" colspan="5">Process 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_deposit2')}}
+                        <td class="br-l br-b" colspan="5">Process 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  {{$data->input('deposited_deposit2')}}
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('deposited_thickness_rest')}}</td>
                         <td class="br-l bg-3 br-b" colspan="3">
                     @endif
