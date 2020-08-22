@@ -22,7 +22,7 @@ class CreateProductTypeTable extends Migration
 
         Schema::table('product_type', function (Blueprint $table) {
             $table->index('wps_reference_id');
-            $table->foreign('wps_reference_id')->references('id')->on('wps_reference');
+            $table->foreign('wps_reference_id')->references('id')->on('wps_reference')->onDelete('cascade');
         });
     }
 

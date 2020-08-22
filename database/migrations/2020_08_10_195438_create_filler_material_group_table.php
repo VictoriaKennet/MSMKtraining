@@ -22,7 +22,7 @@ class CreateFillerMaterialGroupTable extends Migration
 
         Schema::table('filler_material_group', function (Blueprint $table) {
             $table->index('wps_reference_id');
-            $table->foreign('wps_reference_id')->references('id')->on('wps_reference');
+            $table->foreign('wps_reference_id')->references('id')->on('wps_reference')->onDelete('cascade');
         });
     }
 

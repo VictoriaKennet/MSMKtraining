@@ -121,7 +121,7 @@
                         <b-card-body>
                             <!-- Выпадающий список wps reference -->
                             <b-row>
-                                <b-col cols="11">
+                                <b-col cols="10">
                                     <b-form-group label="WPS-Reference">
                                         <b-form-input list="wps-reference" name="wps_reference" @change="setWPS($event)"></b-form-input>
                                         <b-form-datalist id="wps-reference" :options="data.wps_reference" text-field="name">
@@ -130,7 +130,12 @@
                                 </b-col>
                                 <b-col cols="1">
                                     <router-link to="/added">
-                                        <b-icon icon="plus-circle-fill" class="icon_plus" font-scale="2" v-b-modal.my-modal></b-icon>
+                                        <b-icon icon="plus-circle-fill" class="icon_plus" font-scale="2"></b-icon>
+                                    </router-link>
+                                </b-col>
+                                <b-col cols="1" v-if="wps.id">
+                                    <router-link :to="'/edit/'+wps.id">
+                                        <b-icon icon="pencil-square" class="icon_plus" font-scale="2"></b-icon>
                                     </router-link>
                                 </b-col>
                             </b-row>

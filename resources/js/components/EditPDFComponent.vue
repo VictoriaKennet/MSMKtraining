@@ -1,7 +1,7 @@
 <template>
 <div>
     <b-container class="mt-2 mb-2">
-        <h1 style="text-align: center">Added new WPS-Reference</h1>
+        <h1 style="text-align: center">Edit WPS-Reference</h1>
         <b-form >
             <b-card no-body class="mb-1">
                 <b-card-body>
@@ -12,7 +12,7 @@
                                 <b-form-input
                                     list="wps-reference"
                                     name="wps_reference"
-                                    v-model="newElement.name"
+                                    v-model="data.wps_reference.name"
                                     v-validate="{ required: true}"
                                     :class="errors.has('wps_reference') ? 'input-has-error' : ''"
                                 ></b-form-input>
@@ -29,7 +29,7 @@
                                 <b-form-input
                                     name="header_1"
                                     list="main-header-1"
-                                    v-model="newElement.header.test"
+                                    v-model="data.wps_reference.header.test"
                                     @change="setElementWPS($event, 'header')"
                                     v-validate="{ required: true}"
                                     :class="errors.has('header_1') ? 'input-has-error' : ''"
@@ -46,7 +46,7 @@
                                 <b-form-input
                                     name="header_2"
                                     list="main-header-2"
-                                    v-model="newElement.header.range"
+                                    v-model="data.wps_reference.header.range"
                                     v-validate="{ required: true}"
                                     :class="errors.has('header_2') ? 'input-has-error' : ''"
                                 ></b-form-input>
@@ -76,7 +76,7 @@
                                 <b-form-input
                                     name="welding_processes_test"
                                     list="welding-processes"
-                                    v-model="newElement.welding_processes.test"
+                                    v-model="data.wps_reference.welding_processes.test"
                                     @change="setElementWPS($event, 'welding_processes')"
                                     v-validate="{ required: true}"
                                     :class="errors.has('welding_processes_test') ? 'input-has-error' : ''"
@@ -89,7 +89,7 @@
                                 <b-form-input
                                     name="welding_processes_range"
                                     list="welding-processes"
-                                    v-model="newElement.welding_processes.range"
+                                    v-model="data.wps_reference.welding_processes.range"
                                     v-validate="{ required: true}"
                                     :class="errors.has('welding_processes_range') ? 'input-has-error' : ''"
                                 ></b-form-input>
@@ -107,7 +107,7 @@
                                 <b-form-input
                                     name="product_type_test"
                                     list="product-type"
-                                    v-model="newElement.product_type.test"
+                                    v-model="data.wps_reference.product_type.test"
                                     @change="setElementWPS($event, 'product_type')"
                                     v-validate="{ required: true}"
                                     :class="errors.has('product_type_test') ? 'input-has-error' : ''"
@@ -120,7 +120,7 @@
                                 <b-form-input
                                     name="product_type_range"
                                     list="product-type"
-                                    v-model="newElement.product_type.range"
+                                    v-model="data.wps_reference.product_type.range"
                                     v-validate="{ required: true}"
                                     :class="errors.has('product_type_range') ? 'input-has-error' : ''"
                                 ></b-form-input>
@@ -138,7 +138,7 @@
                                 <b-form-input
                                     name="type_of_weld_test"
                                     list="type-weld"
-                                    v-model="newElement.type_of_weld.test"
+                                    v-model="data.wps_reference.type_of_weld.test"
                                     @change="setElementWPS($event, 'type_of_weld')"
                                     v-validate="{ required: true}"
                                     :class="errors.has('type_of_weld_test') ? 'input-has-error' : ''"
@@ -151,7 +151,7 @@
                                 <b-form-input
                                     name="type_of_weld_range"
                                     list="type-weld"
-                                    v-model="newElement.type_of_weld.range"
+                                    v-model="data.wps_reference.type_of_weld.range"
                                     v-validate="{ required: true}"
                                     :class="errors.has('type_of_weld_range') ? 'input-has-error' : ''"
                                 ></b-form-input>
@@ -169,7 +169,7 @@
                                 <b-form-input
                                     name="parent_material_group_test"
                                     list="parent-material-group"
-                                    v-model="newElement.parent_material_group.test"
+                                    v-model="data.wps_reference.parent_material_group.test"
                                     @change="setElementWPS($event, 'parent_material_group')"
                                     v-validate="{ required: true}"
                                     :class="errors.has('parent_material_group_test') ? 'input-has-error' : ''"
@@ -182,7 +182,7 @@
                                 <b-form-input
                                     name="parent_material_group_range"
                                     list="parent-material-group"
-                                    v-model="newElement.parent_material_group.range"
+                                    v-model="data.wps_reference.parent_material_group.range"
                                     v-validate="{ required: true}"
                                     :class="errors.has('parent_material_group_range') ? 'input-has-error' : ''"
                                 ></b-form-input>
@@ -200,7 +200,7 @@
                                 <b-form-input
                                     name="filler_material_group_test"
                                     list="filler-material-group"
-                                    v-model="newElement.filler_material_group.test"
+                                    v-model="data.wps_reference.filler_material_group.test"
                                     @change="setElementWPS($event, 'filler_material_group')"
                                     v-validate="{ required: true}"
                                     :class="errors.has('filler_material_group_test') ? 'input-has-error' : ''"
@@ -213,7 +213,7 @@
                                 <b-form-input
                                     name="filler_material_group_range"
                                     list="filler-material-group"
-                                    v-model="newElement.filler_material_group.range"
+                                    v-model="data.wps_reference.filler_material_group.range"
                                     v-validate="{ required: true}"
                                     :class="errors.has('filler_material_group_range') ? 'input-has-error' : ''"
                                 ></b-form-input>
@@ -235,7 +235,7 @@
                                     <b-form-input
                                         name="process_data_test_1"
                                         list="process_data_1"
-                                        v-model="newElement.filler_material_designation[0].process.test"
+                                        v-model="data.wps_reference.filler_material_designation[0].process.test"
                                         @change="setElementWPSProcess($event, 'process_data', 0)"
                                         v-validate="{ required: true}"
                                         :class="errors.has('process_data_test_1') ? 'input-has-error' : ''"
@@ -251,7 +251,7 @@
                                     <b-form-input
                                         name="process_data_test_2"
                                         list="process_data_2"
-                                        v-model="newElement.filler_material_designation[1].process.test"
+                                        v-model="data.wps_reference.filler_material_designation[1].process.test"
                                         @change="setElementWPSProcess($event, 'process_data', 1)"
                                         v-validate="{ required: true}"
                                         :class="errors.has('process_data_test_2') ? 'input-has-error' : ''"
@@ -265,7 +265,7 @@
                                 <b-form-input
                                     name="process_data_range_1"
                                     list="process-data-2-range-1"
-                                    v-model="newElement.filler_material_designation[0].process.range"
+                                    v-model="data.wps_reference.filler_material_designation[0].process.range"
                                     v-validate="{ required: true}"
                                     :class="errors.has('process_data_range_1') ? 'input-has-error' : ''"
                                 ></b-form-input>
@@ -275,7 +275,7 @@
                                 <b-form-input
                                     name="process_data_range_2"
                                     list="process-data-2-range-2"
-                                    v-model="newElement.filler_material_designation[1].process.range"
+                                    v-model="data.wps_reference.filler_material_designation[1].process.range"
                                     v-validate="{ required: true}"
                                     :class="errors.has('process_data_range_2') ? 'input-has-error' : ''"
                                 ></b-form-input>
@@ -290,6 +290,7 @@
                 <b-col>
                     <div class="d-flex justify-content-center">
                         <input type="button" value="Save" class="button" @click="save">
+                        <input type="button" value="Delete" class="button-red ml-2" @click="del">
                         <a href="/" class="button ml-2">Back</a>
                     </div>
                 </b-col>
@@ -304,7 +305,49 @@ export default {
     data() {
         return {
             data: {
-                wps_reference: [],
+                wps_reference: {
+                    name: "",
+                    filler_material_designation: [
+                        {
+                            process_number: "1",
+                            process: {
+                                range: "",
+                                test: ""
+                            }
+                        },
+                        {
+                            process_number: "2",
+                            process: {
+                                range: "",
+                                test: ""
+                            }
+                        }
+                    ],
+                    filler_material_group: {
+                        range: "",
+                        test: ""
+                    },
+                    parent_material_group: {
+                        range: "",
+                        test: ""
+                    },
+                    product_type: {
+                        range: "",
+                        test: ""
+                    },
+                    type_of_weld: {
+                        range: "",
+                        test: ""
+                    },
+                    welding_processes: {
+                        range: "",
+                        test: ""
+                    },
+                    header: {
+                        range: "",
+                        test: ""
+                    }
+                },
                 parent_material_group: [],
                 product_type: [],
                 transfer_mode: [],
@@ -318,50 +361,7 @@ export default {
                 welding_processes: [],
                 process_data: [],
                 header: [],
-            },
-            newElement: {
-                name: "",
-                filler_material_designation: [
-                    {
-                        process_number: "1",
-                        process: {
-                            range: "",
-                            test: ""
-                        }
-                    },
-                    {
-                        process_number: "2",
-                        process: {
-                            range: "",
-                            test: ""
-                        }
-                    }
-                ],
-                filler_material_group: {
-                    range: "",
-                    test: ""
-                },
-                parent_material_group: {
-                    range: "",
-                    test: ""
-                },
-                product_type: {
-                    range: "",
-                    test: ""
-                },
-                type_of_weld: {
-                    range: "",
-                    test: ""
-                },
-                welding_processes: {
-                    range: "",
-                    test: ""
-                },
-                header: {
-                    range: "",
-                    test: ""
-                }
-            },
+            }
         }
     },
     created() {
@@ -372,16 +372,16 @@ export default {
             var result = this.data[array].find((item) => {
                 return item.test == event;
             })
-            this.newElement[array].range = result ? this.newElement[array].range = result.range : this.newElement[array].range = "";
+            this.data.wps_reference[array].range = result ? this.data.wps_reference[array].range = result.range : this.data.wps_reference[array].range = "";
         },
         setElementWPSProcess(event, array, index) {
             var result = this.data[array].find((item) => {
                 return item.test == event;
             })
-            this.newElement.filler_material_designation[index].process.range = result ? this.newElement.filler_material_designation[index].process.range = result.range : this.newElement.filler_material_designation[index].process.range = "";
+            this.data.wps_reference.filler_material_designation[index].process.range = result ? this.data.wps_reference.filler_material_designation[index].process.range = result.range : this.data.wps_reference.filler_material_designation[index].process.range = "";
         },
         getData() {
-            axios.get('/api/pdf-data').then(response => {
+            axios.get('/api/pdf-data/'+this.$route.params.id).then(response => {
                 Object.assign(this.data, response.data);
             })
         },
@@ -390,13 +390,27 @@ export default {
                 if (!result) {
                     return;
                 } else {
-                    axios.post('/api/added-wps', this.newElement).then((response) => {
+                    axios.post('/api/pdf-data/'+this.$route.params.id, this.data.wps_reference).then((response) => {
                         window.location.href = '/';
                     }).catch((error) => {
                         alert("Error")
                     });
                 }
             })
+        },
+        del() {
+            swal({
+                title: "Do you want to delete?",
+                icon: "warning"
+            }).then((willDelete) => {
+                if (willDelete) {
+                    axios.delete('/api/pdf-data/'+this.$route.params.id).then((response) => {
+                        window.location.href = '/';
+                    }).catch((error) => {
+                        alert("Error")
+                    });
+                }
+            });
         }
     }
 }
@@ -405,6 +419,23 @@ export default {
 <style lang="css">
     a.button {
         text-decoration: none;
+    }
+    .button-red {
+        background-color: white;
+        color: red;
+        border: 2px solid red;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 12px;
+        transition-duration: 0.4s;
+        margin-top: 20px;
+    }
+    .button-red:hover {
+        background-color: red;
+        color: white;
     }
     .input-has-error {
         border: 1px solid red;
