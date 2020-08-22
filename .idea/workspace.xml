@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7342e5d9-e0c5-4432-9e8d-e416b7703e9b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/MSMKTraining.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/PDFComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/PDFComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pdf/test.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pdf/test.blade.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1gSHBobZ6FRN1oyYbGlfUSkplGZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Programms\OSPanel\domains\MSMKTraining" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7342e5d9-e0c5-4432-9e8d-e416b7703e9b" name="Default Changelist" comment="" />
+      <created>1598100942987</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598100942987</updated>
+      <workItem from="1598100944196" duration="1160000" />
+      <workItem from="1598102240350" duration="7883000" />
+      <workItem from="1598117308615" duration="355000" />
+      <workItem from="1598134468843" duration="166000" />
+    </task>
+    <task id="LOCAL-00001" summary="fix space">
+      <created>1598110839715</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1598110839715</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix space">
+      <created>1598112305265</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1598112305265</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.php" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix space" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix space" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="734" y="362" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598106315262">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="734" y="362" key="#com.intellij.fileTypes.FileTypeChooser/0.40.1920.1040@0.40.1920.1040" timestamp="1598106315262" />
+    <state x="585" y="128" key="CommitChangelistDialog2" timestamp="1598112303753">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="585" y="128" key="CommitChangelistDialog2/0.40.1920.1040@0.40.1920.1040" timestamp="1598112303753" />
+    <state x="461" y="204" key="SettingsEditor" timestamp="1598101904706">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="461" y="204" key="SettingsEditor/0.40.1920.1040@0.40.1920.1040" timestamp="1598101904706" />
+    <state x="552" y="293" key="Vcs.Push.Dialog.v2" timestamp="1598116937500">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="552" y="293" key="Vcs.Push.Dialog.v2/0.40.1920.1040@0.40.1920.1040" timestamp="1598116937500" />
+  </component>
+</project>
