@@ -719,6 +719,8 @@ export default {
             welding_details_range: "",
 
             material_thickness: 0,
+            material_thickness1: "",
+            material_thickness2: "",
             deposited_thickness_root: 0,
             deposited_thickness_rest: 0,
             outside_pipe_diameter: 0,
@@ -792,49 +794,40 @@ export default {
     },
     computed: {
         depositedThicknessRootNum1() {
-            if(this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)') {
-                return "Not Applicable"
-            } else {
-                if(this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)' || this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW) AA23') {
-                    return "Not Applicable"
-                } else {
-                    if(this.material_thickness <= 3) {
-                        return 'From '+this.material_thickness
-                    } else {
-                        return 'From 3'
-                    }
-                }
-            }
+        if(this.deposited_thickness_root < 3) {
+            return 'From '+ this.deposited_thickness_root
+        } else {
+            return 'From 3'
+        }
+
         },
         depositedThicknessRootNum2() {
-            if(this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)' || this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW) AB24') {
-                return "Not Applicable"
+            if ((this.deposited_thickness_root >= 3) && (this.deposited_thickness_root < 12)) {
+                return "25"
             } else {
-                if (this.deposited_thickness_root < 3) {
-                    return this.deposited_thickness_root * 2
-                } else {
+                if (this.deposited_thickness_root >= 12) {
+                    return "No Restriction"
+                } else
+                {
                     return this.deposited_thickness_root * 2
                 }
             }
         },
         depositedThicknessRestNum1() {
-            if(this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)') {
-                return "Not Applicable"
+            if(this.deposited_thickness_rest < 3) {
+                return 'From '+ this.deposited_thickness_rest
             } else {
-                if (this.deposited_thickness_rest <= 12) {
-                    return "From 3"
-                } else {
-                    return "From 3"
-                }
+                return 'From 3'
             }
         },
         depositedThicknessRestNum2() {
-            if(this.wps.type_of_weld.test == 'Butt Weld In Pipe (BW)') {
-                return "Not Applicable"
+            if ((this.deposited_thickness_rest >= 3) && (this.deposited_thickness_rest < 12)) {
+                return "25"
             } else {
-                if (this.deposited_thickness_rest <= 12) {
+                if (this.deposited_thickness_rest >= 12) {
                     return "No Restriction"
-                } else {
+                } else
+                {
                     return this.deposited_thickness_rest * 2
                 }
             }
@@ -844,6 +837,7 @@ export default {
         materialThicknessNumb() {
             let result = '';
                 if (this.material_thickness >= 3){
+                    this.material_thickness1 = "From &nbsp;&nbsp;&nbsp; 3"
                     return "From 3 To No Restriction";
                 } else {
                     result = "From " + this.material_thickness + " To "
