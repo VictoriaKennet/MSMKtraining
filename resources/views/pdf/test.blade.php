@@ -228,7 +228,7 @@
             <tr class="f-s-9 main-table">
                 <td class="tb-t-1 br-b">Material thickness(mm)</td>
                 <td colspan="5" class="br-l br-b">{{$data->input('material_thickness')}}</td>
-                @if($data->input('all_thickness'))
+                @if($data->input('all_thickness') || $data->input('all_thickness') == 0)
                     <td colspan="2" class="br-l br-b tb-t-3"> All Thickness </td>
                 @else
                     @if($data->input('material_thickness')>=3)
