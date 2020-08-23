@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import PDFComponent from './components/PDFComponent.vue'
 import NewPDFComponent from './components/NewPDFComponent.vue'
 import EditPDFComponent from './components/EditPDFComponent.vue'
+import ClientsComponent from './components/ClientsComponent.vue'
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,11 @@ export default new VueRouter({
             path: '/edit/:id',
             name: 'edit',
             component: EditPDFComponent
+        },
+        {
+            path: '/clients',
+            name: 'clients',
+            component: ClientsComponent
         }
       ]
     })

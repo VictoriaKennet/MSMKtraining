@@ -96,34 +96,56 @@
                         <b-card-body>
                             <b-row>
                                 <b-col>
+                                    <!-- Поле ввода  -->
                                     <b-form-group label="Welder's name">
-                                        <b-form-input placeholder="Enter welder's name" name="name">
-                                        </b-form-input>
+                                        <b-form-input
+                                            placeholder="Enter welder's name"
+                                            v-model="clientData.name"
+                                            name="name"
+                                        ></b-form-input>
                                     </b-form-group>
 
-                                    <!-- /Поле ввода  -->
+                                    <!-- Поле ввода  -->
                                     <b-form-group label="Identification">
-                                        <b-form-input placeholder="Enter identification" name="identification">
-                                        </b-form-input>
+                                        <b-form-input
+                                            placeholder="Enter identification"
+                                            v-model="clientData.identification"
+                                            name="identification"
+                                        ></b-form-input>
                                     </b-form-group>
 
-                                    <!-- /Поле ввода  -->
+                                    <!-- Поле ввода  -->
                                     <b-form-group label="Employer">
-                                        <b-form-input placeholder="Choose employer" list="employer" name="employer"></b-form-input>
+                                        <b-form-input
+                                            placeholder="Choose employer"
+                                            list="employer"
+                                            name="employer"
+                                            v-model="clientData.employer"
+                                        ></b-form-input>
                                         <b-form-datalist id="employer" :options="employer">
                                         </b-form-datalist>
                                     </b-form-group>
 
-                                    <!-- /Поле ввода  -->
+                                    <!-- Поле ввода  -->
                                     <b-form-group label="Code/testing standard">
-                                        <b-form-input placeholder="Choose testing standard" list="testing-standard" name="testing_standard"></b-form-input>
+                                        <b-form-input
+                                            placeholder="Choose testing standard"
+                                            list="testing-standard"
+                                            name="testing_standard"
+                                            v-model="clientData.testing_standard"
+                                        ></b-form-input>
                                         <b-form-datalist id="testing-standard" :options="testing_standard">
                                         </b-form-datalist>
                                     </b-form-group>
 
-                                    <!-- /Поле ввода  -->
+                                    <!-- Поле ввода  -->
                                     <b-form-group label="Job knowledge">
-                                        <b-form-input placeholder="Choose job knowledge" list="job-knowledge" name="job_knowledge"></b-form-input>
+                                        <b-form-input
+                                            placeholder="Choose job knowledge"
+                                            list="job-knowledge"
+                                            name="job_knowledge"
+                                            v-model="clientData.job_knowledge"
+                                        ></b-form-input>
                                         <b-form-datalist id="job-knowledge" :options="job_knowledge">
                                         </b-form-datalist>
                                     </b-form-group>
@@ -133,6 +155,7 @@
                                     <b-img src="./user.png" fluid class="img_size perscab-photoedit-img" id="image"></b-img>
                                     <b-row>
                                         <b-col cols="8">
+                                            <!-- Поле фото  -->
                                             <b-form-group>
                                                 <b-form-file
                                                     ref="fileinput"
@@ -142,23 +165,35 @@
                                                     drop-placeholder="Drop file here"
                                                 ></b-form-file>
                                             </b-form-group>
-                                            <input name="photo_c" id="fileinput_c" multiple="false" type="hidden" value="">
+                                            <input
+                                                name="photo_c"
+                                                id="fileinput_c"
+                                                multiple="false"
+                                                type="hidden"
+                                                value=""
+                                            >
                                         </b-col>
                                         <b-col cols="4">
                                             <b-button class="w-100" @click="deletePhoto">Delete photo</b-button>
                                         </b-col>
                                     </b-row>
 
-                                    <!-- /Поле ввода  -->
+                                    <!-- Поле ввода  -->
                                     <b-form-group label="Test Ref / Certificate No">
-                                        <b-form-input name = "test_ref" placeholder="Enter Test Ref No">
-                                        </b-form-input>
+                                        <b-form-input
+                                            name="test_ref"
+                                            placeholder="Enter Test Ref No"
+                                            v-model="clientData.test_ref"
+                                        ></b-form-input>
                                     </b-form-group>
 
-                                    <!-- /Поле ввода  -->
+                                    <!-- Поле ввода  -->
                                     <b-form-group label="LR Control No">
-                                        <b-form-input name = "lr_control" placeholder="Enter LR Control No">
-                                        </b-form-input>
+                                        <b-form-input
+                                            name="lr_control"
+                                            placeholder="Enter LR Control No"
+                                            v-model="clientData.lr_control"
+                                        ></b-form-input>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -176,7 +211,11 @@
                             <b-row>
                                 <b-col cols="10">
                                     <b-form-group label="WPS-Reference">
-                                        <b-form-input list="wps-reference" name="wps_reference" @change="setWPS($event)"></b-form-input>
+                                        <b-form-input
+                                            list="wps-reference"
+                                            name="wps_reference"
+                                            @change="setWPS($event)"
+                                        ></b-form-input>
                                         <b-form-datalist id="wps-reference" :options="data.wps_reference" text-field="name">
                                         </b-form-datalist>
                                     </b-form-group>
@@ -205,7 +244,10 @@
                                 </b-col>
                                 <b-col cols="3">
                                     <b-form-group>
-                                        <b-form-input name="header_2" list="main-header-2" :value="'t'+material_thickness"></b-form-input>
+                                        <b-form-input
+                                            name="header_2"
+                                            :value="'t'+clientData.material_thickness"
+                                        ></b-form-input>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="3">
@@ -251,22 +293,53 @@
                                     <label for="input-default">Transfer mode</label>
                                 </b-col>
                                 <b-col cols="4">
+                                    <!-- Поле ввода  -->
                                     <b-form-group>
-                                        <b-form-input name="transfer_mode_test" list="transfer-mode-test" v-model="transfer_mode.test" @change="setElement($event, 'transfer_mode')"></b-form-input>
-                                        <b-form-datalist id="transfer-mode-test" :options="data.transfer_mode" text-field="test"></b-form-datalist>
+                                        <b-form-input
+                                            name="transfer_mode_test"
+                                            list="transfer-mode-test"
+                                            v-model="clientData.transfer_mode.test"
+                                            @change="setElement($event, 'transfer_mode')"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="transfer-mode-test"
+                                            :options="data.transfer_mode"
+                                            text-field="test"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="3">
+                                    <!-- Поле ввода  -->
                                     <b-form-group>
-                                        <b-form-input name="transfer_mode_range" list="transfer-mode-range" v-model="transfer_mode.range"></b-form-input>
-                                        <b-form-datalist id="transfer-mode-range" :options="data.transfer_mode" text-field="range"></b-form-datalist>
+                                        <b-form-input
+                                            name="transfer_mode_range"
+                                            list="transfer-mode-range"
+                                            v-model="clientData.transfer_mode.range"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="transfer-mode-range"
+                                            :options="data.transfer_mode"
+                                            text-field="range"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="1">
-                                    <b-icon icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.modal-new-element @click="newElement.table = 'transfer_mode'"></b-icon>
+                                    <b-icon
+                                        icon="plus-circle-fill"
+                                        style="margin-top: 5px"
+                                        font-scale="2"
+                                        v-b-modal.modal-new-element
+                                        @click="newElement.table = 'transfer_mode'"
+                                    ></b-icon>
                                 </b-col>
-                                <b-col cols="1" v-if="transfer_mode.test">
-                                    <b-icon icon="pencil-square" style="margin-top: 5px" font-scale="2" v-b-modal.modal-edit-element @click="openEditModal('transfer_mode')"></b-icon>
+                                <b-col cols="1" v-if="clientData.transfer_mode.test">
+                                    <b-icon
+                                        icon="pencil-square"
+                                        style="margin-top: 5px"
+                                        font-scale="2"
+                                        v-b-modal.modal-edit-element
+                                        @click="openEditModal('transfer_mode')"
+                                    ></b-icon>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -294,14 +367,31 @@
                                 </b-col>
                                 <b-col cols ="4">
                                     <b-form-group>
-                                        <b-form-input name="type_of_weld_test" list="type-weld" v-model="wps.type_of_weld.test" @change="setElementWPS($event, 'type_of_weld')"></b-form-input>
-                                        <b-form-datalist id="type-weld" :options="data.type_of_weld" text-field="test"></b-form-datalist>
+                                        <b-form-input
+                                            name="type_of_weld_test"
+                                            list="type-weld"
+                                            v-model="wps.type_of_weld.test"
+                                            @change="setElementWPS($event, 'type_of_weld')"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="type-weld"
+                                            :options="data.type_of_weld"
+                                            text-field="test"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols ="5">
                                     <b-form-group>
-                                        <b-form-input name="type_of_weld_range" list="type-weld" v-model="wps.type_of_weld.range"></b-form-input>
-                                        <b-form-datalist id="type-weld" :options="data.type_of_weld" text-field="range"></b-form-datalist>
+                                        <b-form-input
+                                            name="type_of_weld_range"
+                                            list="type-weld"
+                                            v-model="wps.type_of_weld.range"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="type-weld"
+                                            :options="data.type_of_weld"
+                                            text-field="range"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -383,22 +473,53 @@
                                     <label for="input-default">Shielding gas</label>
                                 </b-col>
                                 <b-col cols="4">
+                                    <!-- Поле ввода  -->
                                     <b-form-group>
-                                        <b-form-input name="shielding_gas_test" list="shielding-gas-test" v-model="shielding_gas.test" @change="setElement($event, 'shielding_gas')"></b-form-input>
-                                        <b-form-datalist id="shielding-gas-test" :options="data.shielding_gas" text-field="test"></b-form-datalist>
+                                        <b-form-input
+                                            name="shielding_gas_test"
+                                            list="shielding-gas-test"
+                                            v-model="clientData.shielding_gas.test"
+                                            @change="setElement($event, 'shielding_gas')"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="shielding-gas-test"
+                                            :options="data.shielding_gas"
+                                            text-field="test"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="3">
+                                    <!-- Поле ввода  -->
                                     <b-form-group>
-                                        <b-form-input name="shielding_gas_range" list="shielding-gas-range" v-model="shielding_gas.range"></b-form-input>
-                                        <b-form-datalist id="shielding-gas-range" :options="data.shielding_gas" text-field="range"></b-form-datalist>
+                                        <b-form-input
+                                            name="shielding_gas_range"
+                                            list="shielding-gas-range"
+                                            v-model="clientData.shielding_gas.range"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="shielding-gas-range"
+                                            :options="data.shielding_gas"
+                                            text-field="range"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="1">
-                                    <b-icon icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.modal-new-element @click="newElement.table = 'shielding_gas'"></b-icon>
+                                    <b-icon
+                                        icon="plus-circle-fill"
+                                        style="margin-top: 5px"
+                                        font-scale="2"
+                                        v-b-modal.modal-new-element
+                                        @click="newElement.table = 'shielding_gas'"
+                                    ></b-icon>
                                 </b-col>
-                                <b-col cols="1" v-if="shielding_gas.test">
-                                    <b-icon icon="pencil-square" style="margin-top: 5px" font-scale="2" v-b-modal.modal-edit-element @click="openEditModal('shielding_gas')"></b-icon>
+                                <b-col cols="1" v-if="clientData.shielding_gas.test">
+                                    <b-icon
+                                        icon="pencil-square"
+                                        style="margin-top: 5px"
+                                        font-scale="2"
+                                        v-b-modal.modal-edit-element
+                                        @click="openEditModal('shielding_gas')"
+                                    ></b-icon>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -407,22 +528,53 @@
                                     <label for="input-default">Type of current and polarity</label>
                                 </b-col>
                                 <b-col cols="4">
+                                    <!-- Поле ввода  -->
                                     <b-form-group>
-                                        <b-form-input name="type_polarity_test" list="type-polarity-test" v-model="type_polarity.test" @change="setElement($event, 'type_polarity')"></b-form-input>
-                                        <b-form-datalist id="type-polarity-test" :options="data.type_polarity" text-field="test"></b-form-datalist>
+                                        <b-form-input
+                                            name="type_polarity_test"
+                                            list="type-polarity-test"
+                                            v-model="clientData.type_polarity.test"
+                                            @change="setElement($event, 'type_polarity')"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="type-polarity-test"
+                                            :options="data.type_polarity"
+                                            text-field="test"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="3">
+                                    <!-- Поле ввода  -->
                                     <b-form-group>
-                                        <b-form-input name="type_polarity_range" list="type-polarity-range" v-model="type_polarity.range"></b-form-input>
-                                        <b-form-datalist id="type-polarity-range" :options="data.type_polarity" text-field="range"></b-form-datalist>
+                                        <b-form-input
+                                            name="type_polarity_range"
+                                            list="type-polarity-range"
+                                            v-model="clientData.type_polarity.range"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="type-polarity-range"
+                                            :options="data.type_polarity"
+                                            text-field="range"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="1">
-                                    <b-icon icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.modal-new-element @click="newElement.table = 'type_polarity'"></b-icon>
+                                    <b-icon
+                                        icon="plus-circle-fill"
+                                        style="margin-top: 5px"
+                                        font-scale="2"
+                                        v-b-modal.modal-new-element
+                                        @click="newElement.table = 'type_polarity'"
+                                    ></b-icon>
                                 </b-col>
-                                <b-col cols="1" v-if="type_polarity.test">
-                                    <b-icon icon="pencil-square" style="margin-top: 5px" font-scale="2" v-b-modal.modal-edit-element @click="openEditModal('type_polarity')"></b-icon>
+                                <b-col cols="1" v-if="clientData.type_polarity.test">
+                                    <b-icon
+                                        icon="pencil-square"
+                                        style="margin-top: 5px"
+                                        font-scale="2"
+                                        v-b-modal.modal-edit-element
+                                        @click="openEditModal('type_polarity')"
+                                    ></b-icon>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -432,19 +584,25 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="material_thickness" v-model="material_thickness"></b-form-input>
+                                        <b-form-input
+                                            name="material_thickness"
+                                            v-model="clientData.material_thickness"
+                                        ></b-form-input>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="5">
                                     <b-row>
                                         <b-col cols="8">
                                             <b-form-group>
-                                                <b-form-input :disabled="all_thickness" name="material_thickness_numb" list="material-thickness-numb" :value="materialThicknessNumb"></b-form-input>
-                                                <b-form-datalist id="material-thickness-numb"></b-form-datalist>
+                                                <b-form-input
+                                                    :disabled="clientData.all_thickness"
+                                                    name="material_thickness_numb"
+                                                    :value="materialThicknessNumb"
+                                                ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="4">
-                                            <b-form-checkbox name="all_thickness" v-model="all_thickness">All Thickness</b-form-checkbox>
+                                            <b-form-checkbox name="all_thickness" v-model="clientData.all_thickness">All Thickness</b-form-checkbox>
                                         </b-col>
                                     </b-row>
                                 </b-col>
@@ -463,13 +621,17 @@
                                             <b-form-input
                                                 name="deposited_deposit1"
                                                 list="deposited-deposit1"
-                                                :disabled="applicable_1"
-                                                v-model="deposited_deposit1"
+                                                :disabled="clientData.applicable_1"
+                                                v-model="clientData.deposited_deposit1"
                                             ></b-form-input>
                                             <b-form-datalist id="deposited-deposit1" :options="deposit"></b-form-datalist>
                                         </b-col>
                                         <b-col cols="4">
-                                            <b-form-input name="deposited_thickness_root" list="process" :disabled="applicable_1" v-model="deposited_thickness_root"></b-form-input>
+                                            <b-form-input
+                                                name="deposited_thickness_root"
+                                                :disabled="clientData.applicable_1"
+                                                v-model="clientData.deposited_thickness_root"
+                                            ></b-form-input>
                                         </b-col>
                                     </b-row>
                                     <b-row>
@@ -480,13 +642,17 @@
                                             <b-form-input
                                                 name="deposited_deposit2"
                                                 list="deposited-deposit2"
-                                                :disabled="applicable_2"
-                                                v-model="deposited_deposit2"
+                                                :disabled="clientData.applicable_2"
+                                                v-model="clientData.deposited_deposit2"
                                             ></b-form-input>
                                             <b-form-datalist id="deposited-deposit2" :options="deposit"></b-form-datalist>
                                         </b-col>
                                         <b-col cols="4">
-                                            <b-form-input name="deposited_thickness_rest" list="process" :disabled="applicable_2" v-model="deposited_thickness_rest"></b-form-input>
+                                            <b-form-input
+                                                name="deposited_thickness_rest"
+                                                :disabled="clientData.applicable_2"
+                                                v-model="clientData.deposited_thickness_rest"
+                                            ></b-form-input>
                                         </b-col>
                                     </b-row>
                                 </b-col>
@@ -494,31 +660,47 @@
                                     <b-row>
                                         <b-col cols="3">
                                             <b-form-group>
-                                                <b-form-input name="deposited_thickness_root_num_1" :disabled="applicable_1" :value="depositedThicknessRootNum1"></b-form-input>
+                                                <b-form-input
+                                                    name="deposited_thickness_root_num_1"
+                                                    :disabled="clientData.applicable_1"
+                                                    :value="depositedThicknessRootNum1"
+                                                ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="3">
                                             <b-form-group>
-                                                <b-form-input name="deposited_thickness_root_num_2" :disabled="applicable_1" :value="depositedThicknessRootNum2"></b-form-input>
+                                                <b-form-input
+                                                name="deposited_thickness_root_num_2"
+                                                :disabled="clientData.applicable_1"
+                                                :value="depositedThicknessRootNum2"
+                                            ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="5">
-                                            <b-form-checkbox name="applicable_1" v-model="applicable_1">Not Applicable</b-form-checkbox>
+                                            <b-form-checkbox name="applicable_1" v-model="clientData.applicable_1">Not Applicable</b-form-checkbox>
                                         </b-col>
                                     </b-row>
                                     <b-row>
                                         <b-col cols="3">
                                             <b-form-group>
-                                                <b-form-input name="deposited_thickness_rest_num_1" :disabled="applicable_2" :value="depositedThicknessRestNum1"></b-form-input>
+                                                <b-form-input
+                                                    name="deposited_thickness_rest_num_1"
+                                                    :disabled="clientData.applicable_2"
+                                                    :value="depositedThicknessRestNum1"
+                                                ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="3">
                                             <b-form-group>
-                                                <b-form-input name="deposited_thickness_rest_num_2" :disabled="applicable_2" :value="depositedThicknessRestNum2"></b-form-input>
+                                                <b-form-input
+                                                    name="deposited_thickness_rest_num_2"
+                                                    :disabled="clientData.applicable_2"
+                                                    :value="depositedThicknessRestNum2"
+                                                ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="5">
-                                            <b-form-checkbox name="applicable_2" v-model="applicable_2">Not Applicable</b-form-checkbox>
+                                            <b-form-checkbox name="applicable_2" v-model="clientData.applicable_2">Not Applicable</b-form-checkbox>
                                         </b-col>
                                     </b-row>
                                 </b-col>
@@ -531,24 +713,36 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                            <b-form-input name="outside_pipe_diameter" v-model="outside_pipe_diameter"></b-form-input>
+                                            <b-form-input
+                                                name="outside_pipe_diameter"
+                                                v-model="clientData.outside_pipe_diameter"
+                                            ></b-form-input>
                                         </b-form-group>
                                 </b-col>
                                 <b-col cols="5">
                                     <b-row>
                                         <b-col cols="4">
                                             <b-form-group>
-                                                <b-form-input name="outside_pipe_diameter_1" :value="outsidePipeDiameter1"></b-form-input>
+                                                <b-form-input
+                                                    name="outside_pipe_diameter_1"
+                                                    :value="outsidePipeDiameter1"
+                                                ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="4">
                                             <b-form-group>
-                                                <b-form-input name="outside_pipe_diameter_2" :value="outsidePipeDiameter2"></b-form-input>
+                                                <b-form-input
+                                                    name="outside_pipe_diameter_2"
+                                                    :value="outsidePipeDiameter2"
+                                                ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="4">
                                             <b-form-group>
-                                                <b-form-input name="outside_pipe_diameter_3" :value="outsidePipeDiameter3"></b-form-input>
+                                                <b-form-input
+                                                    name="outside_pipe_diameter_3"
+                                                    :value="outsidePipeDiameter3"
+                                                ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                     </b-row>
@@ -560,22 +754,52 @@
                                     <label for="input-default">Welding position</label>
                                 </b-col>
                                 <b-col cols="4">
+                                    <!-- Поле ввода  -->
                                     <b-form-group>
-                                        <b-form-input name="welding_position_test" list="welding-position-test" v-model="welding_position.test" @change="setElement($event, 'welding_position')"></b-form-input>
-                                        <b-form-datalist id="welding-position-test" :options="data.welding_position" text-field="test"></b-form-datalist>
+                                        <b-form-input
+                                            name="welding_position_test"
+                                            list="welding-position-test"
+                                            v-model="clientData.welding_position.test"
+                                            @change="setElement($event, 'welding_position')"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="welding-position-test"
+                                            :options="data.welding_position"
+                                            text-field="test"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="3">
+                                    <!-- Поле ввода  -->
                                     <b-form-group>
-                                        <b-form-input name="welding_position_range" list="welding-position-range" v-model="welding_position.range"></b-form-input>
-                                        <b-form-datalist id="welding-position-range" :options="data.welding_position" text-field="range"></b-form-datalist>
+                                        <b-form-input
+                                            name="welding_position_range"
+                                            list="welding-position-range"
+                                            v-model="clientData.welding_position.range"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="welding-position-range"
+                                            :options="data.welding_position"
+                                            text-field="range"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="1">
-                                    <b-icon icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.modal-new-element @click="newElement.table = 'welding_position'"></b-icon>
+                                    <b-icon
+                                        icon="plus-circle-fill"
+                                        style="margin-top: 5px"
+                                        font-scale="2"
+                                        v-b-modal.modal-new-element
+                                        @click="newElement.table = 'welding_position'"
+                                    ></b-icon>
                                 </b-col>
-                                <b-col cols="1" v-if="welding_position.test">
-                                    <b-icon icon="pencil-square" style="margin-top: 5px" font-scale="2" v-b-modal.modal-edit-element @click="openEditModal('welding_position')"></b-icon>
+                                <b-col cols="1" v-if="clientData.welding_position.test">
+                                    <b-icon
+                                        icon="pencil-square"
+                                        style="margin-top: 5px"
+                                        font-scale="2"
+                                        v-b-modal.modal-edit-element @click="openEditModal('welding_position')"
+                                    ></b-icon>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -584,22 +808,53 @@
                                     <label for="input-default">Weld details</label>
                                 </b-col>
                                 <b-col cols="4">
+                                    <!-- Поле ввода  -->
                                     <b-form-group>
-                                        <b-form-input name="welding_details_test" list="welding-details-test" v-model="welding_details.test" @change="setElement($event, 'welding_details')"></b-form-input>
-                                        <b-form-datalist id="welding-details-test" :options="data.welding_details" text-field="test"></b-form-datalist>
+                                        <b-form-input
+                                            name="welding_details_test"
+                                            list="welding-details-test"
+                                            v-model="clientData.welding_details.test"
+                                            @change="setElement($event, 'welding_details')"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="welding-details-test"
+                                            :options="data.welding_details"
+                                            text-field="test"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="3">
+                                    <!-- Поле ввода  -->
                                     <b-form-group>
-                                        <b-form-input name="welding_details_range" list="welding-details-range" v-model="welding_details.range"></b-form-input>
-                                        <b-form-datalist id="welding-details-range" :options="data.welding_details" text-field="range"></b-form-datalist>
+                                        <b-form-input
+                                            name="welding_details_range"
+                                            list="welding-details-range"
+                                            v-model="clientData.welding_details.range"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="welding-details-range"
+                                            :options="data.welding_details"
+                                            text-field="range"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="1">
-                                    <b-icon icon="plus-circle-fill" style="margin-top: 5px" font-scale="2" v-b-modal.modal-new-element @click="newElement.table = 'welding_details'"></b-icon>
+                                    <b-icon
+                                        icon="plus-circle-fill"
+                                        style="margin-top: 5px"
+                                        font-scale="2"
+                                        v-b-modal.modal-new-element
+                                        @click="newElement.table = 'welding_details'"
+                                    ></b-icon>
                                 </b-col>
-                                <b-col cols="1" v-if="welding_details.test">
-                                    <b-icon icon="pencil-square" style="margin-top: 5px" font-scale="2" v-b-modal.modal-edit-element @click="openEditModal('welding_details')"></b-icon>
+                                <b-col cols="1" v-if="clientData.welding_details.test">
+                                    <b-icon
+                                        icon="pencil-square"
+                                        style="margin-top: 5px"
+                                        font-scale="2"
+                                        v-b-modal.modal-edit-element
+                                        @click="openEditModal('welding_details')"
+                                    ></b-icon>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -628,7 +883,7 @@
                                         <b-form-input
                                             name="weld_test"
                                             list="weld-test"
-                                            v-model="weld_test"
+                                            v-model="clientData.weld_test"
                                         ></b-form-input>
                                         <b-form-datalist id="weld-test" :options="job_knowledge"></b-form-datalist>
                                     </b-form-group>
@@ -653,7 +908,7 @@
                                         <b-form-input
                                             list="document-number1"
                                             name="document_number1"
-                                            v-model="document_number1"
+                                            v-model="clientData.document_number1"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -662,7 +917,7 @@
                                         <b-form-input
                                             list="document-number2"
                                             name="document_number2"
-                                            v-model="document_number2"
+                                            v-model="clientData.document_number2"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -671,15 +926,15 @@
                             <b-row>
                                 <b-col>
                                     <b-form-group>
-                                        <b-form-checkbox v-model="visual_examination" name="visual_examination">Visual Examination of Completed Weld</b-form-checkbox>
-                                        <b-form-checkbox v-model="transverse_bends" name="transverse_bends">Transverse bends root and face (6.5.2.3)</b-form-checkbox>
-                                        <b-form-checkbox v-model="specimen_macro" name="specimen_macro">Specimen Macro test for fusion</b-form-checkbox>
+                                        <b-form-checkbox v-model="clientData.visual_examination" name="visual_examination">Visual Examination of Completed Weld</b-form-checkbox>
+                                        <b-form-checkbox v-model="clientData.transverse_bends" name="transverse_bends">Transverse bends root and face (6.5.2.3)</b-form-checkbox>
+                                        <b-form-checkbox v-model="clientData.specimen_macro" name="specimen_macro">Specimen Macro test for fusion</b-form-checkbox>
                                     </b-form-group>
                                 </b-col>
                                 <b-col>
                                     <b-form-group>
-                                        <b-form-checkbox v-model="transverse_side" name="transverse_side">Transverse side bend specimen (6.5.2.3)</b-form-checkbox>
-                                        <b-form-checkbox v-model="ultrasonic_examination" name="ultrasonic_examination">Ultrasonic Examination (6.5.2.1)</b-form-checkbox>
+                                        <b-form-checkbox v-model="clientData.transverse_side" name="transverse_side">Transverse side bend specimen (6.5.2.3)</b-form-checkbox>
+                                        <b-form-checkbox v-model="clientData.ultrasonic_examination" name="ultrasonic_examination">Ultrasonic Examination (6.5.2.1)</b-form-checkbox>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -691,7 +946,7 @@
                                             <label for="input-default">Name</label>
                                         </b-col>
                                         <b-col cols="9">
-                                            <b-form-input v-model="withenessed_name" name="withenessed_name"></b-form-input>
+                                            <b-form-input v-model="clientData.withenessed_name" name="withenessed_name"></b-form-input>
                                         </b-col>
                                     </b-row>
                                     <b-row class="my-1">
@@ -699,7 +954,7 @@
                                             <label for="input-default">Position</label>
                                         </b-col>
                                         <b-col cols="9">
-                                            <b-form-input v-model="withenessed_position" name="withenessed_position"></b-form-input>
+                                            <b-form-input v-model="clientData.withenessed_position" name="withenessed_position"></b-form-input>
                                         </b-col>
                                     </b-row>
                                     <b-row class="my-1">
@@ -709,7 +964,7 @@
                                         <b-col cols="9">
                                             <label for="datepicker-placeholder">Date picker with placeholder</label>
                                             <b-form-datepicker
-                                                v-model="withenessed_date"
+                                                v-model="clientData.withenessed_date"
                                                 name="withenessed_date"
                                                 id="datepicker-placeholder"
                                                 placeholder="Choose a date"
@@ -726,7 +981,7 @@
                                             <label for="input-default">Name</label>
                                         </b-col>
                                         <b-col cols="9">
-                                            <b-form-input v-model="behaulf_name" name="behaulf_name"></b-form-input>
+                                            <b-form-input v-model="clientData.behaulf_name" name="behaulf_name"></b-form-input>
                                             <b-form-datalist id="input-list"></b-form-datalist>
                                         </b-col>
                                     </b-row>
@@ -735,7 +990,7 @@
                                             <label for="input-default">Position</label>
                                         </b-col>
                                         <b-col cols="9">
-                                            <b-form-input v-model="behaulf_position" name="behaulf_position"></b-form-input>
+                                            <b-form-input v-model="clientData.behaulf_position" name="behaulf_position"></b-form-input>
                                             <b-form-datalist id="input-list"></b-form-datalist>
                                         </b-col>
                                     </b-row>
@@ -747,7 +1002,7 @@
                                             <label for="datepicker-placeholder">Date picker with placeholder</label>
                                             <b-form-datepicker
                                                 name="behaulf_date"
-                                                v-model="behaulf_date"
+                                                v-model="clientData.behaulf_date"
                                                 id="datepicker-placeholder-2"
                                                 placeholder="Choose a date"
                                                 local="en"
@@ -763,7 +1018,7 @@
                     <b-col>
                         <div class="d-flex justify-content-center">
                             <input type="submit" value="Open PDF" class="button">
-                            <!-- <input type="button" @click="saveData" value="Save data" class="button"> -->
+                            <input type="button" @click="saveData" value="Save data" class="button ml-1">
                         </div>
                     </b-col>
                 </b-row>
@@ -790,42 +1045,10 @@ export default {
             modalShow: false,
             modalEditShow: false,
 
-            employer:['Cornelius Ltd', 'Self Employer'],
-            testing_standard:['BS EN 9606-1', 'BS EN 9606-2', 'GL 2007'],
-            job_knowledge:['Tested', 'Not Tested'],
-            deposit:['All', 'Root', 'Rest'],
-
-            document_number1: "MSMK QF032",
-            document_number2: "Rev 1",
-
-            all_thickness: false,
-            applicable_1: false,
-            applicable_2: false,
-
-            material_thickness: 0,
-            material_thickness1: "",
-            material_thickness2: "",
-            deposited_thickness_root: 0,
-            deposited_thickness_rest: 0,
-            outside_pipe_diameter: 0,
-            deposited_deposit1: '',
-            deposited_deposit2: '',
-
-            weld_test: '',
-
-            visual_examination: false,
-            transverse_bends: false,
-            specimen_macro: false,
-            transverse_side: false,
-            ultrasonic_examination: false,
-
-            withenessed_name: '',
-            withenessed_position: '',
-            withenessed_date: '',
-
-            behaulf_name: '',
-            behaulf_position: '',
-            behaulf_date: '',
+            employer: ['Cornelius Ltd', 'Self Employer'],
+            testing_standard: ['BS EN 9606-1', 'BS EN 9606-2', 'GL 2007'],
+            job_knowledge: ['Tested', 'Not Tested'],
+            deposit: ['All', 'Root', 'Rest'],
 
             data: {
                 wps_reference: [],
@@ -887,115 +1110,150 @@ export default {
                     test: ""
                 },
             },
+
             wps: {},
-            transfer_mode: {
-                id: null,
-                range: "",
-                test: ""
+
+            clientData: {
+                name: "",
+                identification: "",
+                employer: "",
+                testing_standard: "",
+                job_knowledge: "",
+                photo: "",
+                test_ref: "",
+                lr_control: "",
+                all_thickness: false,
+                material_thickness: 0,
+                deposited_thickness_root: 0,
+                deposited_thickness_rest: 0,
+                outside_pipe_diameter: 0,
+                deposited_deposit1: '',
+                deposited_deposit2: '',
+                applicable_1: false,
+                applicable_2: false,
+                document_number1: "MSMK QF032",
+                document_number2: "Rev 1",
+                weld_test: '',
+                visual_examination: false,
+                transverse_bends: false,
+                specimen_macro: false,
+                transverse_side: false,
+                ultrasonic_examination: false,
+                withenessed_name: '',
+                withenessed_position: '',
+                withenessed_date: '',
+                behaulf_name: '',
+                behaulf_position: '',
+                behaulf_date: '',
+                transfer_mode: {
+                    id: null,
+                    range: "",
+                    test: ""
+                },
+                shielding_gas: {
+                    id: null,
+                    range: "",
+                    test: ""
+                },
+                type_polarity: {
+                    id: null,
+                    range: "",
+                    test: ""
+                },
+                welding_position: {
+                    id: null,
+                    range: "",
+                    test: ""
+                },
+                welding_details: {
+                    id: null,
+                    range: "",
+                    test: ""
+                }
             },
-            shielding_gas: {
-                id: null,
-                range: "",
-                test: ""
-            },
-            type_polarity: {
-                id: null,
-                range: "",
-                test: ""
-            },
-            welding_position: {
-                id: null,
-                range: "",
-                test: ""
-            },
-            welding_details: {
-                id: null,
-                range: "",
-                test: ""
-            }
         }
     },
     created() {
-        this.wps = Object.assign({}, this.wpsDefault);
+        this.wps = this.wpsDefault;
         this.getData();
     },
     computed: {
         depositedThicknessRootNum1() {
-            if(this.deposited_thickness_root < 3) {
-                return 'From '+ this.deposited_thickness_root
+            if(this.clientData.deposited_thickness_root < 3) {
+                return 'From '+ this.clientData.deposited_thickness_root
             } else {
                 return 'From 3'
             }
         },
         depositedThicknessRootNum2() {
-            if ((this.deposited_thickness_root >= 3) && (this.deposited_thickness_root < 12)) {
-                return this.deposited_thickness_root * 2
+            if ((this.clientData.deposited_thickness_root >= 3) && (this.clientData.deposited_thickness_root < 12)) {
+                return this.clientData.deposited_thickness_root * 2
             } else {
-                if (this.deposited_thickness_root >= 12) {
+                if (this.clientData.deposited_thickness_root >= 12) {
                     return "No Restriction"
                 } else {
-                    if ((this.deposited_thickness_root * 2)<3) {
+                    if ((this.clientData.deposited_thickness_root * 2)<3) {
                         return "3"
                     } else {
-                        return this.deposited_thickness_root * 2
+                        return this.clientData.deposited_thickness_root * 2
                     }
                 }
             }
         },
         depositedThicknessRestNum1() {
-            if(this.deposited_thickness_rest < 3) {
-                return 'From '+ this.deposited_thickness_rest
+            if(this.clientData.deposited_thickness_rest < 3) {
+                return 'From '+ this.clientData.deposited_thickness_rest
             } else {
                 return 'From 3'
             }
         },
         depositedThicknessRestNum2() {
-            if ((this.deposited_thickness_rest >= 3) && (this.deposited_thickness_rest < 12)) {
-                return this.deposited_thickness_rest * 2
+            if ((this.clientData.deposited_thickness_rest >= 3) && (this.clientData.deposited_thickness_rest < 12)) {
+                return this.clientData.deposited_thickness_rest * 2
             } else {
-                if (this.deposited_thickness_rest >= 12) {
+                if (this.clientData.deposited_thickness_rest >= 12) {
                     return "No Restriction"
                 } else {
-                    if ((this.deposited_thickness_rest * 2)<3) {
+                    if ((this.clientData.deposited_thickness_rest * 2)<3) {
                         return "3"
                     } else {
-                        return this.deposited_thickness_rest * 2
+                        return this.clientData.deposited_thickness_rest * 2
                     }
                 }
             }
         },
         materialThicknessNumb() {
             let result = '';
-                if (this.material_thickness >= 3){
+                if (this.clientData.material_thickness >= 3){
                     return "From 3 To No Restriction";
                 } else {
-                    result = "From " + this.material_thickness + " To "
+                    result = "From " + this.clientData.material_thickness + " To "
                 }
-                    if ((this.material_thickness*2) < 3)  {
+                    if ((this.clientData.material_thickness*2) < 3)  {
                         result = result + "3"
                     } else {
-                        result = result + this.material_thickness * 2
+                        result = result + this.clientData.material_thickness * 2
                     }
                     return result;
         },
 
         outsidePipeDiameter1() {
-            if(this.outside_pipe_diameter == "Not Applicable") {
+            if(this.clientData.outside_pipe_diameter == "Not Applicable") {
                 return "For D >=500"
             } else {
                 if (this.wps.product_type.test == "Plate (P)") {
                     return "For D >=500"
                 } else {
-                    if(this.outside_pipe_diameter > 25) {
-                        return this.outside_pipe_diameter * 1
+                    if(this.clientData.outside_pipe_diameter > 25) {
+                        return this.clientData.outside_pipe_diameter * 1
                     } else {
-                        return this.outside_pipe_diameter * 0.5
+                        return this.clientData.outside_pipe_diameter * 0.5
                     }
                 }
             }
         },
         outsidePipeDiameter2() {
-            if(this.outside_pipe_diameter == "Not Applicable") {
+            if(this.clientData.outside_pipe_diameter == "Not Applicable") {
                 return "or >=75"
             } else {
                 if(this.wps.product_type.test == "Plate (P)") {
@@ -1006,14 +1264,14 @@ export default {
             }
         },
         outsidePipeDiameter3() {
-            if(this.outside_pipe_diameter == "Not Applicable") {
+            if(this.clientData.outside_pipe_diameter == "Not Applicable") {
                 return "in PA, PB, PC and PD rotated"
             } else {
                 if(this.wps.product_type.test == "Plate (P)") {
                     return "in PA, PB, PC and PD rotated"
                 } else {
-                    if(this.outside_pipe_diameter <= 25) {
-                        return this.outside_pipe_diameter * 2
+                    if(this.clientData.outside_pipe_diameter <= 25) {
+                        return this.clientData.outside_pipe_diameter * 2
                     } else {
                         return "No Restriction"
                     }
@@ -1045,16 +1303,19 @@ export default {
                         this.data[this.newElement.table].push(response.data)
                         this.modalShow = false
                     }).catch((error) => {
-                        alert("Error")
+                        swal({
+                            icon: "error",
+                            text: 'Error'
+                        });
                     });
                 }
             })
         },
         openEditModal(table) {
             this.editElement.table = table
-            this.editElement.id = this[table].id
-            this.editElement.test = this[table].test
-            this.editElement.range = this[table].range
+            this.editElement.id = this.clientData[table].id
+            this.editElement.test = this.clientData[table].test
+            this.editElement.range = this.clientData[table].range
             this.modalEditShow = true
         },
         deletePhoto() {
@@ -1067,11 +1328,11 @@ export default {
                 return item.test == event;
             })
             if(result) {
-                this[array].range = result.range
-                this[array].id = result.id
+                this.clientData[array].range = result.range
+                this.clientData[array].id = result.id
             } else {
-                this[array].range = ""
-                this[array].id = null
+                this.clientData[array].range = ""
+                this.clientData[array].id = null
             }
         },
         setElementWPS(event, array) {
@@ -1113,12 +1374,15 @@ export default {
                             if(item.id == this.editElement.id) {
                                 item.test = this.editElement.test
                                 item.range = this.editElement.range
-                                this[this.editElement.table] = this.editElement
+                                this.clientData[this.editElement.table] = this.editElement
                             }
                         })
                         this.modalEditShow = false
                     }).catch((error) => {
-                        alert("Error")
+                        swal({
+                            icon: "error",
+                            text: 'Error'
+                        });
                     });
                 }
             })
@@ -1137,20 +1401,27 @@ export default {
                 })
                 this.modalEditShow = false
             }).catch((error) => {
-                alert("Error")
+                swal({
+                    icon: "error",
+                    text: 'Error'
+                });
             });
         },
         saveData() {
-            var wps_data = this.wps;
-            wps_data.transfer_mode = this.transfer_mode
-            wps_data.shielding_gas = this.shielding_gas
-            wps_data.type_polarity = this.type_polarity
-            wps_data.welding_position = this.welding_position
-            wps_data.welding_details = this.welding_details
-            wps_data.material_thickness = this.material_thickness
-            wps_data.all_thickness = this.all_thickness
 
-            console.log(wps_data)
+            this.clientData.wps_data = this.wps;
+            this.clientData.photo = document.getElementById("fileinput_c").getAttribute('value')
+            axios.post('/api/client', this.clientData).then((response) => {
+                swal({
+                    icon: 'success',
+                    text: `Client saved`
+                });
+            }).catch((error) => {
+                swal({
+                    icon: "error",
+                    text: 'Error'
+                });
+            });
         }
     }
 };
