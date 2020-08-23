@@ -385,8 +385,7 @@ export default {
                     return;
                 } else {
                     axios.post('/api/wps', this.newElement).then((response) => {
-                        console.log(response.data)
-                        // window.location.href = '/';
+                        window.location.href = '/';
                     }).catch((error) => {
                         alert("Error")
                     });
