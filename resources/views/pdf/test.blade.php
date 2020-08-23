@@ -228,19 +228,17 @@
             <tr class="f-s-9 main-table">
                 <td class="tb-t-1 br-b">Material thickness(mm)</td>
                 <td colspan="5" class="br-l br-b">{{$data->input('material_thickness')}}</td>
-                @if($data->input('all_thickness')
+                @if($data->input('all_thickness'))
                     <td colspan="2" class="br-l br-b tb-t-3"> All Thickness </td>
                 @else
                     @if($data->input('material_thickness')>=3)
                         <td class="br-l br-b bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
                         <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
                     @else
-                        @if ($data->input('material_thickness')*2) < 3)
-                            <td class="tb-t-3"></td>
+                        @if (($data->input('material_thickness')*2) < 3)
                             <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('material_thickness')}}</td>
                             <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
                         @else
-                            <td class="tb-t-3"></td>
                             <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('material_thickness')}}</td>
                             <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('material_thickness')*2}} </td>
                         @endif
