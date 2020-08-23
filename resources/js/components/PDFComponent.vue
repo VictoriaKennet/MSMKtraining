@@ -803,13 +803,16 @@ export default {
         },
         depositedThicknessRootNum2() {
             if ((this.deposited_thickness_root >= 3) && (this.deposited_thickness_root < 12)) {
-                return this.deposited_thickness_rest * 2
+                return this.deposited_thickness_root * 2
             } else {
                 if (this.deposited_thickness_root >= 12) {
                     return "No Restriction"
-                } else
-                {
-                    return this.deposited_thickness_root * 2
+                } else {
+                    if ((this.deposited_thickness_root * 2)<3) {
+                        return "3"
+                    } else {
+                        return this.deposited_thickness_root * 2
+                    }
                 }
             }
         },
@@ -826,18 +829,18 @@ export default {
             } else {
                 if (this.deposited_thickness_rest >= 12) {
                     return "No Restriction"
-                } else
-                {
-                    return this.deposited_thickness_rest * 2
+                } else {
+                    if ((this.deposited_thickness_rest * 2)<3) {
+                        return "3"
+                    } else {
+                        return this.deposited_thickness_rest * 2
+                    }
                 }
             }
         },
-
-
         materialThicknessNumb() {
             let result = '';
                 if (this.material_thickness >= 3){
-                    this.material_thickness1 = "From &nbsp;&nbsp;&nbsp; 3"
                     return "From 3 To No Restriction";
                 } else {
                     result = "From " + this.material_thickness + " To "
@@ -872,7 +875,7 @@ export default {
                 if(this.wps.product_type.test == "Plate (P)") {
                     return "or >=75"
                 } else {
-                    return "To"
+                    return "to"
                 }
             }
         },
