@@ -235,12 +235,12 @@
                                     <b-form-input
                                         name="process_data_test_1"
                                         list="process_data_1"
-                                        v-model="newElement.filler_material_designation[0].process.test"
-                                        @change="setElementWPSProcess($event, 'process_data', 0)"
+                                        v-model="newElement.process_one.test"
+                                        @change="setElementWPS($event, 'process_one')"
                                         v-validate="{ required: true}"
                                         :class="errors.has('process_data_test_1') ? 'input-has-error' : ''"
                                     ></b-form-input>
-                                    <b-form-datalist id="process_data_1" :options="data.process_data" text-field="test"></b-form-datalist>
+                                    <b-form-datalist id="process_data_1" :options="data.process_one" text-field="test"></b-form-datalist>
                                 </b-col>
                             </b-row>
                             <b-row>
@@ -251,12 +251,12 @@
                                     <b-form-input
                                         name="process_data_test_2"
                                         list="process_data_2"
-                                        v-model="newElement.filler_material_designation[1].process.test"
-                                        @change="setElementWPSProcess($event, 'process_data', 1)"
+                                        v-model="newElement.process_two.test"
+                                        @change="setElementWPS($event, 'process_two')"
                                         v-validate="{ required: true}"
                                         :class="errors.has('process_data_test_2') ? 'input-has-error' : ''"
                                     ></b-form-input>
-                                    <b-form-datalist id="process_data_2" :options="data.process_data" text-field="test"></b-form-datalist>
+                                    <b-form-datalist id="process_data_2" :options="data.process_two" text-field="test"></b-form-datalist>
                                 </b-col>
                             </b-row>
                         </b-col>
@@ -265,21 +265,21 @@
                                 <b-form-input
                                     name="process_data_range_1"
                                     list="process-data-2-range-1"
-                                    v-model="newElement.filler_material_designation[0].process.range"
+                                    v-model="newElement.process_one.range"
                                     v-validate="{ required: true}"
                                     :class="errors.has('process_data_range_1') ? 'input-has-error' : ''"
                                 ></b-form-input>
-                                <b-form-datalist id="process-data-2-range-1" :options="data.process_data" text-field="range"></b-form-datalist>
+                                <b-form-datalist id="process-data-2-range-1" :options="data.process_one" text-field="range"></b-form-datalist>
                             </b-form-group>
                             <b-form-group>
                                 <b-form-input
                                     name="process_data_range_2"
                                     list="process-data-2-range-2"
-                                    v-model="newElement.filler_material_designation[1].process.range"
+                                    v-model="newElement.process_two.range"
                                     v-validate="{ required: true}"
                                     :class="errors.has('process_data_range_2') ? 'input-has-error' : ''"
                                 ></b-form-input>
-                                <b-form-datalist id="process-data-2-range-2" :options="data.process_data" text-field="range"></b-form-datalist>
+                                <b-form-datalist id="process-data-2-range-2" :options="data.process_two" text-field="range"></b-form-datalist>
                             </b-form-group>
                         </b-col>
                     </b-row>
@@ -310,54 +310,54 @@ export default {
                 transfer_mode: [],
                 type_of_weld: [],
                 filler_material_group: [],
-                filler_material_designation: [],
+                process_one: [],
+                process_two: [],
                 shielding_gas: [],
                 type_polarity: [],
                 welding_position: [],
                 welding_details: [],
                 welding_processes: [],
-                process_data: [],
                 header: [],
             },
             newElement: {
                 name: "",
-                filler_material_designation: [
-                    {
-                        process_number: "1",
-                        process: {
-                            range: "",
-                            test: ""
-                        }
-                    },
-                    {
-                        process_number: "2",
-                        process: {
-                            range: "",
-                            test: ""
-                        }
-                    }
-                ],
+                process_one: {
+                    id: null,
+                    range: "",
+                    test: ""
+                },
+                process_two: {
+                    id: null,
+                    range: "",
+                    test: ""
+                },
                 filler_material_group: {
+                    id: null,
                     range: "",
                     test: ""
                 },
                 parent_material_group: {
+                    id: null,
                     range: "",
                     test: ""
                 },
                 product_type: {
+                    id: null,
                     range: "",
                     test: ""
                 },
                 type_of_weld: {
+                    id: null,
                     range: "",
                     test: ""
                 },
                 welding_processes: {
+                    id: null,
                     range: "",
                     test: ""
                 },
                 header: {
+                    id: null,
                     range: "",
                     test: ""
                 }
@@ -374,12 +374,6 @@ export default {
             })
             this.newElement[array].range = result ? this.newElement[array].range = result.range : this.newElement[array].range = "";
         },
-        setElementWPSProcess(event, array, index) {
-            var result = this.data[array].find((item) => {
-                return item.test == event;
-            })
-            this.newElement.filler_material_designation[index].process.range = result ? this.newElement.filler_material_designation[index].process.range = result.range : this.newElement.filler_material_designation[index].process.range = "";
-        },
         getData() {
             axios.get('/api/pdf-data').then(response => {
                 Object.assign(this.data, response.data);
@@ -390,8 +384,9 @@ export default {
                 if (!result) {
                     return;
                 } else {
-                    axios.post('/api/added-wps', this.newElement).then((response) => {
-                        window.location.href = '/';
+                    axios.post('/api/wps', this.newElement).then((response) => {
+                        console.log(response.data)
+                        // window.location.href = '/';
                     }).catch((error) => {
                         alert("Error")
                     });

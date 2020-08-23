@@ -15,14 +15,8 @@ class CreateProductTypeTable extends Migration
     {
         Schema::create('product_type', function (Blueprint $table) {
             $table->id();
-            $table->string('test', 250);
-            $table->string('range', 250);
-            $table->foreignId('wps_reference_id');
-        });
-
-        Schema::table('product_type', function (Blueprint $table) {
-            $table->index('wps_reference_id');
-            $table->foreign('wps_reference_id')->references('id')->on('wps_reference')->onDelete('cascade');
+            $table->string('test');
+            $table->string('range');
         });
     }
 

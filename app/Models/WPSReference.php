@@ -10,34 +10,46 @@ class WPSReference extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name'
+        'name',
+        'welding_processes_id',
+        'type_weld_id',
+        'product_type_id',
+        'filler_material_group_id',
+        'process_1_id',
+        'process_2_id',
+        'parent_material_group_id',
+        'header_id'
     ];
 
     function weldingProcesses() {
-        return $this->hasOne('App\Models\WeldingProcesses', 'wps_reference_id');
+        return $this->belongsTo('App\Models\WeldingProcesses', 'welding_processes_id');
     }
 
     function typeOfWeld() {
-        return $this->hasOne('App\Models\TypeOfWeld', 'wps_reference_id');
+        return $this->belongsTo('App\Models\TypeOfWeld', 'type_weld_id');
     }
 
     function productType() {
-        return $this->hasOne('App\Models\ProductType', 'wps_reference_id');
+        return $this->belongsTo('App\Models\ProductType', 'product_type_id');
     }
 
     function fillerMaterialGroup() {
-        return $this->hasOne('App\Models\FillerMaterialGroup', 'wps_reference_id');
+        return $this->belongsTo('App\Models\FillerMaterialGroup', 'filler_material_group_id');
     }
 
-    function fillerMaterialDesignation() {
-        return $this->hasMany('App\Models\FillerMaterialDesignation', 'wps_reference_id');
+    function processOne() {
+        return $this->belongsTo('App\Models\Process', 'process_1_id');
+    }
+
+    function processTwo() {
+        return $this->belongsTo('App\Models\Process', 'process_2_id');
     }
 
     function parentMaterialGroup() {
-        return $this->hasOne('App\Models\ParentMaterialGroup', 'wps_reference_id');
+        return $this->belongsTo('App\Models\ParentMaterialGroup', 'parent_material_group_id');
     }
 
     function header() {
-        return $this->hasOne('App\Models\Header', 'wps_reference_id');
+        return $this->belongsTo('App\Models\Header', 'header_id');
     }
 }

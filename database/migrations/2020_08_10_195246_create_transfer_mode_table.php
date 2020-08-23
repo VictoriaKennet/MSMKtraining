@@ -15,8 +15,8 @@ class CreateTransferModeTable extends Migration
     {
         Schema::create('transfer_mode', function (Blueprint $table) {
             $table->id();
-            $table->string('test', 250);
-            $table->string('range', 250);
+            $table->string('test');
+            $table->string('range');
         });
     }
 

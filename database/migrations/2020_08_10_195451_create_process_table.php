@@ -15,8 +15,8 @@ class CreateProcessTable extends Migration
     {
         Schema::create('process', function (Blueprint $table) {
             $table->id();
-            $table->string('test', 250);
-            $table->string('range', 250);
+            $table->string('test');
+            $table->string('range');
         });
     }
 

@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             User::class,
-            Reference::class,
             WeldingProcesses::class,
             TransferMode::class,
             ProductType::class,
@@ -21,12 +20,12 @@ class DatabaseSeeder extends Seeder
             Process::class,
             ParentMaterialGroup::class,
             FillerMaterialGroup::class,
-            FillerMaterialDesignation::class,
             ShieldingGas::class,
             TypePolarity::class,
             WeldingDetails::class,
             WeldingPosition::class,
-            Header::class
+            Header::class,
+            Reference::class
         ]);
     }
 }

@@ -9,7 +9,6 @@ use App\Models\TransferMode;
 use App\Models\TypeOfWeld;
 use App\Models\ProductType;
 use App\Models\FillerMaterialGroup;
-use App\Models\FillerMaterialDesignation;
 use App\Models\Process;
 use App\Models\TypePolarity;
 use App\Models\ShieldingGas;
@@ -21,21 +20,19 @@ use\App\Models\Header;
 
 class DataController extends Controller
 {
+    // главная
     function pdfData() {
         $wps = WPSReference::with(
             'weldingProcesses',
             'typeOfWeld',
             'productType',
             'fillerMaterialGroup',
-            'fillerMaterialDesignation',
+            'processOne',
+            'processTwo',
             'parentMaterialGroup',
             'header'
         )->get();
-        foreach ($wps as $key => $value) {
-            foreach ($value['fillerMaterialDesignation'] as $k => $v) {
-                $v['process'] = Process::find($v['process_id']);
-            }
-        }
+        $process = Process::get();
         $data = [
             'wps_reference' => $wps,
             'parent_material_group' => ParentMaterialGroup::get(),
@@ -43,194 +40,138 @@ class DataController extends Controller
             'transfer_mode' => TransferMode::get(),
             'type_of_weld' => TypeOfWeld::get(),
             'filler_material_group' => FillerMaterialGroup::get(),
-            'filler_material_designation' => FillerMaterialDesignation::get(),
             'shielding_gas' => ShieldingGas::get(),
             'type_polarity' => TypePolarity::get(),
             'welding_position' => WeldingPosition::get(),
             'welding_details' => WeldingDetails::get(),
             'welding_processes' => WeldingProcesses::get(),
-            'process_data' => Process::get(),
+            'process_one' => $process,
+            'process_two' => $process,
             'header' => Header::get()
         ];
         return response()->json($data);
     }
 
-    function pdfDataId($id) {
+    function wpsId($id) {
         $wps = WPSReference::with(
             'weldingProcesses',
             'typeOfWeld',
             'productType',
             'fillerMaterialGroup',
-            'fillerMaterialDesignation',
+            'processOne',
+            'processTwo',
             'parentMaterialGroup',
             'header'
         )->find($id);
-        foreach ($wps['fillerMaterialDesignation'] as $k => $v) {
-            $v['process'] = Process::find($v['process_id']);
-        }
+        $process = Process::get();
         $data = [
             'wps_reference' => $wps,
             'parent_material_group' => ParentMaterialGroup::get(),
             'product_type' => ProductType::get(),
-            'transfer_mode' => TransferMode::get(),
             'type_of_weld' => TypeOfWeld::get(),
             'filler_material_group' => FillerMaterialGroup::get(),
-            'filler_material_designation' => FillerMaterialDesignation::get(),
-            'shielding_gas' => ShieldingGas::get(),
-            'type_polarity' => TypePolarity::get(),
-            'welding_position' => WeldingPosition::get(),
-            'welding_details' => WeldingDetails::get(),
             'welding_processes' => WeldingProcesses::get(),
-            'process_data' => Process::get(),
+            'process_one' => $process,
+            'process_two' => $process,
             'header' => Header::get()
         ];
         return response()->json($data);
     }
 
-    function delPdfDataId($id) {
+    function delWPSId($id) {
         WPSReference::find($id)->delete();
     }
 
-    function editPdfDataId(Request $request, $id) {
-        WPSReference::find($id)->update(['name' => $request->name]);
-
-        ProductType::where("wps_reference_id", $request->id)->update([
-            'test' => $request->product_type['test'],
-            'range' => $request->product_type['range']
+    function editWPSId(Request $request, $id) {
+        WPSReference::find($id)->update([
+            "name" => $request->name,
+            "parent_material_group_id" => $this->checkElement($request->parent_material_group, 'parent_material_group'),
+            "product_type_id" => $this->checkElement($request->product_type, 'product_type'),
+            "type_weld_id" => $this->checkElement($request->type_of_weld, 'type_of_weld'),
+            "filler_material_group_id" => $this->checkElement($request->filler_material_group, 'filler_material_group'),
+            "welding_processes_id" => $this->checkElement($request->welding_processes, 'welding_processes'),
+            "process_1_id" => $this->checkElement($request->process_one, 'process'),
+            "process_2_id" => $this->checkElement($request->process_two, 'process'),
+            "header_id" => $this->checkElement($request->header, 'header')
         ]);
-
-        TypeOfWeld::where("wps_reference_id", $request->id)->update([
-            "test" => $request->type_of_weld['test'],
-            'range' => $request->type_of_weld['range']
-        ]);
-
-        FillerMaterialGroup::where("wps_reference_id", $request->id)->update([
-            "test" => $request->filler_material_group['test'],
-            'range' => $request->filler_material_group['range']
-        ]);
-
-        $fillerMaterialDesignation = new FillerMaterialDesignation();
-        $process = new Process();
-        foreach ($request->filler_material_designation as $key => $value) {
-            $processId = null;
-            if(Process::where('test', $value['process']['test'])->where('range', $value['process']['range'])->exists()) {
-                $processId = Process::where('test', $value['process']['test'])->where('range', $value['process']['range'])->first()->id;
-            } else {
-                $newProcess = $process->create([
-                    'test' => $value['process']['test'],
-                    'range' => $value['process']['range'],
-                ]);
-                $processId = $newProcess->id;
-            }
-            $fillerMaterialDesignation->where("wps_reference_id", $request->id)->update([
-                'process_number' => $value['process_number'],
-                'process_id' => $processId
-            ]);
-        }
-
-        WeldingProcesses::where("wps_reference_id", $request->id)->update([
-            "test" => $request->welding_processes['test'],
-            'range' => $request->welding_processes['range']
-        ]);
-
-        Header::where("wps_reference_id", $request->id)->update([
-            "test" => $request->header['test'],
-            'range' => $request->header['range']
-        ]);
-
         return response()->json("ok");
     }
 
-    function added(Request $request) {
+    function postWPS(Request $request) {
+        $wpsReference = new WPSReference();
+        $wpsReference->create([
+            "name" => $request->name,
+            "parent_material_group_id" => $this->checkElement($request->parent_material_group, 'parent_material_group'),
+            "product_type_id" => $this->checkElement($request->product_type, 'product_type'),
+            "type_weld_id" => $this->checkElement($request->type_of_weld, 'type_of_weld'),
+            "filler_material_group_id" => $this->checkElement($request->filler_material_group, 'filler_material_group'),
+            "welding_processes_id" => $this->checkElement($request->welding_processes, 'welding_processes'),
+            "process_1_id" => $this->checkElement($request->process_one, 'process'),
+            "process_2_id" => $this->checkElement($request->process_two, 'process'),
+            "header_id" => $this->checkElement($request->header, 'header')
+        ]);
+        return response("ok", 200);
+    }
+
+    function postElement(Request $request) {
         $data = $request->all();
         $tables = [
-            'wps_reference' => new WPSReference(),
-            'parent_material_group' => new ParentMaterialGroup(),
-            'product_type' => new ProductType(),
             'transfer_mode' => new TransferMode(),
-            'type_of_weld' => new TypeOfWeld(),
-            'filler_material_group' => new FillerMaterialGroup(),
-            'filler_material_designation' => new FillerMaterialDesignation(),
             'shielding_gas' => new ShieldingGas(),
             'type_polarity' => new TypePolarity(),
             'welding_position' => new WeldingPosition(),
             'welding_details' => new WeldingDetails(),
-            'welding_processes' => new WeldingProcesses(),
-            'process_data' => new Process(),
-            'header' => new Header()
         ];
         $response = $tables[$request->table]->create($data);
         return response()->json($response);
     }
 
-    function addedWPS(Request $request) {
-        $wps = new WPSReference();
-        $newWPS = $wps->create([
-            'name' => $request->name
-        ]);
+    function updateElement(Request $request, $id) {
+        $data = $request->all();
+        $tables = [
+            'transfer_mode' => new TransferMode(),
+            'shielding_gas' => new ShieldingGas(),
+            'type_polarity' => new TypePolarity(),
+            'welding_position' => new WeldingPosition(),
+            'welding_details' => new WeldingDetails(),
+        ];
+        $tables[$request->table]->find($id)->update($data);
+        return response('ok', 200);
+    }
 
-        $parentMaterialGroup = new ParentMaterialGroup();
-        $parentMaterialGroup->create([
-            'test' => $request->parent_material_group['test'],
-            'range' => $request->parent_material_group['range'],
-            'wps_reference_id' => $newWPS->id
-        ]);
+    function deleteElement(Request $request, $id) {
+        $tables = [
+            'transfer_mode' => new TransferMode(),
+            'shielding_gas' => new ShieldingGas(),
+            'type_polarity' => new TypePolarity(),
+            'welding_position' => new WeldingPosition(),
+            'welding_details' => new WeldingDetails(),
+        ];
+        $tables[$request->table]->find($id)->delete();
+        return response('ok', 200);
+    }
 
-        $productType = new ProductType();
-        $productType->create([
-            'test' => $request->product_type['test'],
-            'range' => $request->product_type['range'],
-            'wps_reference_id' => $newWPS->id
-        ]);
-
-        $typeOfWeld = new TypeOfWeld();
-        $typeOfWeld->create([
-            'test' => $request->type_of_weld['test'],
-            'range' => $request->type_of_weld['range'],
-            'wps_reference_id' => $newWPS->id
-        ]);
-
-        $fillerMaterialGroup = new FillerMaterialGroup();
-        $fillerMaterialGroup->create([
-            'test' => $request->filler_material_group['test'],
-            'range' => $request->filler_material_group['range'],
-            'wps_reference_id' => $newWPS->id
-        ]);
-
-        $fillerMaterialDesignation = new FillerMaterialDesignation();
-        $process = new Process();
-        foreach ($request->filler_material_designation as $key => $value) {
-            $processId = null;
-            if(Process::where('test', $value['process']['test'])->where('range', $value['process']['range'])->exists()) {
-                $processId = Process::where('test', $value['process']['test'])->where('range', $value['process']['range'])->first()->id;
-            } else {
-                $newProcess = $process->create([
-                    'test' => $value['process']['test'],
-                    'range' => $value['process']['range'],
-                ]);
-                $processId = $newProcess->id;
-            }
-            $fillerMaterialDesignation->create([
-                'process_number' => $value['process_number'],
-                'process_id' => $processId,
-                'wps_reference_id' => $newWPS->id
+    function checkElement($data, $table) {
+        $tables = [
+            'parent_material_group' => new ParentMaterialGroup(),
+            'product_type' => new ProductType(),
+            'type_of_weld' => new TypeOfWeld(),
+            'filler_material_group' => new FillerMaterialGroup(),
+            'welding_processes' => new WeldingProcesses(),
+            'process' => new Process(),
+            'header' => new Header()
+        ];
+        $model = $tables[$table];
+        $id = null;
+        if($model::where('test', $data['test'])->where('range', $data['range'])->exists()) {
+            $id = $model::where('test', $data['test'])->where('range', $data['range'])->first()->id;
+        } else {
+            $new = $model->create([
+                'test' => $data['test'],
+                'range' => $data['range'],
             ]);
+            $id = $new->id;
         }
-
-        $weldingProcesses = new WeldingProcesses();
-        $weldingProcesses->create([
-            'test' => $request->welding_processes['test'],
-            'range' => $request->welding_processes['range'],
-            'wps_reference_id' => $newWPS->id
-        ]);
-
-        $header = new Header();
-        $header->create([
-            'test' => $request->header['test'],
-            'range' => $request->header['range'],
-            'wps_reference_id' => $newWPS->id
-        ]);
-
-        return response()->json("ok");
+        return $id;
     }
 }

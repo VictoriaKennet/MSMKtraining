@@ -11,7 +11,6 @@ class FillerMaterialGroup extends Model
 
     protected $fillable = [
         'test',
-        'range',
-        'wps_reference_id'
+        'range'
     ];
 }

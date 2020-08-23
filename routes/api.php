@@ -4,11 +4,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('pdf-data', 'DataController@pdfData');
-Route::get('pdf-data/{id}', 'DataController@pdfDataId');
-Route::post('pdf-data/{id}', 'DataController@editPdfDataId');
-Route::delete('pdf-data/{id}', 'DataController@delPdfDataId');
 
-Route::post('added', 'DataController@added');
-Route::post('added-wps', 'DataController@addedWPS');
+Route::get('wps/{id}', 'DataController@wpsId');
+Route::post('wps', 'DataController@postWPS');
+Route::post('wps/{id}', 'DataController@editWPSId');
+Route::post('del-wps/{id}', 'DataController@delWPSId');
+
+Route::post('element', 'DataController@postElement');
+Route::post('element/{id}', 'DataController@updateElement');
+Route::post('del-element/{id}', 'DataController@deleteElement');
 
 Route::post('img', 'PdfController@img');

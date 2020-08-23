@@ -15,8 +15,8 @@ class CreateTypePolarityTable extends Migration
     {
         Schema::create('type_polarity', function (Blueprint $table) {
             $table->id();
-            $table->string('test', 250);
-            $table->string('range', 250);
+            $table->string('test');
+            $table->string('range');
         });
     }
 

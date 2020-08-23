@@ -15,61 +15,36 @@ class CreateUserDataTable extends Migration
     {
         Schema::create('user_data', function (Blueprint $table) {
             $table->id();
+            $table->string('photo');
+            $table->string('name');
+            $table->string('identification');
+            $table->string('employer');
+            $table->string('testing_standard');
+            $table->string('job_knowledge');
+            $table->string('test_ref');
+            $table->string('lr_control');
+            $table->json('wps_data');
+
+            $table->string('document_number_1');
+            $table->string('document_number_2');
+
+            $table->boolean('visual_examination');
+            $table->boolean('transverse_bends');
+            $table->boolean('specimen_macro');
+            $table->boolean('transverse_side');
+            $table->boolean('ultrasonic_examination');
+
+            $table->string('withenessed_name');
+            $table->string('withenessed_position');
+            $table->string('withenessed_date');
+
+            $table->string('behaulf_name');
+            $table->string('behaulf_position');
+            $table->string('behaulf_date');
+
             $table->timestamps();
-            $table->string('photo', 250);
-            $table->string('name', 250);
-            $table->string('identification', 250);
-            $table->string('employer', 250);
-            $table->string('testing_standard', 250);
-            $table->string('job_knowledge', 250);
-            $table->string('test_ref_no', 250);
-            $table->boolean('b1');
-            $table->boolean('b2');
-            $table->boolean('b3');
-            $table->boolean('b4');
-            $table->boolean('b5');
-            $table->string('test_withessed_name', 250);
-            $table->string('test_withessed_position', 250);
-            $table->date('date');
-            $table->foreignId('shielding_gas_id');
-            $table->foreignId('type_polarity_id');
-            $table->foreignId('welding_details_id');
-            $table->foreignId('transfer_mode_id');
-            $table->foreignId('wps_reference_id');
-            $table->foreignId('welding_position_id');
-            
         });
 
-        Schema::table('user_data', function (Blueprint $table) {
-            $table->index('shielding_gas_id');
-            $table->foreign('shielding_gas_id')->references('id')->on('shielding_gas');
-        });
-
-        Schema::table('user_data', function (Blueprint $table) {
-            $table->index('type_polarity_id');
-            $table->foreign('type_polarity_id')->references('id')->on('type_polarity');
-        });
-
-        Schema::table('user_data', function (Blueprint $table) {
-            $table->index('welding_details_id');
-            $table->foreign('welding_details_id')->references('id')->on('welding_details');
-        });
-
-        Schema::table('user_data', function (Blueprint $table) {
-            $table->index('transfer_mode_id');
-            $table->foreign('transfer_mode_id')->references('id')->on('transfer_mode');
-        });
-
-        Schema::table('user_data', function (Blueprint $table) {
-            $table->index('welding_position_id');
-            $table->foreign('welding_position_id')->references('id')->on('welding_position');
-        });
-        
-        Schema::table('user_data', function (Blueprint $table) {
-            $table->index('wps_reference_id');
-            $table->foreign('wps_reference_id')->references('id')->on('wps_reference');
-        });
-        
     }
 
     /**

@@ -15,8 +15,8 @@ class CreateShieldingGasTable extends Migration
     {
         Schema::create('shielding_gas', function (Blueprint $table) {
             $table->id();
-            $table->string('test', 250);
-            $table->string('range', 250);
+            $table->string('test');
+            $table->string('range');
         });
     }
 

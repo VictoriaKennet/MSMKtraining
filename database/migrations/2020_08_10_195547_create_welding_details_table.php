@@ -15,8 +15,8 @@ class CreateWeldingDetailsTable extends Migration
     {
         Schema::create('welding_details', function (Blueprint $table) {
             $table->id();
-            $table->string('test', 250);
-            $table->string('range', 250);
+            $table->string('test');
+            $table->string('range');
         });
     }
 
