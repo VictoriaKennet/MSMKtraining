@@ -10,18 +10,34 @@ class ClientController extends Controller
 {
     function getClients() {
         $data = ClientData::get();
+        foreach ($data as $key => $value) {
+            $value['client'] = json_decode($value['client']);
+        }
+        return response()->json($data);
+    }
+    function getClientId($id) {
+        $data = ClientData::find($id);
+        $data['wps'] = json_decode($data['wps']);
+        $data['client'] = json_decode($data['client']);
         return response()->json($data);
     }
     function saveClient(Request $request) {
         $data = $request->all();
-        $data['wps_data'] = json_encode($request->wps_data);
-        $data['transfer_mode'] = json_encode($request->transfer_mode);
-        $data['shielding_gas'] = json_encode($request->shielding_gas);
-        $data['type_polarity'] = json_encode($request->type_polarity);
-        $data['welding_position'] = json_encode($request->welding_position);
-        $data['welding_details'] = json_encode($request->welding_details);
+        $data['wps'] = json_encode($data['wps']);
+        $data['client'] = json_encode($data['client']);
         $client = new ClientData();
         $client->create($data);
+        return response('ok', 200);
+    }
+    function updateClient(Request $request, $id) {
+        $data = $request->all();
+        $data['wps'] = json_encode($data['wps']);
+        $data['client'] = json_encode($data['client']);
+        ClientData::find($id)->update($data);
+        return response('ok', 200);
+    }
+    function delClient($id) {
+        ClientData::find($id)->delete();
         return response('ok', 200);
     }
 }

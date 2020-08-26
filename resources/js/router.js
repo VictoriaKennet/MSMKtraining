@@ -5,6 +5,7 @@ import PDFComponent from './components/PDFComponent.vue'
 import NewPDFComponent from './components/NewPDFComponent.vue'
 import EditPDFComponent from './components/EditPDFComponent.vue'
 import ClientsComponent from './components/ClientsComponent.vue'
+import ErrorComponent from './components/ErrorComponent.vue'
 
 Vue.use(VueRouter)
 
@@ -31,6 +32,16 @@ export default new VueRouter({
             path: '/clients',
             name: 'clients',
             component: ClientsComponent
+        },
+        {
+            path: '/client/:id',
+            name: 'client',
+            component: PDFComponent
+        },
+        {
+            path: '*',
+            name: 'error',
+            component: ErrorComponent,
         }
       ]
     })

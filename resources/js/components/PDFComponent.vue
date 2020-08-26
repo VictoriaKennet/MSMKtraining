@@ -1,5 +1,6 @@
 <template>
 <div>
+    <Navbar></Navbar>
 	<div style="display:none">
 		<div class="profile-modal-photo box-modal">
             <div class="box-modal_close arcticmodal-close"></div>
@@ -152,7 +153,7 @@
                                 </b-col>
 
                                 <b-col>
-                                    <b-img src="./user.png" fluid class="img_size perscab-photoedit-img" id="image"></b-img>
+                                    <b-img src="/user.png" fluid class="img_size perscab-photoedit-img" id="image"></b-img>
                                     <b-row>
                                         <b-col cols="8">
                                             <!-- Поле фото  -->
@@ -215,6 +216,7 @@
                                             list="wps-reference"
                                             name="wps_reference"
                                             @change="setWPS($event)"
+                                            v-model="wps.name"
                                         ></b-form-input>
                                         <b-form-datalist id="wps-reference" :options="data.wps_reference" text-field="name">
                                         </b-form-datalist>
@@ -1018,7 +1020,9 @@
                     <b-col>
                         <div class="d-flex justify-content-center">
                             <input type="submit" value="Open PDF" class="button">
-                            <input type="button" @click="saveData" value="Save data" class="button ml-1">
+                            <input v-if="$route.params.id" type="button" @click="updateData" value="Update data" class="button ml-1">
+                            <input v-if="$route.params.id" type="button" @click="deleteData" value="Delete" class="button-red ml-1">
+                            <input v-else type="button" @click="saveData" value="Save data" class="button ml-1">
                         </div>
                     </b-col>
                 </b-row>
@@ -1028,7 +1032,11 @@
 </div>
 </template>
 <script>
+import Navbar from './NavbarComponent';
 export default {
+    components: {
+        Navbar
+    },
     data() {
         return {
             newElement: {
@@ -1363,6 +1371,17 @@ export default {
             axios.get('/api/pdf-data').then(response => {
                 Object.assign(this.data, response.data);
             })
+            if(this.$route.params.id) {
+                axios.get('/api/client/'+this.$route.params.id).then(response => {
+                    Object.assign(this.clientData, response.data.client);
+                    Object.assign(this.wps, response.data.wps);
+                    if(response.data.client.photo) {
+                        document.getElementById("image").setAttribute('src', response.data.client.photo)
+                        document.getElementById("fileinput_c").setAttribute('value', response.data.client.photo)
+                    }
+                })
+            }
+
         },
         updateElement() {
             this.$validator.validateAll().then((result) => {
@@ -1408,10 +1427,11 @@ export default {
             });
         },
         saveData() {
-
-            this.clientData.wps_data = this.wps;
             this.clientData.photo = document.getElementById("fileinput_c").getAttribute('value')
-            axios.post('/api/client', this.clientData).then((response) => {
+            axios.post('/api/client', {
+                wps: this.wps,
+                client: this.clientData
+            }).then((response) => {
                 swal({
                     icon: 'success',
                     text: `Client saved`
@@ -1421,6 +1441,40 @@ export default {
                     icon: "error",
                     text: 'Error'
                 });
+            });
+        },
+        updateData() {
+            this.clientData.photo = document.getElementById("fileinput_c").getAttribute('value')
+            axios.post('/api/client/'+this.$route.params.id, {
+                wps: this.wps,
+                client: this.clientData
+            }).then((response) => {
+                swal({
+                    icon: 'success',
+                    text: `Client updated`
+                });
+            }).catch((error) => {
+                swal({
+                    icon: "error",
+                    text: 'Error'
+                });
+            });
+        },
+        deleteData() {
+            swal({
+                title: "Do you want to delete?",
+                icon: "warning"
+            }).then((willDelete) => {
+                if (willDelete) {
+                    axios.post('/api/del-client/'+this.$route.params.id).then((response) => {
+                        window.location.href = '/clients';
+                    }).catch((error) => {
+                        swal({
+                            icon: "error",
+                            text: 'Error'
+                        });
+                    });
+                }
             });
         }
     }
