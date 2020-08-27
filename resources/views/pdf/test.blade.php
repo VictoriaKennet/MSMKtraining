@@ -544,7 +544,7 @@
             <tr class="f-s-9 main-table">
                 <td class="tb-t-1">Outside pipe diameter(mm)</td>
                 <td colspan="5" class="br-l">{{$data->input('outside_pipe_diameter')}}</td>
-                @if (is_numeric($data->input('outside_pipe_diameter_1')))
+                @if ($data->input('outside_pipe_diameter_1')>=0)
                      <td class="br-l bg-3"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$data->input('outside_pipe_diameter_1')}}</td>
                      <td class="bg-3"> {{$data->input('outside_pipe_diameter_2')}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('outside_pipe_diameter_3')}}</td>
