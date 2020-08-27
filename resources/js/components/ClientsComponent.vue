@@ -6,14 +6,14 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Client name</th>
+                        <th scope="col">WPS name</th>
                         <th scope="col">Last update</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(item, index) in items" :key="index">
-                        <td><a :href="'/save/'+item.id">{{ item.client.name }}</a></td>
+                        <td><a :href="'/save/'+item.id">{{ item.wps.name ? item.wps.name : "Unknown" }}</a></td>
                         <td>{{ item.updated_at.substr(0, 10) }}</td>
                         <td class="text-right">
                             <b-icon

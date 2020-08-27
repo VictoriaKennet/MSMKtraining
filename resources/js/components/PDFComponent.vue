@@ -248,7 +248,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="header_2"
-                                            :value="'t'+clientData.material_thickness"
+                                            :value="materialThickness"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -597,20 +597,20 @@
                                 <b-col cols="9">
                                     <b-row>
                                         <b-col cols="2">
-                                            <b-form-checkbox name="pale_thickness_cb" size="lg" v-model="clientData.pale_thickness_cb">Plate</b-form-checkbox>
+                                            <b-form-checkbox name="plate_thickness_cb" size="lg" v-model="clientData.plate_thickness_cb">Plate</b-form-checkbox>
                                         </b-col>
                                         <b-col cols="3">
                                             <b-form-group>
                                                 <b-form-input
-                                                    name="pale_thickness"
-                                                    v-model="clientData.pale_thickness"
+                                                    name="plate_thickness"
+                                                    v-model="clientData.plate_thickness"
                                                 ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="4">
                                             <b-form-group>
                                                 <b-form-input
-                                                    name="pale_thickness_numb"
+                                                    name="plate_thickness_numb"
                                                     :value="materialThicknessNumb_1"
                                                 ></b-form-input>
                                             </b-form-group>
@@ -1079,7 +1079,7 @@
                             <input v-if="$route.params.id" type="button" @click="updateData" value="Update data" class="button ml-1">
                             <input v-if="$route.params.id" type="button" @click="deleteData" value="Delete" class="button-red ml-1">
                             <a v-if="$route.params.id" href="/saves" class="button ml-2">Back</a>
-                            <input v-else :disabled="clientData.name == ''" type="button" @click="saveData" value="Save data" class="button ml-1">
+                            <input v-else type="button" @click="saveData" value="Save data" class="button ml-1">
                         </div>
                     </b-col>
                 </b-row>
@@ -1184,7 +1184,6 @@ export default {
                 test_ref: "",
                 lr_control: "",
                 all_thickness: false,
-                material_thickness: 0,
                 deposited_thickness_root: 0,
                 deposited_thickness_rest: 0,
                 outside_pipe_diameter: 0,
@@ -1210,10 +1209,10 @@ export default {
                 all_thickness_2: false,
                 all_thickness_3: false,
 
-                pale_thickness_cb: true,
+                plate_thickness_cb: true,
                 tube_thickness_cb: false,
                 bar_thickness_cb: false,
-                pale_thickness: 0,
+                plate_thickness: 0,
                 tube_thickness: 0,
                 bar_thickness: 0,
                 transfer_mode: {
@@ -1295,15 +1294,15 @@ export default {
         },
 	    materialThicknessNumb_1() {
             let result = '';
-            if (this.clientData.pale_thickness >= 3){
+            if (this.clientData.plate_thickness >= 3){
                 return "From 3 To No Restriction";
             } else {
-                result = "From " + this.clientData.pale_thickness + " To "
+                result = "From " + this.clientData.plate_thickness + " To "
             }
-            if ((this.clientData.pale_thickness*2) < 3)  {
+            if ((this.clientData.plate_thickness*2) < 3)  {
                 result = result + "3"
             } else {
-                result = result + this.clientData.pale_thickness * 2
+                result = result + this.clientData.plate_thickness * 2
             }
             return result;
         },
@@ -1389,6 +1388,20 @@ export default {
             } else {
                 return "Single Layer (sl) and Multi Layer (ml)"
             }
+        },
+        materialThickness() {
+            let result = 't';
+            let values = [];
+            if(this.clientData.plate_thickness_cb) {
+                values.push(this.clientData.plate_thickness)
+            }
+            if(this.clientData.tube_thickness_cb) {
+                values.push(this.clientData.tube_thickness)
+            }
+            if(this.clientData.bar_thickness_cb) {
+                values.push(this.clientData.bar_thickness)
+            }
+            return result+values.join('-');
         }
     },
     methods: {

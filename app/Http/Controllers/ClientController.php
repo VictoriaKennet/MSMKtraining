@@ -11,7 +11,7 @@ class ClientController extends Controller
     function getClients() {
         $data = ClientData::get();
         foreach ($data as $key => $value) {
-            $value['client'] = json_decode($value['client']);
+            $value['wps'] = json_decode($value['wps']);
         }
         return response()->json($data);
     }
