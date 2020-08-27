@@ -1022,7 +1022,8 @@
                             <input type="submit" value="Open PDF" class="button">
                             <input v-if="$route.params.id" type="button" @click="updateData" value="Update data" class="button ml-1">
                             <input v-if="$route.params.id" type="button" @click="deleteData" value="Delete" class="button-red ml-1">
-                            <input v-else type="button" @click="saveData" value="Save data" class="button ml-1">
+                            <a v-if="$route.params.id" href="/clients" class="button ml-2">Back</a>
+                            <input v-else :disabled="clientData.name == ''" type="button" @click="saveData" value="Save data" class="button ml-1">
                         </div>
                     </b-col>
                 </b-row>

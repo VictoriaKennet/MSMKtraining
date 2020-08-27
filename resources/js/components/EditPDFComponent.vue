@@ -290,7 +290,7 @@
             <b-row>
                 <b-col>
                     <div class="d-flex justify-content-center">
-                        <input type="button" value="Save" class="button" @click="save">
+                        <input type="button" value="Update data" class="button" @click="save">
                         <input type="button" value="Delete" class="button-red ml-2" @click="del">
                         <a href="/" class="button ml-2">Back</a>
                     </div>

@@ -10,6 +10,12 @@
                 <b-nav-item href="/">Home</b-nav-item>
                 <b-nav-item href="/clients">Clients</b-nav-item>
             </b-navbar-nav>
+
+            <b-navbar-nav class="ml-auto">
+                <form action="/logout" method="POST">
+					<input type="submit" value="Exit" class="button mt-0 py-1">
+				</form>
+            </b-navbar-nav>
             </b-collapse>
         </b-navbar>
     </div>
