@@ -195,7 +195,7 @@
                             <hr>
                             <b-row>
                                 <b-col cols="3">
-                                    <label for="input-default">Designation</label>
+                                    <label>Designation</label>
                                 </b-col>
                                 <b-col cols="3">
                                     <b-form-group>
@@ -218,19 +218,19 @@
                             <hr>
                             <b-row class="centre">
                                 <b-col cols="3">
-                                    <label for="input-default">Name</label>
+                                    <label>Name</label>
                                 </b-col>
                                 <b-col cols="4">
-                                    <label for="input-default">Test piece</label>
+                                    <label>Test piece</label>
                                 </b-col>
                                 <b-col cols="5">
-                                    <label for="input-default">Range of qualification</label>
+                                    <label>Range of qualification</label>
                                 </b-col>
                             </b-row>
                             <hr>
                             <b-row>
                                 <b-col cols="3">
-                                    <label for="input-default">Welding processe(es)</label>
+                                    <label>Welding processe(es)</label>
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
@@ -430,23 +430,67 @@
                                 <b-col cols="3">
                                     <label for="input-default">Material thickness(mm)</label>
                                 </b-col>
-                                <b-col cols="4">
-                                    <b-form-group>
-                                        <b-form-input name="material_thickness" v-model="material_thickness"></b-form-input>
-                                    </b-form-group>
-                                </b-col>
-                                <b-col cols="5">
+                                <b-col cols="9">
                                     <b-row>
-                                        <b-col cols="8">
+                                        <b-col cols="2">
+                                            <b-form-checkbox name="pale_thickness_cb" size="lg" v-model="pale_thickness_cb">Pale</b-form-checkbox>
+                                        </b-col>
+                                        <b-col cols="3">
                                             <b-form-group>
-                                                <b-form-input :disabled="all_thickness" name="material_thickness_numb" list="material-thickness-numb" :value="materialThicknessNumb"></b-form-input>
-                                                <b-form-datalist id="material-thickness-numb"></b-form-datalist>
+                                                <b-form-input name="pale_thickness" v-model="pale_thickness"></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="4">
-                                            <b-form-checkbox name="all_thickness" v-model="all_thickness">All Thickness</b-form-checkbox>
+                                            <b-form-group>
+                                                <b-form-input name="pale_thickness_numb" list="pale-thickness-numb" :value="materialThicknessNumb_1"></b-form-input>
+                                                <b-form-datalist id="pale-thickness-numb"></b-form-datalist>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="3">
+                                            <b-form-checkbox name="all_thickness_1" v-model="all_thickness_1">All Thickness</b-form-checkbox>
                                         </b-col>
                                     </b-row>
+
+                                    <b-row>
+                                        <b-col cols="2">
+                                            <b-form-checkbox name="tube_thickness_cb" size="lg" v-model="tube_thickness_cb">Tube</b-form-checkbox>
+                                        </b-col>
+                                        <b-col cols="3">
+                                            <b-form-group>
+                                                <b-form-input name="tube_thickness" v-model="tube_thickness"></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="4">
+                                            <b-form-group>
+                                                <b-form-input name="tube_thickness_numb" list="tube-thickness-numb" :value="materialThicknessNumb_2"></b-form-input>
+                                                <b-form-datalist id="tube-thickness-numb"></b-form-datalist>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="3">
+                                            <b-form-checkbox name="all_thickness_2" v-model="all_thickness_2">All Thickness</b-form-checkbox>
+                                        </b-col>
+                                    </b-row>
+
+                                    <b-row>
+                                        <b-col cols="2">
+                                            <b-form-checkbox name="bar_thickness_cb" size="lg" v-model="bar_thickness_cb">Bar</b-form-checkbox>
+                                        </b-col>
+                                        <b-col cols="3">
+                                            <b-form-group>
+                                                <b-form-input name="bar_thickness" v-model="bar_thickness"></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="4">
+                                            <b-form-group>
+                                                <b-form-input name="bar_thickness_numb" list="bar-thickness-numb" :value="materialThicknessNumb_3"></b-form-input>
+                                                <b-form-datalist id="bar-thickness-numb"></b-form-datalist>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="3">
+                                            <b-form-checkbox name="all_thickness_3" v-model="all_thickness_3">All Thickness</b-form-checkbox>
+                                        </b-col>
+                                    </b-row>
+
                                 </b-col>
                             </b-row>
                             <hr>
@@ -798,9 +842,20 @@ export default {
             document_number1: "MSMK QF032",
             document_number2: "Rev 1",
 
-            all_thickness: false,
+            all_thickness_1: false,
+            all_thickness_2: false,
+            all_thickness_3: false,
+
             applicable_1: false,
             applicable_2: false,
+
+            pale_thickness_cb: true,
+            tube_thickness_cb: false,
+            bar_thickness_cb: false,
+
+            pale_thickness: 0,
+            tube_thickness: 0,
+            bar_thickness: 0,
 
             material_thickness: 0,
             material_thickness1: "",
@@ -964,19 +1019,47 @@ export default {
                 }
             }
         },
-        materialThicknessNumb() {
+        materialThicknessNumb_1() {
             let result = '';
-                if (this.material_thickness >= 3){
-                    return "From 3 To No Restriction";
-                } else {
-                    result = "From " + this.material_thickness + " To "
-                }
-                    if ((this.material_thickness*2) < 3)  {
-                        result = result + "3"
-                    } else {
-                        result = result + this.material_thickness * 2
-                    }
-                    return result;
+            if (this.pale_thickness >= 3){
+                return "From 3 To No Restriction";
+            } else {
+                result = "From " + this.pale_thickness + " To "
+            }
+            if ((this.pale_thickness*2) < 3)  {
+                result = result + "3"
+            } else {
+                result = result + this.pale_thickness * 2
+            }
+            return result;
+        },
+        materialThicknessNumb_2() {
+            let result = '';
+            if (this.tube_thickness >= 3){
+                return "From 3 To No Restriction";
+            } else {
+                result = "From " + this.tube_thickness + " To "
+            }
+            if ((this.tube_thickness*2) < 3)  {
+                result = result + "3"
+            } else {
+                result = result + this.tube_thickness * 2
+            }
+            return result;
+        },
+        materialThicknessNumb_3() {
+            let result = '';
+            if (this.bar_thickness >= 3){
+                return "From 3 To No Restriction";
+            } else {
+                result = "From " + this.bar_thickness + " To "
+            }
+            if ((this.bar_thickness*2) < 3)  {
+                result = result + "3"
+            } else {
+                result = result + this.bar_thickness * 2
+            }
+            return result;
         },
 
         outsidePipeDiameter1() {
