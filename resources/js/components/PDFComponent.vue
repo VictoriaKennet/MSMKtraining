@@ -597,7 +597,7 @@
                                 <b-col cols="9">
                                     <b-row>
                                         <b-col cols="2">
-                                            <b-form-checkbox name="pale_thickness_cb" size="lg" v-model="clientData.pale_thickness_cb">Pale</b-form-checkbox>
+                                            <b-form-checkbox name="pale_thickness_cb" size="lg" v-model="clientData.pale_thickness_cb">Plate</b-form-checkbox>
                                         </b-col>
                                         <b-col cols="3">
                                             <b-form-group>
@@ -648,7 +648,7 @@
                                         </b-col>
                                         <b-col cols="3">
                                             <b-form-group>
-                                                <b-form-input name="bar_thickness" v-model="clientData.tube_thickness"></b-form-input>
+                                                <b-form-input name="bar_thickness" v-model="clientData.bar_thickness"></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="4">
