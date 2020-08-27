@@ -41,7 +41,7 @@
         margin-top: 7px;
     }
     p {
-        margin-top: 20px;
+        margin-top: 15px;
     }
     .f-s-9 {
         font-size: 9pt;
@@ -189,7 +189,8 @@
             <tr class = "f-s-9 main-table">
                 <td class="tb-t-1 br-b">Type of weld</td>
                 <td colspan="5" class="tb-t-2 br-b">{{$data->input('type_of_weld_test')}}</td>
-                <td colspan="2" class="tb-t-3 br-b">{{$data->input('type_of_weld_range')}}</td>
+                <td colspan="2" class="tb-t-3 br-b">{{$data->input('ty
+                pe_of_weld_range')}}</td>
             </tr>
             <!-- !!!-2 part-!!! -->
             <tr class = "f-s-9 main-table">
