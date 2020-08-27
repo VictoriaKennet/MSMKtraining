@@ -14,4 +14,10 @@ Route::post('element', 'DataController@postElement');
 Route::post('element/{id}', 'DataController@updateElement');
 Route::post('del-element/{id}', 'DataController@deleteElement');
 
+Route::post('client', 'ClientController@saveClient');
+Route::post('client/{id}', 'ClientController@updateClient');
+Route::post('del-client/{id}', 'ClientController@delClient');
+Route::get('clients', 'ClientController@getClients');
+Route::get('client/{id}', 'ClientController@getClientId');
+
 Route::post('img', 'PdfController@img');

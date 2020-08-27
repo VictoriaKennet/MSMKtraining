@@ -1,5 +1,6 @@
 <template>
 <div>
+    <Navbar></Navbar>
     <b-container class="mt-2 mb-2">
         <h1 style="text-align: center">Edit WPS-Reference</h1>
         <b-form >
@@ -289,7 +290,7 @@
             <b-row>
                 <b-col>
                     <div class="d-flex justify-content-center">
-                        <input type="button" value="Save" class="button" @click="save">
+                        <input type="button" value="Update data" class="button" @click="save">
                         <input type="button" value="Delete" class="button-red ml-2" @click="del">
                         <a href="/" class="button ml-2">Back</a>
                     </div>
@@ -301,7 +302,11 @@
 </template>
 
 <script>
+import Navbar from './NavbarComponent';
 export default {
+    components: {
+        Navbar
+    },
     data() {
         return {
             data: {
@@ -382,7 +387,10 @@ export default {
                     axios.post('/api/wps/'+this.$route.params.id, this.data.wps_reference).then((response) => {
                         window.location.href = '/';
                     }).catch((error) => {
-                        alert("Error")
+                        swal({
+                            icon: "error",
+                            text: 'Error'
+                        });
                     });
                 }
             })
@@ -396,7 +404,10 @@ export default {
                     axios.post('/api/del-wps/'+this.$route.params.id).then((response) => {
                         window.location.href = '/';
                     }).catch((error) => {
-                        alert("Error")
+                        swal({
+                            icon: "error",
+                            text: 'Error'
+                        });
                     });
                 }
             });

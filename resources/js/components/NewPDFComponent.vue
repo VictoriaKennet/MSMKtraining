@@ -1,5 +1,6 @@
 <template>
 <div>
+    <Navbar></Navbar>
     <b-container class="mt-2 mb-2">
         <h1 style="text-align: center">Added new WPS-Reference</h1>
         <b-form >
@@ -300,7 +301,11 @@
 </template>
 
 <script>
+import Navbar from './NavbarComponent';
 export default {
+    components: {
+        Navbar
+    },
     data() {
         return {
             data: {
@@ -387,7 +392,10 @@ export default {
                     axios.post('/api/wps', this.newElement).then((response) => {
                         window.location.href = '/';
                     }).catch((error) => {
-                        alert("Error")
+                        swal({
+                            icon: "error",
+                            text: 'Error'
+                        });
                     });
                 }
             })
