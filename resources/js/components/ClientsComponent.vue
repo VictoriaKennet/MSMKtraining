@@ -2,7 +2,7 @@
     <div>
         <Navbar></Navbar>
         <b-container class="mt-2 mb-2">
-            <h1 style="text-align: center">Clients</h1>
+            <h1 class="text-center">Saves</h1>
             <table class="table">
                 <thead>
                     <tr>
@@ -13,7 +13,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="(item, index) in items" :key="index">
-                        <td><a :href="'/client/'+item.id">{{ item.client.name }}</a></td>
+                        <td><a :href="'/save/'+item.id">{{ item.client.name }}</a></td>
                         <td>{{ item.updated_at.substr(0, 10) }}</td>
                         <td class="text-right">
                             <b-icon

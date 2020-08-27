@@ -2,7 +2,7 @@
 <div>
     <Navbar></Navbar>
     <b-container class="mt-2 mb-2">
-        <h1 style="text-align: center">Added new WPS-Reference</h1>
+        <h1 class="text-center">Added new WPS-Reference</h1>
         <b-form >
             <b-card no-body class="mb-1">
                 <b-card-body>

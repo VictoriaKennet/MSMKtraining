@@ -29,13 +29,13 @@ export default new VueRouter({
             component: EditPDFComponent
         },
         {
-            path: '/clients',
-            name: 'clients',
+            path: '/saves',
+            name: 'saves',
             component: ClientsComponent
         },
         {
-            path: '/client/:id',
-            name: 'client',
+            path: '/save/:id',
+            name: 'save',
             component: PDFComponent
         },
         {
