@@ -597,7 +597,11 @@
                                 <b-col cols="9">
                                     <b-row>
                                         <b-col cols="2">
-                                            <b-form-checkbox name="plate_thickness_cb" size="lg" v-model="clientData.plate_thickness_cb">Plate</b-form-checkbox>
+                                            <b-form-checkbox
+                                                name="plate_thickness_cb"
+                                                size="lg"
+                                                v-model="clientData.plate_thickness_cb"
+                                            >Plate</b-form-checkbox>
                                         </b-col>
                                         <b-col cols="3">
                                             <b-form-group>
@@ -1391,17 +1395,26 @@ export default {
         },
         materialThickness() {
             let result = 't';
-            let values = [];
-            if(this.clientData.plate_thickness_cb) {
-                values.push(this.clientData.plate_thickness)
+            if(this.clientData.plate_thickness_cb && this.clientData.tube_thickness_cb) {
+                return result +
+                this.clientData.plate_thickness + '-' +
+                this.clientData.tube_thickness + '/' +
+                this.clientData.outside_pipe_diameter
             }
-            if(this.clientData.tube_thickness_cb) {
-                values.push(this.clientData.tube_thickness)
+            else if(this.clientData.plate_thickness_cb && this.clientData.bar_thickness_cb) {
+                return result +
+                this.clientData.plate_thickness + '-' +
+                this.clientData.bar_thickness + '/' +
+                this.clientData.outside_pipe_diameter
             }
-            if(this.clientData.bar_thickness_cb) {
-                values.push(this.clientData.bar_thickness)
+            else if(this.clientData.plate_thickness_cb) {
+                return result + this.clientData.plate_thickness
             }
-            return result+values.join('-');
+            else if(this.clientData.bar_thickness_cb) {
+                return result +
+                this.clientData.bar_thickness + '/' +
+                this.clientData.outside_pipe_diameter
+            }
         }
     },
     methods: {
