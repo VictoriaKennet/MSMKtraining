@@ -229,49 +229,49 @@
 
 
 
-            @if (($data->input('plate_thickness_cb'))&&($data->input('tube_thickness_cb'))&&($data->input('bar_thickness_cb')))
+            @if (($data->input('plate_1_thickness_cb'))&&($data->input('tube_1_thickness_cb'))&&($data->input('bar_thickness_cb')))
                 <tr class="f-s-9 main-table">
                     <td  rowspan="3"  class="tb-t-1 br-b">Material thickness(mm)</td>
-                    <td class="br-l" colspan="5">Plate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_thickness')}}</td>
-                    @if($data->input('all_thickness_1'))
+                    <td class="br-l" colspan="5">Plate 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')}}</td>
+                    @if($data->input('all_thickness_plate_1'))
                         <td colspan="2" class="br-l tb-t-3"> All Thickness </td>
                     @else
-                        @if($data->input('plate_thickness')>=3)
+                        @if($data->input('plate_1_thickness')>=3)
                             <td class="br-l bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
                             <td class=" bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
                         @else
-                            @if (($data->input('plate_thickness')*2) < 3)
-                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_thickness')}}</td>
+                            @if (($data->input('plate_1_thickness')*2) < 3)
+                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')}}</td>
                                 <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
                             @else
-                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_thickness')}}</td>
-                                <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_thickness')*2}} </td>
+                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')}}</td>
+                                <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')*2}} </td>
                             @endif
                         @endif
                     @endif
                 </tr>
                 <tr class="f-s-9 main-table">
-                    <td class="br-l" colspan="5">Tube &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_thickness')}}</td>
-                    @if($data->input('all_thickness_2'))
+                    <td class="br-l" colspan="5">Tube 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')}}</td>
+                    @if($data->input('all_thickness_tube_1'))
                         <td colspan="2" class="br-l tb-t-3"> All Thickness </td>
                     @else
-                        @if($data->input('tube_thickness')>=3)
+                        @if($data->input('tube_1_thickness')>=3)
                             <td class="br-l bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
                             <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
                         @else
-                            @if (($data->input('tube_thickness')*2) < 3)
-                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_thickness')}}</td>
+                            @if (($data->input('tube_1_thickness')*2) < 3)
+                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')}}</td>
                                 <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
                             @else
-                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_thickness')}}</td>
-                                <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_thickness')*2}} </td>
+                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')}}</td>
+                                <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')*2}} </td>
                             @endif
                         @endif
                     @endif
                 </tr>
                     <tr class="f-s-9 main-table">
                          <td class="br-l br-b" colspan="5">Bar &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('bar_thickness')}}</td>
-                        @if($data->input('all_thickness_3'))
+                        @if($data->input('all_thickness_bar'))
                             <td colspan="2" class="br-l br-b tb-t-3"> All Thickness </td>
                         @else
                             @if($data->input('bar_thickness')>=3)
@@ -289,76 +289,76 @@
                         @endif
                     </tr>
             @else
-                @if ( ( ($data->input('plate_thickness_cb'))&&($data->input('tube_thickness_cb')) )||
-                      ( ($data->input('plate_thickness_cb'))&&($data->input('bar_thickness_cb')) )||
-                      ( ($data->input('tube_thickness_cb'))&&($data->input('bar_thickness_cb')) ) )
+                @if ( ( ($data->input('plate_1_thickness_cb'))&&($data->input('tube_1_thickness_cb')) )||
+                      ( ($data->input('plate_1_thickness_cb'))&&($data->input('bar_thickness_cb')) )||
+                      ( ($data->input('tube_1_thickness_cb'))&&($data->input('bar_thickness_cb')) ) )
 
-                    @if (($data->input('plate_thickness_cb'))&&($data->input('tube_thickness_cb')))
+                    @if (($data->input('plate_1_thickness_cb'))&&($data->input('tube_1_thickness_cb')))
                     <tr class="f-s-9 main-table">
                     <td  rowspan="2"  class="tb-t-1 br-b">Material thickness(mm)</td>
-                    <td class="br-l" colspan="5">Plate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_thickness')}}</td>
-                    @if($data->input('all_thickness_1'))
+                    <td class="br-l" colspan="5">Plate 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')}}</td>
+                    @if($data->input('all_thickness_plate_1'))
                         <td colspan="2" class="br-l tb-t-3"> All Thickness </td>
                     @else
-                        @if($data->input('plate_thickness')>=3)
+                        @if($data->input('plate_1_thickness')>=3)
                             <td class="br-l bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
                             <td class=" bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
                         @else
-                            @if (($data->input('plate_thickness')*2) < 3)
-                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_thickness')}}</td>
+                            @if (($data->input('plate_1_thickness')*2) < 3)
+                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')}}</td>
                                 <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
                             @else
-                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_thickness')}}</td>
-                                <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_thickness')*2}} </td>
+                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')}}</td>
+                                <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')*2}} </td>
                             @endif
                         @endif
                     @endif
                 </tr>
                     <tr class="f-s-9 main-table">
-                         <td class="br-l br-b" colspan="5">Tube &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_thickness')}}</td>
-                        @if($data->input('all_thickness_2'))
+                         <td class="br-l br-b" colspan="5">Tube 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')}}</td>
+                        @if($data->input('all_thickness_tube_1'))
                             <td colspan="2" class="br-l br-b tb-t-3"> All Thickness </td>
                         @else
-                            @if($data->input('tube_thickness')>=3)
+                            @if($data->input('tube_1_thickness')>=3)
                                 <td class="br-l br-b bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
                                 <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
                             @else
-                                @if (($data->input('tube_thickness')*2) < 3)
-                                    <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_thickness')}}</td>
+                                @if (($data->input('tube_1_thickness')*2) < 3)
+                                    <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')}}</td>
                                     <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
                                 @else
-                                    <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_thickness')}}</td>
-                                    <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_thickness')*2}} </td>
+                                    <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')}}</td>
+                                    <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')*2}} </td>
                                 @endif
                             @endif
                         @endif
                     </tr>
                     @endif
 
-                    @if (($data->input('plate_thickness_cb'))&&($data->input('bar_thickness_cb')))
+                    @if (($data->input('plate_1_thickness_cb'))&&($data->input('bar_thickness_cb')))
                     <tr class="f-s-9 main-table">
                     <td  rowspan="2"  class="tb-t-1 br-b">Material thickness(mm)</td>
-                    <td class="br-l" colspan="5">Plate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_thickness')}}</td>
-                    @if($data->input('all_thickness_1'))
+                    <td class="br-l" colspan="5">Plate 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')}}</td>
+                    @if($data->input('all_thickness_plate_1'))
                         <td colspan="2" class="br-l tb-t-3"> All Thickness </td>
                     @else
-                        @if($data->input('plate_thickness')>=3)
+                        @if($data->input('plate_1_thickness')>=3)
                             <td class="br-l bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
                             <td class=" bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
                         @else
-                            @if (($data->input('plate_thickness')*2) < 3)
-                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_thickness')}}</td>
+                            @if (($data->input('plate_1_thickness')*2) < 3)
+                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')}}</td>
                                 <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
                             @else
-                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_thickness')}}</td>
-                                <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_thickness')*2}} </td>
+                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')}}</td>
+                                <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')*2}} </td>
                             @endif
                         @endif
                     @endif
                 </tr>
                     <tr class="f-s-9 main-table">
                          <td class="br-l br-b" colspan="5">Bar &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('bar_thickness')}}</td>
-                        @if($data->input('all_thickness_3'))
+                        @if($data->input('all_thickness_bar'))
                             <td colspan="2" class="br-l br-b tb-t-3"> All Thickness </td>
                         @else
                             @if($data->input('bar_thickness')>=3)
@@ -377,30 +377,30 @@
                     </tr>
                     @endif
 
-                    @if (($data->input('tube_thickness_cb'))&&($data->input('bar_thickness_cb')))
+                    @if (($data->input('tube_1_thickness_cb'))&&($data->input('bar_thickness_cb')))
                     <tr class="f-s-9 main-table">
                     <td  rowspan="2"  class="tb-t-1 br-b">Material thickness(mm)</td>
-                    <td class="br-l" colspan="5">Tube &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_thickness')}}</td>
-                    @if($data->input('all_thickness_2'))
+                    <td class="br-l" colspan="5">Tube 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')}}</td>
+                    @if($data->input('all_thickness_tube_1'))
                         <td colspan="2" class="br-l tb-t-3"> All Thickness </td>
                     @else
-                        @if($data->input('tube_thickness')>=3)
+                        @if($data->input('tube_1_thickness')>=3)
                             <td class="br-l bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
                             <td class=" bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
                         @else
-                            @if (($data->input('tube_thickness')*2) < 3)
-                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_thickness')}}</td>
+                            @if (($data->input('tube_1_thickness')*2) < 3)
+                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')}}</td>
                                 <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
                             @else
-                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_thickness')}}</td>
-                                <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_thickness')*2}} </td>
+                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')}}</td>
+                                <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')*2}} </td>
                             @endif
                         @endif
                     @endif
                 </tr>
                     <tr class="f-s-9 main-table">
                          <td class="br-l br-b" colspan="5">Bar &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('bar_thickness')}}</td>
-                        @if($data->input('all_thickness_3'))
+                        @if($data->input('all_thickness_bar'))
                             <td colspan="2" class="br-l br-b tb-t-3"> All Thickness </td>
                         @else
                             @if($data->input('bar_thickness')>=3)
@@ -420,75 +420,158 @@
                     @endif
                 @else
 
-                    @if (($data->input('plate_thickness_cb')) || ($data->input('tube_thickness_cb')) || ($data->input('bar_thickness_cb')))
-
-                        @if ($data->input('plate_thickness_cb'))
-                         <tr class="f-s-9 main-table">
-                             <td class="tb-t-1 br-b">Material thickness(mm)</td>
-                             <td class="br-l br-b" colspan="5">Plate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_thickness')}}</td>
-                            @if($data->input('all_thickness_1'))
-                                <td colspan="2" class="br-l br-b tb-t-3"> All Thickness </td>
-                            @else
-                                @if($data->input('plate_thickness')>=3)
-                                    <td class="br-l br-b bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
-                                    <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
+                    @if (($data->input('plate_1_thickness_cb')) || ($data->input('tube_1_thickness_cb')) || ($data->input('bar_thickness_cb')))
+                        @if($data->input('plate_1_thickness_cb') && $data->input('plate_2_thickness_cb'))
+                            <tr class="f-s-9 main-table">
+                                <td rowspan="2" class="tb-t-1 br-b">Material thickness(mm)</td>
+                                <td class="br-l" colspan="5">Plate 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')}}</td>
+                                @if($data->input('all_thickness_plate_1'))
+                                    <td colspan="2" class="br-l tb-t-3"> All Thickness </td>
                                 @else
-                                    @if (($data->input('plate_thickness')*2) < 3)
-                                        <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_thickness')}}</td>
-                                        <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
+                                    @if($data->input('plate_1_thickness')>=3)
+                                        <td class="br-l bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
+                                        <td class=" bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
                                     @else
-                                        <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_thickness')}}</td>
-                                        <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_thickness')*2}} </td>
+                                        @if (($data->input('plate_1_thickness')*2) < 3)
+                                            <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')}}</td>
+                                            <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
+                                        @else
+                                            <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')}}</td>
+                                            <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')*2}} </td>
+                                        @endif
                                     @endif
                                 @endif
-                            @endif
                             </tr>
-                        @endif
-
-                        @if ($data->input('tube_thickness_cb'))
-                         <tr class="f-s-9 main-table">
-                             <td class="tb-t-1 br-b">Material thickness(mm)</td>
-                             <td class="br-l br-b" colspan="5">Tube &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_thickness')}}</td>
-                            @if($data->input('all_thickness_2'))
-                                <td colspan="2" class="br-l br-b tb-t-3"> All Thickness </td>
-                            @else
-                                @if($data->input('tube_thickness')>=3)
-                                    <td class="br-l br-b bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
-                                    <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
+                            <tr class="f-s-9 main-table">
+                                <td class="br-l br-b" colspan="5">Plate 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_2_thickness')}}</td>
+                                @if($data->input('all_thickness_plate_2'))
+                                    <td colspan="2" class="br-l br-b tb-t-3"> All Thickness </td>
                                 @else
-                                    @if (($data->input('tube_thickness')*2) < 3)
-                                        <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_thickness')}}</td>
-                                        <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
+                                    @if($data->input('plate_2_thickness')>=3)
+                                        <td class="br-l br-b bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
+                                        <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
                                     @else
-                                        <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_thickness')}}</td>
-                                        <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_thickness')*2}} </td>
+                                        @if (($data->input('plate_2_thickness')*2) < 3)
+                                            <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_2_thickness')}}</td>
+                                            <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
+                                        @else
+                                            <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_2_thickness')}}</td>
+                                            <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_2_thickness')*2}} </td>
+                                        @endif
                                     @endif
                                 @endif
-                            @endif
                             </tr>
-                        @endif
+                        @else
+                            @if($data->input('tube_1_thickness_cb') && $data->input('tube_2_thickness_cb'))
+                                <tr class="f-s-9 main-table">
+                                    <td rowspan="2" class="tb-t-1 br-b">Material thickness(mm)</td>
+                                    <td class="br-l" colspan="5">Tube 1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')}}</td>
+                                    @if($data->input('all_thickness_tube_1'))
+                                        <td colspan="2" class="br-l tb-t-3"> All Thickness </td>
+                                    @else
+                                        @if($data->input('tube_1_thickness')>=3)
+                                            <td class="br-l bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
+                                            <td class=" bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
+                                        @else
+                                            @if (($data->input('tube_1_thickness')*2) < 3)
+                                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')}}</td>
+                                                <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
+                                            @else
+                                                <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')}}</td>
+                                                <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')*2}} </td>
+                                            @endif
+                                        @endif
+                                    @endif
+                                </tr>
+                                <tr class="f-s-9 main-table">
+                                    <td class="br-l br-b" colspan="5">Tube 2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_2_thickness')}}</td>
+                                    @if($data->input('all_thickness_tube_2'))
+                                        <td colspan="2" class="br-l br-b tb-t-3"> All Thickness </td>
+                                    @else
+                                        @if($data->input('tube_2_thickness')>=3)
+                                            <td class="br-l br-b bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
+                                            <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
+                                        @else
+                                            @if (($data->input('tube_2_thickness')*2) < 3)
+                                                <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_2_thickness')}}</td>
+                                                <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
+                                            @else
+                                                <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_2_thickness')}}</td>
+                                                <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_2_thickness')*2}} </td>
+                                            @endif
+                                        @endif
+                                    @endif
+                                </tr>
+                            @else
+                                @if ($data->input('plate_1_thickness_cb'))
+                                    <tr class="f-s-9 main-table">
+                                        <td class="tb-t-1 br-b">Material thickness(mm)</td>
+                                        <td class="br-l br-b" colspan="5">Plate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')}}</td>
+                                        @if($data->input('all_thickness_plate_1'))
+                                            <td colspan="2" class="br-l br-b tb-t-3"> All Thickness </td>
+                                        @else
+                                            @if($data->input('plate_1_thickness')>=3)
+                                                <td class="br-l br-b bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
+                                                <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
+                                            @else
+                                                @if (($data->input('plate_1_thickness')*2) < 3)
+                                                    <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')}}</td>
+                                                    <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
+                                                @else
+                                                    <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')}}</td>
+                                                    <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('plate_1_thickness')*2}} </td>
+                                                @endif
+                                            @endif
+                                        @endif
+                                    </tr>
+                                @endif
 
-                        @if ($data->input('bar_thickness_cb'))
-                         <tr class="f-s-9 main-table">
-                             <td class="tb-t-1 br-b">Material thickness(mm)</td>
-                              <td class="br-l br-b" colspan="5">Bar &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('bar_thickness')}}</td>
-                             @if($data->input('all_thickness_3'))
-                                 <td colspan="2" class="br-l br-b tb-t-3"> All Thickness </td>
-                             @else
-                                 @if($data->input('bar_thickness')>=3)
-                                     <td class="br-l br-b bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
-                                     <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
-                                 @else
-                                     @if (($data->input('bar_thickness')*2) < 3)
-                                         <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('bar_thickness')}}</td>
-                                         <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
-                                     @else
-                                         <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('bar_thickness')}}</td>
-                                         <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('bar_thickness')*2}} </td>
-                                     @endif
-                                 @endif
-                             @endif
-                             </tr>
+                                @if ($data->input('tube_1_thickness_cb'))
+                                    <tr class="f-s-9 main-table">
+                                        <td class="tb-t-1 br-b">Material thickness(mm)</td>
+                                        <td class="br-l br-b" colspan="5">Tube &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')}}</td>
+                                        @if($data->input('all_thickness_tube_1'))
+                                            <td colspan="2" class="br-l br-b tb-t-3"> All Thickness </td>
+                                        @else
+                                            @if($data->input('tube_1_thickness')>=3)
+                                                <td class="br-l br-b bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
+                                                <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
+                                            @else
+                                                @if (($data->input('tube_1_thickness')*2) < 3)
+                                                    <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')}}</td>
+                                                    <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
+                                                @else
+                                                    <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')}}</td>
+                                                    <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('tube_1_thickness')*2}} </td>
+                                                @endif
+                                            @endif
+                                        @endif
+                                    </tr>
+                                @endif
+
+                                @if ($data->input('bar_thickness_cb'))
+                                    <tr class="f-s-9 main-table">
+                                        <td class="tb-t-1 br-b">Material thickness(mm)</td>
+                                        <td class="br-l br-b" colspan="5">Bar &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('bar_thickness')}}</td>
+                                        @if($data->input('all_thickness_bar'))
+                                            <td colspan="2" class="br-l br-b tb-t-3"> All Thickness </td>
+                                        @else
+                                            @if($data->input('bar_thickness')>=3)
+                                                <td class="br-l br-b bg-3"> From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</td>
+                                                <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; No Restriction </td>
+                                            @else
+                                                @if (($data->input('bar_thickness')*2) < 3)
+                                                    <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('bar_thickness')}}</td>
+                                                    <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 </td>
+                                                @else
+                                                    <td class="br-l br-b bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('bar_thickness')}}</td>
+                                                    <td class="br-b bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('bar_thickness')*2}} </td>
+                                                @endif
+                                            @endif
+                                        @endif
+                                    </tr>
+                                @endif
+                            @endif
                         @endif
                     @endif
                 @endif
@@ -542,18 +625,29 @@
 
             </tr>
             <!-- !!!-6 part-!!! -->
-            <tr class="f-s-9 main-table">
-                <td class="tb-t-1">Outside pipe diameter(mm)</td>
-                <td colspan="5" class="br-l">{{$data->input('outside_pipe_diameter')}}</td>
-                @if (is_numeric($data->input('outside_pipe_diameter_1')))
-                     <td class="br-l bg-3"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$data->input('outside_pipe_diameter_1')}}</td>
-                     <td class="bg-3"> {{$data->input('outside_pipe_diameter_2')}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('outside_pipe_diameter_3')}}</td>
-                @else
-                    <td colspan="2" class="tb-t-3">{{$data->input('outside_pipe_diameter_1')}} {{$data->input('outside_pipe_diameter_2')}} {{$data->input('outside_pipe_diameter_3')}}</td>
-                @endif
-
-            </tr>
+            @if(is_numeric($data->input('outside_pipe_diameter_1')) && is_numeric($data->input('outside_pipe_diameter_2')))
+                <tr class="f-s-9 main-table">
+                    <td class="tb-t-1">Outside pipe diameter(mm)</td>
+                    <td colspan="5" class="br-l">{{$data->input('outside_pipe_diameter_1')}}mm to {{$data->input('outside_pipe_diameter_2')}}mm</td>
+                    @if (is_numeric($data->input('outside_pipe_diameter_1_1')))
+                        <td colspan="2" class="br-l bg-3"> Thinnest: {{$data->input('outside_pipe_diameter_1')}} to {{$data->input('outside_pipe_diameter_2')}} / Thickest: {{$data->input('outside_pipe_diameter_2_1')}} {{$data->input('outside_pipe_diameter_2_2')}} {{$data->input('outside_pipe_diameter_2_3')}}</td>
+                    @else
+                        <td colspan="2" class="tb-t-3"> {{$data->input('outside_pipe_diameter_1_1')}} {{$data->input('outside_pipe_diameter_1_2')}} {{$data->input('outside_pipe_diameter_1_3')}}</td>
+                    @endif
+                </tr>
+            @else
+                <tr class="f-s-9 main-table">
+                    <td class="tb-t-1">Outside pipe diameter(mm)</td>
+                    <td colspan="5" class="br-l">{{$data->input('outside_pipe_diameter_1')}}mm</td>
+                    @if (is_numeric($data->input('outside_pipe_diameter_1_1')))
+                        <td class="br-l bg-3"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$data->input('outside_pipe_diameter_1_1')}}</td>
+                        <td class="bg-3"> {{$data->input('outside_pipe_diameter_1_2')}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('outside_pipe_diameter_1_3')}}</td>
+                    @else
+                        <td colspan="2" class="tb-t-3">{{$data->input('outside_pipe_diameter_1_1')}} {{$data->input('outside_pipe_diameter_1_2')}} {{$data->input('outside_pipe_diameter_1_3')}}</td>
+                    @endif
+                </tr>
+            @endif
             <tr class="f-s-9 main-table">
                 <td class="tb-t-1">Welding position</td>
                 <td colspan="5" class="tb-t-2">{{$data->input('welding_position_test')}}</td>

@@ -27,8 +27,11 @@
                         v-validate="{ required: true}"
                         :class="errors.has('new_element_test') ? 'input-has-error' : ''"
                     ></b-form-input>
-                    <b-form-datalist id="new-test" :options="data[newElement.table]" text-field="test">
-                    </b-form-datalist>
+                    <b-form-datalist
+                        id="new-test"
+                        :options="data[newElement.table]"
+                        text-field="test"
+                    ></b-form-datalist>
                 </b-form-group>
             </b-col>
             <b-col>
@@ -40,8 +43,11 @@
                         v-validate="{ required: true}"
                         :class="errors.has('new_element_range') ? 'input-has-error' : ''"
                     ></b-form-input>
-                    <b-form-datalist id="new-range" :options="data[newElement.table]" text-field="range">
-                    </b-form-datalist>
+                    <b-form-datalist
+                        id="new-range"
+                        :options="data[newElement.table]"
+                        text-field="range"
+                    ></b-form-datalist>
                 </b-form-group>
             </b-col>
         </b-row>
@@ -63,8 +69,11 @@
                         v-validate="{ required: true}"
                         :class="errors.has('edit_element_test') ? 'input-has-error' : ''"
                     ></b-form-input>
-                    <b-form-datalist id="edit-test" :options="data[editElement.table]" text-field="test">
-                    </b-form-datalist>
+                    <b-form-datalist
+                        id="edit-test"
+                        :options="data[editElement.table]"
+                        text-field="test"
+                    ></b-form-datalist>
                 </b-form-group>
             </b-col>
             <b-col>
@@ -76,8 +85,11 @@
                         v-validate="{ required: true}"
                         :class="errors.has('edit_element_range') ? 'input-has-error' : ''"
                     ></b-form-input>
-                    <b-form-datalist id="new-range" :options="data[editElement.table]" text-field="range">
-                    </b-form-datalist>
+                    <b-form-datalist
+                        id="new-range"
+                        :options="data[editElement.table]"
+                        text-field="range"
+                    ></b-form-datalist>
                 </b-form-group>
             </b-col>
         </b-row>
@@ -135,8 +147,10 @@
                                             name="testing_standard"
                                             v-model="clientData.testing_standard"
                                         ></b-form-input>
-                                        <b-form-datalist id="testing-standard" :options="testing_standard">
-                                        </b-form-datalist>
+                                        <b-form-datalist
+                                            id="testing-standard"
+                                            :options="testing_standard"
+                                        ></b-form-datalist>
                                     </b-form-group>
 
                                     <!-- Поле ввода  -->
@@ -147,8 +161,10 @@
                                             name="job_knowledge"
                                             v-model="clientData.job_knowledge"
                                         ></b-form-input>
-                                        <b-form-datalist id="job-knowledge" :options="job_knowledge">
-                                        </b-form-datalist>
+                                        <b-form-datalist
+                                            id="job-knowledge"
+                                            :options="job_knowledge"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
 
@@ -218,8 +234,11 @@
                                             @change="setWPS($event)"
                                             v-model="wps.name"
                                         ></b-form-input>
-                                        <b-form-datalist id="wps-reference" :options="data.wps_reference" text-field="name">
-                                        </b-form-datalist>
+                                        <b-form-datalist
+                                            id="wps-reference"
+                                            :options="data.wps_reference"
+                                            text-field="name"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="1">
@@ -240,8 +259,17 @@
                                 </b-col>
                                 <b-col cols="3">
                                     <b-form-group>
-                                        <b-form-input name="header_1" list="main-header-1" v-model="wps.header.test" @change="setElementWPS($event, 'header')"></b-form-input>
-                                        <b-form-datalist id="main-header-1" :options="data.header" text-field="test"></b-form-datalist>
+                                        <b-form-input
+                                            name="header_1"
+                                            list="main-header-1"
+                                            v-model="wps.header.test"
+                                            @change="setElementWPS($event, 'header')"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="main-header-1"
+                                            :options="data.header"
+                                            text-field="test"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="3">
@@ -254,8 +282,16 @@
                                 </b-col>
                                 <b-col cols="3">
                                     <b-form-group>
-                                        <b-form-input name="header_3" list="main-header-3" v-model="wps.header.range"></b-form-input>
-                                        <b-form-datalist id="main-header-3" :options="data.header" text-field="range"></b-form-datalist>
+                                        <b-form-input
+                                            name="header_3"
+                                            list="main-header-3"
+                                            v-model="wps.header.range"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="main-header-3"
+                                            :options="data.header"
+                                            text-field="range"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -278,14 +314,31 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="welding_processes_test" list="welding-processes" v-model="wps.welding_processes.test" @change="setElementWPS($event, 'welding_processes')"></b-form-input>
-                                        <b-form-datalist id="welding-processes" :options="data.welding_processes" text-field="test"></b-form-datalist>
+                                        <b-form-input
+                                            name="welding_processes_test"
+                                            list="welding-processes"
+                                            v-model="wps.welding_processes.test"
+                                            @change="setElementWPS($event, 'welding_processes')"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="welding-processes"
+                                            :options="data.welding_processes"
+                                            text-field="test"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="5">
                                     <b-form-group>
-                                        <b-form-input name="welding_processes_range" list="welding-processes" v-model="wps.welding_processes.range"></b-form-input>
-                                        <b-form-datalist id="welding-processes" :options="data.welding_processes" text-field="range"></b-form-datalist>
+                                        <b-form-input
+                                            name="welding_processes_range"
+                                            list="welding-processes"
+                                            v-model="wps.welding_processes.range"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="welding-processes"
+                                            :options="data.welding_processes"
+                                            text-field="range"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -351,14 +404,31 @@
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
-                                        <b-form-input name="product_type_test" list="product-type" v-model="wps.product_type.test" @change="setElementWPS($event, 'product_type')"></b-form-input>
-                                        <b-form-datalist id="product-type" :options="data.product_type" text-field="test"></b-form-datalist>
+                                        <b-form-input
+                                            name="product_type_test"
+                                            list="product-type"
+                                            v-model="wps.product_type.test"
+                                            @change="setElementWPS($event, 'product_type')"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="product-type"
+                                            :options="data.product_type"
+                                            text-field="test"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols ="5">
                                     <b-form-group>
-                                        <b-form-input name="product_type_range" list="product-type" v-model="wps.product_type.range"></b-form-input>
-                                        <b-form-datalist id="product-type" :options="data.product_type" text-field="range"></b-form-datalist>
+                                        <b-form-input
+                                            name="product_type_range"
+                                            list="product-type"
+                                            v-model="wps.product_type.range"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="product-type"
+                                            :options="data.product_type"
+                                            text-field="range"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -404,14 +474,31 @@
                                 </b-col>
                                 <b-col cols ="4">
                                     <b-form-group>
-                                        <b-form-input name="parent_material_group_test" list="parent-material-group" v-model="wps.parent_material_group.test" @change="setElementWPS($event, 'parent_material_group')"></b-form-input>
-                                        <b-form-datalist id="parent-material-group" :options="data.parent_material_group" text-field="test"></b-form-datalist>
+                                        <b-form-input
+                                            name="parent_material_group_test"
+                                            list="parent-material-group"
+                                            v-model="wps.parent_material_group.test"
+                                            @change="setElementWPS($event, 'parent_material_group')"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="parent-material-group"
+                                            :options="data.parent_material_group"
+                                            text-field="test"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols ="5">
                                     <b-form-group>
-                                        <b-form-input name="parent_material_group_range" list="parent-material-group" v-model="wps.parent_material_group.range"></b-form-input>
-                                        <b-form-datalist id="parent-material-group" :options="data.parent_material_group" text-field="range"></b-form-datalist>
+                                        <b-form-input
+                                            name="parent_material_group_range"
+                                            list="parent-material-group"
+                                            v-model="wps.parent_material_group.range"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="parent-material-group"
+                                            :options="data.parent_material_group"
+                                            text-field="range"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -422,14 +509,31 @@
                                 </b-col>
                                 <b-col cols ="4">
                                     <b-form-group>
-                                        <b-form-input name="filler_material_group_test" list="filler-material-group" v-model="wps.filler_material_group.test" @change="setElementWPS($event, 'filler_material_group')"></b-form-input>
-                                        <b-form-datalist id="filler-material-group" :options="data.filler_material_group" text-field="test"></b-form-datalist>
+                                        <b-form-input
+                                            name="filler_material_group_test"
+                                            list="filler-material-group"
+                                            v-model="wps.filler_material_group.test"
+                                            @change="setElementWPS($event, 'filler_material_group')"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="filler-material-group"
+                                            :options="data.filler_material_group"
+                                            text-field="test"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                                 <b-col cols="5">
                                     <b-form-group>
-                                        <b-form-input name="filler_material_group_range" list="filler-material-group" v-model="wps.filler_material_group.range"></b-form-input>
-                                        <b-form-datalist id="filler-material-group" :options="data.filler_material_group" text-field="range"></b-form-datalist>
+                                        <b-form-input
+                                            name="filler_material_group_range"
+                                            list="filler-material-group"
+                                            v-model="wps.filler_material_group.range"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="filler-material-group"
+                                            :options="data.filler_material_group"
+                                            text-field="range"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -450,7 +554,11 @@
                                                 v-model="wps.process_one.test"
                                                 @change="setElementWPS($event, 'process_one')"
                                             ></b-form-input>
-                                            <b-form-datalist id="process_data_1" :options="data.process_one" text-field="test"></b-form-datalist>
+                                            <b-form-datalist
+                                                id="process_data_1"
+                                                :options="data.process_one"
+                                                text-field="test"
+                                            ></b-form-datalist>
                                         </b-col>
                                     </b-row>
                                     <b-row>
@@ -464,18 +572,38 @@
                                                 v-model="wps.process_two.test"
                                                 @change="setElementWPS($event, 'process_two')"
                                             ></b-form-input>
-                                            <b-form-datalist id="process_data_2" :options="data.process_two" text-field="test"></b-form-datalist>
+                                            <b-form-datalist
+                                                id="process_data_2"
+                                                :options="data.process_two"
+                                                text-field="test"
+                                            ></b-form-datalist>
                                         </b-col>
                                     </b-row>
                                 </b-col>
                                 <b-col>
                                     <b-form-group class="m-20">
-                                        <b-form-input name="process_data_range_1" list="process-data-2-range-1" v-model="wps.process_one.range"></b-form-input>
-                                        <b-form-datalist id="process-data-2-range-1" :options="data.process_one" text-field="range"></b-form-datalist>
+                                        <b-form-input
+                                            name="process_data_range_1"
+                                            list="process-data-2-range-1"
+                                            v-model="wps.process_one.range"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="process-data-2-range-1"
+                                            :options="data.process_one"
+                                            text-field="range"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                     <b-form-group>
-                                        <b-form-input name="process_data_range_2" list="process-data-2-range-2" v-model="wps.process_two.range"></b-form-input>
-                                        <b-form-datalist id="process-data-2-range-2" :options="data.process_two" text-field="range"></b-form-datalist>
+                                        <b-form-input
+                                            name="process_data_range_2"
+                                            list="process-data-2-range-2"
+                                            v-model="wps.process_two.range"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="process-data-2-range-2"
+                                            :options="data.process_two"
+                                            text-field="range"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -595,76 +723,164 @@
                                     <label for="input-default">Material thickness(mm)</label>
                                 </b-col>
                                 <b-col cols="9">
+                                    <!-- Plate 1 -->
                                     <b-row>
                                         <b-col cols="2">
                                             <b-form-checkbox
-                                                name="plate_thickness_cb"
+                                                name="plate_1_thickness_cb"
                                                 size="lg"
-                                                v-model="clientData.plate_thickness_cb"
-                                            >Plate</b-form-checkbox>
+                                                v-model="clientData.plate_1_thickness_cb"
+                                            >Plate 1</b-form-checkbox>
                                         </b-col>
                                         <b-col cols="3">
                                             <b-form-group>
                                                 <b-form-input
-                                                    name="plate_thickness"
-                                                    v-model="clientData.plate_thickness"
+                                                    name="plate_1_thickness"
+                                                    v-model="clientData.plate_1_thickness"
                                                 ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="4">
                                             <b-form-group>
                                                 <b-form-input
-                                                    name="plate_thickness_numb"
-                                                    :value="materialThicknessNumb_1"
+                                                    name="plate_1_thickness_numb"
+                                                    :value="materialThicknessPlate_1"
                                                 ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="3">
-                                            <b-form-checkbox name="all_thickness_1" v-model="clientData.all_thickness_1">All Thickness</b-form-checkbox>
+                                            <b-form-checkbox
+                                                name="all_thickness_plate_1"
+                                                v-model="clientData.all_thickness_plate_1"
+                                            >All Thickness</b-form-checkbox>
                                         </b-col>
                                     </b-row>
-
+                                    <!-- Plate 2 -->
                                     <b-row>
                                         <b-col cols="2">
-                                            <b-form-checkbox name="tube_thickness_cb" size="lg" v-model="clientData.tube_thickness_cb">Tube</b-form-checkbox>
+                                            <b-form-checkbox
+                                                name="plate_2_thickness_cb"
+                                                size="lg"
+                                                v-model="clientData.plate_2_thickness_cb"
+                                            >Plate 2</b-form-checkbox>
                                         </b-col>
                                         <b-col cols="3">
                                             <b-form-group>
-                                                <b-form-input name="tube_thickness" v-model="clientData.tube_thickness"></b-form-input>
+                                                <b-form-input
+                                                    name="plate_2_thickness"
+                                                    v-model="clientData.plate_2_thickness"
+                                                ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="4">
                                             <b-form-group>
                                                 <b-form-input
-                                                    name="tube_thickness_numb"
-                                                    :value="materialThicknessNumb_2"
+                                                    name="plate_2_thickness_numb"
+                                                    :value="materialThicknessPlate_2"
                                                 ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="3">
-                                            <b-form-checkbox name="all_thickness_2" v-model="clientData.all_thickness_2">All Thickness</b-form-checkbox>
+                                            <b-form-checkbox
+                                                name="all_thickness_plate_2"
+                                                v-model="clientData.all_thickness_plate_2"
+                                            >All Thickness</b-form-checkbox>
                                         </b-col>
-
                                     </b-row>
+                                    <!-- Tube 1 -->
                                     <b-row>
                                         <b-col cols="2">
-                                            <b-form-checkbox name="bar_thickness_cb" size="lg" v-model="clientData.bar_thickness_cb">Bar</b-form-checkbox>
+                                            <b-form-checkbox
+                                                name="tube_1_thickness_cb"
+                                                size="lg"
+                                                v-model="clientData.tube_1_thickness_cb"
+                                            >Tube 1</b-form-checkbox>
                                         </b-col>
                                         <b-col cols="3">
                                             <b-form-group>
-                                                <b-form-input name="bar_thickness" v-model="clientData.bar_thickness"></b-form-input>
+                                                <b-form-input
+                                                    name="tube_1_thickness"
+                                                    v-model="clientData.tube_1_thickness"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="4">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="tube_1_thickness_numb"
+                                                    :value="materialThicknessTube_1"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="3">
+                                            <b-form-checkbox
+                                                name="all_thickness_tube_1"
+                                                v-model="clientData.all_thickness_tube_1"
+                                            >All Thickness</b-form-checkbox>
+                                        </b-col>
+                                    </b-row>
+                                    <!-- Tube 2 -->
+                                    <b-row>
+                                        <b-col cols="2">
+                                            <b-form-checkbox
+                                                name="tube_2_thickness_cb"
+                                                size="lg"
+                                                v-model="clientData.tube_2_thickness_cb"
+                                            >Tube 2</b-form-checkbox>
+                                        </b-col>
+                                        <b-col cols="3">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="tube_2_thickness"
+                                                    v-model="clientData.tube_2_thickness"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="4">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="tube_2_thickness_numb"
+                                                    :value="materialThicknessTube_2"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="3">
+                                            <b-form-checkbox
+                                                name="all_thickness_tube_2"
+                                                v-model="clientData.all_thickness_tube_2"
+                                            >All Thickness</b-form-checkbox>
+                                        </b-col>
+                                    </b-row>
+                                    <!-- Bar -->
+                                    <b-row>
+                                        <b-col cols="2">
+                                            <b-form-checkbox
+                                                name="bar_thickness_cb"
+                                                size="lg"
+                                                v-model="clientData.bar_thickness_cb"
+                                            >Bar</b-form-checkbox>
+                                        </b-col>
+                                        <b-col cols="3">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="bar_thickness"
+                                                    v-model="clientData.bar_thickness"
+                                                ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="4">
                                             <b-form-group>
                                                 <b-form-input
                                                     name="bar_thickness_numb"
-                                                    :value="materialThicknessNumb_3"
+                                                    :value="materialThicknessBar"
                                                 ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="3">
-                                            <b-form-checkbox name="all_thickness_3" v-model="clientData.all_thickness_3">All Thickness</b-form-checkbox>
+                                            <b-form-checkbox
+                                                name="all_thickness_3"
+                                                v-model="clientData.all_thickness_bar"
+                                            >All Thickness</b-form-checkbox>
                                         </b-col>
                                     </b-row>
                                 </b-col>
@@ -768,16 +984,16 @@
                                 </b-col>
                             </b-row>
                             <hr>
-
+                            <!-- Outside pipe diameter(mm) 1 -->
                             <b-row>
                                 <b-col cols="3">
-                                    <label for="input-default">Outside pipe diameter(mm)</label>
+                                    <label for="input-default">Outside pipe diameter(mm) 1</label>
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
                                             <b-form-input
-                                                name="outside_pipe_diameter"
-                                                v-model="clientData.outside_pipe_diameter"
+                                                name="outside_pipe_diameter_1"
+                                                v-model="clientData.outside_pipe_diameter_1"
                                             ></b-form-input>
                                         </b-form-group>
                                 </b-col>
@@ -786,24 +1002,66 @@
                                         <b-col cols="4">
                                             <b-form-group>
                                                 <b-form-input
-                                                    name="outside_pipe_diameter_1"
-                                                    :value="outsidePipeDiameter1"
+                                                    name="outside_pipe_diameter_1_1"
+                                                    :value="outsidePipeDiameter_1_1"
                                                 ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="4">
                                             <b-form-group>
                                                 <b-form-input
-                                                    name="outside_pipe_diameter_2"
-                                                    :value="outsidePipeDiameter2"
+                                                    name="outside_pipe_diameter_1_2"
+                                                    :value="outsidePipeDiameter_1_2"
                                                 ></b-form-input>
                                             </b-form-group>
                                         </b-col>
                                         <b-col cols="4">
                                             <b-form-group>
                                                 <b-form-input
-                                                    name="outside_pipe_diameter_3"
-                                                    :value="outsidePipeDiameter3"
+                                                    name="outside_pipe_diameter_1_3"
+                                                    :value="outsidePipeDiameter_1_3"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                    </b-row>
+                                </b-col>
+                            </b-row>
+                            <!-- Outside pipe diameter(mm) 2 -->
+                            <b-row v-if="clientData.tube_1_thickness_cb && clientData.tube_2_thickness_cb">
+                                <b-col cols="3">
+                                    <label for="input-default">Outside pipe diameter(mm) 2</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                            <b-form-input
+                                                name="outside_pipe_diameter_2"
+                                                v-model="clientData.outside_pipe_diameter_2"
+                                            ></b-form-input>
+                                        </b-form-group>
+                                </b-col>
+                                <b-col cols="5">
+                                    <b-row>
+                                        <b-col cols="4">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="outside_pipe_diameter_2_1"
+                                                    :value="outsidePipeDiameter_2_1"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="4">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="outside_pipe_diameter_2_2"
+                                                    :value="outsidePipeDiameter_2_2"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="4">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="outside_pipe_diameter_2_3"
+                                                    :value="outsidePipeDiameter_2_3"
                                                 ></b-form-input>
                                             </b-form-group>
                                         </b-col>
@@ -860,7 +1118,8 @@
                                         icon="pencil-square"
                                         style="margin-top: 5px"
                                         font-scale="2"
-                                        v-b-modal.modal-edit-element @click="openEditModal('welding_position')"
+                                        v-b-modal.modal-edit-element
+                                        @click="openEditModal('welding_position')"
                                     ></b-icon>
                                 </b-col>
                             </b-row>
@@ -1187,10 +1446,10 @@ export default {
                 photo: "",
                 test_ref: "",
                 lr_control: "",
-                all_thickness: false,
                 deposited_thickness_root: 0,
                 deposited_thickness_rest: 0,
-                outside_pipe_diameter: 0,
+                outside_pipe_diameter_1: 0,
+                outside_pipe_diameter_2: 0,
                 deposited_deposit1: '',
                 deposited_deposit2: '',
                 applicable_1: false,
@@ -1209,15 +1468,21 @@ export default {
                 behaulf_name: '',
                 behaulf_position: '',
                 behaulf_date: '',
-                all_thickness_1: false,
-                all_thickness_2: false,
-                all_thickness_3: false,
+                all_thickness_plate_1: false,
+                all_thickness_plate_2: false,
+                all_thickness_tube_1: false,
+                all_thickness_tube_2: false,
+                all_thickness_bar: false,
 
-                plate_thickness_cb: true,
-                tube_thickness_cb: false,
+                plate_1_thickness_cb: true,
+                plate_2_thickness_cb: false,
+                tube_1_thickness_cb: false,
+                tube_2_thickness_cb: false,
                 bar_thickness_cb: false,
-                plate_thickness: 0,
-                tube_thickness: 0,
+                plate_1_thickness: 0,
+                plate_2_thickness: 0,
+                tube_1_thickness: 0,
+                tube_2_thickness: 0,
                 bar_thickness: 0,
                 transfer_mode: {
                     id: null,
@@ -1296,35 +1561,63 @@ export default {
                 }
             }
         },
-	    materialThicknessNumb_1() {
+	    materialThicknessPlate_1() {
             let result = '';
-            if (this.clientData.plate_thickness >= 3){
+            if (this.clientData.plate_1_thickness >= 3){
                 return "From 3 To No Restriction";
             } else {
-                result = "From " + this.clientData.plate_thickness + " To "
+                result = "From " + this.clientData.plate_1_thickness + " To "
             }
-            if ((this.clientData.plate_thickness*2) < 3)  {
+            if ((this.clientData.plate_1_thickness*2) < 3)  {
                 result = result + "3"
             } else {
-                result = result + this.clientData.plate_thickness * 2
+                result = result + this.clientData.plate_1_thickness * 2
             }
             return result;
         },
-        materialThicknessNumb_2() {
+	    materialThicknessPlate_2() {
             let result = '';
-            if (this.clientData.tube_thickness >= 3){
+            if (this.clientData.plate_2_thickness >= 3){
                 return "From 3 To No Restriction";
             } else {
-                result = "From " + this.clientData.tube_thickness + " To "
+                result = "From " + this.clientData.plate_2_thickness + " To "
             }
-            if ((this.clientData.tube_thickness*2) < 3)  {
+            if ((this.clientData.plate_2_thickness*2) < 3)  {
                 result = result + "3"
             } else {
-                result = result + this.clientData.tube_thickness * 2
+                result = result + this.clientData.plate_2_thickness * 2
             }
             return result;
         },
-        materialThicknessNumb_3() {
+        materialThicknessTube_1() {
+            let result = '';
+            if (this.clientData.tube_1_thickness >= 3){
+                return "From 3 To No Restriction";
+            } else {
+                result = "From " + this.clientData.tube_1_thickness + " To "
+            }
+            if ((this.clientData.tube_1_thickness*2) < 3)  {
+                result = result + "3"
+            } else {
+                result = result + this.clientData.tube_1_thickness * 2
+            }
+            return result;
+        },
+        materialThicknessTube_2() {
+            let result = '';
+            if (this.clientData.tube_2_thickness >= 3){
+                return "From 3 To No Restriction";
+            } else {
+                result = "From " + this.clientData.tube_2_thickness + " To "
+            }
+            if ((this.clientData.tube_2_thickness*2) < 3)  {
+                result = result + "3"
+            } else {
+                result = result + this.clientData.tube_2_thickness * 2
+            }
+            return result;
+        },
+        materialThicknessBar() {
             let result = '';
             if (this.clientData.bar_thickness >= 3) {
                 return "From 3 To No Restriction";
@@ -1338,23 +1631,23 @@ export default {
             }
             return result;
         },
-        outsidePipeDiameter1() {
-            if(this.clientData.outside_pipe_diameter == "Not Applicable") {
+        outsidePipeDiameter_1_1() {
+            if(this.clientData.outside_pipe_diameter_1 == "Not Applicable") {
                 return "For D >=500"
             } else {
                 if (this.wps.product_type.test == "Plate (P)") {
                     return "For D >=500"
                 } else {
-                    if(this.clientData.outside_pipe_diameter > 25) {
-                        return this.clientData.outside_pipe_diameter * 1
+                    if(this.clientData.outside_pipe_diameter_1 > 25) {
+                        return this.clientData.outside_pipe_diameter_1 * 1
                     } else {
-                        return this.clientData.outside_pipe_diameter * 0.5
+                        return this.clientData.outside_pipe_diameter_1 * 0.5
                     }
                 }
             }
         },
-        outsidePipeDiameter2() {
-            if(this.clientData.outside_pipe_diameter == "Not Applicable") {
+        outsidePipeDiameter_1_2() {
+            if(this.clientData.outside_pipe_diameter_1 == "Not Applicable") {
                 return "or >=75"
             } else {
                 if(this.wps.product_type.test == "Plate (P)") {
@@ -1364,15 +1657,56 @@ export default {
                 }
             }
         },
-        outsidePipeDiameter3() {
-            if(this.clientData.outside_pipe_diameter == "Not Applicable") {
+        outsidePipeDiameter_1_3() {
+            if(this.clientData.outside_pipe_diameter_1 == "Not Applicable") {
                 return "in PA, PB, PC and PD rotated"
             } else {
                 if(this.wps.product_type.test == "Plate (P)") {
                     return "in PA, PB, PC and PD rotated"
                 } else {
-                    if(this.clientData.outside_pipe_diameter <= 25) {
-                        return this.clientData.outside_pipe_diameter * 2
+                    if(this.clientData.outside_pipe_diameter_1 <= 25) {
+                        return this.clientData.outside_pipe_diameter_1 * 2
+                    } else {
+                        return "No Restriction"
+                    }
+                }
+            }
+        },
+        outsidePipeDiameter_2_1() {
+            if(this.clientData.outside_pipe_diameter_2 == "Not Applicable") {
+                return "For D >=500"
+            } else {
+                if (this.wps.product_type.test == "Plate (P)") {
+                    return "For D >=500"
+                } else {
+                    if(this.clientData.outside_pipe_diameter_2 > 25) {
+                        return this.clientData.outside_pipe_diameter_2 * 1
+                    } else {
+                        return this.clientData.outside_pipe_diameter_2 * 0.5
+                    }
+                }
+            }
+        },
+        outsidePipeDiameter_2_2() {
+            if(this.clientData.outside_pipe_diameter_2 == "Not Applicable") {
+                return "or >=75"
+            } else {
+                if(this.wps.product_type.test == "Plate (P)") {
+                    return "or >=75"
+                } else {
+                    return "to"
+                }
+            }
+        },
+        outsidePipeDiameter_2_3() {
+            if(this.clientData.outside_pipe_diameter_2 == "Not Applicable") {
+                return "in PA, PB, PC and PD rotated"
+            } else {
+                if(this.wps.product_type.test == "Plate (P)") {
+                    return "in PA, PB, PC and PD rotated"
+                } else {
+                    if(this.clientData.outside_pipe_diameter_2 <= 25) {
+                        return this.clientData.outside_pipe_diameter_2 * 2
                     } else {
                         return "No Restriction"
                     }
@@ -1395,25 +1729,36 @@ export default {
         },
         materialThickness() {
             let result = 't';
-            if(this.clientData.plate_thickness_cb && this.clientData.tube_thickness_cb) {
+            if(this.clientData.plate_1_thickness_cb && this.clientData.plate_2_thickness_cb) {
                 return result +
-                this.clientData.plate_thickness + '-' +
-                this.clientData.tube_thickness + '/' +
-                this.clientData.outside_pipe_diameter
+                this.clientData.plate_1_thickness + '-' +
+                this.clientData.plate_2_thickness
             }
-            else if(this.clientData.plate_thickness_cb && this.clientData.bar_thickness_cb) {
+            else if(this.clientData.tube_1_thickness_cb && this.clientData.tube_2_thickness_cb) {
                 return result +
-                this.clientData.plate_thickness + '-' +
-                this.clientData.bar_thickness + '/' +
-                this.clientData.outside_pipe_diameter
+                this.clientData.tube_1_thickness + '/' +
+                this.clientData.outside_pipe_diameter_1 + '/t' +
+                this.clientData.tube_2_thickness + '/' +
+                this.clientData.outside_pipe_diameter_2
             }
-            else if(this.clientData.plate_thickness_cb) {
-                return result + this.clientData.plate_thickness
-            }
-            else if(this.clientData.bar_thickness_cb) {
-                return result +
-                this.clientData.bar_thickness + '/' +
-                this.clientData.outside_pipe_diameter
+            else {
+                if(this.clientData.plate_1_thickness_cb && this.clientData.tube_1_thickness_cb) {
+                    return result +
+                    this.clientData.plate_1_thickness + '-' +
+                    this.clientData.tube_1_thickness + '/' +
+                    this.clientData.outside_pipe_diameter_1
+                }
+                else if(this.clientData.plate_1_thickness_cb && this.clientData.bar_thickness_cb) {
+                    return result +
+                    this.clientData.plate_1_thickness + '/t' +
+                    this.clientData.bar_thickness
+                }
+                else if(this.clientData.plate_1_thickness_cb) {
+                    return result + this.clientData.plate_1_thickness
+                }
+                else if(this.clientData.bar_thickness_cb) {
+                    return result + this.clientData.bar_thickness
+                }
             }
         }
     },
