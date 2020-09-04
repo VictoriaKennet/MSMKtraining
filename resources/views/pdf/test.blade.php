@@ -630,7 +630,7 @@
                     <td class="tb-t-1">Outside diameter(mm)</td>
                     <td colspan="5" class="br-l">{{$data->input('outside_pipe_diameter_1')}}mm to {{$data->input('outside_pipe_diameter_2')}}mm</td>
                     @if (is_numeric($data->input('outside_pipe_diameter_1_1')))
-                        <td colspan="2" class="br-l bg-3"> Biggest: {{$data->input('outside_pipe_diameter_1')}} to {{$data->input('outside_pipe_diameter_2')}} / Smallest: {{$data->input('outside_pipe_diameter_2_1')}} {{$data->input('outside_pipe_diameter_2_2')}} {{$data->input('outside_pipe_diameter_2_3')}}</td>
+                        <td colspan="2" class="br-l bg-3"> Biggest: {{$data->input('outside_pipe_diameter_1_1')}} {{$data->input('outside_pipe_diameter_2_2')}} {{$data->input('outside_pipe_diameter_1_3')}} / Smallest: {{$data->input('outside_pipe_diameter_2_1')}} {{$data->input('outside_pipe_diameter_2_2')}} {{$data->input('outside_pipe_diameter_2_3')}}</td>
                     @else
                         <td colspan="2" class="tb-t-3"> {{$data->input('outside_pipe_diameter_1_1')}} {{$data->input('outside_pipe_diameter_1_2')}} {{$data->input('outside_pipe_diameter_1_3')}}</td>
                     @endif
