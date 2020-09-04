@@ -984,10 +984,10 @@
                                 </b-col>
                             </b-row>
                             <hr>
-                            <!-- Outside pipe diameter(mm) 1 -->
+                            <!-- Outside diameter(mm) 1 -->
                             <b-row>
                                 <b-col cols="3">
-                                    <label for="input-default">Outside pipe diameter(mm) 1</label>
+                                    <label for="input-default">Outside diameter(mm) 1</label>
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
@@ -1026,10 +1026,10 @@
                                     </b-row>
                                 </b-col>
                             </b-row>
-                            <!-- Outside pipe diameter(mm) 2 -->
+                            <!-- Outside diameter(mm) 2 -->
                             <b-row v-if="clientData.tube_1_thickness_cb && clientData.tube_2_thickness_cb">
                                 <b-col cols="3">
-                                    <label for="input-default">Outside pipe diameter(mm) 2</label>
+                                    <label for="input-default">Outside diameter(mm) 2</label>
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
@@ -1638,10 +1638,10 @@ export default {
                 if (this.wps.product_type.test == "Plate (P)") {
                     return "For D >=500"
                 } else {
-                    if(this.clientData.outside_pipe_diameter_1 > 25) {
-                        return this.clientData.outside_pipe_diameter_1 * 1
+                    if(this.clientData.outside_pipe_diameter_1 <= 25) {
+                        return this.clientData.outside_pipe_diameter_1
                     } else {
-                        return this.clientData.outside_pipe_diameter_1 * 0.5
+                        return ""
                     }
                 }
             }
@@ -1664,10 +1664,10 @@ export default {
                 if(this.wps.product_type.test == "Plate (P)") {
                     return "in PA, PB, PC and PD rotated"
                 } else {
-                    if(this.clientData.outside_pipe_diameter_1 <= 25) {
-                        return this.clientData.outside_pipe_diameter_1 * 2
-                    } else {
+                    if(this.clientData.outside_pipe_diameter_1 > 25) {
                         return "No Restriction"
+                    } else {
+                        return this.clientData.outside_pipe_diameter_1 * 2
                     }
                 }
             }
@@ -1729,7 +1729,17 @@ export default {
         },
         materialThickness() {
             let result = 't';
-            if(this.clientData.plate_1_thickness_cb && this.clientData.plate_2_thickness_cb) {
+            if(this.wps.product_type.test == 'Plate(P) to Bar') {
+                return result +
+                this.clientData.plate_1_thickness + '/' +
+                this.clientData.outside_pipe_diameter_1
+            }
+            else if(this.wps.product_type.test == 'Plate(T) to Bar') {
+                return result +
+                this.clientData.tube_1_thickness + '/' +
+                this.clientData.outside_pipe_diameter_1
+            }
+            else if(this.clientData.plate_1_thickness_cb && this.clientData.plate_2_thickness_cb) {
                 return result +
                 this.clientData.plate_1_thickness + '-' +
                 this.clientData.plate_2_thickness

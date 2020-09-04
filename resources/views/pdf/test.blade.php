@@ -627,22 +627,25 @@
             <!-- !!!-6 part-!!! -->
             @if(is_numeric($data->input('outside_pipe_diameter_1')) && is_numeric($data->input('outside_pipe_diameter_2')))
                 <tr class="f-s-9 main-table">
-                    <td class="tb-t-1">Outside pipe diameter(mm)</td>
+                    <td class="tb-t-1">Outside diameter(mm)</td>
                     <td colspan="5" class="br-l">{{$data->input('outside_pipe_diameter_1')}}mm to {{$data->input('outside_pipe_diameter_2')}}mm</td>
                     @if (is_numeric($data->input('outside_pipe_diameter_1_1')))
-                        <td colspan="2" class="br-l bg-3"> Thinnest: {{$data->input('outside_pipe_diameter_1')}} to {{$data->input('outside_pipe_diameter_2')}} / Thickest: {{$data->input('outside_pipe_diameter_2_1')}} {{$data->input('outside_pipe_diameter_2_2')}} {{$data->input('outside_pipe_diameter_2_3')}}</td>
+                        <td colspan="2" class="br-l bg-3"> Biggest: {{$data->input('outside_pipe_diameter_1')}} to {{$data->input('outside_pipe_diameter_2')}} / Smallest: {{$data->input('outside_pipe_diameter_2_1')}} {{$data->input('outside_pipe_diameter_2_2')}} {{$data->input('outside_pipe_diameter_2_3')}}</td>
                     @else
                         <td colspan="2" class="tb-t-3"> {{$data->input('outside_pipe_diameter_1_1')}} {{$data->input('outside_pipe_diameter_1_2')}} {{$data->input('outside_pipe_diameter_1_3')}}</td>
                     @endif
                 </tr>
             @else
                 <tr class="f-s-9 main-table">
-                    <td class="tb-t-1">Outside pipe diameter(mm)</td>
-                    <td colspan="5" class="br-l">{{$data->input('outside_pipe_diameter_1')}}mm</td>
+                    <td class="tb-t-1">Outside diameter(mm)</td>
+                    @if(is_numeric($data->input('outside_pipe_diameter_1')))
+                        <td colspan="5" class="br-l">{{$data->input('outside_pipe_diameter_1')}}mm</td>
+                    @else
+                        <td colspan="5" class="br-l">{{$data->input('outside_pipe_diameter_1')}}</td>
+                    @endif
                     @if (is_numeric($data->input('outside_pipe_diameter_1_1')))
-                        <td class="br-l bg-3"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$data->input('outside_pipe_diameter_1_1')}}</td>
-                        <td class="bg-3"> {{$data->input('outside_pipe_diameter_1_2')}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('outside_pipe_diameter_1_3')}}</td>
+                        <td class="br-l bg-3">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('outside_pipe_diameter_1_1')}}</td>
+                        <td class="bg-3"> to &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$data->input('outside_pipe_diameter_1_3')}}</td>
                     @else
                         <td colspan="2" class="tb-t-3">{{$data->input('outside_pipe_diameter_1_1')}} {{$data->input('outside_pipe_diameter_1_2')}} {{$data->input('outside_pipe_diameter_1_3')}}</td>
                     @endif
