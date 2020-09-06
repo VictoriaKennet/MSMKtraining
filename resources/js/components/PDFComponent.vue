@@ -1641,7 +1641,11 @@ export default {
                     if(this.clientData.outside_pipe_diameter_1 <= 25) {
                         return this.clientData.outside_pipe_diameter_1
                     } else {
-                        return this.clientData.outside_pipe_diameter_1*0.5
+                        if ((this.clientData.outside_pipe_diameter_1 > 25) && (this.clientData.outside_pipe_diameter_1 <= 50)) {
+                            return 25
+                        } else {
+                            return this.clientData.outside_pipe_diameter_1*0.5
+                        }
                     }
                 }
             }
@@ -1682,7 +1686,11 @@ export default {
                     if(this.clientData.outside_pipe_diameter_2 <= 25) {
                         return this.clientData.outside_pipe_diameter_2
                     } else {
-                        return this.clientData.outside_pipe_diameter_2*0.5
+                        if ((this.clientData.outside_pipe_diameter_2 > 25) && (this.clientData.outside_pipe_diameter_2 <= 50)) {
+                            return 25
+                        } else {
+                            return this.clientData.outside_pipe_diameter_2*0.5
+                        }
                     }
                 }
             }
