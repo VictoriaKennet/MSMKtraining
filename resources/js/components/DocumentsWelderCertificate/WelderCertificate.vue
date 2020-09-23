@@ -98,9 +98,9 @@
             <b-button class="mt-3" @click="modalEditShow = false">Close</b-button>
         </b-modal>
 
-        <b-container class="mt-2 mb-2">
+        <b-container class="my-2">
             <div role="tablist">
-                <form action="/pdf" target="_blank" method="POST" enctype="multipart/form-data">
+                <form action="/welder-certificate" target="_blank" method="POST" enctype="multipart/form-data">
                     <b-card no-body class="mb-1">
                         <b-card-header header-tag="header" class="p-1" role="tab">
                             <b-button block v-b-toggle.accordion-1 variant="info">Main information</b-button>
@@ -242,12 +242,12 @@
                                         </b-form-group>
                                     </b-col>
                                     <b-col cols="1">
-                                        <router-link to="/added">
+                                        <router-link to="/new-welder-certificate">
                                             <b-icon icon="plus-circle-fill" class="icon_plus" font-scale="2"></b-icon>
                                         </router-link>
                                     </b-col>
                                     <b-col cols="1" v-if="wps.id">
-                                        <router-link :to="'/edit/'+wps.id">
+                                        <router-link :to="'/edit-welder-certificate/'+wps.id">
                                             <b-icon icon="pencil-square" class="icon_plus" font-scale="2"></b-icon>
                                         </router-link>
                                     </b-col>
@@ -1335,7 +1335,7 @@
                             </b-card-body>
                         </b-collapse>
                     </b-card>
-                    <b-row >
+                    <b-row>
                         <b-col>
                             <div class="d-flex justify-content-center">
                                 <input type="submit" value="Open PDF" class="button">

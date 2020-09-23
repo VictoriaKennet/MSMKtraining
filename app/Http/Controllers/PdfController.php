@@ -8,17 +8,17 @@ class PdfController extends Controller
 {
     protected $fileStorage = 'upload/';
 
-    function createPDF(Request $request) {
+    function welderCertificate(Request $request) {
         $data = $request;
-        $pdf = PDF::loadView('pdf.test', ['data' => $data]);
-        return $pdf->stream('msmk.pdf');
+        $pdf = PDF::loadView('pdf.welderCertificate', ['data' => $data]);
+        return $pdf->stream('WelderCertificate.pdf');
     }
 
-    function createPDFWeldingProcedure(Request $request) {
-            $data = $request;
-            $pdf = PDF::loadView('pdf.WeldingProcedure', ['data' => $data]);
-            return $pdf->stream('WeldingProcedure.pdf');
-        }
+    function weldingRecord(Request $request) {
+        $data = $request;
+        $pdf = PDF::loadView('pdf.weldingRecord', ['data' => $data]);
+        return $pdf->stream('WeldingRecord.pdf');
+    }
 
     function img() {
         if(isset($_POST['photo'])) {
