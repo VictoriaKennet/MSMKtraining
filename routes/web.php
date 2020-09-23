@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::post('pdf', 'PdfController@createPDF');
+Route::post('welding-procedure', 'PdfController@createPDFWeldingProcedure');
 
 Auth::routes();
 

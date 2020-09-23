@@ -1352,7 +1352,7 @@
     </div>
 </template>
 <script>
-import Navbar from './NavbarComponent';
+import Navbar from '../NavbarComponent';
 export default {
     components: {
         Navbar

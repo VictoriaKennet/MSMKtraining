@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import PDFComponent from './components/PDFComponent.vue'
-import NewPDFComponent from './components/NewPDFComponent.vue'
-import EditPDFComponent from './components/EditPDFComponent.vue'
-import ClientsComponent from './components/ClientsComponent.vue'
-import ErrorComponent from './components/ErrorComponent.vue'
+import PDFComponent from './components/DocumentsWelderQualification/PDFComponent.vue'
+import NewPDFComponent from './components/DocumentsWelderQualification/NewPDFComponent.vue'
+import EditPDFComponent from './components/DocumentsWelderQualification/EditPDFComponent.vue'
+import ClientsComponent from './components/DocumentsWelderQualification/ClientsComponent.vue'
+import ErrorComponent from './components/DocumentsWelderQualification/ErrorComponent.vue'
+import PDFWeldingProcedure from './components/DocumentsWeldingProcedure/PDFWeldingProcedure.vue'
 
 Vue.use(VueRouter)
 
@@ -18,6 +19,16 @@ export default new VueRouter({
           name: 'pdf',
           component: PDFComponent
         },
+          {
+              path: '/doc1',
+              name: 'doc1',
+              component: PDFComponent
+          },
+          {
+              path: '/doc2',
+              name: 'doc2',
+              component: PDFWeldingProcedure
+          },
         {
             path: '/added',
             name: 'added',

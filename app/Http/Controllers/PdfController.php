@@ -14,6 +14,12 @@ class PdfController extends Controller
         return $pdf->stream('msmk.pdf');
     }
 
+    function createPDFWeldingProcedure(Request $request) {
+            $data = $request;
+            $pdf = PDF::loadView('pdf.WeldingProcedure', ['data' => $data]);
+            return $pdf->stream('WeldingProcedure.pdf');
+        }
+
     function img() {
         if(isset($_POST['photo'])) {
             $arr = [];
