@@ -100,19 +100,19 @@
         </tr>
         <tr>
             <td class="td-l">Manufacturer:</td>
-            <td class="td-l">Mason & King Ltd</td>
+            <td class="td-l">{{$data->input('manufacturer_1')}}</td>
             <td class="bold">Issue Number:</td>
             <td class="text-right">01</td>
         </tr>
         <tr>
             <td></td>
-            <td class="td-l">Birstall Street</td>
+            <td class="td-l">{{$data->input('manufacturer_2')}}</td>
             <td></td>
             <td></td>
         </tr>
         <tr>
             <td></td>
-            <td>Leicester   LE1 2HJ</td>
+            <td class="td-l">{{$data->input('manufacturer_3')}}</td>
             <td></td>
             <td></td>
         </tr>
@@ -253,121 +253,121 @@
     <table>
         <tr>
             <td class="td-l">Code/Testing Standard:</td>
-            <td colspan="3">BS EN ISO 15614-1:2017 Level 2 / BS EN ISO 5817:2014 Level B</td>
+            <td colspan="3">{{$data->input('code-standard')}}</td>
         </tr>
         <tr>
             <td class="td-l">Manufacturers pWPS Ref No:</td>
-            <td class="td-l-2">pMA 04</td>
+            <td class="td-l-2">{{$data->input('manufacturers_1')}}</td>
             <td class="bold">Issue Number:</td>
-            <td>01</td>
+            <td>{{$data->input('issue_number')}}</td>
         </tr>
         <tr>
             <td class="td-l">Manufacturers WPQR No:</td>
-            <td class="td-l-2">MA 04</td>
+            <td class="td-l-2">{{$data->input('manufacturers_2')}}</td>
             <td class="bold">Parent Material:</td>
-            <td>STRENX 700MC</td>
+            <td>{{$data->input('parent_material')}}</td>
         </tr>
         <tr>
             <td class="td-l"></td>
             <td class="td-l-2"></td>
             <td class="bold">Heat No:</td>
-            <td>22-3561</td>
+            <td>{{$data->input('heat_no')}}</td>
         </tr>
         <tr>
             <td class="td-l">Welding Process:</td>
-            <td class="td-l-2">GMAW 135</td>
+            <td class="td-l-2">{{$data->input('welding_process')}}</td>
             <td class="bold">Specification:</td>
-            <td>BS EN 10025-4</td>
+            <td>{{$data->input('specification')}}</td>
         </tr>
         <tr>
             <td class="td-l">Metal Transfer (GMAW):</td>
-            <td class="td-l-2">Short</td>
+            <td class="td-l-2">{{$data->input('metal_transfer')}}</td>
             <td class="bold">Mtl. Thickness (mm)</td>
-            <td>2mm</td>
+            <td>{{$data->input('mtl_thickness')}}</td>
         </tr>
         <tr>
             <td class="td-l">Joint Type & Weld:</td>
-            <td class="td-l-2">Butt Weld </td>
+            <td class="td-l-2">{{$data->input('joint_type_weld')}}</td>
             <td class="bold">Outside Diameter (mm):</td>
-            <td>Not Applicable </td>
+            <td>{{$data->input('outside_diameter')}}</td>
         </tr>
         <tr>
             <td class="td-l">Preparation & Cleaning:</td>
-            <td class="td-l-2">CS Wire brush </td>
+            <td class="td-l-2">{{$data->input('preparation')}}</td>
             <td class="bold">Welding Position:</td>
-            <td>PA</td>
+            <td>{{$data->input('welding_position')}}</td>
         </tr>
     </table>
     <br><br><br><br>
     <table>
         <tr>
             <td class="td-l">Filler Metal Designation:</td>
-            <td colspan="3">EN ISO  14341-A: G4Si1 K 1.0mm L</td>
+            <td colspan="3">{{$data->input('filler_metal_ds')}}</td>
         </tr>
         <tr>
             <td class="td-l">Filler Make:</td>
-            <td class="td-l-2">Sidergas</td>
+            <td class="td-l-2">{{$data->input('filler_metal')}}</td>
             <td class="bold"></td>
             <td></td>
         </tr>
         <tr>
             <td class="td-l">Baking or Drying:</td>
-            <td class="td-l-2">Not Applied</td>
+            <td class="td-l-2">{{$data->input('baking_drying')}}</td>
             <td class="bold">Back Gouging:</td>
-            <td>Not Applicable </td>
+            <td>{{$data->input('baking_gouging')}} </td>
         </tr>
         <tr>
             <td class="td-l">Shielding Gas Type:</td>
-            <td class="td-l-2">Ar 93/5/2% </td>
+            <td class="td-l-2">{{$data->input('shielding_gas_type')}}</td>
             <td class="bold">Preheat Temperature:</td>
-            <td>Not Applied </td>
+            <td>{{$data->input('preheat_temperature')}} </td>
         </tr>
         <tr>
             <td class="td-l">Flow Rate (LPM):</td>
-            <td class="td-l-2">18L/pm</td>
+            <td class="td-l-2">{{$data->input('flow_rate')}}</td>
             <td class="bold">Interpass Temperature:</td>
-            <td>Not Applicable </td>
+            <td>{{$data->input('interpass_temperature')}}</td>
         </tr>
         <tr>
             <td class="td-l">Purging Gas Type:</td>
-            <td class="td-l-2">Not Applied </td>
+            <td class="td-l-2">{{$data->input('purging_gas_type')}}</td>
             <td class="bold">Heat Treatment and/or Ageing:</td>
-            <td>Not Applied </td>
+            <td>{{$data->input('heating_treatment')}}</td>
         </tr>
         <tr>
             <td class="td-l">Tungsten Type:</td>
-            <td class="td-l-2">Not Applicable </td>
+            <td class="td-l-2">{{$data->input('tungsten_type')}}</td>
             <td class="bold">Heating and Cooling Rates:</td>
-            <td>No Applicable </td>
+            <td>{{$data->input('heating_cooling_rates')}}</td>
         </tr>
         <tr>
             <td class="td-l">Tungsten Size:</td>
-            <td class="td-l-2">Not Applicable </td>
+            <td class="td-l-2">{{$data->input('tungsten_size')}}</td>
             <td class="bold"></td>
             <td></td>
         </tr>
         <tr>
             <td class="td-l">Touch to Work:</td>
-            <td class="td-l-2">10-15mm</td>
+            <td class="td-l-2">{{$data->input('touch_work')}}</td>
             <td class="bold"></td>
             <td></td>
         </tr>
         <tr>
             <td class="td-l">Power Source:</td>
             <td class="td-l-2"></td>
-            <td class="bold">Not Applicable</td>
+            <td class="bold">{{$data->input('power_source')}}</td>
             <td></td>
         </tr>
         <tr>
             <td class="td-l">Automatic System:</td>
             <td class="td-l-2"></td>
-            <td class="bold">Not Applicable</td>
+            <td class="bold">{{$data->input('automatic_system')}}</td>
             <td></td>
         </tr>
         <tr>
             <td class="td-l">Control:</td>
             <td class="td-l-2"></td>
-            <td class="bold">Not Applicable</td>
+            <td class="bold">{{$data->input('control')}}</td>
             <td></td>
         </tr>
     </table>
