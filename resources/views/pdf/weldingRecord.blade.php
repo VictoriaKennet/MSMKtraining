@@ -90,19 +90,19 @@
     <table>
         <tr>
             <td class="td-l">Code/Testing Standard:</td>
-            <td colspan="3">{{$data->input('code-standard')}}</td>
+            <td colspan="3">{{$data->input('code_standard')}}</td>
         </tr>
         <tr>
             <td class="td-l">Manufacturers WPQR No:</td>
-            <td class="td-l">MA 04</td>
+            <td class="td-l">{{$data->input('manufacturers_2')}}</td>
             <td class="bold">Ref No:</td>
-            <td class="text-right">WPQR/19-003</td>
+            <td class="text-right">{{$data->input('ref_no')}}</td>
         </tr>
         <tr>
             <td class="td-l">Manufacturer:</td>
             <td class="td-l">{{$data->input('manufacturer_1')}}</td>
             <td class="bold">Issue Number:</td>
-            <td class="text-right">01</td>
+            <td class="text-right">{{$data->input('issue_number')}}</td>
         </tr>
         <tr>
             <td></td>
@@ -121,7 +121,7 @@
     <table>
         <tr>
             <td class="td-l">Date of Welding / Welder:</td>
-            <td class="bold">14 January 2019 MUHAMMAD AAMIR</td>
+            <td class="bold">{{$data->input('date_welder')}}</td>
         </tr>
         <tr>
             <td class="title-1">Range of Qualification:</td>
@@ -403,19 +403,19 @@
     <table>
         <tr>
             <td class="td-l">Code/Testing Standard:</td>
-            <td colspan="3">BS EN ISO 15614-1:2017 Level 2 / BS EN ISO 5817:2014 Level B</td>
+            <td colspan="3">{{$data->input('code_standard')}}</td>
         </tr>
         <tr>
             <td class="td-l">Manufacturers pWPS No:</td>
-            <td class="td-l">pMA 04</td>
+            <td class="td-l">{{$data->input('manufacturers_1')}}</td>
             <td class="bold">Ref No:</td>
-            <td class="text-right">WPQR/19-003</td>
+            <td class="text-right">{{$data->input('ref_no')}}</td>
         </tr>
         <tr>
             <td class="td-l">Manufacturers WPQR:</td>
-            <td class="td-l">MA 04</td>
+            <td class="td-l">{{$data->input('manufacturers_2')}}</td>
             <td class="bold">Issue Number:</td>
-            <td class="text-right">01</td>
+            <td class="text-right">{{$data->input('issue_number')}}</td>
         </tr>
     </table>
     <br><br><br>

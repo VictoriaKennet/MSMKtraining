@@ -3,43 +3,6 @@
         <Navbar></Navbar>
         <b-container class="my-2">
             <form action="/welding-record" target="_blank" method="POST" enctype="multipart/form-data">
-                <b-card no-body class="mb-1">
-                    <b-card-header header-tag="header" class="p-1" role="tab">
-                        <b-button block v-b-toggle.accordion-1 variant="info">Page 1</b-button>
-                    </b-card-header>
-                    <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
-                        <b-card-body>
-                            <b-row>
-                                <b-col cols="2">
-                                    <label>Manufacturer:</label>
-                                </b-col>
-                                <b-col>
-                                    <b-form-group>
-                                        <b-form-input
-                                            name="manufacturer_1"
-                                        ></b-form-input>
-                                    </b-form-group>
-                                </b-col>
-                                <b-col>
-                                    <b-form-group>
-                                        <b-form-input
-                                            name="manufacturer_2"
-                                        ></b-form-input>
-                                    </b-form-group>
-                                </b-col>
-
-                                <b-col>
-                                    <b-form-group>
-                                        <b-form-input
-                                            name="manufacturer_3"
-                                        ></b-form-input>
-                                    </b-form-group>
-                                </b-col>
-                            </b-row>
-
-                        </b-card-body>
-                    </b-collapse>
-                </b-card>
 
                 <!-- Record of Weld Test (1 part) -->
 
@@ -56,12 +19,12 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            list="code-standard"
-                                            name="code-standard"
+                                            list="code_standard"
+                                            name="code_standard"
                                             v-model="data.code_standard"
                                         ></b-form-input>
                                         <b-form-datalist
-                                            id="code-standard"
+                                            id="code_standard"
                                             :options="code_standard"
                                         ></b-form-datalist>
                                     </b-form-group>
@@ -411,7 +374,7 @@
                                         <b-form-input
                                             list="purging_gas_type"
                                             name="purging_gas_type"
-                                            v-model="data.shielding_gas_type"
+                                            v-model="data.purging_gas_type"
                                         ></b-form-input>
                                         <b-form-datalist
                                             id="purging_gas_type"
@@ -488,7 +451,7 @@
                                 <b-col cols="2">
                                     <label>Power Source: </label>
                                 </b-col>
-                                <b-col cols="4">
+                                <b-col>
                                     <b-form-group>
                                         <b-form-input
                                             name="power_source"
@@ -501,7 +464,7 @@
                                 <b-col cols="2">
                                     <label>Automatic System: </label>
                                 </b-col>
-                                <b-col cols="4">
+                                <b-col>
                                     <b-form-group>
                                         <b-form-input
                                             name="automatic_system"
@@ -514,7 +477,7 @@
                                 <b-col cols="2">
                                     <label>Control: </label>
                                 </b-col>
-                                <b-col cols="4">
+                                <b-col>
                                     <b-form-group>
                                         <b-form-input
                                             name="control"
@@ -616,11 +579,80 @@
                     </b-collapse>
                 </b-card>
 
-                <!-- Aditional information -->
+                <!-- Range of Qualification -->
 
                 <b-card no-body class="mb-1">
                     <b-card-header header-tag="header" class="p-1" role="tab">
-                        <b-button block v-b-toggle.accordion-5 variant="info">Aditional information</b-button>
+                        <b-button block v-b-toggle.accordion-1 variant="info">Range of Qualification</b-button>
+                    </b-card-header>
+                    <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
+                        <b-card-body>
+                            <b-row>
+                                <b-col cols="3">
+                                    <label>Manufacturer:</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="manufacturer_1"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="manufacturer_2"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="manufacturer_3"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="3">
+                                    <label>Ref No:</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="ref_no"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="3">
+                                    <label>Date of Welding / Welder:</label>
+                                </b-col>
+                                <b-col cols="9">
+                                    <label for="datepicker-placeholder">Date picker with placeholder</label>
+                                    <b-form-datepicker
+                                        name="date_welderT"
+                                        id="datepicker-placeholder"
+                                        placeholder="Choose a date"
+                                        local="en"
+                                    ></b-form-datepicker>
+                                </b-col>
+                            </b-row>
+
+                            <hr>
+
+
+                        </b-card-body>
+                    </b-collapse>
+                </b-card>
+
+                <!-- Bottom information -->
+
+                <b-card no-body class="mb-1">
+                    <b-card-header header-tag="header" class="p-1" role="tab">
+                        <b-button block v-b-toggle.accordion-5 variant="info">Bottom information</b-button>
                     </b-card-header>
                     <b-collapse id="accordion-5" accordion="my-accordion" role="tabpanel">
                         <b-card-body>
@@ -700,6 +732,9 @@
                         </b-card-body>
                     </b-collapse>
                 </b-card>
+
+
+
                 <div class="d-flex justify-content-center">
                     <input type="submit" value="Open PDF" class="button">
                 </div>
@@ -859,6 +894,7 @@ export default {
                 baking_drying:"",
                 baking_gouging:"",
                 shielding_gas_type:"",
+                purging_gas_type:"",
                 tungsten_type:"",
                 records: [
                     {

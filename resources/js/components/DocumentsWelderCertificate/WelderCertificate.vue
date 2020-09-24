@@ -19,6 +19,7 @@
             </template>
             <b-row>
                 <b-col>
+
                     <b-form-group label="Test">
                         <b-form-input
                             list="new-test"
