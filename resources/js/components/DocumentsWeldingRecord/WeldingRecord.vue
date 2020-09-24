@@ -40,6 +40,9 @@
                         </b-card-body>
                     </b-collapse>
                 </b-card>
+
+                <!-- Record of Weld Test (1 part) -->
+
                 <b-card no-body class="mb-1">
                     <b-card-header header-tag="header" class="p-1" role="tab">
                         <b-button block v-b-toggle.accordion-2 variant="info">Record of Weld Test (1 part)</b-button>
@@ -267,6 +270,9 @@
                         </b-card-body>
                     </b-collapse>
                 </b-card>
+
+                <!-- Record of Weld Test (2 part) -->
+
                 <b-card no-body class="mb-1">
                     <b-card-header header-tag="header" class="p-1" role="tab">
                         <b-button block v-b-toggle.accordion-3 variant="info">Record of Weld Test (2 part)</b-button>
@@ -521,47 +527,97 @@
                         </b-card-body>
                     </b-collapse>
                 </b-card>
+
+                <!-- Record of Welding Parameters -->
+
                 <b-card no-body class="mb-1">
                     <b-card-header header-tag="header" class="p-1" role="tab">
                         <b-button block v-b-toggle.accordion-4 variant="info">Record of Welding Parameters</b-button>
                     </b-card-header>
                     <b-collapse id="accordion-4" visible accordion="my-accordion" role="tabpanel">
                         <b-card-body>
+
                             <b-row>
-                                <b-col cols="3">
-                                    <label>Code/Testing Standard:</label>
+                                <b-col style="width: 13%" class="text-center"><b>Process</b></b-col>
+                                <b-col style="width: 13%" class="text-center"><b>Size of Filler (mm)</b></b-col>
+                                <b-col style="width: 13%" class="text-center"><b>Current A</b></b-col>
+                                <b-col style="width: 13%" class="text-center"><b>Voltage V</b></b-col>
+                                <b-col style="width: 13%" class="text-center"><b>Type of Current/Polarity</b></b-col>
+                                <b-col style="width: 13%" class="text-center"><b>Type of transfer</b></b-col>
+                                <b-col style="width: 13%" class="text-center"><b>Travel Speed (mm/sec)</b></b-col>
+                                <b-col style="width: 13%" class="text-center"><b>Heat Input (Kj/mm)</b></b-col>
+                                <b-col></b-col>
+                            </b-row>
+
+                            <b-row v-for="(item, index) in data.records" :key="index" class="mb-2">
+                                <b-col style="width: 13%">
+                                    <b-form-input
+                                        name="record-process"
+                                        v-model="item.record_process"
+                                    ></b-form-input>
                                 </b-col>
-                                <b-col>
-                                    <b-form-group>
-                                        <b-form-input
-                                            list="code-standard"
-                                            name="code-standard"
-                                            v-model="data.code_standard"
-                                        ></b-form-input>
-                                        <b-form-datalist
-                                            id="code-standard"
-                                            :options="code_standard"
-                                        ></b-form-datalist>
-                                    </b-form-group>
+                                <b-col style="width: 13%">
+                                    <b-form-input
+                                        name="record-size"
+                                        v-model="item.record_size"
+                                    ></b-form-input>
+                                </b-col>
+                                <b-col style="width: 13%">
+                                    <b-form-input
+                                        name="record-current-a"
+                                        v-model="item.record_current_a"
+                                    ></b-form-input>
+                                </b-col>
+                                <b-col style="width: 13%">
+                                    <b-form-input
+                                        name="record-voltage-v"
+                                        v-model="item.record_voltage_v"
+                                    ></b-form-input>
+                                </b-col>
+                                <b-col style="width: 13%">
+                                    <b-form-input
+                                        name="record-type-current"
+                                        v-model="item.record_type_current"
+                                    ></b-form-input>
+                                </b-col>
+                                <b-col style="width: 13%">
+                                    <b-form-input
+                                        name="record-type-transfer"
+                                        v-model="item.record_type_transfer"
+                                    ></b-form-input>
+                                </b-col>
+                                <b-col style="width: 13%">
+                                    <b-form-input
+                                        name="record-travel-speed"
+                                        v-model="item.record_travel_speed"
+                                    ></b-form-input>
+                                </b-col>
+                                <b-col style="width: 13%">
+                                    <b-form-input
+                                        name="record-heat-input"
+                                        v-model="item.record_heat_input"
+                                    ></b-form-input>
+                                </b-col>
+                                <b-col class="text-center">
+                                    <b-icon
+                                        icon="trash-fill"
+                                        font-scale="2"
+                                        class="cursor"
+                                        @click="delRecords(index)"
+                                    ></b-icon>
                                 </b-col>
                             </b-row>
 
-                            <b-row>
-                                <b-col cols="3">
-                                    <label>Manufacturers WPQR No: </label>
-                                </b-col>
-                                <b-col>
-                                    <b-form-group>
-                                        <b-form-input
-                                            name="manufacturers"
-                                        ></b-form-input>
-                                    </b-form-group>
-                                </b-col>
-                            </b-row>
-
+                            <div class="mt-4">
+                                <b-button block variant="outline-secondary" @click="addRecords">Added +</b-button>
+                            </div>
+                            <input type="hidden" name="records" :value="JSON.stringify(data.records)">
                         </b-card-body>
                     </b-collapse>
                 </b-card>
+
+                <!-- Aditional information -->
+
                 <b-card no-body class="mb-1">
                     <b-card-header header-tag="header" class="p-1" role="tab">
                         <b-button block v-b-toggle.accordion-5 variant="info">Aditional information</b-button>
@@ -803,7 +859,19 @@ export default {
                 baking_drying:"",
                 baking_gouging:"",
                 shielding_gas_type:"",
-                tungsten_type:""
+                tungsten_type:"",
+                records: [
+                    {
+                        record_process: "GMAW  135",
+                        record_size: "1.0mm",
+                        record_current_a: "144",
+                        record_voltage_v: "17.5",
+                        record_type_current: "DC+",
+                        record_type_transfer: "Short",
+                        record_travel_speed: "7.9",
+                        record_heat_input: "0.26"
+                    }
+                ]
             },
             clientData: {
                 withenessed_name: "",
@@ -814,7 +882,30 @@ export default {
                 behaulf_date: ""
             }
         }
+    },
+    methods: {
+        addRecords() {
+            this.data.records.push(
+                {
+                    record_process: "",
+                    record_size: "",
+                    record_current_a: "",
+                    record_voltage_v: "",
+                    record_type_current: "",
+                    record_type_transfer: "",
+                    record_travel_speed: "",
+                    record_heat_input: ""
+                }
+            )
+        },
+        delRecords(index) {
+            this.data.records.splice(index, 1);
+        }
     }
 }
 </script>
-
+<style lang="css" scoped>
+    .cursor {
+        cursor: pointer;
+    }
+</style>

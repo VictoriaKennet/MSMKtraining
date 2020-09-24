@@ -419,6 +419,7 @@
         </tr>
     </table>
     <br><br><br>
+
     <table class="table-record">
         <tr>
             <th>Run</th>
@@ -431,17 +432,19 @@
             <th>Travel Speed (mm/sec)</th>
             <th>Heat Input (Kj/mm)</th>
         </tr>
-        <tr>
-            <td>1</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        @foreach (json_decode($data->input('records')) as $key => $item)
+            <tr>
+                <td>{{$key+1}}</td>
+                <td>{{$item->record_process}}</td>
+                <td>{{$item->record_size}}</td>
+                <td>{{$item->record_current_a}}</td>
+                <td>{{$item->record_voltage_v}}</td>
+                <td>{{$item->record_type_current}}</td>
+                <td>{{$item->record_type_transfer}}</td>
+                <td>{{$item->record_travel_speed}}</td>
+                <td>{{$item->record_heat_input}}</td>
+            </tr>
+        @endforeach
     </table>
     <br><br><br><br>
     <table>
