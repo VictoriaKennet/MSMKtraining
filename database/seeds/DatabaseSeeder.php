@@ -31,6 +31,13 @@ class DatabaseSeeder extends Seeder
             DocTypeJoin::class,
             DocWeldingPost::class,
             DocWeldPr::class,
+            DocCodeSt::class,
+            DocMetalTransfer::class,
+            DocPreparation::class,
+            DocFillerMatDesignation::class,
+            DocBaking::class,
+            DocBackGouging::class,
+            DocSpecification::class
         ]);
     }
 }
