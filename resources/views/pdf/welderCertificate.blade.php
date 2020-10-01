@@ -661,7 +661,7 @@
                 <td colspan="2" class="tb-t-3">{{$data->input('welding_details_range')}}</td>
             </tr>
             <tr class="f-s-9 main-table">
-                <td class="tb-t-1 br-b">Multi-layer/single layer</td>
+                <td class="tb-t-1 br-b">Multi layer/single layer</td>
                 <td colspan="5" class="tb-t-2 br-b">{{$data->input('single_layer_test')}}</td>
                 <td colspan="2" class="tb-t-3 br-b">{{$data->input('single_layer_range')}}</td>
             </tr>
