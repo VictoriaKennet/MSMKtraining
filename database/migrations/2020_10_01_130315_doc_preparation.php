@@ -13,7 +13,7 @@ class DocPreparation extends Migration
      */
     public function up()
     {
-        Schema::create('doc_preparation', function (Blueprint $table) {
+        Schema::create('doc2_preparation', function (Blueprint $table) {
             $table->id();
             $table->string('main');
         });

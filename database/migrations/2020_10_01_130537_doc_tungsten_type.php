@@ -13,7 +13,7 @@ class DocTungstenType extends Migration
      */
     public function up()
     {
-        Schema::create('doc_tungsten_type', function (Blueprint $table) {
+        Schema::create('doc2_tungsten_type', function (Blueprint $table) {
             $table->id();
             $table->string('main');
         });

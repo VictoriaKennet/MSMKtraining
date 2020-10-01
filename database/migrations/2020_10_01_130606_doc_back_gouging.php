@@ -13,7 +13,7 @@ class DocBackGouging extends Migration
      */
     public function up()
     {
-        Schema::create('doc_back_gouging', function (Blueprint $table) {
+        Schema::create('doc2_back_gouging', function (Blueprint $table) {
             $table->id();
             $table->string('main');
         });

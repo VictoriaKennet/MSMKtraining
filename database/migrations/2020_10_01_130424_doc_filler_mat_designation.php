@@ -13,7 +13,7 @@ class DocFillerMatDesignation extends Migration
      */
     public function up()
     {
-        Schema::create('doc_filler_mat_designation', function (Blueprint $table) {
+        Schema::create('doc2_filler_mat_designation', function (Blueprint $table) {
             $table->id();
             $table->string('main');
         });

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DocBaking extends Seeder
+class DocBakingSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,13 +11,13 @@ class DocBaking extends Seeder
      */
     public function run()
     {
-        DB::table('doc_baking')->insert([
+        DB::table('doc2_baking')->insert([
             'main' => 'Not Applied',
         ]);
-        DB::table('doc_baking')->insert([
+        DB::table('doc2_baking')->insert([
             'main' => 'Oven Baked',
         ]);
-        DB::table('doc_baking')->insert([
+        DB::table('doc2_baking')->insert([
             'main' => 'Vacuum Packed',
         ]);
     }

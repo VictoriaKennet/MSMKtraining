@@ -13,7 +13,7 @@ class DocSpecification extends Migration
      */
     public function up()
     {
-        Schema::create('doc_specification', function (Blueprint $table) {
+        Schema::create('doc2_specification', function (Blueprint $table) {
             $table->id();
             $table->string('main');
         });

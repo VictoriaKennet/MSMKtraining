@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('pdf-data', 'DataController@pdfData');
+Route::get('certificate-data', 'DataController@pdfDataCertificate');
+Route::get('record-data', 'DataController@pdfDataRecord');
 
 Route::get('wps/{id}', 'DataController@wpsId');
 Route::post('wps', 'DataController@postWPS');

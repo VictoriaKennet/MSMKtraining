@@ -1848,7 +1848,7 @@ export default {
             }
         },
         getData() {
-            axios.get('/api/pdf-data').then(response => {
+            axios.get('/api/certificate-data').then(response => {
                 Object.assign(this.data, response.data);
             })
             if(this.$route.params.id) {

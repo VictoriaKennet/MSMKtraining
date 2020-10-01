@@ -13,7 +13,7 @@ class DocCodeSt extends Migration
      */
     public function up()
     {
-        Schema::create('doc_code_st', function (Blueprint $table) {
+        Schema::create('doc2_code_st', function (Blueprint $table) {
             $table->id();
             $table->string('main');
         });

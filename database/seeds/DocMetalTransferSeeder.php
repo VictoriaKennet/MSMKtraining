@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DocMetalTransfer extends Seeder
+class DocMetalTransferSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,19 +11,19 @@ class DocMetalTransfer extends Seeder
      */
     public function run()
     {
-        DB::table('doc_metal_transfer')->insert([
+        DB::table('doc2_metal_transfer')->insert([
             'main' => 'Dip',
         ]);
-        DB::table('doc_metal_transfer')->insert([
+        DB::table('doc2_metal_transfer')->insert([
             'main' => 'Globular',
         ]);
-        DB::table('doc_metal_transfer')->insert([
+        DB::table('doc2_metal_transfer')->insert([
             'main' => 'Spray',
         ]);
-        DB::table('doc_metal_transfer')->insert([
+        DB::table('doc2_metal_transfer')->insert([
             'main' => 'Pulsed',
         ]);
-        DB::table('doc_metal_transfer')->insert([
+        DB::table('doc2_metal_transfer')->insert([
             'main' => 'Dip and Spray',
         ]);
     }

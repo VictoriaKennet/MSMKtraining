@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DocPreparation extends Seeder
+class DocPreparationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,10 +11,10 @@ class DocPreparation extends Seeder
      */
     public function run()
     {
-        DB::table('doc_preparation')->insert([
+        DB::table('doc2_preparation')->insert([
             'main' => 'CS Wire Brush',
         ]);
-        DB::table('doc_preparation')->insert([
+        DB::table('doc2_preparation')->insert([
             'main' => 'SS Wire Brush',
         ]);
     }

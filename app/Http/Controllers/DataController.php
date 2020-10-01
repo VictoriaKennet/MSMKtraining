@@ -17,11 +17,23 @@ use App\Models\WeldingPosition;
 use App\Models\WeldingDetails;
 use\App\Models\WeldingProcesses;
 use\App\Models\Header;
+use\App\Models\DesignationGasFlux;
+use\App\Models\ParentMLT;
+use\App\Models\TypeJoin;
+use\App\Models\WeldingPost;
+use\App\Models\WeldPR;
+use\App\Models\CodeST;
+use\App\Models\MetalTransfer;
+use\App\Models\Preparation;
+use\App\Models\FillerMatDesignation;
+use\App\Models\Baking;
+use\App\Models\BackGouging;
+use\App\Models\Specification;
 
 class DataController extends Controller
 {
-    // главная
-    function pdfData() {
+    // главная Doc1
+    function pdfDataCertificate() {
         $wps = WPSReference::with(
             'weldingProcesses',
             'typeOfWeld',
@@ -48,6 +60,25 @@ class DataController extends Controller
             'process_one' => $process,
             'process_two' => $process,
             'header' => Header::get()
+        ];
+        return response()->json($data);
+    }
+
+    // главная Doc2
+    function pdfDataRecord() {
+        $data = [
+            'designation_gas_flux' => DesignationGasFlux::get(),
+            'parent_mlt' => ParentMLT::get(),
+            'joint_type_weld' => TypeJoin::get(),
+            'welding_post' => WeldingPost::get(),
+            'welding_process' => WeldPR::get(),
+            'code_standard' => CodeST::get(),
+            'metal_transfer' => MetalTransfer::get(),
+            'preparation' => Preparation::get(),
+            'filler_mat_designation' => FillerMatDesignation::get(),
+            'baking' => Baking::get(),
+            'back_gouging' => BackGouging::get(),
+            'specification' => Specification::get(),
         ];
         return response()->json($data);
     }

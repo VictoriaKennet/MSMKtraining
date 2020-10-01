@@ -13,7 +13,7 @@ class DocBaking extends Migration
      */
     public function up()
     {
-        Schema::create('doc_baking', function (Blueprint $table) {
+        Schema::create('doc2_baking', function (Blueprint $table) {
             $table->id();
             $table->string('main');
         });
