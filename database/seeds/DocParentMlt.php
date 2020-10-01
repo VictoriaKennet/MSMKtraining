@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class Doc2ParentMlt extends Seeder
+class DocParentMlt extends Seeder
 {
     /**
      * Run the database seeds.

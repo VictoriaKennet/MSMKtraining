@@ -15,8 +15,8 @@ class Doc2TypeJoin extends Migration
     {
         Schema::create('doc2_type_join', function (Blueprint $table) {
             $table->id();
-            $table->json('main');
-            $table->json('add');
+            $table->string('main');
+            $table->string('add');
         });
     }
 

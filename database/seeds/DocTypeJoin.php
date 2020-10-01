@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class Doc2TypeJoin extends Seeder
+class DocTypeJoin extends Seeder
 {
     /**
      * Run the database seeds.

@@ -15,8 +15,8 @@ class Doc2WeldingPost extends Migration
     {
         Schema::create('doc2_welding_post', function (Blueprint $table) {
             $table->id();
-            $table->json('main');
-            $table->json('add');
+            $table->string('main');
+            $table->string('add');
         });
 
     }

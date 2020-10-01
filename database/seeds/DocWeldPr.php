@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class Doc2WeldPr extends Seeder
+class DocWeldPr extends Seeder
 {
     /**
      * Run the database seeds.

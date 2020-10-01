@@ -25,7 +25,12 @@ class DatabaseSeeder extends Seeder
             WeldingDetails::class,
             WeldingPosition::class,
             Header::class,
-            Reference::class
+            Reference::class,
+            DocDesignationGasFlux::class,
+            DocParentMlt::class,
+            DocTypeJoin::class,
+            DocWeldingPost::class,
+            DocWeldPr::class,
         ]);
     }
 }

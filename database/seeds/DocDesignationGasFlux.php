@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class Doc2DesignationGasFlux extends Seeder
+class DocDesignationGasFlux extends Seeder
 {
     /**
      * Run the database seeds.

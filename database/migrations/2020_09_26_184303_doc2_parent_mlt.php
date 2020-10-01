@@ -15,8 +15,8 @@ class Doc2ParentMlt extends Migration
     {
         Schema::create('doc2_parent_mlt', function (Blueprint $table) {
             $table->id();
-            $table->json('main');
-            $table->json('add');
+            $table->string('main');
+            $table->string('add');
         });
 
     }

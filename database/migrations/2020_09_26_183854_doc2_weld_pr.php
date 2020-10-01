@@ -15,8 +15,8 @@ class Doc2WeldPr extends Migration
     {
         Schema::create('doc2_weld_pr', function (Blueprint $table) {
             $table->id();
-            $table->json('main');
-            $table->json('add');
+            $table->string('main');
+            $table->string('add');
         });
 
     }

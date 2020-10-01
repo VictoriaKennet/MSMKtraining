@@ -15,8 +15,8 @@ class Doc2DesignationGasFlux extends Migration
     {
         Schema::create('doc2_designation_gas_flux', function (Blueprint $table) {
             $table->id();
-            $table->json('main');
-            $table->json('add');
+            $table->string('main');
+            $table->string('add');
         });
 
     }
