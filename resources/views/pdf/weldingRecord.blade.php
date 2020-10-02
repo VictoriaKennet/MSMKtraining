@@ -88,11 +88,26 @@
         color: #365f91;
         font-family: "Cambria", sans-serif;
     }
+    .bottom-inf1 {
+        position: absolute;
+        top: 80%;
+    }
+
+    .bottom-inf2 {
+            position: absolute;
+            top: 97.4%;
+        }
+
 </style>
 
 <div class="wrapper">
 
     <!-- Page 1 -->
+
+    <div class="bottom-inf2">
+            <div>{{$data->input('document_number1')}}</div>
+            <div>{{$data->input('document_number2')}}</div>
+    </div>
 
     <div class="contacts">
         <b>MSMK</b> Training Ltd<br>
@@ -236,7 +251,7 @@
     <p class="p-b"><span>Certified that welds were prepared, welded and tested satisfactorily in accordance with the requirements of the code/testing standard.</span> <br>
     Test House and Report No: - MSMK Training Laboratory UKAS No: 10126 Report no: <b>MSMK 19-003-4</b></p>
 
-    <table>
+    <table class="bottom-inf1">
         <tr>
             <td class="td-head" colspan="2">TEST WITNESSED BY:</td>
             <td class="td-head" colspan="2">FOR END ON BEHALF OF MSMK TRAINING LTD:</td>
@@ -259,6 +274,11 @@
     <div class="page-break"></div>
 
     <!-- Page 2 -->
+
+    <div class="bottom-inf2">
+            <div>{{$data->input('document_number1')}}</div>
+            <div>{{$data->input('document_number2')}}</div>
+    </div>
 
     <div class="contacts">
         <b>MSMK</b> Training Ltd<br>
@@ -315,7 +335,21 @@
             <td>{{$data->input('welding_position')}}</td>
         </tr>
     </table>
-    <br><br><br><br>
+    <br><br>
+
+    <table class="table-tests text-center">
+            <tr class="bold">
+                <td width="50%">Join Design</td>
+                <td width="50%">Welding Sequences</td>
+            </tr>
+            <tr>
+                <td width="50%"> <br><br><br><br> <br><br><br><br><br><br><br><br></td>
+                <td width="50%"> <br><br><br><br> <br><br><br><br><br><br><br><br></td>
+            </tr>
+        </table>
+
+
+    <br><br>
     <table>
         <tr>
             <td class="td-l">Filler Metal Designation:</td>
@@ -389,7 +423,9 @@
         </tr>
     </table>
     <br><br>
-    <table>
+
+    <!-- ADD BOTTOM -->
+    <table class="bottom-inf1">
         <tr>
             <td class="td-head" colspan="2">TEST WITNESSED BY:</td>
             <td class="td-head" colspan="2">FOR END ON BEHALF OF MSMK TRAINING LTD:</td>
@@ -412,6 +448,11 @@
     <div class="page-break"></div>
 
     <!-- Page 3 -->
+
+    <div class="bottom-inf2">
+            <div>{{$data->input('document_number1')}}</div>
+            <div>{{$data->input('document_number2')}}</div>
+    </div>
 
     <div class="contacts">
         <b>MSMK</b> Training Ltd<br>
@@ -467,7 +508,7 @@
         @endforeach
     </table>
     <br><br><br><br>
-    <table>
+    <table class="bottom-inf1">
         <tr>
             <td class="td-head" colspan="2">TEST WITNESSED BY:</td>
             <td class="td-head" colspan="2">FOR END ON BEHALF OF MSMK TRAINING LTD:</td>
@@ -491,6 +532,11 @@
 
     <!-- Page 4 -->
 
+    <div class="bottom-inf2">
+            <div>{{$data->input('document_number1')}}</div>
+            <div>{{$data->input('document_number2')}}</div>
+    </div>
+
     <div class="contacts">
         <b>MSMK</b> Training Ltd<br>
         75 Blackstock road, Sheffield, S14 1AD, United Kingdom<br>
@@ -501,94 +547,94 @@
     <table class="table-tests">
         <tr>
             <td class="bold">Manufacturers pWPS Ref No:</td>
-            <td>pMA 04</td>
+            <td>{{$data->input('manufacturers_1')}}</td>
             <td class="bold">Examiner/Test Body:</td>
-            <td>MSMK Training Ltd</td>
+            <td>{{$data->input('examiner_test_body')}}</td>
         </tr>
         <tr>
             <td class="bold">Manufacturers WPQR No:</td>
-            <td>MA 04</td>
+            <td>{{$data->input('manufacturers_2')}}</td>
             <td class="bold">NDT Ref No:</td>
-            <td class="bold">19-003-4L</td>
+            <td class="bold">{{$data->input('ndf_ref_no')}}</td>
         </tr>
     </table>
     <br><br>
     <table class="table-tests">
         <tr>
             <td class="bold" width="33%">
-                <u>Visual: <span class="small">(BS EN ISO 17637:2016, Acceptance to BS EN ISO 5817:2014 Category B)</span></u>
+                <u>Visual: <span class="small">({{$data->input('visual')}})</span></u>
             </td>
             <td class="bold" width="15%">Acceptable</td>
             <td class="bold">Name of Examiner:</td>
-            <td>V Kruk</td>
+            <td>{{$data->input('name_examiner')}}</td>
         </tr>
     </table>
     <br><br>
     <table class="table-tests">
         <tr>
             <td class="bold" width="33%">
-                <u>DYE Penetrant Test: <span class="small">(BS EN ISO 3452-1:2013, Acceptance to BS EN ISO 5817:2014 Category B)</span></u>
+                <u>DYE Penetrant Test: <span class="small">({{$data->input('visual')}})</span></u>
             </td>
             <td class="bold" width="15%">Acceptable</td>
             <td class="bold">Viewing Conditions:</td>
-            <td>As Welded. Min 500 Lux</td>
+            <td>{{$data->input('viewing_conditions')}}</td>
         </tr>
         <tr>
             <td class="bold" width="33%">Penetrant-Manufacture Type</td>
-            <td width="15%">J & A JAP</td>
+            <td width="15%">{{$data->input('penetrant_manufacture_type')}}</td>
             <td class="bold">Name of Examiner & PCN No:</td>
-            <td>V Kruk 306137</td>
+            <td>{{$data->input('name_examiner')}}</td>
         </tr>
         <tr>
             <td class="bold" width="33%">Develop-Manufacture Type</td>
-            <td width="15%">J & A JAD</td>
+            <td width="15%">{{$data->input('develop_manufacture')}}</td>
             <td class="bold">Detection Media:</td>
-            <td>Not Applicable</td>
+            <td>{{$data->input('detection_media')}}</td>
         </tr>
         <tr>
             <td class="bold" width="33%">Remover-Manufacturer & Type</td>
-            <td width="15%">J & A JAR</td>
+            <td width="15%">{{$data->input('remover_manufacturer_type')}}</td>
             <td class="bold">Detection Media, Contrast Paint:</td>
-            <td>Not Applicable</td>
+            <td>{{$data->input('detection_media_contrast_paint')}}</td>
         </tr>
     </table>
     <br><br>
     <table class="table-tests">
         <tr>
             <td class="bold" width="33%">
-                <u>Ultrasonic: <span class="small">(BS EN ISO 17640:2010, Acceptance to BS EN ISO 5817:2014 Category B)</span></u>
+                <u>Ultrasonic: <span class="small">({{$data->input('visual')}})</span></u>
             </td>
-            <td width="15%">Not Applicable</td>
+            <td width="15%">{{$data->input('ultrasonic')}}</td>
             <td class="bold">Reference Block(s) Used:</td>
-            <td></td>
+            <td>{{$data->input('reference_blocks')}}</td>
         </tr>
         <tr>
             <td class="bold" width="33%">Procedure Number:</td>
-            <td width="15%"></td>
+            <td width="15%">{{$data->input('procedure_number')}}</td>
             <td class="bold">Name of Examiner & PCN No:</td>
-            <td></td>
+            <td>{{$data->input('name_examiner_PCN')}}</td>
         </tr>
         <tr>
             <td class="bold" width="33%">Probe(s) & Serial Number:</td>
-            <td width="15%"></td>
+            <td width="15%">{{$data->input('probe_serial_number')}}</td>
             <td class="bold">Flaw Detection & Serial Number:</td>
-            <td></td>
+            <td>{{$data->input('flaw_detection_serial_number')}}</td>
         </tr>
     </table>
     <br><br>
     <table class="table-tests">
         <tr>
-            <td class="bold" colspan="3" width="45%">Tensile Test <span class="small">(BS EN ISO 4136:2012, BS EN ISO 6892-1:2009)</span></td>
-            <td class="bold" colspan="6">SEE REPORT 0018318/001/E1</td>
+            <td class="bold" colspan="3" width="45%">Tensile Test <span class="small">({{$data->input('tensile_test_add')}})</span></td>
+            <td class="bold" colspan="6">{{$data->input('tensile_test')}}</td>
         </tr>
         <tr>
-            <td>A:<br>B:</td>
+            <td>A: {{$data->input('a_1')}} <br> B: {{$data->input('b_1')}}</td>
             <td>Thickness:<br>Thickness:</td>
-            <td></td>
+            <td>{{$data->input('a_thickness')}} <br> {{$data->input('b_thickness')}} </td>
             <td>Width:<br>Width:</td>
-            <td></td>
+            <td>{{$data->input('a_width')}} <br> {{$data->input('b_width')}}</td>
             <td colspan="2">Maximim Force (KN):<br>Maximum Force (KN):</td>
-            <td colspan="2"></td>
+            <td colspan="2">{{$data->input('a_maximum')}} <br> {{$data->input('b_maximum')}}</td>
         </tr>
         <tr style="text-align:center">
             <td class="bold">Type/No:</td>
@@ -635,52 +681,53 @@
     <table class="table-tests">
         <tr>
             <td width="35%" rowspan="4">
-                <u><b>Bend Tests:</b> <span class="small">(BS EN ISO 5173:2010 + A1:2011)</small></u><br>
+                <u><b>Bend Tests:</b> <span class="small">({{$data->input('bend_tests')}})</small></u><br>
                 <br>
                 <u>Dimensions</u><br>
-                Thickness:<br>
-                Width:
+                Thickness: {{$data->input('thickness')}}<br>
+                Width: {{$data->input('width')}}
             </td>
             <td>Dia of Former:</td>
-            <td></td>
+            <td>{{$data->input('dia_former')}}</td>
             <td>Side:</td>
-            <td></td>
+            <td>{{$data->input('side')}}</td>
         </tr>
         <tr>
             <td>Angle of Bend:</td>
-            <td></td>
+            <td>{{$data->input('angle_bend')}}</td>
             <td>Face:</td>
-            <td></td>
+            <td>{{$data->input('face')}}</td>
         </tr>
         <tr>
             <td>Elongation:</td>
-            <td></td>
+            <td>{{$data->input('elongation')}}</td>
             <td>Root:</td>
-            <td></td>
+            <td>{{$data->input('root')}}</td>
         </tr>
         <tr>
             <td colspan="2">Distance between Rollers:</td>
-            <td colspan="2" class="bold">SEE REPORT 19-003-4B</td>
+            <td colspan="2" class="bold">{{$data->input('distance_between_rollers')}}</td>
         </tr>
     </table>
     <br><br>
     <table class="table-tests">
         <tr>
             <td class="bold" width="30%" rowspan="2">
-                <u class="title-2">Macro/Microscopic Test</u> <span class="small"><b>(BS EN ISO 17639:2013 <u class="title-2">Acceptance to BS EN ISO 5817:2014 Category B</u></b></span>
+                <u class="title-2">Macro/Microscopic Test</u> <span class="small"><b>({{$data->input('macro_microscopic_test_add')}})</b></span>
             </td>
-            <td class="bold" rowspan="2">Acceptable</td>
+            <td class="bold" rowspan="2">{{$data->input('macro_microscopic_test')}}</td>
             <td>Etchant Type:</td>
-            <td>10% Nital</td>
+            <td>{{$data->input('etchant_type')}}</td>
         </tr>
         <tr>
             <td>Method:</td>
-            <td>Immersing</td>
+            <td>{{$data->input('method')}}</td>
         </tr>
         <tr>
             <td>Location, Orientation & Examined Surface:</td>
-            <td class="bold">SEE REPORT 19-003-4M</td>
-            <td colspan="2">Cross section area of Fillet Weld. Sample Location as per BS EN ISO 15614-1:2017 Fig 6</td>
+            <td class="bold">{{$data->input('orientation')}}</td>
+            <td colspan="2">{{$data->input('orientation_add')}}</td>
         </tr>
     </table>
+
 </div>

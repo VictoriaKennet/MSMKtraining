@@ -180,10 +180,12 @@
                                             list="joint_type_weld"
                                             name="joint_type_weld"
                                             v-model="data.joint_type_weld.main"
+                                            @change="setElement($event, 'joint_type_weld')"
                                         ></b-form-input>
                                         <b-form-datalist
                                             id="joint_type_weld"
-                                            :options="joint_type_weld"
+                                            :options="recordData.joint_type_weld"
+                                            text-field="main"
                                         ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -382,13 +384,15 @@
                                 <b-col cols="4">
                                     <b-form-group>
                                         <b-form-input
-                                            list="purging_gas_type"
-                                            name="purging_gas_type"
-                                            v-model="data.purging_gas_type"
+                                            list="designation_gas_flux"
+                                            name="designation_gas_flux"
+                                            v-model="data.designation_gas_flux.main"
+                                            @change="setElement($event, 'designation_gas_flux')"
                                         ></b-form-input>
                                         <b-form-datalist
-                                            id="purging_gas_type"
-                                            :options="shielding_gas_type"
+                                            id="designation_gas_flux"
+                                            :options="recordData.designation_gas_flux"
+                                            text-field="main"
                                         ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -866,13 +870,13 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            list="parent_mlt_add"
-                                            name="parent_mlt_add"
-                                            v-model="data.parent_mlt.add"
+                                            list="designation_gas_flux_add"
+                                            name="designation_gas_flux_add"
+                                            v-model="data.designation_gas_flux.add"
                                         ></b-form-input>
                                         <b-form-datalist
-                                            id="parent_mlt_add"
-                                            :options="recordData.parent_mlt"
+                                            id="designation_gas_flux_add"
+                                            :options="recordData.designation_gas_flux"
                                             text-field="add"
                                         ></b-form-datalist>
                                     </b-form-group>
@@ -978,15 +982,556 @@
                     </b-collapse>
                 </b-card>
 
-                <!-- Bottom information -->
+                <!-- Adding tables -->
 
                 <b-card no-body class="mb-1">
                     <b-card-header header-tag="header" class="p-1" role="tab">
-                        <b-button block v-b-toggle.accordion-5 variant="info">Bottom information</b-button>
+                        <b-button block v-b-toggle.accordion-5 variant="info">Tests Performed</b-button>
                     </b-card-header>
                     <b-collapse id="accordion-5" accordion="my-accordion" role="tabpanel">
                         <b-card-body>
                             <b-row>
+                                <b-col cols="2">
+                                    <label>Examiner/Test Body:</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="examiner_test_body"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>NDT Ref No:</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="ndf_ref_no"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Visual (add inf):</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="visual"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Name of Examiner:</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="name_examiner"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+
+                            <hr>
+
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Viewing Conditions:</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="viewing_conditions"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Penetrant-Manufacture Type:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="penetrant_manufacture_type"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>Name of Examiner & PCN No:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="name_examiner"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Develop-Manufacture Type:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="develop_manufacture"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>Detection Media:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="detection_media"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Remover-Manufacturer & Type:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="remover_manufacturer_type"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>Detection Media, Contrast Paint:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="detection_media_contrast_paint"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+
+                            <hr>
+
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Ultrasonic:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="ultrasonic"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>Reference Block(s) Used:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="reference_blocks"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Procedure Number:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="procedure_number"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>Name of Examiner & PCN No:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="name_examiner_PCN"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Probe(s) & Serial Number:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="probe_serial_number"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>Flaw Detection & Serial Number:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="flaw_detection_serial_number:"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+
+                            <hr>
+
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Tensile Test (add inf):</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="tensile_test_add"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>Tensile Test:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="tensile_test"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>A:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="a_1"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>B:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="b_1"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>A (Thickness):</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="a_thickness"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>B (Thickness):</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="b_thickness"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>A (Width):</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="a_width"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>B (Width):</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="b_width"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>A (Maximim Force (KN)):</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="a_maximum"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>B (Maximim Force (KN)):</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="b_maximum"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+
+                            <hr>
+
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Bend Tests (add inf):</label>
+                                </b-col>
+                                <b-col cols="10">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="bend_tests"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Thickness:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="thickness"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>Width:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="width"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Dia of Former:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="dia_former"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>Side:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="side"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Angle of Bend:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="angle_bend"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>Face:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="face"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Elongation:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="elongation"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>Root:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="root"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Distance between Rollers:</label>
+                                </b-col>
+                                <b-col cols="10">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="distance_between_rollers"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+
+                            <hr>
+
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Macro/Microscopic Test: (add inf)</label>
+                                </b-col>
+                                <b-col cols="10">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="macro_microscopic_test_add"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Macro/Microscopic Test:</label>
+                                </b-col>
+                                <b-col cols="10">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="macro_microscopic_test"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Etchant Type:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="etchant_type"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>Method:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="method"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Location, Orientation & Examined Surface:</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="orientation"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <label>Location, Orientation & Examined Surface: (add inf)</label>
+                                </b-col>
+                                <b-col cols="4">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="orientation_add"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+
+
+
+
+                        </b-card-body>
+                    </b-collapse>
+                </b-card>
+
+                <!-- Bottom information -->
+
+                <b-card no-body class="mb-1">
+                    <b-card-header header-tag="header" class="p-1" role="tab">
+                        <b-button block v-b-toggle.accordion-6 variant="info">Bottom information</b-button>
+                    </b-card-header>
+                    <b-collapse id="accordion-6" accordion="my-accordion" role="tabpanel">
+                        <b-card-body>
+                            <b-row>
+                                <b-col cols="2">
+                                    <label for="input-default">Document number</label>
+                                </b-col>
+                                <b-col cols="5">
+                                    <b-form-group>
+                                        <b-form-input
+                                            list="document-number1"
+                                            name="document_number1"
+                                            v-model="clientData.document_number1"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="5">
+                                    <b-form-group>
+                                        <b-form-input
+                                            list="document-number2"
+                                            name="document_number2"
+                                            v-model="clientData.document_number2"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <hr>
+                            <b-row>
+
                                 <b-col>
                                     <label for="input-default">TEST WITHENESSED BY</label>
                                     <b-row class="my-1">
@@ -1061,8 +1606,6 @@
                     </b-collapse>
                 </b-card>
 
-
-
                 <div class="d-flex justify-content-center">
                     <input type="submit" value="Open PDF" class="button">
                 </div>
@@ -1091,67 +1634,6 @@ export default {
                 welding_post: [],
                 preparation: []
             },
-            code_standard: [
-                "BS EN ISO 15614-1:2019 Lev 1 / BS EN ISO 5817:2014 Lev B",
-                "BS EN ISO 15613-1:2004 / BS EN ISO 5817:2014 Lev B",
-                "BS EN ISO 15614-1:2019 Lev 2 / BS EN ISO 5817:2014 Lev B"
-            ],
-            parent_material: [
-                "BS EN 10025-2:2019",
-                "BS EN 10025-2:2020",
-                "BS EN 10025-2:2021",
-                "BS EN 10025-4:2019",
-                "BS EN 10025-6:2019",
-                "BS EN 10088-2:2014",
-                "BS EN 10088-2:2014",
-                "BS EN 10088-2:2014",
-                "BS EN 10088-2:2014",
-                "BS EN 10088-2:2014",
-                "BS EN 10088-2:2014",
-                "BS EN 10088-2:2024",
-                "BS EN 10088-2:2024"
-            ],
-            welding_process:[
-                "111 MMA",
-                "135 MAG ",
-                "136 MAG",
-                "138 MAG",
-                "141 TIG",
-                "141/136 TIG and FCAW",
-                "111/136 MMA and FCAW",
-                "135/136 MAG and FCAW",
-                "15 PAW",
-                "121 SAW"
-            ],
-            specification:[
-                "S355J2+N",
-                "S355J2",
-                "S275JR+AR",
-                "STRENX 700",
-                "690QL",
-                "1.4301 (304) Gr 8.1",
-                "1.4301 (304) Gr 8.2",
-                "1.4307 (304L) Gr 8.1",
-                "1.4307 (304L) Gr 8.2",
-                "1.4401 (316) Gr 8.1",
-                "1.4401 (316) Gr 8.2",
-                "1.4404 (316L) Gr 8.1",
-                "1.4404 (316L) Gr 8.2",
-            ],
-            metal_transfer: [
-                "Dip",
-                "Globular",
-                "Spray",
-                "Pulsed",
-                "Dip and Spray"
-            ],
-            joint_type_weld: [
-                "Butt Weld CJP",
-                "Butt Weld PJP",
-                "Fillet Weld",
-                "T-Butt PJP",
-                "T-Butt CJP"
-            ],
             preparation: [
                 "CS Wire Brush",
                 "SS Wire Brush"
@@ -1234,10 +1716,16 @@ export default {
                     main: "",
                     add: ""
                 },
+                designation_gas_flux: {
+                    main: "",
+                    add: ""
+                },
+
                 metal_transfer: "",
                 parent_material: "",
                 code_standard: "",
                 preparation: "",
+
 
                 specification:"",
                 filler_metal_ds:"",
