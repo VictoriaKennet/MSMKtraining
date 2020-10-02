@@ -737,15 +737,8 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            list="parent_mlt_add"
-                                            name="parent_mlt_add"
-                                            v-model="data.parent_mlt.add"
+                                            name="weld_material_thickness"
                                         ></b-form-input>
-                                        <b-form-datalist
-                                            id="parent_mlt_add"
-                                            :options="recordData.parent_mlt"
-                                            text-field="add"
-                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -756,15 +749,8 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            list="parent_mlt_add"
-                                            name="parent_mlt_add"
-                                            v-model="data.parent_mlt.add"
+                                            name="single_run"
                                         ></b-form-input>
-                                        <b-form-datalist
-                                            id="parent_mlt_add"
-                                            :options="recordData.parent_mlt"
-                                            text-field="add"
-                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -775,15 +761,8 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            list="parent_mlt_add"
-                                            name="parent_mlt_add"
-                                            v-model="data.parent_mlt.add"
+                                            name="throat_thickness"
                                         ></b-form-input>
-                                        <b-form-datalist
-                                            id="parent_mlt_add"
-                                            :options="recordData.parent_mlt"
-                                            text-field="add"
-                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -794,15 +773,8 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            list="parent_mlt_add"
-                                            name="parent_mlt_add"
-                                            v-model="data.parent_mlt.add"
+                                            name="outside_pipe"
                                         ></b-form-input>
-                                        <b-form-datalist
-                                            id="parent_mlt_add"
-                                            :options="recordData.parent_mlt"
-                                            text-field="add"
-                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -832,15 +804,8 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            list="parent_mlt_add"
-                                            name="parent_mlt_add"
-                                            v-model="data.parent_mlt.add"
+                                            name="filler_material_make"
                                         ></b-form-input>
-                                        <b-form-datalist
-                                            id="parent_mlt_add"
-                                            :options="recordData.parent_mlt"
-                                            text-field="add"
-                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -851,15 +816,8 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            list="parent_mlt_add"
-                                            name="parent_mlt_add"
-                                            v-model="data.parent_mlt.add"
+                                            name="filler_material_size_range"
                                         ></b-form-input>
-                                        <b-form-datalist
-                                            id="parent_mlt_add"
-                                            :options="recordData.parent_mlt"
-                                            text-field="add"
-                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -889,15 +847,8 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            list="parent_mlt_add"
-                                            name="parent_mlt_add"
-                                            v-model="data.parent_mlt.add"
+                                            name="designation_backing_gas"
                                         ></b-form-input>
-                                        <b-form-datalist
-                                            id="parent_mlt_add"
-                                            :options="recordData.parent_mlt"
-                                            text-field="add"
-                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -908,15 +859,8 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            list="parent_mlt_add"
-                                            name="parent_mlt_add"
-                                            v-model="data.parent_mlt.add"
+                                            name="type_welding_current"
                                         ></b-form-input>
-                                        <b-form-datalist
-                                            id="parent_mlt_add"
-                                            :options="recordData.parent_mlt"
-                                            text-field="add"
-                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -927,14 +871,14 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            list="parent_mlt_add"
-                                            name="parent_mlt_add"
-                                            v-model="data.parent_mlt.add"
+                                            list="metal_transfer"
+                                            name="metal_transfer"
+                                            v-model="data.metal_transfer"
                                         ></b-form-input>
                                         <b-form-datalist
-                                            id="parent_mlt_add"
-                                            :options="recordData.parent_mlt"
-                                            text-field="add"
+                                            id="metal_transfer"
+                                            :options="recordData.metal_transfer"
+                                            text-field="main"
                                         ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -946,13 +890,13 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            list="parent_mlt_add"
-                                            name="parent_mlt_add"
-                                            v-model="data.parent_mlt.add"
+                                            list="welding_post_add"
+                                            name="welding_post_add"
+                                            v-model="data.welding_post.add"
                                         ></b-form-input>
                                         <b-form-datalist
-                                            id="parent_mlt_add"
-                                            :options="recordData.parent_mlt"
+                                            id="welding_post_add"
+                                            :options="recordData.welding_post"
                                             text-field="add"
                                         ></b-form-datalist>
                                     </b-form-group>
@@ -965,15 +909,75 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            list="parent_mlt_add"
-                                            name="parent_mlt_add"
-                                            v-model="data.parent_mlt.add"
+                                            name="heat_input"
                                         ></b-form-input>
-                                        <b-form-datalist
-                                            id="parent_mlt_add"
-                                            :options="recordData.parent_mlt"
-                                            text-field="add"
-                                        ></b-form-datalist>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+
+                            <b-row class="mb-2">
+                                <b-col cols="3">
+                                    <label>Preheat Temperature °C (Min):</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="interpass_min"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row class="mb-2">
+                                <b-col cols="3">
+                                    <label>Interpass Temperature°C (Max):</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="interpass_max"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row class="mb-2">
+                                <b-col cols="3">
+                                    <label>Heat Treatment and/or Ageing</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="heat_treatment"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <hr>
+                            <b-row class="mb-2">
+                                <b-col cols="3">
+                                    <label>Other Information </label>
+                                </b-col>
+                            </b-row>
+                            <b-row class="mb-2">
+                                <b-col cols="3">
+                                    <label>Trade name:</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="trade_name"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row class="mb-2">
+                                <b-col cols="3">
+                                    <label>Lot Number:</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="lot_number"
+                                        ></b-form-input>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -1632,23 +1636,9 @@ export default {
                 joint_type_weld: [],
                 parent_mlt: [],
                 welding_post: [],
-                preparation: []
+                preparation: [],
+                metal_transfer: [],
             },
-            preparation: [
-                "CS Wire Brush",
-                "SS Wire Brush"
-            ],
-            welding_position:[
-                "PA",
-                "PB",
-                "PC",
-                "PF",
-                "PE",
-                "PD",
-                "HLO45",
-                "PG",
-                "PF and PC"
-            ],
             filler_metal_ds: [
                 "EN ISO 14341-A-G46 3  C 4Si1",
                 "EN ISO 14341-A-G42 3  C 3Si1",
@@ -1663,9 +1653,6 @@ export default {
                 "EN 12072 G18 8 Mn",
                 "ISO 18273 S Al5356",
                 "ISO 18273 ER4043"
-            ],
-            filler_metal: [
-
             ],
             baking_drying:[
                 "Not Applied",

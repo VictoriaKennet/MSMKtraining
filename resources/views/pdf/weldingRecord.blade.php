@@ -90,7 +90,7 @@
     }
     .bottom-inf1 {
         position: absolute;
-        top: 80%;
+        top: 85%;
     }
 
     .bottom-inf2 {
@@ -161,89 +161,89 @@
     <table>
         <tr>
             <td class="td-range-l">Welding Process(es):</td>
-            <td>Gas Metal Arc Welding 135</td>
+            <td>{{$data->input('welding_process_add')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Type of Joint and Weld:</td>
-            <td>Pipe and Plates Butt and Fillet Welds </td>
+            <td>{{$data->input('joint_type_weld_add')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Parent Mtl. Group(s) and Sub Group(s):</td>
-            <td>PD CEN ISO/TR 15608:2017 Gr 1 & 2 and Combination between these groups </td>
+            <td>{{$data->input('parent_mlt_add')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Parental Material Thickness (mm):</td>
-            <td>Butt Welds: 1.0 to 4.0mm / Fillet Welds: 1.4-4mm</td>
+            <td>{{$data->input('joint_type_weld')}}: !!!!!!! / !!!!!!! </td>
         </tr>
         <tr>
             <td class="td-range-l">Weld Material Thickness (mm):</td>
-            <td>As Parent Material </td>
+            <td>{{$data->input('weld_material_thickness')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Single Run/Multi Run:</td>
-            <td>Single Run Butt and Fillet Welds</td>
+            <td>{{$data->input('single_run')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Throat Thickness (mm):</td>
-            <td>Fillet Welds: 1.5 to 3mm </td>
+            <td>{{$data->input('throat_thickness')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Outside Pipe / Boss Diameter(mm):</td>
-            <td>≥500mm (≥150mm PA/PC/PF Rotated)</td>
+            <td>{{$data->input('outside_pipe')}} !!!!!!</td>
         </tr>
         <tr>
             <td class="td-range-l">Filler Material Designation:</td>
-            <td>EN ISO 14341-A: G4Si1 (SG2 A18)</td>
+            <td>{{$data->input('parent_mlt_add')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Filler Material Make:</td>
-            <td>Any supply compliant with EN 10204 (except class 2.1)</td>
+            <td>{{$data->input('filler_material_make')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Filler Material Size Range:</td>
-            <td>Any Filler Size Compliant with stated Heat Input Range</td>
+            <td>{{$data->input('filler_material_size_range')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Designation of Shielding Gas/Flux:</td>
-            <td>ISO 14175:2008 – Class M14 ( ±20% CO2)</td>
+            <td>{{$data->input('designation_gas_flux_add')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Designation of Backing Gas:</td>
-            <td></td>
+            <td>{{$data->input('designation_backing_gas')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Type of Welding Current and Polarity:</td>
-            <td>DC-Direct Current Electrode Positive</td>
+            <td>{{$data->input('type_welding_current')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Mode of Metal Transfer (MIG/MAG):</td>
-            <td>Short Transfer</td>
+            <td>{{$data->input('metal_transfer')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Welding Positions:</td>
-            <td>All Positions except PG, PJ and J-LO45</td>
+            <td>{{$data->input('welding_post_add')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Heat Input:</td>
-            <td>0.26 Kj/mm (-25%)</td>
+            <td>{{$data->input('heat_input')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Preheat Temperature °C (Min):</td>
-            <td>Min 10°C </td>
+            <td>{{$data->input('interpass_min')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Interpass Temperature°C  (Max):</td>
-            <td>Not Applicable </td>
+            <td>{{$data->input('interpass_max')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Heat Treatment and/or Ageing:</td>
-            <td>Without Post Weld Heat Treatment and /or Ageing </td>
+            <td>{{$data->input('heat_treatment')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Other Information: </td>
             <td>
-                *Filler Metal Trade name: <b>Sidergas</b><br>
-                **Filler Metal Lot Number:  <b>762692</b>
+                *Filler Metal Trade name: <b>{{$data->input('trade_name')}}</b><br>
+                **Filler Metal Lot Number:  <b>{{$data->input('lot_number')}}</b>
             </td>
         </tr>
     </table>
@@ -290,7 +290,7 @@
     <table>
         <tr>
             <td class="td-l">Code/Testing Standard:</td>
-            <td colspan="3">{{$data->input('code-standard')}}</td>
+            <td colspan="3">{{$data->input('code_standard')}}</td>
         </tr>
         <tr>
             <td class="td-l">Manufacturers pWPS Ref No:</td>
@@ -332,7 +332,7 @@
             <td class="td-l">Preparation & Cleaning:</td>
             <td class="td-l-2">{{$data->input('preparation')}}</td>
             <td class="bold">Welding Position:</td>
-            <td>{{$data->input('welding_position')}}</td>
+            <td>{{$data->input('welding_post')}}</td>
         </tr>
     </table>
     <br><br>
@@ -381,7 +381,7 @@
         </tr>
         <tr>
             <td class="td-l">Purging Gas Type:</td>
-            <td class="td-l-2">{{$data->input('purging_gas_type')}}</td>
+            <td class="td-l-2">{{$data->input('designation_gas_flux')}}</td>
             <td class="bold">Heat Treatment and/or Ageing:</td>
             <td>{{$data->input('heating_treatment')}}</td>
         </tr>
@@ -546,15 +546,15 @@
     <br><br>
     <table class="table-tests">
         <tr>
-            <td class="bold">Manufacturers pWPS Ref No:</td>
+            <td class="bold" width="30%">Manufacturers pWPS Ref No:</td>
             <td>{{$data->input('manufacturers_1')}}</td>
-            <td class="bold">Examiner/Test Body:</td>
+            <td class="bold" width="30%">Examiner/Test Body:</td>
             <td>{{$data->input('examiner_test_body')}}</td>
         </tr>
         <tr>
-            <td class="bold">Manufacturers WPQR No:</td>
+            <td class="bold" width="30%">Manufacturers WPQR No:</td>
             <td>{{$data->input('manufacturers_2')}}</td>
-            <td class="bold">NDT Ref No:</td>
+            <td class="bold" width="30%">NDT Ref No:</td>
             <td class="bold">{{$data->input('ndf_ref_no')}}</td>
         </tr>
     </table>
