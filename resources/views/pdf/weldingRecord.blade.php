@@ -77,9 +77,23 @@
     .table-record tr {
         text-align: center;
     }
+    .small {
+        font-size: 8px;
+        font-weight: normal;
+    }
+    .b-t-no {
+        border-top: none;
+    }
+    .title-2 {
+        color: #365f91;
+        font-family: "Cambria", sans-serif;
+    }
 </style>
 
 <div class="wrapper">
+
+    <!-- Page 1 -->
+
     <div class="contacts">
         <b>MSMK</b> Training Ltd<br>
         75 Blackstock road, Sheffield, S14 1AD, United Kingdom<br>
@@ -243,6 +257,9 @@
         </tr>
     </table>
     <div class="page-break"></div>
+
+    <!-- Page 2 -->
+
     <div class="contacts">
         <b>MSMK</b> Training Ltd<br>
         75 Blackstock road, Sheffield, S14 1AD, United Kingdom<br>
@@ -393,6 +410,9 @@
         </tr>
     </table>
     <div class="page-break"></div>
+
+    <!-- Page 3 -->
+
     <div class="contacts">
         <b>MSMK</b> Training Ltd<br>
         75 Blackstock road, Sheffield, S14 1AD, United Kingdom<br>
@@ -468,6 +488,9 @@
         </tr>
     </table>
     <div class="page-break"></div>
+
+    <!-- Page 4 -->
+
     <div class="contacts">
         <b>MSMK</b> Training Ltd<br>
         75 Blackstock road, Sheffield, S14 1AD, United Kingdom<br>
@@ -487,6 +510,177 @@
             <td>MA 04</td>
             <td class="bold">NDT Ref No:</td>
             <td class="bold">19-003-4L</td>
+        </tr>
+    </table>
+    <br><br>
+    <table class="table-tests">
+        <tr>
+            <td class="bold" width="33%">
+                <u>Visual: <span class="small">(BS EN ISO 17637:2016, Acceptance to BS EN ISO 5817:2014 Category B)</span></u>
+            </td>
+            <td class="bold" width="15%">Acceptable</td>
+            <td class="bold">Name of Examiner:</td>
+            <td>V Kruk</td>
+        </tr>
+    </table>
+    <br><br>
+    <table class="table-tests">
+        <tr>
+            <td class="bold" width="33%">
+                <u>DYE Penetrant Test: <span class="small">(BS EN ISO 3452-1:2013, Acceptance to BS EN ISO 5817:2014 Category B)</span></u>
+            </td>
+            <td class="bold" width="15%">Acceptable</td>
+            <td class="bold">Viewing Conditions:</td>
+            <td>As Welded. Min 500 Lux</td>
+        </tr>
+        <tr>
+            <td class="bold" width="33%">Penetrant-Manufacture Type</td>
+            <td width="15%">J & A JAP</td>
+            <td class="bold">Name of Examiner & PCN No:</td>
+            <td>V Kruk 306137</td>
+        </tr>
+        <tr>
+            <td class="bold" width="33%">Develop-Manufacture Type</td>
+            <td width="15%">J & A JAD</td>
+            <td class="bold">Detection Media:</td>
+            <td>Not Applicable</td>
+        </tr>
+        <tr>
+            <td class="bold" width="33%">Remover-Manufacturer & Type</td>
+            <td width="15%">J & A JAR</td>
+            <td class="bold">Detection Media, Contrast Paint:</td>
+            <td>Not Applicable</td>
+        </tr>
+    </table>
+    <br><br>
+    <table class="table-tests">
+        <tr>
+            <td class="bold" width="33%">
+                <u>Ultrasonic: <span class="small">(BS EN ISO 17640:2010, Acceptance to BS EN ISO 5817:2014 Category B)</span></u>
+            </td>
+            <td width="15%">Not Applicable</td>
+            <td class="bold">Reference Block(s) Used:</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="bold" width="33%">Procedure Number:</td>
+            <td width="15%"></td>
+            <td class="bold">Name of Examiner & PCN No:</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="bold" width="33%">Probe(s) & Serial Number:</td>
+            <td width="15%"></td>
+            <td class="bold">Flaw Detection & Serial Number:</td>
+            <td></td>
+        </tr>
+    </table>
+    <br><br>
+    <table class="table-tests">
+        <tr>
+            <td class="bold" colspan="3" width="45%">Tensile Test <span class="small">(BS EN ISO 4136:2012, BS EN ISO 6892-1:2009)</span></td>
+            <td class="bold" colspan="6">SEE REPORT 0018318/001/E1</td>
+        </tr>
+        <tr>
+            <td>A:<br>B:</td>
+            <td>Thickness:<br>Thickness:</td>
+            <td></td>
+            <td>Width:<br>Width:</td>
+            <td></td>
+            <td colspan="2">Maximim Force (KN):<br>Maximum Force (KN):</td>
+            <td colspan="2"></td>
+        </tr>
+        <tr style="text-align:center">
+            <td class="bold">Type/No:</td>
+            <td width="18%">0.2% Proof Stress N/mm²</td>
+            <td width="15%">Yield Strength N/mm²</td>
+            <td width="21%" colspan="2">Tensile Strength N/mm²</td>
+            <td>Elongation on%</td>
+            <td>Reduction of area %</td>
+            <td>Fracture Location</td>
+            <td>Result</td>
+        </tr>
+        <tr style="text-align:center">
+            <td class="bold">Requirement</td>
+            <td></td>
+            <td></td>
+            <td colspan="2"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="bold"><br></td>
+            <td></td>
+            <td></td>
+            <td colspan="2"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="bold"><br></td>
+            <td></td>
+            <td></td>
+            <td colspan="2"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <br><br>
+    <table class="table-tests">
+        <tr>
+            <td width="35%" rowspan="4">
+                <u><b>Bend Tests:</b> <span class="small">(BS EN ISO 5173:2010 + A1:2011)</small></u><br>
+                <br>
+                <u>Dimensions</u><br>
+                Thickness:<br>
+                Width:
+            </td>
+            <td>Dia of Former:</td>
+            <td></td>
+            <td>Side:</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Angle of Bend:</td>
+            <td></td>
+            <td>Face:</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Elongation:</td>
+            <td></td>
+            <td>Root:</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="2">Distance between Rollers:</td>
+            <td colspan="2" class="bold">SEE REPORT 19-003-4B</td>
+        </tr>
+    </table>
+    <br><br>
+    <table class="table-tests">
+        <tr>
+            <td class="bold" width="30%" rowspan="2">
+                <u class="title-2">Macro/Microscopic Test</u> <span class="small"><b>(BS EN ISO 17639:2013 <u class="title-2">Acceptance to BS EN ISO 5817:2014 Category B</u></b></span>
+            </td>
+            <td class="bold" rowspan="2">Acceptable</td>
+            <td>Etchant Type:</td>
+            <td>10% Nital</td>
+        </tr>
+        <tr>
+            <td>Method:</td>
+            <td>Immersing</td>
+        </tr>
+        <tr>
+            <td>Location, Orientation & Examined Surface:</td>
+            <td class="bold">SEE REPORT 19-003-4M</td>
+            <td colspan="2">Cross section area of Fillet Weld. Sample Location as per BS EN ISO 15614-1:2017 Fig 6</td>
         </tr>
     </table>
 </div>
