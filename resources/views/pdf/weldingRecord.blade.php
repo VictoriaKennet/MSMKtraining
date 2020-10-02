@@ -123,7 +123,7 @@
         </tr>
         <tr>
             <td class="td-l">Manufacturers WPQR No:</td>
-            <td class="td-l">{{$data->input('manufacturers_2')}}</td>
+            <td class="td-l">{{$data->input('manufacturers_2_2')}}</td>
             <td class="bold">Ref No:</td>
             <td class="text-right">{{$data->input('ref_no')}}</td>
         </tr>
@@ -249,7 +249,7 @@
     </table>
 
     <p class="p-b"><span>Certified that welds were prepared, welded and tested satisfactorily in accordance with the requirements of the code/testing standard.</span> <br>
-    Test House and Report No: - MSMK Training Laboratory UKAS No: 10126 Report no: <b>MSMK 19-003-4</b></p>
+    Test House and Report No: - {{$data->input('test_house_report')}} Report no: <b>{{$data->input('report_no')}}</b></p>
 
     <table class="bottom-inf1">
         <tr>
@@ -294,13 +294,13 @@
         </tr>
         <tr>
             <td class="td-l">Manufacturers pWPS Ref No:</td>
-            <td class="td-l-2">{{$data->input('manufacturers_1')}}</td>
+            <td class="td-l-2">{{$data->input('manufacturers_2')}}</td>
             <td class="bold">Issue Number:</td>
             <td>{{$data->input('issue_number')}}</td>
         </tr>
         <tr>
             <td class="td-l">Manufacturers WPQR No:</td>
-            <td class="td-l-2">{{$data->input('manufacturers_2')}}</td>
+            <td class="td-l-2">{{$data->input('manufacturers_2_2')}}</td>
             <td class="bold">Parent Material:</td>
             <td>{{$data->input('parent_material')}}</td>
         </tr>
@@ -468,13 +468,13 @@
         </tr>
         <tr>
             <td class="td-l">Manufacturers pWPS No:</td>
-            <td class="td-l">{{$data->input('manufacturers_1')}}</td>
+            <td class="td-l">{{$data->input('manufacturers_2')}}</td>
             <td class="bold">Ref No:</td>
             <td class="text-right">{{$data->input('ref_no')}}</td>
         </tr>
         <tr>
             <td class="td-l">Manufacturers WPQR:</td>
-            <td class="td-l">{{$data->input('manufacturers_2')}}</td>
+            <td class="td-l">{{$data->input('manufacturers_2_2')}}</td>
             <td class="bold">Issue Number:</td>
             <td class="text-right">{{$data->input('issue_number')}}</td>
         </tr>
@@ -553,7 +553,7 @@
         </tr>
         <tr>
             <td class="bold" width="30%">Manufacturers WPQR No:</td>
-            <td>{{$data->input('manufacturers_2')}}</td>
+            <td>{{$data->input('manufacturers_2_2')}}</td>
             <td class="bold" width="30%">NDT Ref No:</td>
             <td class="bold">{{$data->input('ndf_ref_no')}}</td>
         </tr>

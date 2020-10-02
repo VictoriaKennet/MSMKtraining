@@ -34,18 +34,6 @@
 
                             <b-row>
                                 <b-col cols="3">
-                                    <label>Manufacturers pWPS No:</label>
-                                </b-col>
-                                <b-col>
-                                    <b-form-group>
-                                        <b-form-input
-                                            name="manufacturers_1"
-                                        ></b-form-input>
-                                    </b-form-group>
-                                </b-col>
-                            </b-row>
-                            <b-row>
-                                <b-col cols="3">
                                     <label>Issue Number:</label>
                                 </b-col>
                                 <b-col>
@@ -63,7 +51,7 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            name="manufacturers_2"
+                                            name="manufacturers_2_2"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -601,6 +589,18 @@
                     </b-card-header>
                     <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
                         <b-card-body>
+                            <b-row>
+                                <b-col cols="3">
+                                    <label>Manufacturers pWPS Ref No:</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="manufacturers_2"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
                             <b-row class="mb-2">
                                 <b-col cols="3">
                                     <label>Manufacturer:</label>
@@ -977,6 +977,33 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="lot_number"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+
+                            <hr>
+
+                            <b-row class="mb-2">
+                                <b-col cols="3">
+                                    <label>Test House and Report No:</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="test_house_report"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row class="mb-2">
+                                <b-col cols="3">
+                                    <label>Report no:</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="report_no"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
