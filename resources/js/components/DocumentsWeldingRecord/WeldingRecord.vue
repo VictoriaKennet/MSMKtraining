@@ -255,7 +255,8 @@
                                         ></b-form-input>
                                         <b-form-datalist
                                             id="filler_metal_ds"
-                                            :options="filler_metal_ds"
+                                            :options="recordData.filler_mat_designation"
+                                            text-field="main"
                                         ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -271,10 +272,6 @@
                                             name="filler_metal"
                                             v-model="data.filler_metal"
                                         ></b-form-input>
-                                        <b-form-datalist
-                                            id="filler_metal"
-                                            :options="filler_metal"
-                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -516,10 +513,18 @@
 
                             <b-row v-for="(item, index) in data.records" :key="index" class="mb-2">
                                 <b-col style="width: 13%">
-                                    <b-form-input
-                                        name="record-process"
-                                        v-model="item.record_process"
-                                    ></b-form-input>
+                                    <b-form-group>
+                                        <b-form-input
+                                            list="record-process"
+                                            name="record-process"
+                                            v-model="item.record_process"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="record-process"
+                                            :options="recordData.welding_process"
+                                            text-field="main"
+                                        ></b-form-datalist>
+                                    </b-form-group>
                                 </b-col>
                                 <b-col style="width: 13%">
                                     <b-form-input
@@ -560,7 +565,7 @@
                                 <b-col style="width: 13%">
                                     <b-form-input
                                         name="record-heat-input"
-                                        v-model="item.record_heat_input"
+                                        :value="recordHeatInput(index)"
                                     ></b-form-input>
                                 </b-col>
                                 <b-col class="text-center">
@@ -1665,22 +1670,8 @@ export default {
                 welding_post: [],
                 preparation: [],
                 metal_transfer: [],
+                filler_mat_designation: []
             },
-            filler_metal_ds: [
-                "EN ISO 14341-A-G46 3  C 4Si1",
-                "EN ISO 14341-A-G42 3  C 3Si1",
-                "EN ISO 636: W 42 5 W3Si1",
-                "EN ISO 14343-B / AWS A5.9/A5.9M ER 316L",
-                "EN 12534 G69 4 M Mn3Ni1CrMo",
-                "EN 758 T46 3 M M 2 H5",
-                "ISO 14343-A G 19 12 3 L SI",
-                "EN 758 T46 3 P M 1 H5",
-                "ISO 2560-A:E 42 4 B 12 H5 ( E7016)",
-                "ISO 2560-A:E 46 3 B 32 H5 ( E7018)",
-                "EN 12072 G18 8 Mn",
-                "ISO 18273 S Al5356",
-                "ISO 18273 ER4043"
-            ],
             baking_drying:[
                 "Not Applied",
                 "Oven Baked",
@@ -1752,9 +1743,9 @@ export default {
                 records: [
                     {
                         record_process: "",
-                        record_size: "",
-                        record_current_a: "",
-                        record_voltage_v: "",
+                        record_size: 0,
+                        record_current_a: 0,
+                        record_voltage_v: 0,
                         record_type_current: "",
                         record_type_transfer: "",
                         record_travel_speed: "",
@@ -1776,6 +1767,16 @@ export default {
         this.getRecordData();
     },
     methods: {
+        recordHeatInput(index) {
+            if(this.data.records[index].record_process == '141 TIG' || this.data.records[index].record_process == '141/136 TIG and FCAW') {
+                this.data.records[index].record_heat_input = this.data.records[index].record_current_a * this.data.records[index].record_voltage_v * 0.001 * 0.6;
+                return this.data.records[index].record_heat_input;
+            } else {
+                this.data.records[index].record_heat_input = this.data.records[index].record_current_a * this.data.records[index].record_voltage_v * 0.001 * 0.8;
+                return this.data.records[index].record_heat_input;
+            }
+        },
+
         getRecordData() {
             axios.get('/api/record-data').then(response => {
                 Object.assign(this.recordData, response.data);
@@ -1798,9 +1799,9 @@ export default {
             this.data.records.push(
                 {
                     record_process: "",
-                    record_size: "",
-                    record_current_a: "",
-                    record_voltage_v: "",
+                    record_size: 0,
+                    record_current_a: 0,
+                    record_voltage_v: 0,
                     record_type_current: "",
                     record_type_transfer: "",
                     record_travel_speed: "",
