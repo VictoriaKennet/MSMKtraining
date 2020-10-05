@@ -1748,7 +1748,7 @@ export default {
                         record_voltage_v: 0,
                         record_type_current: "",
                         record_type_transfer: "",
-                        record_travel_speed: "",
+                        record_travel_speed: 0,
                         record_heat_input: ""
                     }
                 ]
@@ -1768,13 +1768,15 @@ export default {
     },
     methods: {
         recordHeatInput(index) {
+            var result = 0;
             if(this.data.records[index].record_process == '141 TIG' || this.data.records[index].record_process == '141/136 TIG and FCAW') {
-                this.data.records[index].record_heat_input = this.data.records[index].record_current_a * this.data.records[index].record_voltage_v * 0.001 * 0.6;
-                return this.data.records[index].record_heat_input;
+                result = ((this.data.records[index].record_current_a * this.data.records[index].record_voltage_v) / (this.data.records[index].record_travel_speed * 0.001 * 0.6)).toFixed(2);
             } else {
-                this.data.records[index].record_heat_input = this.data.records[index].record_current_a * this.data.records[index].record_voltage_v * 0.001 * 0.8;
-                return this.data.records[index].record_heat_input;
+                result = ((this.data.records[index].record_current_a * this.data.records[index].record_voltage_v) / (this.data.records[index].record_travel_speed * 0.001 * 0.8)).toFixed(2);
             }
+            result = !isNaN(result) && isFinite(result) ? result : 0;
+            this.data.records[index].record_heat_input = result;
+            return result;
         },
 
         getRecordData() {
@@ -1804,7 +1806,7 @@ export default {
                     record_voltage_v: 0,
                     record_type_current: "",
                     record_type_transfer: "",
-                    record_travel_speed: "",
+                    record_travel_speed: 0,
                     record_heat_input: ""
                 }
             )
