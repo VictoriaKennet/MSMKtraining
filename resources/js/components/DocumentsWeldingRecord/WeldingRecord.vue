@@ -263,7 +263,7 @@
                             </b-row>
                             <b-row>
                                 <b-col cols="2">
-                                    <label>Filler Metal: </label>
+                                    <label>Filler Make: </label>
                                 </b-col>
                                 <b-col>
                                     <b-form-group>
@@ -960,18 +960,6 @@
                             <b-row class="mb-2">
                                 <b-col cols="3">
                                     <label>Other Information </label>
-                                </b-col>
-                            </b-row>
-                            <b-row class="mb-2">
-                                <b-col cols="3">
-                                    <label>Trade name:</label>
-                                </b-col>
-                                <b-col>
-                                    <b-form-group>
-                                        <b-form-input
-                                            name="trade_name"
-                                        ></b-form-input>
-                                    </b-form-group>
                                 </b-col>
                             </b-row>
                             <b-row class="mb-2">
@@ -1770,9 +1758,9 @@ export default {
         recordHeatInput(index) {
             var result = 0;
             if(this.data.records[index].record_process == '141 TIG' || this.data.records[index].record_process == '141/136 TIG and FCAW') {
-                result = ((this.data.records[index].record_current_a * this.data.records[index].record_voltage_v) / (this.data.records[index].record_travel_speed * 0.001 * 0.6)).toFixed(2);
+                result = (this.data.records[index].record_current_a * this.data.records[index].record_voltage_v / this.data.records[index].record_travel_speed * 0.001 * 0.6).toFixed(2);
             } else {
-                result = ((this.data.records[index].record_current_a * this.data.records[index].record_voltage_v) / (this.data.records[index].record_travel_speed * 0.001 * 0.8)).toFixed(2);
+                result = (this.data.records[index].record_current_a * this.data.records[index].record_voltage_v / this.data.records[index].record_travel_speed * 0.001 * 0.8).toFixed(2);
             }
             result = !isNaN(result) && isFinite(result) ? result : 0;
             this.data.records[index].record_heat_input = result;

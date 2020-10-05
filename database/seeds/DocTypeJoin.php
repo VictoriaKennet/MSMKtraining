@@ -12,16 +12,25 @@ class DocTypeJoin extends Seeder
     public function run()
     {
         DB::table('doc2_type_join')->insert([
-            'main' => '1',
-            'add' => '1'
+            'main' => 'Butt Weld CJP',
+            'add' => 'Complete and Partial Penetration Butt Welds with and without backing and Fillet welds'
         ]);
         DB::table('doc2_type_join')->insert([
-            'main' => '2',
-            'add' => '2'
+            'main' => 'Butt Weld PJP',
+            'add' => 'Partial Penetration Butt Welds and Fillet welds'
         ]);
         DB::table('doc2_type_join')->insert([
-            'main' => '3',
-            'add' => '3'
+            'main' => 'Fillet Weld',
+            'add' => 'Fillet Welds'
         ]);
+        DB::table('doc2_type_join')->insert([
+            'main' => 'T-Butt PJP',
+            'add' => 'Complete and Partial Penetration T-Butt Welds with and without backing and Fillet welds'
+        ]);
+        DB::table('doc2_type_join')->insert([
+            'main' => 'T-Butt CJP',
+            'add' => 'Partial Penetration T-Butt Welds  and Fillet welds'
+        ]);
+
     }
 }

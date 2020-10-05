@@ -189,7 +189,13 @@
         </tr>
         <tr>
             <td class="td-range-l">Outside Pipe / Boss Diameter(mm):</td>
-            <td>{{$data->input('outside_pipe')}} !!!!!!</td>
+            <td>
+                @if ({{$data->input('outside_pipe')}} == "Not Applicable")
+                    ≥500mm (≥150mm PA/PC/PF Rotated)
+                @else
+                    ≥ (0.5 * {{$data->input('outside_pipe')}})
+                @endif
+            </td>
         </tr>
         <tr>
             <td class="td-range-l">Filler Material Designation:</td>
@@ -242,7 +248,7 @@
         <tr>
             <td class="td-range-l">Other Information: </td>
             <td>
-                *Filler Metal Trade name: <b>{{$data->input('trade_name')}}</b><br>
+                *Filler Metal Trade name: <b>{{$data->input('filler_metal')}}</b><br>
                 **Filler Metal Lot Number:  <b>{{$data->input('lot_number')}}</b>
             </td>
         </tr>
