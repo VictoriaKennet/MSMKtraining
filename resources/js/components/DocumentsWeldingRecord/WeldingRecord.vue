@@ -69,7 +69,7 @@
                                         ></b-form-input>
                                         <b-form-datalist
                                             id="parent_material"
-                                            :options="recordData.specification"
+                                            :options="recordData.parent_mlt"
                                             text-field="main"
                                         ></b-form-datalist>
                                     </b-form-group>
@@ -116,12 +116,12 @@
                                         <b-form-input
                                             list="specification"
                                             name="specification"
-                                            v-model="data.parent_mlt.main"
-                                            @change="setElement($event, 'parent_mlt')"
+                                            v-model="data.specification.main"
+                                            @change="setElement($event, 'specification')"
                                         ></b-form-input>
                                         <b-form-datalist
                                             id="specification"
-                                            :options="recordData.parent_mlt"
+                                            :options="recordData.specification"
                                             text-field="main"
                                         ></b-form-datalist>
                                     </b-form-group>
@@ -582,6 +582,7 @@
                                 <b-button block variant="outline-secondary" @click="addRecords">Added +</b-button>
                             </div>
                             <input type="hidden" name="records" :value="JSON.stringify(data.records)">
+                            <input type="hidden" name="records2" :value="data.records[0].record_size">
                         </b-card-body>
                     </b-collapse>
                 </b-card>
@@ -688,6 +689,7 @@
                                             list="joint_type_weld_add"
                                             name="joint_type_weld_add"
                                             v-model="data.joint_type_weld.add"
+                                            @change="jointTypeWeld"
                                         ></b-form-input>
                                         <b-form-datalist
                                             id="joint_type_weld_add"
@@ -716,25 +718,20 @@
                                     </b-form-group>
                                 </b-col>
                             </b-row>
+
+                            <hr>
                             <b-row class="mb-2">
                                 <b-col cols="3">
-                                    <label>Parental Material Thickness (mm):</label>
+                                    <label>Parental Material Thicknes (mm):</label>
                                 </b-col>
                                 <b-col>
-                                    <b-form-group>
-                                        <b-form-input
-                                            list="parent_mlt_add"
-                                            name="parent_mlt_add"
-                                            v-model="data.parent_mlt.add"
-                                        ></b-form-input>
-                                        <b-form-datalist
-                                            id="parent_mlt_add"
-                                            :options="recordData.parent_mlt"
-                                            text-field="add"
-                                        ></b-form-datalist>
-                                    </b-form-group>
+                                    <b-form-checkbox name="butt_welds" v-model="data.butt_welds">Butt Welds</b-form-checkbox><br>
+                                    <b-form-checkbox name="fillet_welds" v-model="data.fillet_welds">Fillet Welds</b-form-checkbox>
                                 </b-col>
                             </b-row>
+                            <hr>
+
+
                             <b-row class="mb-2">
                                 <b-col cols="3">
                                     <label>Weld Material Thickness (mm):</label>
@@ -1658,7 +1655,8 @@ export default {
                 welding_post: [],
                 preparation: [],
                 metal_transfer: [],
-                filler_mat_designation: []
+                filler_mat_designation: [],
+                specification: []
             },
             baking_drying:[
                 "Not Applied",
@@ -1714,6 +1712,9 @@ export default {
                     add: ""
                 },
 
+                fillet_welds: false,
+                butt_welds: false,
+
                 metal_transfer: "",
                 parent_material: "",
                 code_standard: "",
@@ -1755,6 +1756,21 @@ export default {
         this.getRecordData();
     },
     methods: {
+        jointTypeWeld() {
+            if(this.data.joint_type_weld.add.indexOf("Fillet") >= 0 && this.data.joint_type_weld.add.indexOf("Butt") >= 0) {
+                this.data.fillet_welds = true;
+                this.data.butt_welds = true;
+            } else if(this.data.joint_type_weld.add.indexOf("Fillet") >= 0) {
+                this.data.fillet_welds = true;
+                this.data.butt_welds = false;
+            } else if(this.data.joint_type_weld.add.indexOf("Butt") >= 0) {
+                this.data.fillet_welds = false;
+                this.data.butt_welds = true;
+            } else {
+                this.data.fillet_welds = false;
+                this.data.butt_welds = false;
+            }
+        },
         recordHeatInput(index) {
             var result = 0;
             if(this.data.records[index].record_process == '141 TIG' || this.data.records[index].record_process == '141/136 TIG and FCAW') {

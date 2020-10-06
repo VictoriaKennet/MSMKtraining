@@ -173,7 +173,43 @@
         </tr>
         <tr>
             <td class="td-range-l">Parental Material Thickness (mm):</td>
-            <td>{{$data->input('joint_type_weld')}}: !!!!!!! / !!!!!!! </td>
+            <?php
+                $fillet_welds = 0;
+                $butt_welds = 0;
+
+                if($data->input('mtl_thickness') <= 3) {
+                    $fillet_welds = (0.7 * $data->input('mtl_thickness'))." to ".(2 * $data->input('mtl_thickness'));
+                    $butt_welds = (0.5 * $data->input('mtl_thickness'))." to ".(2 * $data->input('mtl_thickness'));
+                }
+                if(3 < $data->input('mtl_thickness') && $data->input('mtl_thickness') < 30) {
+                    $fillet_welds = "2 to ".(2 * $data->input('mtl_thickness'));
+                }
+                if($data->input('mtl_thickness') >= 30) {
+                    $fillet_welds = ">=5";
+                }
+
+                if(3 < $data->input('mtl_thickness') && $data->input('mtl_thickness') <= 12) {
+                    $butt_welds = "3 to ".(2 * $data->input('mtl_thickness'));
+                }
+                if(12 < $data->input('mtl_thickness') && $data->input('mtl_thickness') <= 100) {
+                    $butt_welds = (0.5 * $data->input('mtl_thickness'))." to ".(2 * $data->input('mtl_thickness'));
+                }
+            ?>
+            @if($data->input('butt_welds') && $data->input('fillet_welds'))
+                <td>
+                    Butt Welds: {{ $butt_welds }}mm / Fillet Welds: {{ $fillet_welds }}mm
+                </td>
+            @else
+                @if($data->input('fillet_welds'))
+                    <td>
+                        Fillet Welds: {{ $fillet_welds }}mm
+                    </td>
+                @else
+                    <td>
+                        Butt Welds: {{ $butt_welds }}mm
+                    </td>
+                @endif
+            @endif
         </tr>
         <tr>
             <td class="td-range-l">Weld Material Thickness (mm):</td>
@@ -190,10 +226,10 @@
         <tr>
             <td class="td-range-l">Outside Pipe / Boss Diameter(mm):</td>
             <td>
-                @if ({{$data->input('outside_pipe')}} == "Not Applicable")
-                    ≥500mm (≥150mm PA/PC/PF Rotated)
+                @if ($data->input('outside_pipe') == "Not Applicable")
+                    <img src="img/img1.png"> 500mm (<img src="img/img1.png">150mm PA/PC/PF Rotated)
                 @else
-                    ≥ (0.5 * {{$data->input('outside_pipe')}})
+                    <img src="img/img1.png"> {{ 0.5 * $data->input('outside_pipe') }}
                 @endif
             </td>
         </tr>
@@ -359,7 +395,7 @@
     <table>
         <tr>
             <td class="td-l">Filler Metal Designation:</td>
-            <td colspan="3">{{$data->input('filler_metal_ds')}}</td>
+            <td colspan="3">{{$data->input('filler_metal_ds')}} {{ $data->input('records2') }}mm</td>
         </tr>
         <tr>
             <td class="td-l">Filler Make:</td>
@@ -644,9 +680,9 @@
         </tr>
         <tr style="text-align:center">
             <td class="bold">Type/No:</td>
-            <td width="18%">0.2% Proof Stress N/mm²</td>
-            <td width="15%">Yield Strength N/mm²</td>
-            <td width="21%" colspan="2">Tensile Strength N/mm²</td>
+            <td width="18%">0.2% Proof Stress N/mm?</td>
+            <td width="15%">Yield Strength N/mm?</td>
+            <td width="21%" colspan="2">Tensile Strength N/mm?</td>
             <td>Elongation on%</td>
             <td>Reduction of area %</td>
             <td>Fracture Location</td>
