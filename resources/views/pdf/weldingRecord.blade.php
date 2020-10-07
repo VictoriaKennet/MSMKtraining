@@ -150,7 +150,7 @@
     <table>
         <tr>
             <td class="td-l">Date of Welding / Welder:</td>
-            <td class="bold">{{$data->input('date_welder')}}</td>
+            <td class="bold">{{$data->input('date_welder')}} {{$data->input('date_welder_name')}}</td>
         </tr>
         <tr>
             <td class="title-1">Range of Qualification:</td>
@@ -235,7 +235,7 @@
         </tr>
         <tr>
             <td class="td-range-l">Filler Material Designation:</td>
-            <td>{{$data->input('parent_mlt_add')}}</td>
+            <td>{{$data->input('filler_metal_ds')}} or equivalent</td>
         </tr>
         <tr>
             <td class="td-range-l">Filler Material Make:</td>
@@ -411,7 +411,20 @@
         </tr>
         <tr>
             <td class="td-l">Shielding Gas Type:</td>
-            <td class="td-l-2">{{$data->input('shielding_gas_type')}}</td>
+            <td class="td-l-2">
+                @if($data->input('isArg'))
+                    <div>Arg {{ $data->input('arg') }}%</div>
+                @endif
+                @if($data->input('isCo2'))
+                    <div>CO2 {{ $data->input('co2') }}%</div>
+                @endif
+                @if($data->input('isO2'))
+                    <div>O2 {{ $data->input('o2') }}%</div>
+                @endif
+                @if($data->input('isHe'))
+                    <div>He {{ $data->input('he') }}%</div>
+                @endif
+            </td>
             <td class="bold">Preheat Temperature:</td>
             <td>{{$data->input('preheat_temperature')}} </td>
         </tr>

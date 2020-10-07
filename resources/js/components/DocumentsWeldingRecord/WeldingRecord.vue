@@ -116,8 +116,7 @@
                                         <b-form-input
                                             list="specification"
                                             name="specification"
-                                            v-model="data.specification.main"
-                                            @change="setElement($event, 'specification')"
+                                            v-model="data.specification"
                                         ></b-form-input>
                                         <b-form-datalist
                                             id="specification"
@@ -326,6 +325,81 @@
                                             :options="shielding_gas_type"
                                         ></b-form-datalist>
                                     </b-form-group>
+                                    <b-row>
+                                        <b-col cols="4">
+                                            <b-form-checkbox
+                                                name="isArg"
+                                                size="lg"
+                                                v-model="data.isArg"
+                                            >Arg</b-form-checkbox>
+                                        </b-col>
+                                        <b-col>
+                                            <b-form-group>
+                                                <b-form-input
+                                                    :disabled="!data.isArg"
+                                                    name="arg"
+                                                    v-model="data.arg"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                    </b-row>
+
+                                    <b-row>
+                                        <b-col cols="4">
+                                            <b-form-checkbox
+                                                name="isCo2"
+                                                size="lg"
+                                                v-model="data.isCo2"
+                                            >CO2</b-form-checkbox>
+                                        </b-col>
+                                        <b-col>
+                                            <b-form-group>
+                                                <b-form-input
+                                                    :disabled="!data.isCo2"
+                                                    name="co2"
+                                                    v-model="data.co2"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                    </b-row>
+
+                                    <b-row>
+                                        <b-col cols="4">
+                                            <b-form-checkbox
+                                                name="isO2"
+                                                size="lg"
+                                                v-model="data.isO2"
+                                            >O2</b-form-checkbox>
+                                        </b-col>
+                                        <b-col>
+                                            <b-form-group>
+                                                <b-form-input
+                                                    :disabled="!data.isO2"
+                                                    name="o2"
+                                                    v-model="data.o2"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                    </b-row>
+
+                                    <b-row>
+                                        <b-col cols="4">
+                                            <b-form-checkbox
+                                                name="isHe"
+                                                size="lg"
+                                                v-model="data.isHe"
+                                            >He</b-form-checkbox>
+                                        </b-col>
+                                        <b-col>
+                                            <b-form-group>
+                                                <b-form-input
+                                                    :disabled="!data.isHe"
+                                                    name="he"
+                                                    v-model="data.he"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                    </b-row>
                                 </b-col>
 
                                 <b-col cols="2">
@@ -335,6 +409,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="preheat_temperature"
+                                            v-model="data.preheat_temperature"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -358,6 +433,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="interpass_temperature"
+                                            v-model="data.interpass_temperature"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -412,7 +488,7 @@
                                 </b-col>
 
                                 <b-col cols="2">
-                                    <label>Heat Treatment and/or Ageing: </label>
+                                    <label>Heating and Cooling Rates: </label>
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
@@ -659,6 +735,18 @@
                                     ></b-form-datepicker>
                                 </b-col>
                             </b-row>
+                            <b-row>
+                                <b-col cols="3">
+                                    <label>Welder name:</label>
+                                </b-col>
+                                <b-col cols="9">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="date_welder_name"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
                             <hr>
                             <b-row class="mb-2">
                                 <b-col cols="3">
@@ -782,25 +870,6 @@
                             </b-row>
                             <b-row class="mb-2">
                                 <b-col cols="3">
-                                    <label>Filler Material Designation:</label>
-                                </b-col>
-                                <b-col>
-                                    <b-form-group>
-                                        <b-form-input
-                                            list="parent_mlt_add"
-                                            name="parent_mlt_add"
-                                            v-model="data.parent_mlt.add"
-                                        ></b-form-input>
-                                        <b-form-datalist
-                                            id="parent_mlt_add"
-                                            :options="recordData.parent_mlt"
-                                            text-field="add"
-                                        ></b-form-datalist>
-                                    </b-form-group>
-                                </b-col>
-                            </b-row>
-                            <b-row class="mb-2">
-                                <b-col cols="3">
                                     <label>Filler Material Make:</label>
                                 </b-col>
                                 <b-col>
@@ -849,8 +918,15 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            name="designation_backing_gas"
+                                            list="designation_gas_flux_add"
+                                            name="designation_gas_flux_add"
+                                            v-model="data.designation_gas_flux.add"
                                         ></b-form-input>
+                                        <b-form-datalist
+                                            id="designation_gas_flux_add"
+                                            :options="recordData.designation_gas_flux"
+                                            text-field="add"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -861,8 +937,14 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            name="type_welding_current"
+                                            list="type_welding_current_polarity"
+                                            name="type_welding_current_polarity"
+                                            v-model="data.type_welding_current_polarity"
                                         ></b-form-input>
+                                        <b-form-datalist
+                                            id="type_welding_current_polarity"
+                                            :options="['DC-Direct Current Electrode Positive', 'DC-Direct Current Electrode Negative', 'DC-Direct Current Electrode Negative/Positive', 'Alternative Current']"
+                                        ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
@@ -925,18 +1007,20 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="interpass_min"
+                                            :value="interpassMin"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
                             <b-row class="mb-2">
                                 <b-col cols="3">
-                                    <label>Interpass Temperature°C (Max):</label>
+                                    <label>Interpass Temperature °C (Max):</label>
                                 </b-col>
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
                                             name="interpass_max"
+                                            :value="interpassMax"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1513,8 +1597,6 @@
                             </b-row>
 
 
-
-
                         </b-card-body>
                     </b-collapse>
                 </b-card>
@@ -1720,6 +1802,20 @@ export default {
                 code_standard: "",
                 preparation: "",
 
+                isArg: "",
+                arg: "",
+
+                isCo2: "",
+                co2: "",
+
+                isO2: "",
+                o2: "",
+
+                isHe: "",
+                he: "",
+
+                interpass_temperature: "",
+                preheat_temperature: "",
 
                 specification:"",
                 filler_metal_ds:"",
@@ -1754,6 +1850,25 @@ export default {
     },
     created() {
         this.getRecordData();
+    },
+    computed: {
+        interpassMin() {
+            if(this.data.interpass_temperature == "No Applicable") {
+                return "Min 10°C";
+            }
+            if(this.data.interpass_temperature >= 60) {
+                return "Min " + this.data.interpass_temperature - 50 + "°C";
+            } else {
+                return "Min 10°C";
+            }
+        },
+        interpassMax() {
+            if(this.data.preheat_temperature == "No Applicable") {
+                return "No Applicable";
+            } else {
+                return "Max " + this.data.preheat_temperature + 50 + "°C";
+            }
+        }
     },
     methods: {
         jointTypeWeld() {
