@@ -150,7 +150,7 @@
     <table>
         <tr>
             <td class="td-l">Date of Welding / Welder:</td>
-            <td class="bold">{{$data->input('date_welder')}} {{$data->input('date_welder_name')}}</td>
+            <td class="bold">{{date("j F Y", strtotime($data->input('date_welder')))}} {{$data->input('date_welder_name')}}</td>
         </tr>
         <tr>
             <td class="title-1">Range of Qualification:</td>
@@ -163,6 +163,12 @@
             <td class="td-range-l">Welding Process(es):</td>
             <td>{{$data->input('welding_process_add')}}</td>
         </tr>
+        @if($data->input('welding_process_add_2'))
+            <tr>
+                <td class="td-range-l"></td>
+                <td>{{$data->input('welding_process_add_2')}}</td>
+            </tr>
+        @endif
         <tr>
             <td class="td-range-l">Type of Joint and Weld:</td>
             <td>{{$data->input('joint_type_weld_add')}}</td>
@@ -227,9 +233,9 @@
             <td class="td-range-l">Outside Pipe / Boss Diameter(mm):</td>
             <td>
                 @if ($data->input('outside_pipe') === "Not Applicable")
-                    <img src="img/img1.png"> 500mm (<img src="img/img1.png">150mm PA/PC/PF Rotated)
+                    <img src="img/img1.jpg"> 500mm (<img src="img/img1.jpg">150mm PA/PC/PF Rotated)
                 @else
-                    <img src="img/img1.png"> {{ 0.5 * $data->input('outside_pipe') }}
+                    <img src="img/img1.jpg"> {{ 0.5 * $data->input('outside_pipe') }}
                 @endif
             </td>
         </tr>
@@ -354,7 +360,12 @@
         </tr>
         <tr>
             <td class="td-l">Welding Process:</td>
-            <td class="td-l-2">{{$data->input('welding_process')}}</td>
+            <td class="td-l-2">
+                {{$data->input('welding_process')}}
+                @if($data->input('welding_process_2'))
+                    / {{$data->input('welding_process_2')}}
+                @endif
+            </td>
             <td class="bold">Specification:</td>
             <td>{{$data->input('specification')}}</td>
         </tr>
@@ -395,8 +406,14 @@
     <table>
         <tr>
             <td class="td-l">Filler Metal Designation:</td>
-            <td colspan="3">{{$data->input('filler_metal_ds')}} {{ $data->input('records2') }}mm</td>
+            <td colspan="3">{{$data->input('filler_metal_ds')}} {{ $data->input('filler_metal_ds_number') }}mm</td>
         </tr>
+        @if($data->input('filler_metal_ds_2'))
+            <tr>
+                <td class="td-l">Filler Metal Designation:</td>
+                <td colspan="3">{{$data->input('filler_metal_ds_2')}} {{ $data->input('filler_metal_ds_2_number') }}mm</td>
+            </tr>
+        @endif
         <tr>
             <td class="td-l">Filler Make:</td>
             <td class="td-l-2">{{$data->input('filler_metal')}}</td>

@@ -40,6 +40,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="issue_number"
+                                            v-model="data.issue_number"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -52,6 +53,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="manufacturers_2_2"
+                                            v-model="data.manufacturers_2_2"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -65,7 +67,8 @@
                                         <b-form-input
                                             list="parent_material"
                                             name="parent_material"
-                                            v-model="data.parent_material"
+                                            v-model="data.parent_mlt.main"
+                                            @change="setElement($event, 'parent_mlt')"
                                         ></b-form-input>
                                         <b-form-datalist
                                             id="parent_material"
@@ -83,6 +86,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="heat_no"
+                                            v-model="data.heat_no"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -102,6 +106,21 @@
                                         <b-form-datalist
                                             id="welding_process"
                                             :options="recordData.welding_process"
+                                            text-field="main"
+                                        ></b-form-datalist>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            list="welding_process_2"
+                                            name="welding_process_2"
+                                            v-model="data.welding_process_2.main"
+                                            @change="setElement($event, 'welding_process_2')"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="welding_process_2"
+                                            :options="recordData.welding_process_2"
                                             text-field="main"
                                         ></b-form-datalist>
                                     </b-form-group>
@@ -153,6 +172,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="mtl_thickness"
+                                            v-model="data.mtl_thickness"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -185,6 +205,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="outside_diameter"
+                                            v-model="data.outside_diameter"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -259,6 +280,39 @@
                                         ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
+                                <b-col cols="2">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="filler_metal_ds_number"
+                                            v-model="data.filler_metal_ds_number"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row>
+                                <b-col cols="2"></b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            list="filler_metal_ds_2"
+                                            name="filler_metal_ds_2"
+                                            v-model="data.filler_metal_ds_2"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="filler_metal_ds_2"
+                                            :options="recordData.filler_mat_designation_2"
+                                            text-field="main"
+                                        ></b-form-datalist>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col cols="2">
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="filler_metal_ds_2_number"
+                                            v-model="data.filler_metal_ds_2_number"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
                             </b-row>
                             <b-row>
                                 <b-col cols="2">
@@ -318,11 +372,13 @@
                                         <b-form-input
                                             list="shielding_gas_type"
                                             name="shielding_gas_type"
-                                            v-model="data.shielding_gas_type"
+                                            v-model="data.designation_gas_flux.main"
+                                            @change="setElement($event, 'designation_gas_flux')"
                                         ></b-form-input>
                                         <b-form-datalist
                                             id="shielding_gas_type"
-                                            :options="shielding_gas_type"
+                                            :options="recordData.designation_gas_flux"
+                                            text-field="main"
                                         ></b-form-datalist>
                                     </b-form-group>
                                     <b-row>
@@ -422,6 +478,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="flow_rate"
+                                            v-model="data.flow_rate"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -445,14 +502,14 @@
                                 <b-col cols="4">
                                     <b-form-group>
                                         <b-form-input
-                                            list="designation_gas_flux"
-                                            name="designation_gas_flux"
-                                            v-model="data.designation_gas_flux.main"
-                                            @change="setElement($event, 'designation_gas_flux')"
+                                            list="designation_backing_gas"
+                                            name="designation_backing_gas"
+                                            v-model="data.designation_backing_gas.main"
+                                            @change="setElement($event, 'designation_backing_gas')"
                                         ></b-form-input>
                                         <b-form-datalist
-                                            id="designation_gas_flux"
-                                            :options="recordData.designation_gas_flux"
+                                            id="designation_backing_gas"
+                                            :options="recordData.designation_backing_gas"
                                             text-field="main"
                                         ></b-form-datalist>
                                     </b-form-group>
@@ -465,6 +522,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="heating_treatment"
+                                            v-model="data.heating_treatment"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -494,6 +552,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="heating_cooling_rates"
+                                            v-model="data.heating_cooling_rates"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -506,6 +565,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="tungsten_size"
+                                            v-model="data.tungsten_size"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -517,6 +577,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="touch_work"
+                                            v-model="data.touch_work"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -530,6 +591,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="power_source"
+                                            v-model="data.power_source"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -543,6 +605,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="automatic_system"
+                                            v-model="data.automatic_system"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -556,12 +619,11 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="control"
+                                            v-model="data.control"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
                             </b-row>
-
-
                         </b-card-body>
                     </b-collapse>
                 </b-card>
@@ -622,15 +684,26 @@
                                 </b-col>
                                 <b-col style="width: 13%">
                                     <b-form-input
+                                        list="record-type-current"
                                         name="record-type-current"
                                         v-model="item.record_type_current"
                                     ></b-form-input>
+                                    <b-form-datalist
+                                        id="record-type-current"
+                                        :options="record_type_current"
+                                    ></b-form-datalist>
                                 </b-col>
                                 <b-col style="width: 13%">
                                     <b-form-input
+                                        list="record-type-transfer"
                                         name="record-type-transfer"
                                         v-model="item.record_type_transfer"
                                     ></b-form-input>
+                                    <b-form-datalist
+                                        id="record-type-transfer"
+                                        :options="recordData.metal_transfer"
+                                        text-field="main"
+                                    ></b-form-datalist>
                                 </b-col>
                                 <b-col style="width: 13%">
                                     <b-form-input
@@ -658,7 +731,6 @@
                                 <b-button block variant="outline-secondary" @click="addRecords">Added +</b-button>
                             </div>
                             <input type="hidden" name="records" :value="JSON.stringify(data.records)">
-                            <input type="hidden" name="records2" :value="data.records[0].record_size">
                         </b-card-body>
                     </b-collapse>
                 </b-card>
@@ -679,6 +751,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="manufacturers_2"
+                                            v-model="data.manufacturers_2"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -691,6 +764,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="manufacturer_1"
+                                            v-model="data.manufacturer_1"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -698,6 +772,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="manufacturer_2"
+                                            v-model="data.manufacturer_2"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -706,6 +781,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="manufacturer_3"
+                                            v-model="data.manufacturer_3"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -718,6 +794,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="ref_no"
+                                            v-model="data.ref_no"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -728,13 +805,15 @@
                                 </b-col>
                                 <b-col cols="9">
                                     <b-form-datepicker
-                                        name="date_welderT"
+                                        name="date_welder"
+                                        v-model="data.date_welder"
                                         id="datepicker-placeholder"
                                         placeholder="Choose a date"
                                         local="en"
                                     ></b-form-datepicker>
                                 </b-col>
                             </b-row>
+                            <br>
                             <b-row>
                                 <b-col cols="3">
                                     <label>Welder name:</label>
@@ -743,6 +822,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="date_welder_name"
+                                            v-model="data.date_welder_name"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -762,6 +842,20 @@
                                         <b-form-datalist
                                             id="welding_process_add"
                                             :options="recordData.welding_process"
+                                            text-field="add"
+                                        ></b-form-datalist>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            list="welding_process_add_2"
+                                            name="welding_process_add_2"
+                                            v-model="data.welding_process_2.add"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="welding_process_add_2"
+                                            :options="recordData.welding_process_2"
                                             text-field="add"
                                         ></b-form-datalist>
                                     </b-form-group>
@@ -813,8 +907,19 @@
                                     <label>Parental Material Thicknes (mm):</label>
                                 </b-col>
                                 <b-col>
-                                    <b-form-checkbox name="butt_welds" v-model="data.butt_welds">Butt Welds</b-form-checkbox><br>
-                                    <b-form-checkbox name="fillet_welds" v-model="data.fillet_welds">Fillet Welds</b-form-checkbox>
+                                    <b-form-checkbox
+                                        name="butt_welds"
+                                        v-model="data.butt_welds"
+                                    >
+                                        Butt Welds
+                                    </b-form-checkbox>
+                                    <br>
+                                    <b-form-checkbox
+                                        name="fillet_welds"
+                                        v-model="data.fillet_welds"
+                                    >
+                                        Fillet Welds
+                                    </b-form-checkbox>
                                 </b-col>
                             </b-row>
                             <hr>
@@ -828,6 +933,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="weld_material_thickness"
+                                            v-model="data.weld_material_thickness"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -840,6 +946,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="single_run"
+                                            v-model="data.single_run"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -852,6 +959,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="throat_thickness"
+                                            v-model="data.throat_thickness"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -864,6 +972,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="outside_pipe"
+                                            v-model="data.outside_pipe"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -876,6 +985,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="filler_material_make"
+                                            v-model="data.filler_material_make"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -888,6 +998,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="filler_material_size_range"
+                                            v-model="data.filler_material_size_range"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -910,6 +1021,12 @@
                                         ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
+                                <b-col cols="2">
+                                    <b-form-input
+                                        name="designation_gas_flux_range"
+                                        :value="designation_gas_flux_range"
+                                    ></b-form-input>
+                                </b-col>
                             </b-row>
                             <b-row class="mb-2">
                                 <b-col cols="3">
@@ -918,13 +1035,13 @@
                                 <b-col>
                                     <b-form-group>
                                         <b-form-input
-                                            list="designation_gas_flux_add"
-                                            name="designation_gas_flux_add"
-                                            v-model="data.designation_gas_flux.add"
+                                            list="designation_backing_gas"
+                                            name="designation_backing_gas"
+                                            v-model="data.designation_backing_gas.add"
                                         ></b-form-input>
                                         <b-form-datalist
-                                            id="designation_gas_flux_add"
-                                            :options="recordData.designation_gas_flux"
+                                            id="designation_backing_gas"
+                                            :options="recordData.designation_backing_gas"
                                             text-field="add"
                                         ></b-form-datalist>
                                     </b-form-group>
@@ -943,7 +1060,7 @@
                                         ></b-form-input>
                                         <b-form-datalist
                                             id="type_welding_current_polarity"
-                                            :options="['DC-Direct Current Electrode Positive', 'DC-Direct Current Electrode Negative', 'DC-Direct Current Electrode Negative/Positive', 'Alternative Current']"
+                                            :options="type_welding_current_polarity"
                                         ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
@@ -994,6 +1111,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="heat_input"
+                                            v-model="data.heat_input"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1033,6 +1151,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="heat_treatment"
+                                            v-model="data.heat_treatment"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1051,6 +1170,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="lot_number"
+                                            v-model="data.lot_number"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1066,6 +1186,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="test_house_report"
+                                            v-model="data.test_house_report"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1078,6 +1199,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="report_no"
+                                            v-model="data.report_no"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1103,6 +1225,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="examiner_test_body"
+                                            v-model="data.examiner_test_body"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1115,6 +1238,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="ndf_ref_no"
+                                            v-model="data.ndf_ref_no"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1128,6 +1252,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="visual"
+                                            v-model="data.visual"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1140,6 +1265,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="name_examiner"
+                                            v-model="data.name_examiner"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1155,6 +1281,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="viewing_conditions"
+                                            v-model="data.viewing_conditions"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1167,6 +1294,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="penetrant_manufacture_type"
+                                            v-model="data.penetrant_manufacture_type"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1177,6 +1305,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="name_examiner"
+                                            v-model="data.name_examiner"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1189,6 +1318,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="develop_manufacture"
+                                            v-model="data.develop_manufacture"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1199,6 +1329,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="detection_media"
+                                            v-model="data.detection_media"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1211,6 +1342,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="remover_manufacturer_type"
+                                            v-model="data.remover_manufacturer_type"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1221,6 +1353,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="detection_media_contrast_paint"
+                                            v-model="data.detection_media_contrast_paint"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1236,6 +1369,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="ultrasonic"
+                                            v-model="data.ultrasonic"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1246,6 +1380,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="reference_blocks"
+                                            v-model="data.reference_blocks"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1258,6 +1393,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="procedure_number"
+                                            v-model="data.procedure_number"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1268,6 +1404,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="name_examiner_PCN"
+                                            v-model="data.name_examiner_PCN"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1280,6 +1417,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="probe_serial_number"
+                                            v-model="data.probe_serial_number"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1289,7 +1427,8 @@
                                 <b-col cols="4">
                                     <b-form-group>
                                         <b-form-input
-                                            name="flaw_detection_serial_number:"
+                                            name="flaw_detection_serial_number"
+                                            v-model="data.flaw_detection_serial_number"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1305,6 +1444,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="tensile_test_add"
+                                            v-model="data.tensile_test_add"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1315,6 +1455,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="tensile_test"
+                                            v-model="data.tensile_test"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1327,6 +1468,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="a_1"
+                                            v-model="data.a_1"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1337,6 +1479,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="b_1"
+                                            v-model="data.b_1"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1349,6 +1492,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="a_thickness"
+                                            v-model="data.a_thickness"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1359,6 +1503,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="b_thickness"
+                                            v-model="data.b_thickness"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1371,6 +1516,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="a_width"
+                                            v-model="data.a_width"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1381,6 +1527,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="b_width"
+                                            v-model="data.b_width"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1393,6 +1540,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="a_maximum"
+                                            v-model="data.a_maximum"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1403,6 +1551,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="b_maximum"
+                                            v-model="data.b_maximum"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1418,6 +1567,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="bend_tests"
+                                            v-model="data.bend_tests"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1430,6 +1580,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="thickness"
+                                            v-model="data.thickness"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1440,6 +1591,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="width"
+                                            v-model="data.width"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1453,6 +1605,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="dia_former"
+                                            v-model="data.dia_former"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1463,6 +1616,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="side"
+                                            v-model="data.side"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1475,6 +1629,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="angle_bend"
+                                            v-model="data.angle_bend"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1485,6 +1640,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="face"
+                                            v-model="data.face"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1497,6 +1653,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="elongation"
+                                            v-model="data.elongation"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1507,6 +1664,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="root"
+                                            v-model="data.root"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1519,6 +1677,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="distance_between_rollers"
+                                            v-model="data.distance_between_rollers"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1534,6 +1693,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="macro_microscopic_test_add"
+                                            v-model="data.macro_microscopic_test_add"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1546,6 +1706,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="macro_microscopic_test"
+                                            v-model="data.macro_microscopic_test"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1558,6 +1719,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="etchant_type"
+                                            v-model="data.etchant_type"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1568,6 +1730,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="method"
+                                            v-model="data.method"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1581,6 +1744,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="orientation"
+                                            v-model="data.orientation"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1591,6 +1755,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="orientation_add"
+                                            v-model="data.orientation_add"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1616,7 +1781,6 @@
                                 <b-col cols="5">
                                     <b-form-group>
                                         <b-form-input
-                                            list="document-number1"
                                             name="document_number1"
                                             v-model="clientData.document_number1"
                                         ></b-form-input>
@@ -1625,7 +1789,6 @@
                                 <b-col cols="5">
                                     <b-form-group>
                                         <b-form-input
-                                            list="document-number2"
                                             name="document_number2"
                                             v-model="clientData.document_number2"
                                         ></b-form-input>
@@ -1642,7 +1805,10 @@
                                             <label for="input-default">Name</label>
                                         </b-col>
                                         <b-col cols="9">
-                                            <b-form-input v-model="clientData.withenessed_name" name="withenessed_name"></b-form-input>
+                                            <b-form-input
+                                                v-model="clientData.withenessed_name"
+                                                name="withenessed_name"
+                                            ></b-form-input>
                                         </b-col>
                                     </b-row>
                                     <b-row class="my-1">
@@ -1650,7 +1816,10 @@
                                             <label for="input-default">Position</label>
                                         </b-col>
                                         <b-col cols="9">
-                                            <b-form-input v-model="clientData.withenessed_position" name="withenessed_position"></b-form-input>
+                                            <b-form-input
+                                                v-model="clientData.withenessed_position"
+                                                name="withenessed_position"
+                                            ></b-form-input>
                                         </b-col>
                                     </b-row>
                                     <b-row class="my-1">
@@ -1676,8 +1845,9 @@
                                             <label for="input-default">Name</label>
                                         </b-col>
                                         <b-col cols="9">
-                                            <b-form-input v-model="clientData.behaulf_name" name="behaulf_name"></b-form-input>
-                                            <b-form-datalist id="input-list"></b-form-datalist>
+                                            <b-form-input
+                                                v-model="clientData.behaulf_name"
+                                                name="behaulf_name"></b-form-input>
                                         </b-col>
                                     </b-row>
                                     <b-row class="my-1">
@@ -1685,8 +1855,10 @@
                                             <label for="input-default">Position</label>
                                         </b-col>
                                         <b-col cols="9">
-                                            <b-form-input v-model="clientData.behaulf_position" name="behaulf_position"></b-form-input>
-                                            <b-form-datalist id="input-list"></b-form-datalist>
+                                            <b-form-input
+                                                v-model="clientData.behaulf_position"
+                                                name="behaulf_position"
+                                            ></b-form-input>
                                         </b-col>
                                     </b-row>
                                     <b-row class="my-1">
@@ -1711,6 +1883,10 @@
 
                 <div class="d-flex justify-content-center">
                     <input type="submit" value="Open PDF" class="button">
+                    <input v-if="$route.params.id" type="button" @click="updateData" value="Update data" class="button ml-1">
+                    <input v-if="$route.params.id" type="button" @click="deleteData" value="Delete" class="button-red ml-1">
+                    <a v-if="$route.params.id" href="/saves" class="button ml-2">Back</a>
+                    <input v-else type="button" @click="saveData" value="Save data" class="button ml-1">
                 </div>
             </form>
         </b-container>
@@ -1731,100 +1907,109 @@ export default {
             recordData: {
                 code_standard: [],
                 designation_gas_flux: [],
+                designation_backing_gas: [],
                 welding_process: [],
+                welding_process_2: [],
                 joint_type_weld: [],
                 parent_mlt: [],
                 welding_post: [],
                 preparation: [],
                 metal_transfer: [],
                 filler_mat_designation: [],
+                filler_mat_designation_2: [],
                 specification: []
             },
-            baking_drying:[
+            record_type_current: [
+                "DC+", "DC-", "AC"
+            ],
+            baking_drying: [
                 "Not Applied",
                 "Oven Baked",
                 "Oven Baked"
             ],
-            baking_gouging:[
+            baking_gouging: [
                 "Not Applied",
                 "Back Gouged",
                 "Back Grinded",
                 "Machined",
                 "Arc Aired"
             ],
-            shielding_gas_type:[
-                "I1",
-                "I2",
-                "Not Applicable",
-                "M14",
-                "M26",
-                "M24",
-                "I1/M24",
-                "I1/M26",
-                "I3",
-                "M11",
-                "M12",
-                "M14"
-            ],
-            tungsten_type:[
+            tungsten_type: [
                 "NOT APPLICABLE",
                 "Thoriated 2%",
                 "Zirconiated 2%",
                 "Lanthanated 2%"
             ],
+            type_welding_current_polarity: [
+                'DC-Direct Current Electrode Positive',
+                'DC-Direct Current Electrode Negative',
+                'DC-Direct Current Electrode Negative/Positive',
+                'Alternative Current'
+            ],
             data: {
-                welding_process: {
-                    main: "",
-                    add: ""
-                },
+                code_standard: "",
+                issue_number: "",
+                manufacturers_2_2: "",
                 parent_mlt: {
                     main: "",
                     add: ""
                 },
-                welding_post: {
+                heat_no: "",
+                welding_process: {
                     main: "",
                     add: ""
                 },
+                welding_process_2: {
+                    main: "",
+                    add: ""
+                },
+                specification: "",
+                metal_transfer: "",
+                mtl_thickness: "",
                 joint_type_weld: {
                     main: "",
                     add: ""
                 },
+                outside_diameter: "",
+                preparation: "",
+                welding_post: {
+                    main: "",
+                    add: ""
+                },
+                filler_metal_ds:"",
+                filler_metal_ds_number: "",
+                filler_metal_ds_2: "",
+                filler_metal_ds_2_number: "",
+                filler_metal: "",
+                baking_drying: "",
+                baking_gouging: "",
                 designation_gas_flux: {
                     main: "",
                     add: ""
                 },
-
-                fillet_welds: false,
-                butt_welds: false,
-
-                metal_transfer: "",
-                parent_material: "",
-                code_standard: "",
-                preparation: "",
-
                 isArg: "",
                 arg: "",
-
                 isCo2: "",
                 co2: "",
-
                 isO2: "",
                 o2: "",
-
                 isHe: "",
                 he: "",
-
-                interpass_temperature: "",
                 preheat_temperature: "",
-
-                specification:"",
-                filler_metal_ds:"",
-                filler_metal:"",
-                baking_drying:"",
-                baking_gouging:"",
-                shielding_gas_type:"",
-                purging_gas_type:"",
-                tungsten_type:"",
+                flow_rate: "",
+                interpass_temperature: "",
+                designation_backing_gas: {
+                    main: "",
+                    add: ""
+                },
+                heating_treatment: "",
+                tungsten_type: "",
+                heating_cooling_rates: "",
+                tungsten_size: "",
+                touch_work: "",
+                power_source: "",
+                automatic_system: "",
+                control: "",
                 records: [
                     {
                         record_process: "",
@@ -1836,9 +2021,75 @@ export default {
                         record_travel_speed: 0,
                         record_heat_input: ""
                     }
-                ]
+                ],
+                manufacturers_2: "",
+                manufacturer_1: "",
+                manufacturer_2: "",
+                manufacturer_3: "",
+                ref_no: "",
+                date_welder: "",
+                date_welder_name: "",
+                fillet_welds: false,
+                butt_welds: false,
+                weld_material_thickness: "",
+                single_run: "",
+                throat_thickness: "",
+                outside_pipe: "",
+                filler_material_make: "",
+                filler_material_size_range: "",
+                type_welding_current_polarity: "",
+                heat_input: "",
+                heat_treatment: "",
+                lot_number: "",
+                test_house_report: "",
+                report_no: "",
+                examiner_test_body: "",
+                ndf_ref_no: "",
+                visual: "",
+                name_examiner: "",
+                viewing_conditions: "",
+                penetrant_manufacture_type: "",
+                name_examiner: "",
+                develop_manufacture: "",
+                detection_media: "",
+                remover_manufacturer_type: "",
+                detection_media_contrast_paint: "",
+                ultrasonic: "",
+                reference_blocks: "",
+                procedure_number: "",
+                name_examiner_PCN: "",
+                probe_serial_number: "",
+                flaw_detection_serial_number: "",
+                tensile_test_add: "",
+                tensile_test: "",
+                a_1: "",
+                b_1: "",
+                a_thickness: "",
+                b_thickness: "",
+                a_width: "",
+                b_width: "",
+                a_maximum: "",
+                b_maximum: "",
+                bend_tests: "",
+                thickness: "",
+                width: "",
+                dia_former: "",
+                side: "",
+                angle_bend: "",
+                face: "",
+                elongation: "",
+                root: "",
+                distance_between_rollers: "",
+                macro_microscopic_test_add: "",
+                macro_microscopic_test: "",
+                etchant_type: "",
+                method: "",
+                orientation: "",
+                orientation_add: ""
             },
             clientData: {
+                document_number1: "",
+                document_number2: "",
                 withenessed_name: "",
                 withenessed_position: "",
                 withenessed_date: "",
@@ -1852,12 +2103,26 @@ export default {
         this.getRecordData();
     },
     computed: {
+        designation_gas_flux_range() {
+            if(this.data.isO2) {
+                return (this.data.o2 - (this.data.o2 * 0.2)) + "% - " + (+this.data.o2 + (this.data.o2 * 0.2)) + "%"
+            }
+            if(this.data.isArg) {
+                return (this.data.arg - (this.data.arg * 0.2)) + "% - " + (+this.data.arg + (this.data.arg * 0.2)) + "%"
+            }
+            if(this.data.isCo2) {
+                return (this.data.co2 - (this.data.co2 * 0.2)) + "% - " + (+this.data.co2 + (this.data.co2 * 0.2)) + "%"
+            }
+            if(this.data.isHe) {
+                return (this.data.he - (this.data.he * 0.1)) + "% - " + (+this.data.co2 + (this.data.he * 0.1)) + "%"
+            }
+        },
         interpassMin() {
             if(this.data.interpass_temperature == "No Applicable") {
                 return "Min 10°C";
             }
-            if(this.data.interpass_temperature >= 60) {
-                return "Min " + this.data.interpass_temperature - 50 + "°C";
+            if(this.data.interpass_temperature > 60) {
+                return "Min " + (+this.data.interpass_temperature - 50) + "°C";
             } else {
                 return "Min 10°C";
             }
@@ -1866,7 +2131,7 @@ export default {
             if(this.data.preheat_temperature == "No Applicable") {
                 return "No Applicable";
             } else {
-                return "Max " + this.data.preheat_temperature + 50 + "°C";
+                return "Max " + (+this.data.preheat_temperature + 50) + "°C";
             }
         }
     },
@@ -1903,6 +2168,13 @@ export default {
                 Object.assign(this.recordData, response.data);
                 console.log(response.data)
             })
+            if(this.$route.params.id) {
+                axios.get('/api/record/'+this.$route.params.id).then(response => {
+                    console.log(response.data)
+                    this.clientData = Object.assign(this.clientData, response.data.client);
+                    this.data = Object.assign(this.data, response.data.data);
+                })
+            }
         },
 
         setElement(event, array) {
@@ -1932,6 +2204,55 @@ export default {
         },
         delRecords(index) {
             this.data.records.splice(index, 1);
+        },
+        saveData() {
+            axios.post('/api/record', {
+                data: this.data,
+                client: this.clientData
+            }).then((response) => {
+                swal({
+                    icon: 'success',
+                    text: `Saved`
+                });
+            }).catch((error) => {
+                swal({
+                    icon: "error",
+                    text: 'Error'
+                });
+            });
+        },
+        updateData() {
+            axios.post('/api/record/'+this.$route.params.id, {
+                data: this.data,
+                client: this.clientData
+            }).then((response) => {
+                swal({
+                    icon: 'success',
+                    text: `Updated`
+                });
+            }).catch((error) => {
+                swal({
+                    icon: "error",
+                    text: 'Error'
+                });
+            });
+        },
+        deleteData() {
+            swal({
+                title: "Do you want to delete?",
+                icon: "warning"
+            }).then((willDelete) => {
+                if (willDelete) {
+                    axios.post('/api/del-record/'+this.$route.params.id).then((response) => {
+                        window.location.href = '/saves';
+                    }).catch((error) => {
+                        swal({
+                            icon: "error",
+                            text: 'Error'
+                        });
+                    });
+                }
+            });
         }
     }
 }

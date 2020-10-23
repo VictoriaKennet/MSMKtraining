@@ -1913,7 +1913,7 @@ export default {
             }).then((response) => {
                 swal({
                     icon: 'success',
-                    text: `Client saved`
+                    text: `Saved`
                 });
             }).catch((error) => {
                 swal({
@@ -1930,7 +1930,7 @@ export default {
             }).then((response) => {
                 swal({
                     icon: 'success',
-                    text: `Client updated`
+                    text: `Updated`
                 });
             }).catch((error) => {
                 swal({
@@ -1946,7 +1946,7 @@ export default {
             }).then((willDelete) => {
                 if (willDelete) {
                     axios.post('/api/del-client/'+this.$route.params.id).then((response) => {
-                        window.location.href = '/clients';
+                        window.location.href = '/saves';
                     }).catch((error) => {
                         swal({
                             icon: "error",

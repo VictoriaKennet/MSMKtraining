@@ -5,7 +5,7 @@ import VueRouter from 'vue-router'
 import WelderCertificate from './components/DocumentsWelderCertificate/WelderCertificate.vue'
 import NewWelderCertificate from './components/DocumentsWelderCertificate/NewWelderCertificate.vue'
 import EditWelderCertificate from './components/DocumentsWelderCertificate/EditWelderCertificate.vue'
-import ClientsComponent from './components/DocumentsWelderCertificate/ClientsComponent.vue'
+import ClientsComponent from './components/ClientsComponent.vue'
 
 // PDFWeldingRecord
 import WeldingRecord from './components/DocumentsWeldingRecord/WeldingRecord.vue'
@@ -40,13 +40,18 @@ export default new VueRouter({
             component: EditWelderCertificate
         },
         {
+            path: '/welding-record/:id',
+            name: 'EditWeldingRecord',
+            component: WeldingRecord
+        },
+        {
             path: '/saves',
             name: 'saves',
             component: ClientsComponent
         },
         {
-            path: '/save/:id',
-            name: 'save',
+            path: '/welder-certificate/:id',
+            name: 'WelderCertificate',
             component: WelderCertificate
         },
         {

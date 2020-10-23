@@ -68,14 +68,17 @@ class DataController extends Controller
     function pdfDataRecord() {
         $data = [
             'designation_gas_flux' => DesignationGasFlux::get(),
+            'designation_backing_gas' => DesignationGasFlux::get(),
             'parent_mlt' => ParentMLT::get(),
             'joint_type_weld' => TypeJoin::get(),
             'welding_post' => WeldingPost::get(),
             'welding_process' => WeldPR::get(),
+            'welding_process_2' => WeldPR::get(),
             'code_standard' => CodeST::get(),
             'metal_transfer' => MetalTransfer::get(),
             'preparation' => Preparation::get(),
             'filler_mat_designation' => FillerMatDesignation::get(),
+            'filler_mat_designation_2' => FillerMatDesignation::get(),
             'baking' => Baking::get(),
             'back_gouging' => BackGouging::get(),
             'specification' => Specification::get(),

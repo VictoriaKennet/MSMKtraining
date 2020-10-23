@@ -4,7 +4,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('certificate-data', 'DataController@pdfDataCertificate');
+
+// record
 Route::get('record-data', 'DataController@pdfDataRecord');
+Route::post('record', 'ClientController@saveRecord');
+Route::get('record/{id}', 'ClientController@recordId');
+Route::post('record/{id}', 'ClientController@updateRecord');
+Route::post('del-record/{id}', 'ClientController@deleteRecord');
 
 Route::get('wps/{id}', 'DataController@wpsId');
 Route::post('wps', 'DataController@postWPS');
