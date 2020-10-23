@@ -280,11 +280,11 @@
                                         ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
-                                <b-col cols="2">
+                                <b-col cols="3">
                                     <b-form-group>
                                         <b-form-input
                                             name="filler_metal_ds_number"
-                                            v-model="data.filler_metal_ds_number"
+                                            :value="data.filler_metal_ds_number"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -305,11 +305,11 @@
                                         ></b-form-datalist>
                                     </b-form-group>
                                 </b-col>
-                                <b-col cols="2">
+                                <b-col cols="3">
                                     <b-form-group>
                                         <b-form-input
                                             name="filler_metal_ds_2_number"
-                                            v-model="data.filler_metal_ds_2_number"
+                                            :value="data.filler_metal_ds_2_number"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -502,13 +502,13 @@
                                 <b-col cols="4">
                                     <b-form-group>
                                         <b-form-input
-                                            list="designation_backing_gas"
-                                            name="designation_backing_gas"
+                                            list="designation_purging_gas"
+                                            name="designation_purging_gas"
                                             v-model="data.designation_backing_gas.main"
                                             @change="setElement($event, 'designation_backing_gas')"
                                         ></b-form-input>
                                         <b-form-datalist
-                                            id="designation_backing_gas"
+                                            id="designation_purging_gas"
                                             :options="recordData.designation_backing_gas"
                                             text-field="main"
                                         ></b-form-datalist>
@@ -571,7 +571,7 @@
                                 </b-col>
 
                                 <b-col cols="2">
-                                    <label>Touch to Work: </label>
+                                    <label>Electrode Stick-out: </label>
                                 </b-col>
                                 <b-col cols="4">
                                     <b-form-group>
@@ -620,6 +620,20 @@
                                         <b-form-input
                                             name="control"
                                             v-model="data.control"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+
+                            <b-row>
+                                <b-col cols="2">
+                                    <label>Throat Thickness size (mm): </label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="throat_thickness_size"
+                                            v-model="data.throat_thickness_size"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -719,6 +733,7 @@
                                 </b-col>
                                 <b-col class="text-center">
                                     <b-icon
+                                        v-if="index != 0"
                                         icon="trash-fill"
                                         font-scale="2"
                                         class="cursor"
@@ -959,7 +974,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="throat_thickness"
-                                            v-model="data.throat_thickness"
+                                            :value="throat_thickness"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1175,22 +1190,7 @@
                                     </b-form-group>
                                 </b-col>
                             </b-row>
-
                             <hr>
-
-                            <b-row class="mb-2">
-                                <b-col cols="3">
-                                    <label>Test House and Report No:</label>
-                                </b-col>
-                                <b-col>
-                                    <b-form-group>
-                                        <b-form-input
-                                            name="test_house_report"
-                                            v-model="data.test_house_report"
-                                        ></b-form-input>
-                                    </b-form-group>
-                                </b-col>
-                            </b-row>
                             <b-row class="mb-2">
                                 <b-col cols="3">
                                     <label>Report no:</label>
@@ -1204,7 +1204,6 @@
                                     </b-form-group>
                                 </b-col>
                             </b-row>
-
                         </b-card-body>
                     </b-collapse>
                 </b-card>
@@ -1976,9 +1975,8 @@ export default {
                     main: "",
                     add: ""
                 },
-                filler_metal_ds:"",
+                filler_metal_ds: "",
                 filler_metal_ds_number: "",
-                filler_metal_ds_2: "",
                 filler_metal_ds_2_number: "",
                 filler_metal: "",
                 baking_drying: "",
@@ -2010,6 +2008,7 @@ export default {
                 power_source: "",
                 automatic_system: "",
                 control: "",
+                throat_thickness_size: "",
                 records: [
                     {
                         record_process: "",
@@ -2033,7 +2032,6 @@ export default {
                 butt_welds: false,
                 weld_material_thickness: "",
                 single_run: "",
-                throat_thickness: "",
                 outside_pipe: "",
                 filler_material_make: "",
                 filler_material_size_range: "",
@@ -2041,7 +2039,6 @@ export default {
                 heat_input: "",
                 heat_treatment: "",
                 lot_number: "",
-                test_house_report: "",
                 report_no: "",
                 examiner_test_body: "",
                 ndf_ref_no: "",
@@ -2103,35 +2100,42 @@ export default {
         this.getRecordData();
     },
     computed: {
+        throat_thickness() {
+            if(Number.isInteger(+this.data.throat_thickness_size)) {
+                return (0.75 * +this.data.throat_thickness_size) + "mm - " + (1.5 * +this.data.throat_thickness_size) + "mm";
+            } else {
+                return "No Applicable";
+            }
+        },
         designation_gas_flux_range() {
             if(this.data.isO2) {
-                return (this.data.o2 - (this.data.o2 * 0.2)) + "% - " + (+this.data.o2 + (this.data.o2 * 0.2)) + "%"
+                return (this.data.o2 - (this.data.o2 * 0.2)) + "% - " + (+this.data.o2 + (this.data.o2 * 0.2)) + "% O2"
             }
             if(this.data.isArg) {
-                return (this.data.arg - (this.data.arg * 0.2)) + "% - " + (+this.data.arg + (this.data.arg * 0.2)) + "%"
+                return (this.data.arg - (this.data.arg * 0.2)) + "% - " + (+this.data.arg + (this.data.arg * 0.2)) + "% Arg"
             }
             if(this.data.isCo2) {
-                return (this.data.co2 - (this.data.co2 * 0.2)) + "% - " + (+this.data.co2 + (this.data.co2 * 0.2)) + "%"
+                return (this.data.co2 - (this.data.co2 * 0.2)) + "% - " + (+this.data.co2 + (this.data.co2 * 0.2)) + "% CO2"
             }
             if(this.data.isHe) {
-                return (this.data.he - (this.data.he * 0.1)) + "% - " + (+this.data.co2 + (this.data.he * 0.1)) + "%"
+                return (this.data.he - (this.data.he * 0.1)) + "% - " + (+this.data.co2 + (this.data.he * 0.1)) + "% He"
             }
         },
         interpassMin() {
-            if(this.data.interpass_temperature == "No Applicable") {
+            if(this.data.preheat_temperature == "No Applicable") {
                 return "Min 10°C";
             }
-            if(this.data.interpass_temperature > 60) {
-                return "Min " + (+this.data.interpass_temperature - 50) + "°C";
+            if(this.data.preheat_temperature > 60) {
+                return "Min " + (+this.data.preheat_temperature - 50) + "°C";
             } else {
                 return "Min 10°C";
             }
         },
         interpassMax() {
-            if(this.data.preheat_temperature == "No Applicable") {
+            if(this.data.interpass_temperature == "No Applicable") {
                 return "No Applicable";
             } else {
-                return "Max " + (+this.data.preheat_temperature + 50) + "°C";
+                return "Max " + (+this.data.interpass_temperature + 50) + "°C";
             }
         }
     },
@@ -2160,17 +2164,66 @@ export default {
             }
             result = !isNaN(result) && isFinite(result) ? result : 0;
             this.data.records[index].record_heat_input = result;
+
+            if(this.data.fillet_welds && !this.data.butt_welds) {
+                if(this.data.records.length == 1) {
+                    this.data.filler_metal_ds_number = this.data.records[0].record_heat_input;
+                }
+                if(this.data.records.length > 1) {
+                    let record_heat_input = this.data.records.map((el) => el.record_heat_input);
+                    let max = Math.max.apply(null, record_heat_input);
+                    let min = Math.min.apply(null, record_heat_input);
+                    this.data.filler_metal_ds_number = (0.75 * min).toFixed(2) + "mm - " + max + "mm";
+                }
+            }
+            if(!this.data.fillet_welds && this.data.butt_welds) {
+                if(this.data.records.length == 1) {
+                    this.data.filler_metal_ds_number = this.data.records[0].record_heat_input;
+                }
+                if(this.data.records.length > 1) {
+                    let record_heat_input = this.data.records.map((el) => el.record_heat_input);
+                    let max = Math.max.apply(null, record_heat_input);
+                    let min = Math.min.apply(null, record_heat_input);
+                    this.data.filler_metal_ds_number = (0.75 * min).toFixed(2) + "mm - " + (0.75 * max).toFixed(2) + "mm";
+                }
+            }
+
+            if(this.data.fillet_welds && this.data.butt_welds) {
+                let uniq_records = [];
+                this.data.records.map((el) => {
+                    if(el.record_process && !uniq_records.find((item) => item.record_process == el.record_process)) {
+                        uniq_records.push(el)
+                    }
+                });
+                if(uniq_records.length == 2) {
+                    var valuesOne = this.record_heat_input(0, uniq_records);
+                    this.data.filler_metal_ds_number = (0.75 * valuesOne.min).toFixed(2) + "mm - " + valuesOne.max + "mm";
+                    var valuesTwo = this.record_heat_input(1, uniq_records);
+                    this.data.filler_metal_ds_2_number = (0.75 * valuesTwo.min).toFixed(2) + "mm - " + (0.75 * valuesTwo.max).toFixed(2) + "mm";
+                }
+            }
+            return result;
+        },
+
+        record_heat_input(index, uniq_records) {
+            let result = {
+                max: 0,
+                min: 0
+            }
+            let arr = this.data.records.filter((f) => {
+                return f.record_process == uniq_records[index].record_process
+            }).map((el) => el.record_heat_input);
+            result.max = Math.max.apply(null, arr);
+            result.min = Math.min.apply(null, arr);
             return result;
         },
 
         getRecordData() {
             axios.get('/api/record-data').then(response => {
                 Object.assign(this.recordData, response.data);
-                console.log(response.data)
             })
             if(this.$route.params.id) {
                 axios.get('/api/record/'+this.$route.params.id).then(response => {
-                    console.log(response.data)
                     this.clientData = Object.assign(this.clientData, response.data.client);
                     this.data = Object.assign(this.data, response.data.data);
                 })

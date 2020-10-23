@@ -227,21 +227,27 @@
         </tr>
         <tr>
             <td class="td-range-l">Throat Thickness (mm):</td>
-            <td>{{$data->input('throat_thickness')}}</td>
+            <td>
+                {{$data->input('throat_thickness')}}
+            </td>
         </tr>
         <tr>
             <td class="td-range-l">Outside Pipe / Boss Diameter(mm):</td>
             <td>
-                @if ($data->input('outside_pipe') === "Not Applicable")
+                @if ($data->input('outside_diameter') === "Not Applicable")
                     <img src="img/img1.jpg"> 500mm (<img src="img/img1.jpg">150mm PA/PC/PF Rotated)
                 @else
-                    <img src="img/img1.jpg"> {{ 0.5 * $data->input('outside_pipe') }}
+                    <img src="img/img1.jpg"> {{ 0.5 * $data->input('outside_diameter') }}
                 @endif
             </td>
         </tr>
         <tr>
             <td class="td-range-l">Filler Material Designation:</td>
-            <td>{{$data->input('filler_metal_ds')}} or equivalent</td>
+            <td>{{$data->input('filler_metal_ds')}}
+            @if($data->input('filler_metal_ds_2'))
+                / {{$data->input('filler_metal_ds_2')}}
+            @endif
+            or equivalent</td>
         </tr>
         <tr>
             <td class="td-range-l">Filler Material Make:</td>
@@ -253,7 +259,7 @@
         </tr>
         <tr>
             <td class="td-range-l">Designation of Shielding Gas/Flux:</td>
-            <td>{{$data->input('designation_gas_flux_add')}}</td>
+            <td>{{$data->input('designation_gas_flux_add')}} ({{ $data->input('designation_gas_flux_range') }})</td>
         </tr>
         <tr>
             <td class="td-range-l">Designation of Backing Gas:</td>
@@ -406,12 +412,12 @@
     <table>
         <tr>
             <td class="td-l">Filler Metal Designation:</td>
-            <td colspan="3">{{$data->input('filler_metal_ds')}} {{ $data->input('filler_metal_ds_number') }}mm</td>
+            <td colspan="3">{{$data->input('filler_metal_ds')}} {{ $data->input('filler_metal_ds_number') }}</td>
         </tr>
         @if($data->input('filler_metal_ds_2'))
             <tr>
-                <td class="td-l">Filler Metal Designation:</td>
-                <td colspan="3">{{$data->input('filler_metal_ds_2')}} {{ $data->input('filler_metal_ds_2_number') }}mm</td>
+                <td class="td-l"></td>
+                <td colspan="3">{{$data->input('filler_metal_ds_2')}} {{ $data->input('filler_metal_ds_2_number') }}</td>
             </tr>
         @endif
         <tr>
@@ -453,7 +459,7 @@
         </tr>
         <tr>
             <td class="td-l">Purging Gas Type:</td>
-            <td class="td-l-2">{{$data->input('designation_gas_flux')}}</td>
+            <td class="td-l-2">{{$data->input('designation_purging_gas')}}</td>
             <td class="bold">Heat Treatment and/or Ageing:</td>
             <td>{{$data->input('heating_treatment')}}</td>
         </tr>
@@ -470,7 +476,7 @@
             <td></td>
         </tr>
         <tr>
-            <td class="td-l">Touch to Work:</td>
+            <td class="td-l">Electrode Stick-out:</td>
             <td class="td-l-2">{{$data->input('touch_work')}}</td>
             <td class="bold"></td>
             <td></td>

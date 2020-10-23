@@ -87,7 +87,6 @@ export default {
     methods: {
         getData() {
             axios.get('/api/clients').then(response => {
-                console.log(response.data)
                 this.data = Object.assign(this.data, response.data);
             })
         },
