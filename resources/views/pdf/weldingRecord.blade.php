@@ -182,7 +182,7 @@
                     $butt_welds = (0.5 * $data->input('mtl_thickness'))." to ".(2 * $data->input('mtl_thickness'));
                 }
                 if(3 < $data->input('mtl_thickness') && $data->input('mtl_thickness') < 30) {
-                    $fillet_welds = "2 to ".(2 * $data->input('mtl_thickness'));
+                    $fillet_welds = "3 to ".(2 * $data->input('mtl_thickness'));
                 }
                 if($data->input('mtl_thickness') >= 30) {
                     $fillet_welds = ">=5";
@@ -226,7 +226,7 @@
         <tr>
             <td class="td-range-l">Outside Pipe / Boss Diameter(mm):</td>
             <td>
-                @if ($data->input('outside_pipe') == "Not Applicable")
+                @if ($data->input('outside_pipe') === "Not Applicable")
                     <img src="img/img1.png"> 500mm (<img src="img/img1.png">150mm PA/PC/PF Rotated)
                 @else
                     <img src="img/img1.png"> {{ 0.5 * $data->input('outside_pipe') }}
@@ -291,12 +291,12 @@
     </table>
 
     <p class="p-b"><span>Certified that welds were prepared, welded and tested satisfactorily in accordance with the requirements of the code/testing standard.</span> <br>
-    Test House and Report No: - {{$data->input('test_house_report')}} Report no: <b>{{$data->input('report_no')}}</b></p>
+    Test House and Report No: - MSMK Training Laboratory UKAS No: 10126 Report no: <b>{{$data->input('report_no')}}</b></p>
 
     <table class="bottom-inf1">
         <tr>
             <td class="td-head" colspan="2">TEST WITNESSED BY:</td>
-            <td class="td-head" colspan="2">FOR END ON BEHALF OF MSMK TRAINING LTD:</td>
+            <td class="td-head" colspan="2">FOR AND ON BEHALF OF MSMK TRAINING LTD:</td>
         </tr>
         <tr>
             <td>Name: <b>{{$data->input('withenessed_name')}}</b></td>
