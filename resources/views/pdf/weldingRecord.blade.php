@@ -234,11 +234,7 @@
         <tr>
             <td class="td-range-l">Outside Pipe / Boss Diameter(mm):</td>
             <td>
-                @if ($data->input('outside_diameter') === "Not Applicable")
-                    <img src="img/img1.jpg"> 500mm (<img src="img/img1.jpg">150mm PA/PC/PF Rotated)
-                @else
-                    <img src="img/img1.jpg"> {{ 0.5 * $data->input('outside_diameter') }}
-                @endif
+                <img src="img/img1.jpg"> {{ $data->input('outside_pipe') }}
             </td>
         </tr>
         <tr>

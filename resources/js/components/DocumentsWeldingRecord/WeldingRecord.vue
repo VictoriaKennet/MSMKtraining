@@ -987,7 +987,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="outside_pipe"
-                                            v-model="data.outside_pipe"
+                                            :value="outside_pipe"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1126,7 +1126,7 @@
                                     <b-form-group>
                                         <b-form-input
                                             name="heat_input"
-                                            v-model="data.heat_input"
+                                            :value="heat_input"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -2032,11 +2032,9 @@ export default {
                 butt_welds: false,
                 weld_material_thickness: "",
                 single_run: "",
-                outside_pipe: "",
                 filler_material_make: "",
                 filler_material_size_range: "",
                 type_welding_current_polarity: "",
-                heat_input: "",
                 heat_treatment: "",
                 lot_number: "",
                 report_no: "",
@@ -2100,6 +2098,66 @@ export default {
         this.getRecordData();
     },
     computed: {
+        heat_input() {
+            var result = "";
+            if(this.data.fillet_welds && !this.data.butt_welds) {
+                if(this.data.records.length == 1) {
+                    result = this.data.records[0].record_process + ": " + this.data.records[0].record_heat_input;
+                }
+                if(this.data.records.length > 1) {
+                    let record_heat_input = this.data.records.map((el) => el.record_heat_input);
+                    let max = Math.max.apply(null, record_heat_input);
+                    let min = Math.min.apply(null, record_heat_input);
+                    result = this.data.records[0].record_process + ": " + (0.75 * min).toFixed(2) + "Kj/mm - " + max + "Kj/mm";
+                }
+            }
+            if(!this.data.fillet_welds && this.data.butt_welds) {
+                if(this.data.records.length == 1) {
+                    result = this.data.records[0].record_process + ": " + this.data.records[0].record_heat_input;
+                }
+                if(this.data.records.length > 1) {
+                    let record_heat_input = this.data.records.map((el) => el.record_heat_input);
+                    let max = Math.max.apply(null, record_heat_input);
+                    let min = Math.min.apply(null, record_heat_input);
+                    result = this.data.records[0].record_process + ": " + (0.75 * min).toFixed(2) + "Kj/mm - " + (1.25 * max).toFixed(2) + "Kj/mm";
+                }
+            }
+
+            if(this.data.fillet_welds && this.data.butt_welds) {
+                let uniq_records = [];
+                this.data.records.map((el) => {
+                    if(el.record_process && !uniq_records.find((item) => item.record_process == el.record_process)) {
+                        uniq_records.push(el)
+                    }
+                });
+                if(uniq_records.length == 2) {
+                    let arr1 = this.data.records.filter((f) => f.record_process == uniq_records[0].record_process);
+                    if(arr1.length == 1) {
+                        result = arr1[0].record_process + ": " + arr1[0].record_heat_input;
+                    }
+                    if (arr1.length > 1) {
+                        var valuesOne = this.record_heat_input(0, uniq_records);
+                        result = arr1[0].record_process + ": " + (0.75 * valuesOne.min).toFixed(2) + "Kj/mm - " + valuesOne.max + "Kj/mm";
+                    }
+                    let arr2 = this.data.records.filter((f) => f.record_process == uniq_records[1].record_process);
+                    if(arr2.length == 1) {
+                        result += " / " + arr2[0].record_process + ": " + this.data.records[1].record_heat_input;
+                    }
+                    if (arr2.length > 1) {
+                        var valuesTwo = this.record_heat_input(1, uniq_records);
+                        result += " / " + arr2[0].record_process + ": " + (0.75 * valuesTwo.min).toFixed(2) + "Kj/mm - " + (1.25 * valuesTwo.max).toFixed(2) + "Kj/mm";
+                    }
+                }
+            }
+            return result;
+        },
+        outside_pipe() {
+            if(Number.isInteger(+this.data.outside_diameter)) {
+                return 0.5 * +this.data.outside_diameter;
+            } else {
+                return "500mm (150mm PA/PC/PF Rotated)";
+            }
+        },
         throat_thickness() {
             if(Number.isInteger(+this.data.throat_thickness_size)) {
                 return (0.75 * +this.data.throat_thickness_size) + "mm - " + (1.5 * +this.data.throat_thickness_size) + "mm";
@@ -2159,43 +2217,6 @@ export default {
             result = !isNaN(result) && isFinite(result) ? result : 0;
             this.data.records[index].record_heat_input = result;
 
-            if(this.data.fillet_welds && !this.data.butt_welds) {
-                if(this.data.records.length == 1) {
-                    this.data.filler_metal_ds_number = this.data.records[0].record_heat_input;
-                }
-                if(this.data.records.length > 1) {
-                    let record_heat_input = this.data.records.map((el) => el.record_heat_input);
-                    let max = Math.max.apply(null, record_heat_input);
-                    let min = Math.min.apply(null, record_heat_input);
-                    this.data.filler_metal_ds_number = (0.75 * min).toFixed(2) + "Kj/mm - " + max + "Kj/mm";
-                }
-            }
-            if(!this.data.fillet_welds && this.data.butt_welds) {
-                if(this.data.records.length == 1) {
-                    this.data.filler_metal_ds_number = this.data.records[0].record_heat_input;
-                }
-                if(this.data.records.length > 1) {
-                    let record_heat_input = this.data.records.map((el) => el.record_heat_input);
-                    let max = Math.max.apply(null, record_heat_input);
-                    let min = Math.min.apply(null, record_heat_input);
-                    this.data.filler_metal_ds_number = (0.75 * min).toFixed(2) + "Kj/mm - " + (0.75 * max).toFixed(2) + "Kj/mm";
-                }
-            }
-
-            if(this.data.fillet_welds && this.data.butt_welds) {
-                let uniq_records = [];
-                this.data.records.map((el) => {
-                    if(el.record_process && !uniq_records.find((item) => item.record_process == el.record_process)) {
-                        uniq_records.push(el)
-                    }
-                });
-                if(uniq_records.length == 2) {
-                    var valuesOne = this.record_heat_input(0, uniq_records);
-                    this.data.filler_metal_ds_number = (0.75 * valuesOne.min).toFixed(2) + "Kj/mm - " + valuesOne.max + "Kj/mm";
-                    var valuesTwo = this.record_heat_input(1, uniq_records);
-                    this.data.filler_metal_ds_2_number = (0.75 * valuesTwo.min).toFixed(2) + "Kj/mm - " + (0.75 * valuesTwo.max).toFixed(2) + "Kj/mm";
-                }
-            }
             return result;
         },
 
