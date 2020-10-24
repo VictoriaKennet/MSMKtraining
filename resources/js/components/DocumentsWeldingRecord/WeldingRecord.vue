@@ -2104,7 +2104,7 @@ export default {
             if(Number.isInteger(+this.data.throat_thickness_size)) {
                 return (0.75 * +this.data.throat_thickness_size) + "mm - " + (1.5 * +this.data.throat_thickness_size) + "mm";
             } else {
-                return "No Applicable";
+                return "Not Applicable";
             }
         },
         designation_gas_flux_range() {
@@ -2116,7 +2116,7 @@ export default {
             }
         },
         interpassMin() {
-            if(this.data.preheat_temperature == "No Applicable") {
+            if(this.data.preheat_temperature == "Not Applicable") {
                 return "Min 10°C";
             }
             if(this.data.preheat_temperature > 60) {
@@ -2126,8 +2126,8 @@ export default {
             }
         },
         interpassMax() {
-            if(this.data.interpass_temperature == "No Applicable") {
-                return "No Applicable";
+            if(this.data.interpass_temperature == "Not Applicable") {
+                return "Not Applicable";
             } else {
                 return "Max " + (+this.data.interpass_temperature + 50) + "°C";
             }

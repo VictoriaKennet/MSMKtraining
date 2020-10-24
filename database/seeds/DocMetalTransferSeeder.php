@@ -26,5 +26,8 @@ class DocMetalTransferSeeder extends Seeder
         DB::table('doc2_metal_transfer')->insert([
             'main' => 'Dip and Spray',
         ]);
+        DB::table('doc2_metal_transfer')->insert([
+            'main' => 'Cold',
+        ]);
     }
 }
