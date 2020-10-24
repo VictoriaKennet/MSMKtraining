@@ -259,7 +259,7 @@
         </tr>
         <tr>
             <td class="td-range-l">Designation of Shielding Gas/Flux:</td>
-            <td>{{$data->input('designation_gas_flux_add')}} ({{ $data->input('designation_gas_flux_range') }})</td>
+            <td>{{$data->input('designation_gas_flux_add')}} {{ $data->input('designation_gas_flux_range') }}</td>
         </tr>
         <tr>
             <td class="td-range-l">Designation of Backing Gas:</td>

@@ -2109,10 +2109,10 @@ export default {
         },
         designation_gas_flux_range() {
             if(this.data.isCo2) {
-                return (this.data.co2 - (this.data.co2 * 0.2)) + "% - " + (+this.data.co2 + (this.data.co2 * 0.2)) + "% CO2"
+                return ("(" + this.data.co2 - (this.data.co2 * 0.2)) + "% - " + (+this.data.co2 + (this.data.co2 * 0.2)) + "% CO2)"
             }
             if(this.data.isHe) {
-                return (this.data.he - (this.data.he * 0.1)) + "% - " + (+this.data.co2 + (this.data.he * 0.1)) + "% He"
+                return ("(" + this.data.he - (this.data.he * 0.1)) + "% - " + (+this.data.co2 + (this.data.he * 0.1)) + "% He)"
             }
         },
         interpassMin() {
