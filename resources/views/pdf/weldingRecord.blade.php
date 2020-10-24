@@ -506,7 +506,7 @@
     <table class="bottom-inf1">
         <tr>
             <td class="td-head" colspan="2">TEST WITNESSED BY:</td>
-            <td class="td-head" colspan="2">FOR END ON BEHALF OF MSMK TRAINING LTD:</td>
+            <td class="td-head" colspan="2">FOR AND ON BEHALF OF MSMK TRAINING LTD:</td>
         </tr>
         <tr>
             <td>Name: <b>{{$data->input('withenessed_name')}}</b></td>
@@ -589,7 +589,7 @@
     <table class="bottom-inf1">
         <tr>
             <td class="td-head" colspan="2">TEST WITNESSED BY:</td>
-            <td class="td-head" colspan="2">FOR END ON BEHALF OF MSMK TRAINING LTD:</td>
+            <td class="td-head" colspan="2">FOR AND ON BEHALF OF MSMK TRAINING LTD:</td>
         </tr>
         <tr>
             <td>Name: <b>{{$data->input('withenessed_name')}}</b></td>

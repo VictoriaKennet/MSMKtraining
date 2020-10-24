@@ -2108,12 +2108,6 @@ export default {
             }
         },
         designation_gas_flux_range() {
-            if(this.data.isO2) {
-                return (this.data.o2 - (this.data.o2 * 0.2)) + "% - " + (+this.data.o2 + (this.data.o2 * 0.2)) + "% O2"
-            }
-            if(this.data.isArg) {
-                return (this.data.arg - (this.data.arg * 0.2)) + "% - " + (+this.data.arg + (this.data.arg * 0.2)) + "% Arg"
-            }
             if(this.data.isCo2) {
                 return (this.data.co2 - (this.data.co2 * 0.2)) + "% - " + (+this.data.co2 + (this.data.co2 * 0.2)) + "% CO2"
             }
@@ -2173,7 +2167,7 @@ export default {
                     let record_heat_input = this.data.records.map((el) => el.record_heat_input);
                     let max = Math.max.apply(null, record_heat_input);
                     let min = Math.min.apply(null, record_heat_input);
-                    this.data.filler_metal_ds_number = (0.75 * min).toFixed(2) + "mm - " + max + "mm";
+                    this.data.filler_metal_ds_number = (0.75 * min).toFixed(2) + "Kj/mm - " + max + "Kj/mm";
                 }
             }
             if(!this.data.fillet_welds && this.data.butt_welds) {
@@ -2184,7 +2178,7 @@ export default {
                     let record_heat_input = this.data.records.map((el) => el.record_heat_input);
                     let max = Math.max.apply(null, record_heat_input);
                     let min = Math.min.apply(null, record_heat_input);
-                    this.data.filler_metal_ds_number = (0.75 * min).toFixed(2) + "mm - " + (0.75 * max).toFixed(2) + "mm";
+                    this.data.filler_metal_ds_number = (0.75 * min).toFixed(2) + "Kj/mm - " + (0.75 * max).toFixed(2) + "Kj/mm";
                 }
             }
 
@@ -2197,9 +2191,9 @@ export default {
                 });
                 if(uniq_records.length == 2) {
                     var valuesOne = this.record_heat_input(0, uniq_records);
-                    this.data.filler_metal_ds_number = (0.75 * valuesOne.min).toFixed(2) + "mm - " + valuesOne.max + "mm";
+                    this.data.filler_metal_ds_number = (0.75 * valuesOne.min).toFixed(2) + "Kj/mm - " + valuesOne.max + "Kj/mm";
                     var valuesTwo = this.record_heat_input(1, uniq_records);
-                    this.data.filler_metal_ds_2_number = (0.75 * valuesTwo.min).toFixed(2) + "mm - " + (0.75 * valuesTwo.max).toFixed(2) + "mm";
+                    this.data.filler_metal_ds_2_number = (0.75 * valuesTwo.min).toFixed(2) + "Kj/mm - " + (0.75 * valuesTwo.max).toFixed(2) + "Kj/mm";
                 }
             }
             return result;
