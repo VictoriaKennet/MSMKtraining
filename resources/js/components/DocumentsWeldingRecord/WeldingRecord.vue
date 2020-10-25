@@ -2102,24 +2102,24 @@ export default {
             var result = "";
             if(this.data.fillet_welds && !this.data.butt_welds) {
                 if(this.data.records.length == 1) {
-                    result = this.data.records[0].record_process + ": " + this.data.records[0].record_heat_input;
+                    result = this.data.records[0].record_process + ": " + this.data.records[0].record_heat_input + " Kj/mm";
                 }
                 if(this.data.records.length > 1) {
                     let record_heat_input = this.data.records.map((el) => el.record_heat_input);
                     let max = Math.max.apply(null, record_heat_input);
                     let min = Math.min.apply(null, record_heat_input);
-                    result = this.data.records[0].record_process + ": " + (0.75 * min).toFixed(2) + "Kj/mm - " + max + "Kj/mm";
+                    result = this.data.records[0].record_process + ": " + (0.75 * min).toFixed(2) + " Kj/mm - " + max + " Kj/mm";
                 }
             }
             if(!this.data.fillet_welds && this.data.butt_welds) {
                 if(this.data.records.length == 1) {
-                    result = this.data.records[0].record_process + ": " + this.data.records[0].record_heat_input;
+                    result = this.data.records[0].record_process + ": " + this.data.records[0].record_heat_input + " Kj/mm";
                 }
                 if(this.data.records.length > 1) {
                     let record_heat_input = this.data.records.map((el) => el.record_heat_input);
                     let max = Math.max.apply(null, record_heat_input);
                     let min = Math.min.apply(null, record_heat_input);
-                    result = this.data.records[0].record_process + ": " + (0.75 * min).toFixed(2) + "Kj/mm - " + (1.25 * max).toFixed(2) + "Kj/mm";
+                    result = this.data.records[0].record_process + ": " + (0.75 * min).toFixed(2) + " Kj/mm - " + (1.25 * max).toFixed(2) + " Kj/mm";
                 }
             }
 
@@ -2133,19 +2133,19 @@ export default {
                 if(uniq_records.length == 2) {
                     let arr1 = this.data.records.filter((f) => f.record_process == uniq_records[0].record_process);
                     if(arr1.length == 1) {
-                        result = arr1[0].record_process + ": " + arr1[0].record_heat_input;
+                        result = arr1[0].record_process + ": " + arr1[0].record_heat_input + " Kj/mm";
                     }
                     if (arr1.length > 1) {
                         var valuesOne = this.record_heat_input(0, uniq_records);
-                        result = arr1[0].record_process + ": " + (0.75 * valuesOne.min).toFixed(2) + "Kj/mm - " + valuesOne.max + "Kj/mm";
+                        result = arr1[0].record_process + ": " + (0.75 * valuesOne.min).toFixed(2) + " Kj/mm - " + valuesOne.max + " Kj/mm";
                     }
                     let arr2 = this.data.records.filter((f) => f.record_process == uniq_records[1].record_process);
                     if(arr2.length == 1) {
-                        result += " / " + arr2[0].record_process + ": " + this.data.records[1].record_heat_input;
+                        result += " / " + arr2[0].record_process + ": " + this.data.records[1].record_heat_input + " Kj/mm";
                     }
                     if (arr2.length > 1) {
                         var valuesTwo = this.record_heat_input(1, uniq_records);
-                        result += " / " + arr2[0].record_process + ": " + (0.75 * valuesTwo.min).toFixed(2) + "Kj/mm - " + (1.25 * valuesTwo.max).toFixed(2) + "Kj/mm";
+                        result += " / " + arr2[0].record_process + ": " + (0.75 * valuesTwo.min).toFixed(2) + " Kj/mm - " + (1.25 * valuesTwo.max).toFixed(2) + " Kj/mm";
                     }
                 }
             }
@@ -2167,10 +2167,10 @@ export default {
         },
         designation_gas_flux_range() {
             if(this.data.isCo2) {
-                return ("(" + this.data.co2 - (this.data.co2 * 0.2)) + "% - " + (+this.data.co2 + (this.data.co2 * 0.2)) + "% CO2)"
+                return "(" + (+this.data.co2 - (+this.data.co2 * 0.2)) + "% - " + (+this.data.co2 + (+this.data.co2 * 0.2)) + "% CO2)";
             }
             if(this.data.isHe) {
-                return ("(" + this.data.he - (this.data.he * 0.1)) + "% - " + (+this.data.co2 + (this.data.he * 0.1)) + "% He)"
+                return "(" + (+this.data.he - (+this.data.he * 0.1)) + "% - " + (+this.data.co2 + (+this.data.he * 0.1)) + "% He)";
             }
         },
         interpassMin() {
