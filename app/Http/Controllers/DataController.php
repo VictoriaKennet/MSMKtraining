@@ -70,6 +70,7 @@ class DataController extends Controller
             'designation_gas_flux' => DesignationGasFlux::get(),
             'designation_backing_gas' => DesignationGasFlux::get(),
             'parent_mlt' => ParentMLT::get(),
+            'parent_mlt_2' => ParentMLT::get(),
             'joint_type_weld' => TypeJoin::get(),
             'welding_post' => WeldingPost::get(),
             'welding_process' => WeldPR::get(),

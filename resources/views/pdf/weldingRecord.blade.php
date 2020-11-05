@@ -178,44 +178,34 @@
             <td>{{$data->input('parent_mlt_add')}}</td>
         </tr>
         <tr>
-            <td class="td-range-l">Parental Material Thickness (mm):</td>
-            <?php
-                $fillet_welds = 0;
-                $butt_welds = 0;
-
-                if($data->input('mtl_thickness') <= 3) {
-                    $fillet_welds = (0.7 * $data->input('mtl_thickness'))." to ".(2 * $data->input('mtl_thickness'));
-                    $butt_welds = (0.5 * $data->input('mtl_thickness'))." to ".(2 * $data->input('mtl_thickness'));
-                }
-                if(3 < $data->input('mtl_thickness') && $data->input('mtl_thickness') < 30) {
-                    $fillet_welds = "3 to ".(2 * $data->input('mtl_thickness'));
-                }
-                if($data->input('mtl_thickness') >= 30) {
-                    $fillet_welds = ">=5";
-                }
-
-                if(3 < $data->input('mtl_thickness') && $data->input('mtl_thickness') <= 12) {
-                    $butt_welds = "3 to ".(2 * $data->input('mtl_thickness'));
-                }
-                if(12 < $data->input('mtl_thickness') && $data->input('mtl_thickness') <= 100) {
-                    $butt_welds = (0.5 * $data->input('mtl_thickness'))." to ".(2 * $data->input('mtl_thickness'));
-                }
-            ?>
-            @if($data->input('butt_welds') && $data->input('fillet_welds'))
-                <td>
-                    Butt Welds: {{ $butt_welds }}mm / Fillet Welds: {{ $fillet_welds }}mm
-                </td>
-            @else
-                @if($data->input('fillet_welds'))
-                    <td>
-                        Fillet Welds: {{ $fillet_welds }}mm
-                    </td>
-                @else
-                    <td>
-                        Butt Welds: {{ $butt_welds }}mm
-                    </td>
+            <td class="td-range-l" style="vertical-align: top">Parental Material Thickness (mm):</td>
+            <td>
+                @if($data->input('butt_welds_plate_1_thickness_cb'))
+                    {{$data->input('butt_welds_plate_1_thickness_numb')}}<br>
                 @endif
-            @endif
+                @if($data->input('butt_welds_plate_2_thickness_cb'))
+                    {{$data->input('butt_welds_plate_2_thickness_numb')}}<br>
+                @endif
+                @if($data->input('butt_welds_tube_1_thickness_cb'))
+                    {{$data->input('butt_welds_tube_1_thickness_numb')}}<br>
+                @endif
+                @if($data->input('butt_welds_tube_2_thickness_cb'))
+                    {{$data->input('butt_welds_tube_2_thickness_numb')}}<br>
+                @endif
+
+                @if($data->input('fillet_welds_plate_1_thickness_cb'))
+                    {{$data->input('fillet_welds_plate_1_thickness_numb')}}<br>
+                @endif
+                @if($data->input('fillet_welds_plate_2_thickness_cb'))
+                    {{$data->input('fillet_welds_plate_2_thickness_numb')}}<br>
+                @endif
+                @if($data->input('fillet_welds_tube_1_thickness_cb'))
+                    {{$data->input('fillet_welds_tube_1_thickness_numb')}}<br>
+                @endif
+                @if($data->input('fillet_welds_tube_2_thickness_cb'))
+                    {{$data->input('fillet_welds_tube_2_thickness_numb')}}<br>
+                @endif
+            </td>
         </tr>
         <tr>
             <td class="td-range-l">Weld Material Thickness (mm):</td>
@@ -232,9 +222,10 @@
             </td>
         </tr>
         <tr>
-            <td class="td-range-l">Outside Pipe / Boss Diameter(mm):</td>
+            <td class="td-range-l" style="vertical-align: top">Outside Pipe / Boss Diameter(mm):</td>
             <td>
-                <img src="img/img1.jpg"> {{ $data->input('outside_pipe') }}
+                <img src="img/img1.jpg"> {{ $data->input('outside_pipe') }}<br>
+                <img src="img/img1.jpg"> {{ $data->input('outside_pipe_2') }}
             </td>
         </tr>
         <tr>
@@ -263,7 +254,7 @@
         </tr>
         <tr>
             <td class="td-range-l">Type of Welding Current and Polarity:</td>
-            <td>{{$data->input('type_welding_current')}}</td>
+            <td>{{$data->input('type_welding_current_polarity')}}</td>
         </tr>
         <tr>
             <td class="td-range-l">Mode of Metal Transfer (MIG/MAG):</td>
@@ -351,14 +342,14 @@
         <tr>
             <td class="td-l">Manufacturers WPQR No:</td>
             <td class="td-l-2">{{$data->input('manufacturers_2_2')}}</td>
-            <td class="bold">Parent Material:</td>
-            <td>{{$data->input('parent_material')}}</td>
+            <td class="bold" style="vertical-align: top">Parent Material:</td>
+            <td>{{$data->input('parent_material')}}<br>{{$data->input('parent_material_2')}}</td>
         </tr>
         <tr>
             <td class="td-l"></td>
             <td class="td-l-2"></td>
-            <td class="bold">Heat No:</td>
-            <td>{{$data->input('heat_no')}}</td>
+            <td class="bold" style="vertical-align: top">Heat No:</td>
+            <td>{{$data->input('heat_no')}}<br>{{$data->input('heat_no_2')}}</td>
         </tr>
         <tr>
             <td class="td-l">Welding Process:</td>
@@ -374,14 +365,14 @@
         <tr>
             <td class="td-l">Metal Transfer (GMAW):</td>
             <td class="td-l-2">{{$data->input('metal_transfer')}}</td>
-            <td class="bold">Mtl. Thickness (mm)</td>
+            <td class="bold" style="vertical-align: top">Mtl. Thickness (mm):</td>
             <td>{{$data->input('mtl_thickness')}}</td>
         </tr>
         <tr>
             <td class="td-l">Joint Type & Weld:</td>
             <td class="td-l-2">{{$data->input('joint_type_weld')}}</td>
             <td class="bold">Outside Diameter (mm):</td>
-            <td>{{$data->input('outside_diameter')}}</td>
+            <td>{{$data->input('outside_diameter')}}<br>{{$data->input('outside_diameter_2')}}</td>
         </tr>
         <tr>
             <td class="td-l">Preparation & Cleaning:</td>

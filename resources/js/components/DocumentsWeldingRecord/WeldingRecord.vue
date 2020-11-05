@@ -76,8 +76,22 @@
                                             text-field="main"
                                         ></b-form-datalist>
                                     </b-form-group>
+                                    <b-form-group>
+                                        <b-form-input
+                                            list="parent_material_2"
+                                            name="parent_material_2"
+                                            v-model="data.parent_mlt_2.main"
+                                            @change="setElement($event, 'parent_mlt_2')"
+                                        ></b-form-input>
+                                        <b-form-datalist
+                                            id="parent_material_2"
+                                            :options="recordData.parent_mlt_2"
+                                            text-field="main"
+                                        ></b-form-datalist>
+                                    </b-form-group>
                                 </b-col>
                             </b-row>
+                            <hr>
                             <b-row>
                                 <b-col cols="3">
                                     <label>Heat No:</label>
@@ -87,6 +101,12 @@
                                         <b-form-input
                                             name="heat_no"
                                             v-model="data.heat_no"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="heat_no_2"
+                                            v-model="data.heat_no_2"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -164,17 +184,269 @@
                                 </b-form-group>
                             </b-col>
                             </b-row>
+                            <hr>
                             <b-row>
                                 <b-col cols="3">
-                                    <label>Mtl. Thickness (mm):</label>
+                                    <label for="input-default">Material thickness(mm):</label>
+                                </b-col>
+                                <b-col cols="9">
+                                    <!-- Butt Welds -->
+                                    <b-row class="mb-3">
+                                        <b-col>
+                                            <b-form-checkbox
+                                                name="butt_welds"
+                                                v-model="data.butt_welds.checked"
+                                                size="lg"
+                                            >
+                                                Butt Welds
+                                            </b-form-checkbox>
+                                        </b-col>
+                                    </b-row>
+                                    <!-- Plate 1 -->
+                                    <b-row>
+                                        <b-col class="pl-5" cols="3">
+                                            <b-form-checkbox
+                                                name="butt_welds_plate_1_thickness_cb"
+                                                size="lg"
+                                                v-model="data.butt_welds.plate_1_thickness_cb"
+                                            >Plate 1</b-form-checkbox>
+                                        </b-col>
+                                        <b-col cols="4">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="butt_welds_plate_1_thickness"
+                                                    v-model="data.butt_welds.plate_1_thickness"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="5">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="butt_welds_plate_1_thickness_numb"
+                                                    :value="materialThicknessButtWeldsPlate_1"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                    </b-row>
+                                    <!-- Plate 2 -->
+                                    <b-row>
+                                        <b-col class="pl-5" cols="3">
+                                            <b-form-checkbox
+                                                name="butt_welds_plate_2_thickness_cb"
+                                                size="lg"
+                                                v-model="data.butt_welds.plate_2_thickness_cb"
+                                            >Plate 2</b-form-checkbox>
+                                        </b-col>
+                                        <b-col cols="4">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="butt_welds_plate_2_thickness"
+                                                    v-model="data.butt_welds.plate_2_thickness"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="5">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="butt_welds_plate_2_thickness_numb"
+                                                    :value="materialThicknessButtWeldsPlate_2"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                    </b-row>
+                                    <!-- Tube 1 -->
+                                    <b-row>
+                                        <b-col class="pl-5" cols="3">
+                                            <b-form-checkbox
+                                                name="butt_welds_tube_1_thickness_cb"
+                                                size="lg"
+                                                v-model="data.butt_welds.tube_1_thickness_cb"
+                                            >Tube 1</b-form-checkbox>
+                                        </b-col>
+                                        <b-col cols="4">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="butt_welds_tube_1_thickness"
+                                                    v-model="data.butt_welds.tube_1_thickness"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="5">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="butt_welds_tube_1_thickness_numb"
+                                                    :value="materialThicknessButtWeldsTube_1"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                    </b-row>
+                                    <!-- Tube 2 -->
+                                    <b-row>
+                                        <b-col class="pl-5" cols="3">
+                                            <b-form-checkbox
+                                                name="butt_welds_tube_2_thickness_cb"
+                                                size="lg"
+                                                v-model="data.butt_welds.tube_2_thickness_cb"
+                                            >Tube 2</b-form-checkbox>
+                                        </b-col>
+                                        <b-col cols="4">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="butt_welds_tube_2_thickness"
+                                                    v-model="data.butt_welds.tube_2_thickness"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="5">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="butt_welds_tube_2_thickness_numb"
+                                                    :value="materialThicknessButtWeldsTube_2"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                    </b-row>
+                                    <hr>
+                                    <!-- Fillet Welds -->
+                                    <b-row class="mb-3">
+                                        <b-col>
+                                            <b-form-checkbox
+                                                name="fillet_welds"
+                                                v-model="data.fillet_welds.checked"
+                                                size="lg"
+                                            >
+                                                Fillet Welds
+                                            </b-form-checkbox>
+                                        </b-col>
+                                    </b-row>
+                                    <!-- Plate 1 -->
+                                    <b-row>
+                                        <b-col class="pl-5" cols="3">
+                                            <b-form-checkbox
+                                                name="fillet_welds_plate_1_thickness_cb"
+                                                size="lg"
+                                                v-model="data.fillet_welds.plate_1_thickness_cb"
+                                            >Plate 1</b-form-checkbox>
+                                        </b-col>
+                                        <b-col cols="4">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="fillet_welds_plate_1_thickness"
+                                                    v-model="data.fillet_welds.plate_1_thickness"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="5">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="fillet_welds_plate_1_thickness_numb"
+                                                    :value="materialThicknessFilletWeldsPlate_1"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                    </b-row>
+                                    <!-- Plate 2 -->
+                                    <b-row>
+                                        <b-col class="pl-5" cols="3">
+                                            <b-form-checkbox
+                                                name="fillet_welds_plate_2_thickness_cb"
+                                                size="lg"
+                                                v-model="data.fillet_welds.plate_2_thickness_cb"
+                                            >Plate 2</b-form-checkbox>
+                                        </b-col>
+                                        <b-col cols="4">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="fillet_welds_plate_2_thickness"
+                                                    v-model="data.fillet_welds.plate_2_thickness"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="5">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="fillet_welds_plate_2_thickness_numb"
+                                                    :value="materialThicknessFilletWeldsPlate_2"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                    </b-row>
+                                    <!-- Tube 1 -->
+                                    <b-row>
+                                        <b-col class="pl-5" cols="3">
+                                            <b-form-checkbox
+                                                name="fillet_welds_tube_1_thickness_cb"
+                                                size="lg"
+                                                v-model="data.fillet_welds.tube_1_thickness_cb"
+                                            >Tube 1</b-form-checkbox>
+                                        </b-col>
+                                        <b-col cols="4">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="fillet_welds_tube_1_thickness"
+                                                    v-model="data.fillet_welds.tube_1_thickness"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="5">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="fillet_welds_tube_1_thickness_numb"
+                                                    :value="materialThicknessFilletWeldsTube_1"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                    </b-row>
+                                    <!-- Tube 2 -->
+                                    <b-row>
+                                        <b-col class="pl-5" cols="3">
+                                            <b-form-checkbox
+                                                name="fillet_welds_tube_2_thickness_cb"
+                                                size="lg"
+                                                v-model="data.fillet_welds.tube_2_thickness_cb"
+                                            >Tube 2</b-form-checkbox>
+                                        </b-col>
+                                        <b-col cols="4">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="fillet_welds_tube_2_thickness"
+                                                    v-model="data.fillet_welds.tube_2_thickness"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                        <b-col cols="5">
+                                            <b-form-group>
+                                                <b-form-input
+                                                    name="fillet_welds_tube_2_thickness_numb"
+                                                    :value="materialThicknessFilletWeldsTube_2"
+                                                ></b-form-input>
+                                            </b-form-group>
+                                        </b-col>
+                                    </b-row>
+                                </b-col>
+                            </b-row>
+                            <hr>
+                            <b-row>
+                                <b-col cols="3">
+                                    <label>Count process:</label>
                                 </b-col>
                                 <b-col>
-                                    <b-form-group>
-                                        <b-form-input
-                                            name="mtl_thickness"
-                                            v-model="data.mtl_thickness"
-                                        ></b-form-input>
-                                    </b-form-group>
+                                    <b-form-checkbox
+                                        v-model="data.process_one"
+                                        name="process_one"
+                                        size="lg"
+                                    >
+                                        Процесс 1
+                                    </b-form-checkbox>
+                                    <br>
+                                    <b-form-checkbox
+                                    v-model="data.process_two"
+                                        name="process_two"
+                                        size="lg"
+                                    >
+                                        Процесс 2
+                                    </b-form-checkbox>
+                                    <br>
                                 </b-col>
                             </b-row>
                             <b-row>
@@ -197,6 +469,7 @@
                                     </b-form-group>
                                 </b-col>
                             </b-row>
+                            <hr>
                             <b-row>
                                 <b-col cols="3">
                                     <label>Outside Diameter (mm):</label>
@@ -206,6 +479,12 @@
                                         <b-form-input
                                             name="outside_diameter"
                                             v-model="data.outside_diameter"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="outside_diameter_2"
+                                            v-model="data.outside_diameter_2"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -878,6 +1157,19 @@
                             </b-row>
                             <b-row class="mb-2">
                                 <b-col cols="3">
+                                    <label>Mtl. Thickness:</label>
+                                </b-col>
+                                <b-col>
+                                    <b-form-group>
+                                        <b-form-input
+                                            name="mtl_thickness"
+                                            :value="mtl_thickness"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
+                            <b-row class="mb-2">
+                                <b-col cols="3">
                                     <label>Type of Joint and Weld:</label>
                                 </b-col>
                                 <b-col>
@@ -915,31 +1207,7 @@
                                     </b-form-group>
                                 </b-col>
                             </b-row>
-
                             <hr>
-                            <b-row class="mb-2">
-                                <b-col cols="3">
-                                    <label>Parental Material Thicknes (mm):</label>
-                                </b-col>
-                                <b-col>
-                                    <b-form-checkbox
-                                        name="butt_welds"
-                                        v-model="data.butt_welds"
-                                    >
-                                        Butt Welds
-                                    </b-form-checkbox>
-                                    <br>
-                                    <b-form-checkbox
-                                        name="fillet_welds"
-                                        v-model="data.fillet_welds"
-                                    >
-                                        Fillet Welds
-                                    </b-form-checkbox>
-                                </b-col>
-                            </b-row>
-                            <hr>
-
-
                             <b-row class="mb-2">
                                 <b-col cols="3">
                                     <label>Weld Material Thickness (mm):</label>
@@ -988,6 +1256,12 @@
                                         <b-form-input
                                             name="outside_pipe"
                                             :value="outside_pipe"
+                                        ></b-form-input>
+                                    </b-form-group>
+                                     <b-form-group>
+                                        <b-form-input
+                                            name="outside_pipe_2"
+                                            :value="outside_pipe_2"
                                         ></b-form-input>
                                     </b-form-group>
                                 </b-col>
@@ -1911,6 +2185,7 @@ export default {
                 welding_process_2: [],
                 joint_type_weld: [],
                 parent_mlt: [],
+                parent_mlt_2: [],
                 welding_post: [],
                 preparation: [],
                 metal_transfer: [],
@@ -1946,6 +2221,8 @@ export default {
                 'Alternative Current'
             ],
             data: {
+                process_one: false,
+                process_two: false,
                 code_standard: "",
                 issue_number: "",
                 manufacturers_2_2: "",
@@ -1953,7 +2230,12 @@ export default {
                     main: "",
                     add: ""
                 },
+                parent_mlt_2: {
+                    main: "",
+                    add: ""
+                },
                 heat_no: "",
+                heat_no_2: "",
                 welding_process: {
                     main: "",
                     add: ""
@@ -1964,12 +2246,12 @@ export default {
                 },
                 specification: "",
                 metal_transfer: "",
-                mtl_thickness: "",
                 joint_type_weld: {
                     main: "",
                     add: ""
                 },
                 outside_diameter: "",
+                outside_diameter_2: "",
                 preparation: "",
                 welding_post: {
                     main: "",
@@ -2028,8 +2310,28 @@ export default {
                 ref_no: "",
                 date_welder: "",
                 date_welder_name: "",
-                fillet_welds: false,
-                butt_welds: false,
+                fillet_welds: {
+                    checked: false,
+                    plate_1_thickness_cb: false,
+                    plate_2_thickness_cb: false,
+                    tube_1_thickness_cb: false,
+                    tube_2_thickness_cb: false,
+                    plate_1_thickness: 0,
+                    plate_2_thickness: 0,
+                    tube_1_thickness: 0,
+                    tube_2_thickness: 0,
+                },
+                butt_welds: {
+                    checked: false,
+                    plate_1_thickness_cb: false,
+                    plate_2_thickness_cb: false,
+                    tube_1_thickness_cb: false,
+                    tube_2_thickness_cb: false,
+                    plate_1_thickness: 0,
+                    plate_2_thickness: 0,
+                    tube_1_thickness: 0,
+                    tube_2_thickness: 0,
+                },
                 weld_material_thickness: "",
                 single_run: "",
                 filler_material_make: "",
@@ -2098,11 +2400,164 @@ export default {
         this.getRecordData();
     },
     computed: {
+        mtl_thickness() {
+            var result = "";
+            // butt_welds
+            if(this.data.butt_welds.plate_1_thickness_cb) {
+                result += "Plate: " + this.data.butt_welds.plate_1_thickness + "mm";
+            }
+            if(this.data.butt_welds.plate_2_thickness_cb) {
+            if(result) { result += " / " }
+                result += "Plate: " + this.data.butt_welds.plate_2_thickness + "mm";
+            }
+            if(this.data.butt_welds.tube_1_thickness_cb) {
+            if(result) { result += " / " }
+                result += "Tube: " + this.data.butt_welds.tube_1_thickness + "mm";
+            }
+            if(this.data.butt_welds.tube_2_thickness_cb) {
+            if(result) { result += " / " }
+                result += "Tube: " + this.data.butt_welds.tube_2_thickness + "mm";
+            }
+            // fillet_welds
+            if(this.data.fillet_welds.plate_1_thickness_cb) {
+            if(result) { result += " / " }
+                result += "Plate: " + this.data.fillet_welds.plate_1_thickness + "mm";
+            }
+            if(this.data.fillet_welds.plate_2_thickness_cb) {
+            if(result) { result += " / " }
+                result += "Plate: " + this.data.fillet_welds.plate_2_thickness + "mm";
+            }
+            if(this.data.fillet_welds.tube_1_thickness_cb) {
+            if(result) { result += " / " }
+                result += "Tube: " + this.data.fillet_welds.tube_1_thickness + "mm";
+            }
+            if(this.data.fillet_welds.tube_2_thickness_cb) {
+            if(result) { result += " / " }
+                result += "Tube: " + this.data.fillet_welds.tube_2_thickness + "mm";
+            }
+            return result;
+        },
+        // ButtWelds
+        // ButtWeldsPlate_1
+        materialThicknessButtWeldsPlate_1() {
+            let result = '';
+            if (this.data.butt_welds.plate_1_thickness <= 3){
+                result = 0.5 * +this.data.butt_welds.plate_1_thickness + " to " + 2 * +this.data.butt_welds.plate_1_thickness;
+            }
+            if (3 < this.data.butt_welds.plate_1_thickness && this.data.butt_welds.plate_1_thickness <= 12){
+                result = 3 + " to " + 2 * +this.data.butt_welds.plate_1_thickness;
+            }
+            if (12 < this.data.butt_welds.plate_1_thickness && this.data.butt_welds.plate_1_thickness <= 100){
+                result = 0.5 * +this.data.butt_welds.plate_1_thickness + " to " + 2 * +this.data.butt_welds.plate_1_thickness;
+            }
+            return result;
+        },
+        // ButtWeldsPlate_2
+        materialThicknessButtWeldsPlate_2() {
+            let result = '';
+            if (this.data.butt_welds.plate_2_thickness <= 3){
+                result = 0.5 * +this.data.butt_welds.plate_2_thickness + " to " + 2 * +this.data.butt_welds.plate_2_thickness;
+            }
+            if (3 < this.data.butt_welds.plate_2_thickness && this.data.butt_welds.plate_2_thickness <= 12){
+                result = 3 + " to " + 2 * +this.data.butt_welds.plate_2_thickness;
+            }
+            if (12 < this.data.butt_welds.plate_2_thickness && this.data.butt_welds.plate_2_thickness <= 100){
+                result = 0.5 * +this.data.butt_welds.plate_2_thickness + " to " + 2 * +this.data.butt_welds.plate_2_thickness;
+            }
+            return result;
+        },
+        // ButtWeldsTube_1
+        materialThicknessButtWeldsTube_1() {
+            let result = '';
+            if (this.data.butt_welds.tube_1_thickness <= 3){
+                result = 0.5 * +this.data.butt_welds.tube_1_thickness + " to " + 2 * +this.data.butt_welds.tube_1_thickness;
+            }
+            if (3 < this.data.butt_welds.tube_1_thickness && this.data.butt_welds.tube_1_thickness <= 12){
+                result = 3 + " to " + 2 * +this.data.butt_welds.tube_1_thickness;
+            }
+            if (12 < this.data.butt_welds.tube_1_thickness && this.data.butt_welds.tube_1_thickness <= 100){
+                result = 0.5 * +this.data.butt_welds.tube_1_thickness + " to " + 2 * +this.data.butt_welds.tube_1_thickness;
+            }
+            return result;
+        },
+        // ButtWeldsTube_2
+        materialThicknessButtWeldsTube_2() {
+            let result = '';
+            if (this.data.butt_welds.tube_2_thickness <= 3){
+                result = 0.5 * +this.data.butt_welds.tube_2_thickness + " to " + 2 * +this.data.butt_welds.tube_2_thickness;
+            }
+            if (3 < this.data.butt_welds.tube_2_thickness && this.data.butt_welds.tube_2_thickness <= 12){
+                result = 3 + " to " + 2 * +this.data.butt_welds.tube_2_thickness;
+            }
+            if (12 < this.data.butt_welds.tube_2_thickness && this.data.butt_welds.tube_2_thickness <= 100){
+                result = 0.5 * +this.data.butt_welds.tube_2_thickness + " to " + 2 * +this.data.butt_welds.tube_2_thickness;
+            }
+            return result;
+        },
+
+
+        // FilletWelds
+        // FilletWeldsPlate_1
+        materialThicknessFilletWeldsPlate_1() {
+            let result = '';
+            if (3 < this.data.fillet_welds.plate_1_thickness && this.data.fillet_welds.plate_1_thickness < 30){
+                result = 2 + " to " + 2 * +this.data.fillet_welds.plate_1_thickness;
+            }
+            if (this.data.fillet_welds.plate_1_thickness <= 3){
+                result = 0.7 * +this.data.fillet_welds.plate_1_thickness + " to " + 2 * +this.data.fillet_welds.plate_1_thickness;
+            }
+            if (this.data.fillet_welds.plate_1_thickness >= 30){
+                result = ">=5";
+            }
+            return result;
+        },
+        // FilletWeldsPlate_2
+        materialThicknessFilletWeldsPlate_2() {
+            let result = '';
+            if (3 < this.data.fillet_welds.plate_2_thickness && this.data.fillet_welds.plate_2_thickness < 30){
+                result = 2 + " to " + 2 * +this.data.fillet_welds.plate_2_thickness;
+            }
+            if (this.data.fillet_welds.plate_2_thickness <= 3){
+                result = 0.7 * +this.data.fillet_welds.plate_2_thickness + " to " + 2 * +this.data.fillet_welds.plate_2_thickness;
+            }
+            if (this.data.fillet_welds.plate_2_thickness >= 30){
+                result = ">=5";
+            }
+            return result;
+        },
+        // FilletWeldsTube_1
+        materialThicknessFilletWeldsTube_1() {
+            let result = '';
+            if (3 < this.data.fillet_welds.tube_1_thickness && this.data.fillet_welds.tube_1_thickness < 30){
+                result = 2 + " to " + 2 * +this.data.fillet_welds.tube_1_thickness;
+            }
+            if (this.data.fillet_welds.tube_1_thickness <= 3){
+                result = 0.7 * +this.data.fillet_welds.tube_1_thickness + " to " + 2 * +this.data.fillet_welds.tube_1_thickness;
+            }
+            if (this.data.fillet_welds.tube_1_thickness >= 30){
+                result = ">=5";
+            }
+            return result;
+        },
+        // FilletWeldsTube_2
+        materialThicknessFilletWeldsTube_2() {
+            let result = '';
+            if (3 < this.data.fillet_welds.tube_2_thickness && this.data.fillet_welds.tube_2_thickness < 30){
+                result = 2 + " to " + 2 * +this.data.fillet_welds.tube_2_thickness;
+            }
+            if (this.data.fillet_welds.tube_2_thickness <= 3){
+                result = 0.7 * +this.data.fillet_welds.tube_2_thickness + " to " + 2 * +this.data.fillet_welds.tube_2_thickness;
+            }
+            if (this.data.fillet_welds.tube_2_thickness >= 30){
+                result = ">=5";
+            }
+            return result;
+        },
         heat_input() {
             var result = "";
-            if(this.data.fillet_welds && !this.data.butt_welds) {
+            if(this.data.process_one) {
                 if(this.data.records.length == 1) {
-                    result = this.data.records[0].record_process + ": " + this.data.records[0].record_heat_input + " Kj/mm";
+                    result = this.data.records[0].record_process + ": " + (0.75 * this.data.records[0].record_heat_input).toFixed(2) + " Kj/mm - " + (1.25 * this.data.records[0].record_heat_input).toFixed(2) + " Kj/mm";
                 }
                 if(this.data.records.length > 1) {
                     let record_heat_input = this.data.records.map((el) => el.record_heat_input);
@@ -2111,19 +2566,7 @@ export default {
                     result = this.data.records[0].record_process + ": " + (0.75 * min).toFixed(2) + " Kj/mm - " + max + " Kj/mm";
                 }
             }
-            if(!this.data.fillet_welds && this.data.butt_welds) {
-                if(this.data.records.length == 1) {
-                    result = this.data.records[0].record_process + ": " + this.data.records[0].record_heat_input + " Kj/mm";
-                }
-                if(this.data.records.length > 1) {
-                    let record_heat_input = this.data.records.map((el) => el.record_heat_input);
-                    let max = Math.max.apply(null, record_heat_input);
-                    let min = Math.min.apply(null, record_heat_input);
-                    result = this.data.records[0].record_process + ": " + (0.75 * min).toFixed(2) + " Kj/mm - " + (1.25 * max).toFixed(2) + " Kj/mm";
-                }
-            }
-
-            if(this.data.fillet_welds && this.data.butt_welds) {
+            if(this.data.process_two) {
                 let uniq_records = [];
                 this.data.records.map((el) => {
                     if(el.record_process && !uniq_records.find((item) => item.record_process == el.record_process)) {
@@ -2154,6 +2597,13 @@ export default {
         outside_pipe() {
             if(Number.isInteger(+this.data.outside_diameter)) {
                 return 0.5 * +this.data.outside_diameter;
+            } else {
+                return "500mm (150mm PA/PC/PF Rotated)";
+            }
+        },
+        outside_pipe_2() {
+            if(Number.isInteger(+this.data.outside_diameter_2)) {
+                return 0.5 * +this.data.outside_diameter_2;
             } else {
                 return "500mm (150mm PA/PC/PF Rotated)";
             }
@@ -2194,17 +2644,17 @@ export default {
     methods: {
         jointTypeWeld() {
             if(this.data.joint_type_weld.add.indexOf("Fillet") >= 0 && this.data.joint_type_weld.add.indexOf("Butt") >= 0) {
-                this.data.fillet_welds = true;
-                this.data.butt_welds = true;
+                this.data.fillet_welds.checked = true;
+                this.data.butt_welds.checked = true;
             } else if(this.data.joint_type_weld.add.indexOf("Fillet") >= 0) {
-                this.data.fillet_welds = true;
-                this.data.butt_welds = false;
+                this.data.fillet_welds.checked = true;
+                this.data.butt_welds.checked = false;
             } else if(this.data.joint_type_weld.add.indexOf("Butt") >= 0) {
-                this.data.fillet_welds = false;
-                this.data.butt_welds = true;
+                this.data.fillet_welds.checked = false;
+                this.data.butt_welds.checked = true;
             } else {
-                this.data.fillet_welds = false;
-                this.data.butt_welds = false;
+                this.data.fillet_welds.checked = false;
+                this.data.butt_welds.checked = false;
             }
         },
         recordHeatInput(index) {
